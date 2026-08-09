@@ -1,0 +1,91 @@
+# Pirate Armada raiding fleets, by difficulty.
+#
+# Eleven tiers, five variants each; a variant is the ship keys making up one fleet.
+# Loaded when this faction is in the NPC_RACES setting.
+#
+# The escalation curve is LM's own races/pirate_fleets.yaml, which is built on the same
+# spread - light hulls in numbers, then a heavy, then a flagship. A shipped, played curve
+# beats an invented one.
+#
+# The Armada climbs by COUNT before it climbs by weight, on purpose. These are fast,
+# fragile hulls that fight by swarming and boarding, so four Scavengers should feel like a
+# different problem from one Blood Hawk, not a smaller one.
+race: Armada
+fleets:
+  # difficulty 0
+  -
+    - [venus_pir_scavenger]
+    - [venus_pir_scavenger]
+    - [venus_pir_scavenger]
+    - [venus_pir_scavenger]
+    - [venus_pir_blacksails]
+  # difficulty 1
+  -
+    - [venus_pir_scavenger]
+    - [venus_pir_scavenger, venus_pir_scavenger]
+    - [venus_pir_blacksails]
+    - [venus_pir_blacksails]
+    - [venus_pir_scavenger, venus_pir_scavenger]
+  # difficulty 2
+  -
+    - [venus_pir_scavenger, venus_pir_scavenger]
+    - [venus_pir_blacksails]
+    - [venus_pir_blacksails, venus_pir_scavenger]
+    - [venus_pir_blacksails, venus_pir_scavenger]
+    - [venus_pir_scavenger, venus_pir_scavenger, venus_pir_scavenger]
+  # difficulty 3
+  -
+    - [venus_pir_blacksails, venus_pir_scavenger]
+    - [venus_pir_blacksails, venus_pir_blacksails]
+    - [venus_pir_nighthawk]
+    - [venus_pir_blacksails, venus_pir_scavenger, venus_pir_scavenger]
+    - [venus_pir_nighthawk]
+  # difficulty 4
+  -
+    - [venus_pir_blacksails, venus_pir_blacksails]
+    - [venus_pir_nighthawk, venus_pir_scavenger]
+    - [venus_pir_nighthawk]
+    - [venus_pir_blacksails, venus_pir_blacksails, venus_pir_scavenger]
+    - [venus_pir_scrapking, venus_pir_blacksails]
+  # difficulty 5
+  -
+    - [venus_pir_nighthawk, venus_pir_blacksails]
+    - [venus_pir_bloodhawk]
+    - [venus_pir_nighthawk, venus_pir_nighthawk]
+    - [venus_pir_scrapking, venus_pir_blacksails, venus_pir_scavenger]
+    - [venus_pir_bloodhawk]
+  # difficulty 6
+  -
+    - [venus_pir_bloodhawk, venus_pir_scavenger]
+    - [venus_pir_nighthawk, venus_pir_nighthawk, venus_pir_blacksails]
+    - [venus_pir_bloodhawk, venus_pir_blacksails]
+    - [venus_pir_bloodhawk]
+    - [venus_pir_scrapking, venus_pir_nighthawk]
+  # difficulty 7
+  -
+    - [venus_pir_bloodhawk, venus_pir_blacksails, venus_pir_blacksails]
+    - [venus_pir_bloodhawk, venus_pir_nighthawk]
+    - [venus_pir_bloodhawk, venus_pir_bloodhawk]
+    - [venus_pir_scrapking, venus_pir_bloodhawk]
+    - [venus_pir_bloodhawk, venus_pir_nighthawk]
+  # difficulty 8
+  -
+    - [venus_pir_bloodhawk, venus_pir_bloodhawk]
+    - [venus_pir_bloodhawk, venus_pir_nighthawk, venus_pir_blacksails]
+    - [venus_pir_blacktide]
+    - [venus_pir_bloodhawk, venus_pir_bloodhawk, venus_pir_scavenger]
+    - [venus_pir_blacktide]
+  # difficulty 9
+  -
+    - [venus_pir_blacktide, venus_pir_blacksails]
+    - [venus_pir_bloodhawk, venus_pir_bloodhawk, venus_pir_nighthawk]
+    - [venus_pir_blacktide, venus_pir_nighthawk]
+    - [venus_pir_blacktide]
+    - [venus_pir_bloodhawk, venus_pir_bloodhawk, venus_pir_bloodhawk]
+  # difficulty 10
+  -
+    - [venus_pir_blacktide, venus_pir_bloodhawk]
+    - [venus_pir_blacktide, venus_pir_nighthawk, venus_pir_nighthawk]
+    - [venus_pir_blacktide, venus_pir_bloodhawk, venus_pir_blacksails]
+    - [venus_pir_blacktide, venus_pir_scrapking, venus_pir_bloodhawk]
+    - [venus_pir_blacktide, venus_pir_blacktide]

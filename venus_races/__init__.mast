@@ -1,0 +1,94 @@
+# Venus Clouds - a sky-kingdom setting for Cosmos, declared instead of installed.
+#
+# Nineteen airship hulls across three factions, with their own keys. Nothing here collides
+# with `data/shipData.yaml`, so this ADDS content rather than replacing it: a mission can
+# spawn a Golden Vanguard and a TSN cruiser in the same map, and another mod can be
+# installed alongside this one. Nothing in the game install is touched.
+provides venus_races
+
+import venus_setup.py
+import venus_skies.py
+import venus_skies.mast
+
+
+# ---- Factions ------------------------------------------------------
+#
+# ADDS the Venus factions to PLAYABLE_RACES / NPC_RACES rather than replacing them. A pure
+# Venus game is a mission SETTING - name only these factions - rather than something a
+# mastlib does to you. First, because every gate below reads those settings.
+venus_registered = venus_register_races()
+log("venus_races: factions added -> " + ", ".join(venus_registered), "venus_races")
+
+
+# ---- Version -------------------------------------------------------
+#
+# Logged and published, so a running game can say which build it has - and so a test range
+# can catch a HALF-UPDATED install, where the mastlib is one version and the media pack
+# another. Both would load quietly and field the wrong content.
+venus_manifest = load_json_string(media_read_relative_file("venus_manifest.json"))
+venus_version = venus_manifest.get("version")
+set_shared_variable("VENUS_MOD_VERSION", venus_version)
+log("venus_races: " + venus_manifest.get("mod") + " " + venus_version, "venus_races")
+
+
+# ---- Hulls ---------------------------------------------------------
+#
+# Unconditional. The gates below decide whose INTERIORS and FLEETS load; the hulls
+# themselves should always be spawnable, or a mission cannot place a single Blood Hawk
+# without turning the whole Armada on.
+#
+# The ship list lives in the MEDIA PACK, not in this mastlib, because the ENGINE opens it
+# itself and a mastlib is a zip. `media_shared` resolves it out of the unpacked pack, which
+# is why a mission has to declare the pack in `shared_media` alongside this mastlib.
+venus_ships_file = media_shared("venus_ships.yaml")
+venus_declared = venus_declare_ships(venus_ships_file)
+log("venus_races: hulls declared, " + venus_declared, "venus_races")
+
+
+# ---- Interiors and fleets ------------------------------------------
+#
+# Driven by venus_manifest.json rather than literal calls, which would drift silently the
+# first time a hull is renamed. The helpers ask the settings which factions are on.
+
+for venus_plan in venus_interiors_enabled(venus_manifest):
+    grid_merge_ascii(media_read_relative_file(venus_plan), "venus_races")
+
+for venus_ladder in venus_fleets_enabled(venus_manifest):
+    fleet_table_load_yaml(media_read_relative_file(venus_ladder), "venus_races")
+
+
+# ---- Skies ---------------------------------------------------------
+#
+# Six `@media/skybox` labels, registered by venus_skies.mast. The ART is in the media pack,
+# so forgetting the `shared_media` line is SILENT on its own: a label whose PNG is missing
+# tests False, drops out of the random pick, and says nothing. Hence the count.
+log("venus_races: " + venus_skybox_status(), "venus_races")
+
+if venus_skybox_art_missing():
+    log("venus_races: no skybox art found - is the media pack in story.json shared_media?", "venus_races", "warning")
+
+# Published as well as logged, because `log` writes to a named Python logger which has no
+# handler until a mission attaches one - so on a default run that line goes nowhere. A test
+# range asserts this, which is what proves this add-on's top level RAN at all.
+set_shared_variable("VENUS_SKYBOX_COUNT", venus_skybox_resolved())
+
+
+# ---- Diplomacy -----------------------------------------------------
+#
+# On the same route LM declares its own sides from, so the Venus sides exist before player
+# ships and before any map runs. MUST NOT await - server_console relies on this route
+# completing synchronously inside signal_emit.
+#
+# NOT `once`: create_sides is re-run deliberately, because sim_create() leaves the sim
+# handle stale for the rest of the frame and the sides have to be re-declared after it.
+//shared/signal/create_sides
+    venus_sides_doc = amd_document(media_read_relative_file("venus_sides.amd"), data_parser=amd_side_data)
+    sides_declare_amd(venus_sides_doc)
+
+
+# ART IS THE UNRESOLVED PART, and it is why every hull here wears a borrowed silhouette.
+# `artfileroot` points at a STOCK mesh on purpose: an unresolvable artfileroot SEGFAULTS the
+# engine at render, and mod-carried art does not reach the renderer on the current build at
+# all - even the engine team's own complete art set crashes from a mod folder, measured 2/2.
+# See README.md. The art each hull wants is recorded as `venus_art` in venus_ships.yaml, and
+# `_build_ships.py --venus-art` swaps them over the day the engine can load them.

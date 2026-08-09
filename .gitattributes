@@ -1,0 +1,14 @@
+# Keep LF in everything the MAST compiler and the mastlib packer read.
+#
+# A .mastlib is a ZIP, and a zip read does NOT get the CRLF normalization a text read does -
+# so a file checked out with CRLF on Windows can behave differently inside the packed lib
+# than it does in the working tree. Pinning LF here removes the whole class rather than
+# relying on remembering it.
+*.mast   text eol=lf
+*.amd    text eol=lf
+*.py     text eol=lf
+*.yaml   text eol=lf
+*.json   text eol=lf
+*.grid   text eol=lf
+*.md     text eol=lf
+*.png    binary

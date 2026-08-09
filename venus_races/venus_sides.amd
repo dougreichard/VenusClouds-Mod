@@ -1,0 +1,43 @@
+// The Venus factions as diplomacy SIDES, authored declaratively.
+//
+// Declared from //shared/signal/create_sides in __init__.mast, the same route LM uses, so
+// they exist before player ships and before any map runs.
+//
+// A side is NOT the same thing as the faction name on a hull. shipData `side` (and
+// `origin`, and therefore `race`) says what a ship IS - it is how a prefab finds "an Armada
+// raider" and how taunts are looked up. THIS file says who shoots whom. They share names
+// here because that reads better, not because the systems are the same.
+//
+// Relations are declared from BOTH ends deliberately. The engine's table is DIRECTIONAL
+// (coloring looks up viewer-side -> contact-side), and although side_set_relations mirrors
+// each pair for you, LM's own sides.amd carries the same duplication and its comment warns
+// not to "tidy it up" as redundant. Do not.
+//
+// THE GUILD IS THE INTERESTING ONE. It is hostile to nobody, which is the point: the free
+// cities sell lifting gas to whoever moors, and a mission's drama comes from what the two
+// fleets are willing to do about that. A story that wants the Guild to pick a side should
+// flip it at runtime with side_set_relations rather than editing this file, so the choice
+// belongs to the mission.
+
+# [Kingdom](kingdom)
+---
+Color: #DA4
+Enemies: armada
+---
+The Sky Kingdom. Brass, gas and protocol: a chartered royal navy of dirigibles that holds
+the high trade lanes and believes, sincerely, that it is keeping the peace.
+
+# [Armada](armada)
+---
+Color: #C22
+Enemies: kingdom
+---
+The Pirate Armada. Salvage plating over plasma engines, flying a black flag out of the deep
+deck. Not an empire - a market with guns, and every hull in it was somebody else's first.
+
+# [Guild](guild)
+---
+Color: #3BA
+---
+The Free Cities. Neutral by treaty and by necessity. They sell lifting gas, water ice and
+harbor to anyone who moors peacefully, and they have outlived three kingdoms doing it.

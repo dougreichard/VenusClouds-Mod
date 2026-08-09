@@ -1,0 +1,23 @@
+{
+    "mod": "Venus Clouds",
+    "version": "v0.1.0",
+    "_comment": "Interiors and fleet ladders, per faction. Driven from a manifest rather than literal calls in __init__.mast so a renamed file fails loudly at load instead of drifting silently. The version is stamped by _stamp.py from __lib__.json, which is the single place to bump it.",
+    "interiors": {
+        "Kingdom": [
+            "venus_kdm_valiant.grid",
+            "venus_kdm_vanguard.grid",
+            "venus_kdm_bulwark.grid",
+            "venus_kdm_skiff.grid",
+            "venus_kdm_mender.grid",
+            "venus_kdm_goldharvest.grid"
+        ],
+        "Armada": [
+            "venus_pir_bloodhawk.grid",
+            "venus_pir_blacksails.grid"
+        ]
+    },
+    "fleets": {
+        "Kingdom": "venus_kingdom_fleets.yaml",
+        "Armada": "venus_armada_fleets.yaml"
+    }
+}

@@ -1,0 +1,98 @@
+# Kingdom patrol and response fleets, by difficulty.
+#
+# WHY THE KINGDOM HAS A LADDER AT ALL. A fleet ladder is what LM's spawner uses to field
+# "a difficulty-N enemy group", so the obvious reading is that only the raiding faction
+# needs one. But the player is not always flying for the Kingdom, and only one of the three
+# obvious campaign framings makes the Armada the enemy:
+#
+#     the crew flies for the Kingdom navy      -> the Armada ladder gets used
+#     a free trader out of a Guild city        -> either, depending on who they crossed
+#     the crew flies for the Armada            -> THIS one
+#
+# Shipping only the Armada ladder would quietly make the third framing impossible and the
+# second half-broken - an expensive thing to reverse once missions are written against it.
+#
+# THE CURVE IS A DIFFERENT SHAPE ON PURPOSE. The Armada climbs by COUNT first: swarms of
+# light, fast hulls, because that is how it fights. The Kingdom climbs by WEIGHT - fewer
+# hulls, each much harder to kill - because a Kingdom response is a slow, inevitable,
+# heavily armored thing. Four Scavengers and one Imperial Bulwark should feel like
+# different problems, not the same problem at two sizes.
+race: Kingdom
+fleets:
+  # difficulty 0
+  -
+    - [venus_kdm_skiff]
+    - [venus_kdm_skiff]
+    - [venus_kdm_skiff]
+    - [venus_kdm_valiant]
+    - [venus_kdm_valiant]
+  # difficulty 1
+  -
+    - [venus_kdm_skiff, venus_kdm_skiff]
+    - [venus_kdm_valiant]
+    - [venus_kdm_valiant]
+    - [venus_kdm_valiant]
+    - [venus_kdm_thunderbolt]
+  # difficulty 2
+  -
+    - [venus_kdm_valiant]
+    - [venus_kdm_valiant, venus_kdm_skiff]
+    - [venus_kdm_thunderbolt]
+    - [venus_kdm_valiant, venus_kdm_valiant]
+    - [venus_kdm_thunderbolt]
+  # difficulty 3
+  -
+    - [venus_kdm_valiant, venus_kdm_valiant]
+    - [venus_kdm_thunderbolt, venus_kdm_valiant]
+    - [venus_kdm_thunderbolt]
+    - [venus_kdm_valiant, venus_kdm_valiant, venus_kdm_skiff]
+    - [venus_kdm_thunderbolt, venus_kdm_skiff]
+  # difficulty 4
+  -
+    - [venus_kdm_thunderbolt, venus_kdm_valiant]
+    - [venus_kdm_vanguard]
+    - [venus_kdm_thunderbolt, venus_kdm_thunderbolt]
+    - [venus_kdm_vanguard]
+    - [venus_kdm_valiant, venus_kdm_valiant, venus_kdm_valiant]
+  # difficulty 5
+  -
+    - [venus_kdm_vanguard]
+    - [venus_kdm_vanguard, venus_kdm_valiant]
+    - [venus_kdm_thunderbolt, venus_kdm_thunderbolt, venus_kdm_valiant]
+    - [venus_kdm_vanguard]
+    - [venus_kdm_vanguard, venus_kdm_skiff]
+  # difficulty 6
+  -
+    - [venus_kdm_vanguard, venus_kdm_valiant]
+    - [venus_kdm_vanguard, venus_kdm_thunderbolt]
+    - [venus_kdm_vanguard, venus_kdm_valiant, venus_kdm_valiant]
+    - [venus_kdm_vanguard]
+    - [venus_kdm_vanguard, venus_kdm_thunderbolt]
+  # difficulty 7
+  -
+    - [venus_kdm_vanguard, venus_kdm_vanguard]
+    - [venus_kdm_vanguard, venus_kdm_thunderbolt, venus_kdm_valiant]
+    - [venus_kdm_bulwark]
+    - [venus_kdm_vanguard, venus_kdm_vanguard]
+    - [venus_kdm_bulwark]
+  # difficulty 8
+  -
+    - [venus_kdm_bulwark]
+    - [venus_kdm_bulwark, venus_kdm_valiant]
+    - [venus_kdm_vanguard, venus_kdm_vanguard, venus_kdm_thunderbolt]
+    - [venus_kdm_bulwark, venus_kdm_skiff]
+    - [venus_kdm_bulwark]
+  # difficulty 9
+  -
+    - [venus_kdm_bulwark, venus_kdm_vanguard]
+    - [venus_kdm_bulwark, venus_kdm_thunderbolt, venus_kdm_valiant]
+    - [venus_kdm_bulwark, venus_kdm_vanguard]
+    - [venus_kdm_bulwark, venus_kdm_valiant, venus_kdm_valiant]
+    - [venus_kdm_vanguard, venus_kdm_vanguard, venus_kdm_vanguard]
+  # difficulty 10
+  -
+    - [venus_kdm_bulwark, venus_kdm_vanguard]
+    - [venus_kdm_bulwark, venus_kdm_vanguard, venus_kdm_thunderbolt]
+    - [venus_kdm_bulwark, venus_kdm_bulwark]
+    - [venus_kdm_bulwark, venus_kdm_vanguard, venus_kdm_valiant, venus_kdm_valiant]
+    - [venus_kdm_bulwark, venus_kdm_bulwark, venus_kdm_vanguard]

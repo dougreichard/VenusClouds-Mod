@@ -1,0 +1,33 @@
+# DERIVED ART - never commit it.
+#
+# `.paxmesh` is BAKED for a location: it stores its texture paths as length-prefixed
+# strings, so a mesh baked in one folder looks for its textures relative to where it was
+# baked rather than where it ends up. Committing one ships a mesh that points at somebody
+# else's disk. The siblings are generated from the same source `.obj` for the same reason.
+*.paxmesh
+*.pointcube
+*.rawbitmap
+*1024.png
+*256.png
+
+# Skybox PREVIEWS - equirectangular renders for judging a variant without opening the
+# game. Derived from _gen_skybox.py, and a repo carrying both forms of the same six skies
+# is pointless weight. The shipped crosses in media/skybox ARE committed: they are the
+# deliverable, and regenerating them requires numpy+PIL that no player has.
+_preview/
+_smoke/
+_gen_skybox.log
+
+# Build output
+__pycache__/
+*.tmp
+mast.compile.log
+mast.runtime.log
+
+# Concept-art CROPS - derived from E:/a/venus_clouds by _crop_refs.py, whose CROPS table
+# holds the rects. Regenerate with `python _crop_refs.py --all`; do not commit the pixels.
+_refs/
+
+# Prop farm output - generated meshes and renders. Large, and reproducible from the
+# scripts plus a GPU. Art that is chosen for the mod gets promoted into media/ships.
+_propfarm/
