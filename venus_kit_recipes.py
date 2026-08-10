@@ -141,6 +141,24 @@ def env_pipe(length, diameter):
     return (diameter / _PIPE[0], diameter / _PIPE[1], length / _PIPE[2])
 
 
+def pontoons(length, diameter, x, y, z=-0.5):
+    """The Armada's paired lift floats, as two part entries.
+
+    Placement is the settled one: LOW and slightly proud of the beam. Fully outboard at
+    deck height they compete with the hull for the silhouette; fully tucked underneath they
+    disappear. A helper because every raider needs the same relationship and eyeballing it
+    per hull is how a fleet stops looking like a fleet.
+    """
+    return [("pirates:" + ENVELOPE_PART, (-x, y, z), (0, 0, 0), env(length, diameter)),
+            ("pirates:" + ENVELOPE_PART, (x, y, z), (0, 0, 0), env(length, diameter))]
+
+
+def struts(x, y, z=-1.0, scale=0.45):
+    """Stubby struts where each float meets the keel."""
+    return [("SM_Veh_Part_Wing_011", (-x, y, z), (0, 0, 80), (scale, scale, scale)),
+            ("SM_Veh_Part_Wing_011", (x, y, z), (0, 0, 100), (scale, scale, scale))]
+
+
 def env_height(hull_height, diameter, gap=2.0):
     """How far above the origin the envelope centre sits: clear of the hull, plus a gap."""
     return hull_height * 0.5 + diameter * 0.5 + gap
@@ -253,28 +271,28 @@ RECIPES = {
     # hulls, so it SHOULD be the same boats in worse condition.
 
     "venus_pir_scavenger": {
-        "faction": "armada", "pack": "pirates", "art": "VEN_Scavenger",
-        "desc": "Scavenger trolley raider - an engine, a claw, and someone willing to fly it",
+        "faction": "armada", "pack": "scifi", "art": "VEN_Scavenger",
+        "desc": "Scavenger - an engine, a claw, and someone willing to fly it",
         "parts": [
-            ("SM_Veh_Boat_Rowing_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
-            ("SM_Prop_Cannon_01", (0, 0.7, 1.4), (0, 0, 0), (0.9, 0.9, 0.9)),
-            ("SM_Veh_Boat_Medium_01_Mast_Pirate", (0, -0.2, 0), (0, 0, 0), (0.30, 0.18, 0.32)),
-            (ENVELOPE_PART, (0, 2.2, 0), (0, 0, 0), env(7.0, 1.8)),
-        ],
+            ("SM_Veh_Part_Body_02", (0, 0, 0), (0, 0, 0), (1.4, 1.4, 1.4)),
+            ("SM_Veh_Part_Engine_03", (0, -0.4, -4.2), (0, 0, 0), (0.7, 0.7, 0.7)),
+            ("SM_Veh_Part_Wing_04", (-2.4, 0.1, -0.6), (0, 0, -22), (0.7, 0.7, 0.7)),
+            ("SM_Veh_Part_Wing_04", (2.4, 0.1, -0.6), (0, 0, 22), (-0.7, 0.7, 0.7)),
+        ] + pontoons(11.0, 2.4, x=3.1, y=-1.8) + struts(2.5, -1.1, scale=0.26),
     },
 
     "venus_pir_blacksails": {
-        "faction": "armada", "pack": "pirates", "art": "VEN_BlackSails",
-        "desc": "Black Sails raider escort - patched envelope, grappling gear where armor should be",
+        "faction": "armada", "pack": "scifi", "art": "VEN_BlackSails",
+        "desc": "Black Sails raider escort - grappling gear where the armor should be",
         "parts": [
-            ("SM_Veh_Boat_Medium_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
-            ("SM_Veh_Boat_Medium_01_Mast_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
-            ("SM_Veh_Boat_Medium_01_Rigging", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
-            # A narrower envelope than the Kingdom escort of the same hull - the Armada
-            # runs its gasbags lean and fast, and it is the silhouette difference a player
-            # reads at distance before any colour.
-            (ENVELOPE_PART, (0, 8.6, 0), (0, 0, 0), env(21.0, 3.6)),
-        ],
+            ("SM_Veh_Part_Body_03", (0, 0, 0), (0, 0, 0), (0.85, 0.85, 0.85)),
+            ("SM_Veh_Part_Cockpit_02", (0, 0.8, 2.0), (0, 0, 0), (0.5, 0.5, 0.5)),
+            ("SM_Veh_Part_Engine_03", (-2.1, -0.4, -4.4), (0, 0, 0), (0.8, 0.8, 0.8)),
+            ("SM_Veh_Part_Engine_03", (2.1, -0.4, -4.4), (0, 0, 0), (0.8, 0.8, 0.8)),
+            ("SM_Veh_Part_Wing_04", (-2.9, 0.1, -0.8), (0, 0, -20), (0.9, 0.9, 0.9)),
+            ("SM_Veh_Part_Wing_04", (2.9, 0.1, -0.8), (0, 0, 20), (-0.9, 0.9, 0.9)),
+            ("SM_Prop_Turret_Base_Double_03", (0, 1.3, -1.0), (0, 0, 0), (0.55, 0.55, 0.55)),
+        ] + pontoons(15.0, 3.2, x=4.0, y=-2.3) + struts(3.2, -1.4, scale=0.32),
     },
 
     "venus_pir_bloodhawk": {
@@ -335,18 +353,19 @@ RECIPES = {
     },
 
     "venus_pir_scrapking": {
-        "faction": "armada", "pack": "pirates", "art": "VEN_ScrapKing",
+        "faction": "armada", "pack": "scifi", "art": "VEN_ScrapKing",
         "desc": "Scrap King armored logistics - what it kills, it eats",
         "parts": [
-            ("SM_Veh_Veh_Boat_Large_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
-            ("SM_Veh_Boat_Large_Mast_01_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
-            # Salvage lashed to the deck - the class identity, and the reason to use the
-            # wreck props the pack already ships.
-            ("SM_Prop_Shipwreck_03", (0, 3.4, -6.0), (0, 14, 0), (0.55, 0.55, 0.55)),
-            ("SM_Prop_Crate_01", (2.1, 3.6, 5.0), (0, 20, 0), (1.6, 1.6, 1.6)),
-            ("SM_Prop_Barrel_05", (-2.2, 3.6, 7.5), (0, 0, 0), (1.5, 1.5, 1.5)),
-            (ENVELOPE_PART, (0, 15.0, 0), (0, 0, 0), env(42.0, 8.5)),
-        ],
+            ("SM_Veh_Part_Body_03", (0, 0, 0), (0, 0, 0), (1.5, 1.5, 1.5)),
+            ("SM_Veh_Part_Engine_03", (-3.6, -0.7, -7.4), (0, 0, 0), (1.1, 1.1, 1.1)),
+            ("SM_Veh_Part_Engine_03", (3.6, -0.7, -7.4), (0, 0, 0), (1.1, 1.1, 1.1)),
+            # The salvage it is carrying, lashed to the deck - the class identity, and the
+            # one place a Pirates-pack part belongs on an Armada hull for reasons other
+            # than lift: it is LOOT, so it SHOULD look like it came off somebody else.
+            ("pirates:SM_Prop_Shipwreck_03", (0, 3.0, -3.0), (0, 16, 0), (0.40, 0.40, 0.40)),
+            ("pirates:SM_Prop_Crate_01", (2.0, 3.2, 3.4), (0, 22, 0), (1.3, 1.3, 1.3)),
+            ("pirates:SM_Prop_Barrel_05", (-2.1, 3.2, 5.2), (0, 0, 0), (1.2, 1.2, 1.2)),
+        ] + pontoons(24.0, 5.0, x=6.4, y=-3.7) + struts(5.1, -2.2, scale=0.5),
     },
 }
 
