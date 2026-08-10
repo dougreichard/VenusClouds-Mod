@@ -141,6 +141,21 @@ def env_pipe(length, diameter):
     return (diameter / _PIPE[0], diameter / _PIPE[1], length / _PIPE[2])
 
 
+# THE ARMADA'S LIFT BODY is the pack's long armoured capital hull, not a ship's barrel.
+# `SM_Ship_Galactic_Carrier_Armor_01` is 5.3:1 and armour-plated at only 1,996 faces, so it
+# reads as an armoured gas cell rather than a wooden cask - the material clash that made
+# every earlier Blood Hawk look like two models bolted together.
+ARMADA_FLOAT = "SM_Ship_Galactic_Carrier_Armor_01"
+_FLOAT_LEN = 16913.0 * 0.02        # after the pack's unit_scale
+
+
+def armada_floats(length, x, y, z=-0.5):
+    """Paired armoured lift bodies, sized by LENGTH (they keep their own proportions)."""
+    k = length / _FLOAT_LEN
+    return [(ARMADA_FLOAT, (-x, y, z), (0, 0, 0), (k, k, k)),
+            (ARMADA_FLOAT, (x, y, z), (0, 0, 0), (k, k, k))]
+
+
 def pontoons(length, diameter, x, y, z=-0.5):
     """The Armada's paired lift floats, as two part entries.
 
@@ -270,102 +285,58 @@ RECIPES = {
     # That is also honest to the fiction: the Armada flies stolen and salvaged Kingdom
     # hulls, so it SHOULD be the same boats in worse condition.
 
+    # ---- the Armada ---------------------------------------------------------
+    #
+    # ONE HERO HULL PER CLASS, not one body rescaled four times. The first pass built every
+    # raider from SM_Veh_Part_Body_03 at different sizes and the four ships were
+    # indistinguishable at a glance - which matters more in play than telling Kingdom from
+    # Armada, since the HUD already colours sides. The pack ships 32 finished hulls with
+    # genuinely different silhouettes; using them is both better looking and less work.
+
     "venus_pir_scavenger": {
         "faction": "armada", "pack": "scifi", "art": "VEN_Scavenger",
-        "desc": "Scavenger - an engine, a claw, and someone willing to fly it",
+        "desc": "Scavenger - flat, cheap and fast; an engine with a claw on it",
         "parts": [
-            ("SM_Veh_Part_Body_02", (0, 0, 0), (0, 0, 0), (1.4, 1.4, 1.4)),
-            ("SM_Veh_Part_Engine_03", (0, -0.4, -4.2), (0, 0, 0), (0.7, 0.7, 0.7)),
-            ("SM_Veh_Part_Wing_04", (-2.4, 0.1, -0.6), (0, 0, -22), (0.7, 0.7, 0.7)),
-            ("SM_Veh_Part_Wing_04", (2.4, 0.1, -0.6), (0, 0, 22), (-0.7, 0.7, 0.7)),
-        ] + pontoons(11.0, 2.4, x=3.1, y=-1.8) + struts(2.5, -1.1, scale=0.26),
+            # Stealth_01 is the flattest hull in the pack (1854 x 219 x 1969) and the
+            # cheapest at 1,038 faces - a scout should read as a blade, not a brick.
+            ("SM_Ship_Stealth_01", (0, 0, 0), (0, 0, 0), (0.30, 0.30, 0.30)),
+        ] + armada_floats(13.0, x=3.6, y=-1.6),
     },
 
     "venus_pir_blacksails": {
         "faction": "armada", "pack": "scifi", "art": "VEN_BlackSails",
-        "desc": "Black Sails raider escort - grappling gear where the armor should be",
+        "desc": "Black Sails raider escort - a bomber airframe with grapples",
         "parts": [
-            ("SM_Veh_Part_Body_03", (0, 0, 0), (0, 0, 0), (0.85, 0.85, 0.85)),
-            ("SM_Veh_Part_Cockpit_02", (0, 0.8, 2.0), (0, 0, 0), (0.5, 0.5, 0.5)),
-            ("SM_Veh_Part_Engine_03", (-2.1, -0.4, -4.4), (0, 0, 0), (0.8, 0.8, 0.8)),
-            ("SM_Veh_Part_Engine_03", (2.1, -0.4, -4.4), (0, 0, 0), (0.8, 0.8, 0.8)),
-            ("SM_Veh_Part_Wing_04", (-2.9, 0.1, -0.8), (0, 0, -20), (0.9, 0.9, 0.9)),
-            ("SM_Veh_Part_Wing_04", (2.9, 0.1, -0.8), (0, 0, 20), (-0.9, 0.9, 0.9)),
-            ("SM_Prop_Turret_Base_Double_03", (0, 1.3, -1.0), (0, 0, 0), (0.55, 0.55, 0.55)),
-        ] + pontoons(15.0, 3.2, x=4.0, y=-2.3) + struts(3.2, -1.4, scale=0.32),
+            # Bomber_01 is broad and short (3009 x 532 x 2191) - a wide, mean planform
+            # that cannot be confused with the scout's blade or the cruiser's spine.
+            ("SM_Ship_Bomber_01", (0, 0, 0), (0, 0, 0), (0.32, 0.32, 0.32)),
+            ("SM_Prop_Turret_Base_Double_03", (0, 1.0, -1.0), (0, 0, 0), (0.5, 0.5, 0.5)),
+        ] + armada_floats(17.0, x=5.4, y=-2.0),
     },
 
     "venus_pir_bloodhawk": {
         "faction": "armada", "pack": "scifi", "art": "VEN_BloodHawk",
-        "desc": "Blood Hawk heavy raider - engines and a ram, not a gasbag with guns",
-        # THE ARMADA IS NOT A DARKER KINGDOM. An earlier pass built these from the same boat
-        # hulls on a dimmer atlas, reasoning that pirates fly stolen ships. That is good
-        # fiction and bad silhouette: at any distance the two fleets read as one. The
-        # concept art disagrees with the fiction here - its raiders are angular, engine-
-        # heavy and spiked, nothing like a boat - and the art wins, because a player has to
-        # tell friend from foe in a second.
-        #
-        # Mixing packs is only possible because the art is BAKED to one texture set now.
+        "desc": "Blood Hawk heavy raider - it closes fast and it does not turn away",
         "parts": [
-            ("SM_Veh_Part_Body_03", (0, 0, 0), (0, 0, 0), (1.3, 1.3, 1.3)),
-            ("SM_Veh_Part_Cockpit_02", (0, 1.2, 3.0), (0, 0, 0), (0.7, 0.7, 0.7)),
-            # Oversized engines, mounted low and wide - "high-output plasma engines" is the
-            # phrase on the schematic and the thing that should read first.
-            ("SM_Veh_Part_Engine_03", (-3.2, -0.6, -6.5), (0, 0, 0), (1.1, 1.1, 1.1)),
-            ("SM_Veh_Part_Engine_03", (3.2, -0.6, -6.5), (0, 0, 0), (1.1, 1.1, 1.1)),
-            # Wings as swept spikes rather than lift surfaces.
-            ("SM_Veh_Part_Wing_04", (-4.0, 0.2, -1.0), (0, 0, -18), (1.2, 1.2, 1.2)),
-            ("SM_Veh_Part_Wing_04", (4.0, 0.2, -1.0), (0, 0, 18), (-1.2, 1.2, 1.2)),
-            ("SM_Prop_Turret_Base_Double_03", (0, 1.9, -1.5), (0, 0, 0), (0.8, 0.8, 0.8)),
-            # A patched envelope INTEGRATED into the hull, not perched on it. The first
-            # pass sat a small gasbag above the spine like a hat, which read as two
-            # objects; sunk into the deck and run most of the hull's length it reads as
-            # armoured buoyancy - lift the Armada has bolted on rather than built around.
-            # SIZED TO THE MASS IT LIFTS. The body is ~19 long x 12 wide x 8 tall once
-            # unit-scaled, and a 4.2-diameter gasbag over that read as a garnish - the eye
-            # does the buoyancy arithmetic even when the game does not. At 9 across and 30
-            # long it spans past both ends of the hull and looks like the reason the thing
-            # is airborne, while still being leaner than a Kingdom envelope of equal lift.
-            # PONTOONS, NOT A GASBAG. This is the Armada's whole lift philosophy in one
-            # silhouette: two hard cylinders slung either side of the hull instead of one
-            # elegant envelope over it. It cannot be mistaken for a Kingdom dirigible at
-            # any distance, it needs no mast or rigging to look connected because it sits
-            # ALONGSIDE rather than above, and it reads as engineering rather than
-            # seamanship - lift bolted on by people who care more about thrust.
-            #
-            # It also fixes what three previous attempts could not: a single envelope was
-            # either too small to lift the hull, or big enough and floating free above it.
-            # UNDERSLUNG, like a floatplane or a hovercraft skirt: the lift sits BENEATH
-            # the mass rather than beside it, which is both the more honest reading and the
-            # one that keeps the hull unobstructed from every angle. Outboard pontoons at
-            # deck height kept competing with the hull for the silhouette; tucked under,
-            # they ground it instead.
-            # Between the two extremes tried: fully outboard at deck height they competed
-            # with the hull, fully tucked underneath they vanished (one sliver of blue).
-            # Low AND slightly proud of the beam reads as a catamaran float - visible from
-            # the side, clearly carrying the hull rather than flanking it.
-            ("pirates:" + ENVELOPE_PART, (-5.8, -3.3, -0.5), (0, 0, 0), env(22.0, 4.6)),
-            ("pirates:" + ENVELOPE_PART, (5.8, -3.3, -0.5), (0, 0, 0), env(22.0, 4.6)),
-            # Stubby struts where each float meets the keel.
-            ("SM_Veh_Part_Wing_011", (-4.6, -2.0, -1.0), (0, 0, 80), (0.45, 0.45, 0.45)),
-            ("SM_Veh_Part_Wing_011", (4.6, -2.0, -1.0), (0, 0, 100), (0.45, 0.45, 0.45)),
-        ],
+            # Cruiser_02: a long spined capital hull, 2.2:1, the only Armada ship with a
+            # real keel line.
+            ("SM_Ship_Cruiser_02", (0, 0, 0), (0, 0, 0), (0.22, 0.22, 0.22)),
+            ("SM_Prop_Turret_Base_Double_03", (0, 2.2, 2.0), (0, 0, 0), (0.6, 0.6, 0.6)),
+            ("SM_Prop_Turret_Base_Double_03", (0, 2.2, -4.0), (0, 0, 0), (0.6, 0.6, 0.6)),
+        ] + armada_floats(24.0, x=6.2, y=-3.0),
     },
 
     "venus_pir_scrapking": {
         "faction": "armada", "pack": "scifi", "art": "VEN_ScrapKing",
         "desc": "Scrap King armored logistics - what it kills, it eats",
         "parts": [
-            ("SM_Veh_Part_Body_03", (0, 0, 0), (0, 0, 0), (1.5, 1.5, 1.5)),
-            ("SM_Veh_Part_Engine_03", (-3.6, -0.7, -7.4), (0, 0, 0), (1.1, 1.1, 1.1)),
-            ("SM_Veh_Part_Engine_03", (3.6, -0.7, -7.4), (0, 0, 0), (1.1, 1.1, 1.1)),
-            # The salvage it is carrying, lashed to the deck - the class identity, and the
-            # one place a Pirates-pack part belongs on an Armada hull for reasons other
-            # than lift: it is LOOT, so it SHOULD look like it came off somebody else.
-            ("pirates:SM_Prop_Shipwreck_03", (0, 3.0, -3.0), (0, 16, 0), (0.40, 0.40, 0.40)),
-            ("pirates:SM_Prop_Crate_01", (2.0, 3.2, 3.4), (0, 22, 0), (1.3, 1.3, 1.3)),
-            ("pirates:SM_Prop_Barrel_05", (-2.1, 3.2, 5.2), (0, 0, 0), (1.2, 1.2, 1.2)),
-        ] + pontoons(24.0, 5.0, x=6.4, y=-3.7) + struts(5.1, -2.2, scale=0.5),
+            # Transport_01: slab-sided and 2.8:1, obviously a hauler rather than a warship.
+            ("SM_Ship_Transport_01", (0, 0, 0), (0, 0, 0), (0.085, 0.085, 0.085)),
+            # Salvage lashed to the deck. The one place a Pirates part still belongs on an
+            # Armada hull - it is LOOT, so it SHOULD look like it came off somebody else.
+            ("pirates:SM_Prop_Shipwreck_03", (0, 3.2, -2.0), (0, 16, 0), (0.42, 0.42, 0.42)),
+            ("pirates:SM_Prop_Crate_01", (2.2, 3.0, 4.0), (0, 22, 0), (1.5, 1.5, 1.5)),
+        ] + armada_floats(26.0, x=7.0, y=-3.6),
     },
 }
 
