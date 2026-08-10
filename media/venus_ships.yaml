@@ -1421,7 +1421,7 @@
   name: Render
   origin: Brood
   side: Brood
-  artfileroot: VEN_BroodSwarmer
+  artfileroot: VEN_BroodRender
   meshscale: 2.5
   radarscale: 1.0
   exclusionradius: 50.0
@@ -1496,7 +1496,7 @@
       - 2.136
       - -10.544
       - purple
-  venus_art: VEN_BroodSwarmer
+  venus_art: VEN_BroodRender
   hull_port_sets: *id001
 - key: venus_civ_skycity
   name: Free City

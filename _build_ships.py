@@ -182,7 +182,7 @@ HULLS = [
         hull_port_sets=BROOD_PORTS,
         long_desc="It does not hail, it does not surrender, and nothing aboard it is "
                   "machinery. It comes up when the deck is disturbed.")),
-    ("venus_brd_render", "biomech_c", "Drone3", "VEN_BroodSwarmer", BROOD, dict(
+    ("venus_brd_render", "biomech_c", "Drone3", "VEN_BroodRender", BROOD, dict(
         name="Render", roles="ship,brood,medium,leader,airship",
         speed_coeff=0.95, turn_rate=1.10, hullpoints=9,
         hull_port_sets=BROOD_PORTS,

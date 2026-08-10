@@ -364,6 +364,19 @@ RECIPES = {
     # It arrives with its own baked texture instead of a pack atlas, and the bake folds it
     # into one Cosmos texture set like anything else.
 
+    "venus_brd_render": {
+        "faction": "brood", "pack": "generated", "art": "VEN_BroodRender",
+        "desc": "Brood render - larger, older, and slower to break off",
+        # A SECOND BODY, not the swarmer scaled. The Brood is the only faction that fields
+        # four at once, so it is the one place a single mesh reads as cloning - and it does
+        # so exactly when the mission is at its climax. Same species by construction: white
+        # carapace and red markings were prompted for, after a first attempt produced a
+        # yellow-orange standing biped that belonged to no faction at all.
+        "parts": [
+            ("venus_brood_render", (0, 0, 0), (0, 0, 0), (13.0, 13.0, 13.0)),
+        ],
+    },
+
     "venus_brd_swarmer": {
         "faction": "brood", "pack": "generated", "art": "VEN_BroodSwarmer",
         "desc": "Brood swarmer - grown, not built; it comes up when the deck is disturbed",
