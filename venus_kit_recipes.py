@@ -66,6 +66,16 @@ PACKS = {
     # (POLYGON_ScifiSpace_SourceFiles.zip) before any Armada recipe depends on it.
     "scifi": {
         "unit_scale": 0.02,
+        # CHOSEN BY LOOKING AT THE SWATCHES, not by a mean. Two prior attempts picked an
+        # atlas by averaging one part's UVs and both were wrong - the mean hides a
+        # high-variance palette, so 04_A scored "dark neutral" (69,67,62) and rendered
+        # purple-and-lime, because bright purple and lime average to grey.
+        #
+        # `_venus_kit_palette.py` now renders the DOMINANT colours a whole recipe actually
+        # samples, per candidate. Across those, 02_A is the only variant that is mostly
+        # grey, dark maroon, rust and olive with a single cyan accent instead of several.
+        # That is a raider; the rest are showroom liveries.
+        "faction_atlas": {"armada": "Alts/PolygonSciFiSpace_Texture_02_A.png"},
         "obj": KIT_ROOT + "/POLYGON_ScifiSpace_SourceFiles/OBJ",
         "tex": KIT_ROOT + "/POLYGON_ScifiSpace_SourceFiles/Textures",
         "atlas": "PolygonSciFiSpace_Texture_01_A.png",
@@ -271,9 +281,11 @@ RECIPES = {
             ("SM_Veh_Part_Wing_04", (-4.0, 0.2, -1.0), (0, 0, -18), (1.2, 1.2, 1.2)),
             ("SM_Veh_Part_Wing_04", (4.0, 0.2, -1.0), (0, 0, 18), (-1.2, 1.2, 1.2)),
             ("SM_Prop_Turret_Base_Double_03", (0, 1.9, -1.5), (0, 0, 0), (0.8, 0.8, 0.8)),
-            # A SMALL patched envelope, not a Kingdom gasbag. It still has to fly in an
-            # atmosphere, but the Armada makes lift the junior partner to thrust.
-            ("pirates:" + ENVELOPE_PART, (0, 4.6, -1.0), (0, 0, 0), env(16.0, 3.0)),
+            # A patched envelope INTEGRATED into the hull, not perched on it. The first
+            # pass sat a small gasbag above the spine like a hat, which read as two
+            # objects; sunk into the deck and run most of the hull's length it reads as
+            # armoured buoyancy - lift the Armada has bolted on rather than built around.
+            ("pirates:" + ENVELOPE_PART, (0, 2.6, -0.5), (0, 0, 0), env(21.0, 4.2)),
         ],
     },
 
@@ -342,7 +354,9 @@ def kit_part_textures(pack, faction):
         return None, None
     if pack == "pirates":
         return kit_atlas_path(faction)
-    diffuse = os.path.join(p["tex"], p["atlas"]) if p.get("atlas") else None
+    # A pack may declare its own per-faction variants; otherwise its single atlas is used.
+    variant = (p.get("faction_atlas") or {}).get(faction) or p.get("atlas")
+    diffuse = os.path.join(p["tex"], variant) if variant else None
     emissive = os.path.join(p["tex"], p["emissive"]) if p.get("emissive") else None
     return (diffuse if diffuse and os.path.exists(diffuse) else None,
             emissive if emissive and os.path.exists(emissive) else None)
