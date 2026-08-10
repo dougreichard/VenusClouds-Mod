@@ -171,6 +171,23 @@ def armada_floats(length, x, y, z=-0.5):
             (ARMADA_FLOAT, (x, y, z), (0, 0, 0), (k, k, k))]
 
 
+# THE DECK PART'S ORIGIN IS AT ITS BASE, not its centre: SM_Bld_ConcreteFrame_Wall_01 has
+# bbox y from 0 to 313, because it is a wall meant to stand on the ground. Rotated flat to
+# make a deck, that base-origin becomes a HALF-LENGTH OFFSET along z - which is why every
+# platform so far has had its deck sitting off to one side of its own superstructure.
+#
+# `deck()` computes the compensating offset instead of leaving four recipes to eyeball it.
+_DECK = (304.9 * 0.02, 313.0 * 0.02, 123.5 * 0.02)     # 6.1 x 6.3 x 2.5 after unit_scale
+
+
+def deck(width, length, y=1.4, thick=0.5):
+    """A flat deck of roughly `width` x `length` fleet units, centred on the origin."""
+    sx = width / _DECK[0]
+    sy = length / _DECK[1]
+    return ("SM_Bld_ConcreteFrame_Wall_01", (0, y, length * 0.5), (90, 0, 0),
+            (sx, sy, thick))
+
+
 def pontoons(length, diameter, x, y, z=-0.5):
     """The Armada's paired lift floats, as two part entries.
 
@@ -405,7 +422,7 @@ RECIPES = {
             # silhouette. Deck spans BETWEEN them at their tops; gear sits on the deck.
             # 6.1 x 6.3 x 2.5 after unit_scale, so these factors give ~20 x 22 and a 1-thick
             # slab. The previous 11x read as an aircraft carrier deck with a toy on it.
-            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.4, 0), (90, 0, 0), (3.3, 3.5, 0.4)),
+            deck(20.0, 22.0, y=1.4, thick=0.4),
             # Refinery gear, asymmetric on purpose - a working platform is not a parade,
             # and scaled DOWN so the deck still reads as a deck rather than a plinth.
             ("SM_Bld_WaterTank_01", (-5.0, 3.4, -3.0), (0, 0, 0), (0.7, 0.7, 0.7)),
@@ -425,7 +442,7 @@ RECIPES = {
         "faction": "guild", "pack": "construction", "art": "VEN_SkyCity",
         "desc": "A free city - neutral by treaty and by necessity; it sells gas to whoever moors",
         "parts": [
-            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.6, 0), (90, 0, 0), (4.4, 4.6, 0.4)),
+            deck(27.0, 29.0, y=1.6, thick=0.4),
             # A skyline rather than a refinery: towers and tanks at several heights, so it
             # reads as somewhere people LIVE instead of somewhere gas is cracked.
             ("SM_Bld_WaterTower_01", (-6.0, 4.2, -4.0), (0, 0, 0), (1.1, 1.1, 1.1)),
@@ -504,16 +521,31 @@ RECIPES = {
     "venus_kdm_citadel": {
         "faction": "kingdom", "pack": "construction", "art": "VEN_SkywardCitadel",
         "desc": "Skyward Citadel - an aerial fortress; garrisons, cannon and a repair bay",
+        # A FORTRESS HAS TO LOOK DEFENDED. The first pass put a 24-unit silo on a 20-unit
+        # deck; the correction for that went too far the other way and left a nearly empty
+        # platform with specks on it. Between them: tiers big enough to be a keep, guns big
+        # enough to see, and a parapet so the deck has an edge instead of just stopping.
+        #
+        # Sizes after unit_scale, since that is what the recipe numbers multiply:
+        #   ConcreteFrame_Wall  6.1 x 6.3 x 2.5     WaterTank_01  17 x 11 x 17
+        #   Turret_Base_Double  3.2 x 3.4 x 6.4 (scifi)
         "parts": [
-            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.4, 0), (90, 0, 0), (3.8, 4.0, 0.5)),
-            # Tiered, because a fortress should have height a refinery does not.
-            ("SM_Bld_WaterTank_01", (0, 2.6, 0), (0, 0, 0), (0.45, 0.35, 0.45)),
-            ("SM_Bld_WaterTank_01", (0, 4.2, 0), (0, 0, 0), (0.28, 0.25, 0.28)),
-            ("scifi:SM_Prop_Turret_Base_Double_03", (-5.0, 3.0, 4.0), (0, 0, 0), (0.9, 0.9, 0.9)),
-            ("scifi:SM_Prop_Turret_Base_Double_03", (5.0, 3.0, 4.0), (0, 0, 0), (0.9, 0.9, 0.9)),
-            ("scifi:SM_Prop_Turret_Base_Double_03", (0, 3.0, -6.0), (0, 0, 0), (0.9, 0.9, 0.9)),
-            ("pirates:" + ENVELOPE_PART, (-11.0, -0.6, 0), (0, 0, 0), env(34.0, 8.5)),
-            ("pirates:" + ENVELOPE_PART, (11.0, -0.6, 0), (0, 0, 0), env(34.0, 8.5)),
+            deck(23.0, 25.0, y=1.4),
+            # Two tiers: a keep that steps down, the way the schematic draws it.
+            ("SM_Bld_WaterTank_01", (0, 3.2, 0), (0, 0, 0), (0.75, 0.40, 0.75)),
+            ("SM_Bld_WaterTank_01", (0, 6.2, 0), (0, 0, 0), (0.50, 0.32, 0.50)),
+            # NO PARAPET. Four ConcreteFrame_Wall parts set at the deck edge stood on end
+            # as rebar pillars instead of lying as low walls - that part's thin axis is not
+            # where a battlement wants it, and the result cluttered the silhouette worse
+            # than the bare deck it was meant to finish. A fortress reads from its keep and
+            # its guns; the edge can wait for a part that is actually a wall.
+            # Guns on the corners, up on the parapet where they can see.
+            ("scifi:SM_Prop_Turret_Base_Double_03", (-8.0, 3.4, 8.0), (0, 0, 0), (1.1, 1.1, 1.1)),
+            ("scifi:SM_Prop_Turret_Base_Double_03", (8.0, 3.4, 8.0), (0, 0, 0), (1.1, 1.1, 1.1)),
+            ("scifi:SM_Prop_Turret_Base_Double_03", (-8.0, 3.4, -8.0), (0, 0, 0), (1.1, 1.1, 1.1)),
+            ("scifi:SM_Prop_Turret_Base_Double_03", (8.0, 3.4, -8.0), (0, 0, 0), (1.1, 1.1, 1.1)),
+            ("pirates:" + ENVELOPE_PART, (-12.0, -1.0, 0), (0, 0, 0), env(32.0, 8.0)),
+            ("pirates:" + ENVELOPE_PART, (12.0, -1.0, 0), (0, 0, 0), env(32.0, 8.0)),
         ],
     },
 
@@ -521,7 +553,7 @@ RECIPES = {
         "faction": "kingdom", "pack": "construction", "art": "VEN_SkyDome",
         "desc": "Observatory Sky-Dome - the Kingdom's eyes, and its listening post",
         "parts": [
-            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.2, 0), (90, 0, 0), (2.8, 3.0, 0.5)),
+            deck(17.0, 19.0, y=1.2),
             # The dome: a drum with a smaller drum on it, which is as close to a hemisphere
             # as this pack gets. Instruments rather than guns - that is the whole class.
             ("SM_Bld_WaterTank_01", (0, 2.6, 0), (0, 0, 0), (0.5, 0.30, 0.5)),
@@ -537,7 +569,7 @@ RECIPES = {
         "faction": "kingdom", "pack": "construction", "art": "VEN_MendersBerth",
         "desc": "Mender's Berth - dry-dock cradles, workshops, and the only hot meal for miles",
         "parts": [
-            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.4, 0), (90, 0, 0), (4.2, 3.4, 0.5)),
+            deck(26.0, 21.0, y=1.4),
             # Cradles and gantries: a berth is defined by the SPACE it leaves for a ship,
             # so the gear is pushed to the edges and the middle is left open.
             ("SM_Prop_Crane_Section_01", (-7.0, 2.6, 3.0), (0, 0, 30), (0.4, 0.4, 1.1)),
