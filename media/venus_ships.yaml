@@ -371,7 +371,7 @@
   name: Mender
   origin: Kingdom
   side: Kingdom
-  artfileroot: transport
+  artfileroot: VEN_Mender
   meshscale: 5.82530164718628
   radarscale: 1.0
   exclusionradius: 55.0
@@ -438,7 +438,7 @@
   name: Gold-Harvest
   origin: Kingdom
   side: Kingdom
-  artfileroot: cargo
+  artfileroot: VEN_GoldHarvest
   meshscale: 5.5595555305481
   radarscale: 1.0
   exclusionradius: 50.0
@@ -584,7 +584,7 @@
   name: Skyward Citadel
   origin: Kingdom
   side: Kingdom
-  artfileroot: tsn-big-base
+  artfileroot: VEN_SkywardCitadel
   meshscale: 14.5201349258423
   radarscale: 1.0
   internalmapscale: 1.0
@@ -616,7 +616,7 @@
   name: Observatory Sky-Dome
   origin: Kingdom
   side: Kingdom
-  artfileroot: science_station
+  artfileroot: VEN_SkyDome
   meshscale: 12.3993291854858
   radarscale: 1.0
   internalmapscale: 1.0
@@ -654,7 +654,7 @@
   name: Mender's Berth
   origin: Kingdom
   side: Kingdom
-  artfileroot: civil_station
+  artfileroot: VEN_MendersBerth
   meshscale: 10.0
   radarscale: 1.0
   internalmapscale: 1.0
@@ -845,7 +845,7 @@
   name: Nighthawk
   origin: Armada
   side: Armada
-  artfileroot: skaraan_defiler
+  artfileroot: VEN_Nighthawk
   meshscale: 0.0900000035762787
   radarscale: 1.0
   exclusionradius: 50.0
@@ -920,7 +920,7 @@
   name: Black-Tide
   origin: Armada
   side: Armada
-  artfileroot: Torgoth_Behemoth
+  artfileroot: VEN_BlackTide
   meshscale: 8.34446334838867
   radarscale: 1.2
   exclusionradius: 50.0
@@ -1263,7 +1263,7 @@
   name: Armada Hub
   origin: Armada
   side: Armada
-  artfileroot: skaraan_station
+  artfileroot: VEN_ArmadaHub
   meshscale: 10.0
   radarscale: 1.0
   internalmapscale: 1.0

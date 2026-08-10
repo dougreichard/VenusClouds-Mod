@@ -441,6 +441,126 @@ RECIPES = {
             ("pirates:" + ENVELOPE_PART, (11.5, -1.0, 6.0), (0, 0, 0), env(26.0, 7.0)),
         ],
     },
+
+    # ---- Kingdom: support --------------------------------------------------
+
+    "venus_kdm_mender": {
+        "faction": "kingdom", "pack": "pirates", "art": "VEN_Mender",
+        "desc": "Mender repair tender - the reason Kingdom hulls come home at all",
+        "parts": [
+            ("SM_Veh_Boat_Medium_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Medium_01_Mast", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            # The crane is the class. A tender without visible lifting gear is just a boat.
+            # 4 x 4 x 10 after unit_scale, so 0.35 gives a ~4-unit gantry on a 14-unit hull.
+            ("construction:SM_Prop_Crane_Section_01", (1.4, 2.6, 1.0), (0, 0, 40), (0.35, 0.35, 0.9)),
+            ("construction:SM_Prop_Fuel_Tank_01", (-1.5, 2.2, -3.0), (0, 0, 0), (0.5, 0.5, 0.5)),
+            (ENVELOPE_PART, (0, 9.2, 0), (0, 0, 0), env(20.0, 4.6)),
+        ],
+    },
+
+    "venus_kdm_goldharvest": {
+        "faction": "kingdom", "pack": "pirates", "art": "VEN_GoldHarvest",
+        "desc": "Gold-Harvest - bulk lift for the sky cities",
+        "parts": [
+            ("SM_Veh_Veh_Boat_Large_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Large_Mast_01", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            # Deck cargo, which is the whole job.
+            ("SM_Prop_Crate_01", (1.8, 3.4, 4.0), (0, 15, 0), (2.2, 2.2, 2.2)),
+            ("SM_Prop_Crate_01", (-1.8, 3.4, -1.0), (0, 40, 0), (2.0, 2.0, 2.0)),
+            ("SM_Prop_Barrel_05", (2.0, 3.2, -5.0), (0, 0, 0), (2.0, 2.0, 2.0)),
+            # A single very long envelope: this hull is all about lift, not agility.
+            (ENVELOPE_PART, (0, 15.0, 0), (0, 0, 0), env(46.0, 9.0)),
+        ],
+    },
+
+    # ---- Armada: the two it was missing -------------------------------------
+
+    "venus_pir_nighthawk": {
+        "faction": "armada", "pack": "scifi", "art": "VEN_Nighthawk",
+        "desc": "Nighthawk stealth raider - you hear it before the scope finds it",
+        "parts": [
+            # Stealth_03 has the most hunched, folded profile in the pack - a hull that
+            # looks like it is trying not to be seen, which no other Armada ship does.
+            ("SM_Ship_Stealth_03", (0, 0, 0), (0, 0, 0), (0.34, 0.34, 0.34)),
+        ] + armada_floats(15.0, x=4.2, y=-1.8),
+    },
+
+    "venus_pir_blacktide": {
+        "faction": "armada", "pack": "scifi", "art": "VEN_BlackTide",
+        "desc": "Black-Tide dreadnought - a stolen keel grown over with salvage plating",
+        "parts": [
+            # Cruiser_01 is the longest cruiser hull (5,222) and the heaviest at 5,739
+            # faces - the decimator earns its keep here.
+            ("SM_Ship_Cruiser_01", (0, 0, 0), (0, 0, 0), (0.30, 0.30, 0.30)),
+            ("SM_Prop_Turret_Base_Double_03", (0, 3.0, 6.0), (0, 0, 0), (0.7, 0.7, 0.7)),
+            ("SM_Prop_Turret_Base_Double_03", (0, 3.0, -6.0), (0, 0, 0), (0.7, 0.7, 0.7)),
+            # Salvage plating: a wreck welded to the flank, which is the class's story.
+            ("pirates:SM_Prop_Shipwreck_02", (5.0, 0.0, -2.0), (0, 90, 0), (0.30, 0.30, 0.30)),
+        ] + armada_floats(34.0, x=8.4, y=-4.2),
+    },
+
+    # ---- Platforms: the rest ------------------------------------------------
+
+    "venus_kdm_citadel": {
+        "faction": "kingdom", "pack": "construction", "art": "VEN_SkywardCitadel",
+        "desc": "Skyward Citadel - an aerial fortress; garrisons, cannon and a repair bay",
+        "parts": [
+            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.4, 0), (90, 0, 0), (3.8, 4.0, 0.5)),
+            # Tiered, because a fortress should have height a refinery does not.
+            ("SM_Bld_WaterTank_01", (0, 2.6, 0), (0, 0, 0), (0.45, 0.35, 0.45)),
+            ("SM_Bld_WaterTank_01", (0, 4.2, 0), (0, 0, 0), (0.28, 0.25, 0.28)),
+            ("scifi:SM_Prop_Turret_Base_Double_03", (-5.0, 3.0, 4.0), (0, 0, 0), (0.9, 0.9, 0.9)),
+            ("scifi:SM_Prop_Turret_Base_Double_03", (5.0, 3.0, 4.0), (0, 0, 0), (0.9, 0.9, 0.9)),
+            ("scifi:SM_Prop_Turret_Base_Double_03", (0, 3.0, -6.0), (0, 0, 0), (0.9, 0.9, 0.9)),
+            ("pirates:" + ENVELOPE_PART, (-11.0, -0.6, 0), (0, 0, 0), env(34.0, 8.5)),
+            ("pirates:" + ENVELOPE_PART, (11.0, -0.6, 0), (0, 0, 0), env(34.0, 8.5)),
+        ],
+    },
+
+    "venus_kdm_skydome": {
+        "faction": "kingdom", "pack": "construction", "art": "VEN_SkyDome",
+        "desc": "Observatory Sky-Dome - the Kingdom's eyes, and its listening post",
+        "parts": [
+            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.2, 0), (90, 0, 0), (2.8, 3.0, 0.5)),
+            # The dome: a drum with a smaller drum on it, which is as close to a hemisphere
+            # as this pack gets. Instruments rather than guns - that is the whole class.
+            ("SM_Bld_WaterTank_01", (0, 2.6, 0), (0, 0, 0), (0.5, 0.30, 0.5)),
+            ("SM_Bld_WaterTank_01", (0, 3.9, 0), (0, 0, 0), (0.30, 0.22, 0.30)),
+            ("SM_Bld_WaterTower_01", (-4.2, 2.6, 2.6), (0, 0, 0), (0.5, 0.5, 0.5)),
+            ("SM_Prop_Pipe_Concrete_Huge_01", (3.4, 3.4, -1.0), (35, 0, 0), (0.25, 0.25, 0.7)),
+            ("pirates:" + ENVELOPE_PART, (-8.5, -0.6, 0), (0, 0, 0), env(26.0, 7.0)),
+            ("pirates:" + ENVELOPE_PART, (8.5, -0.6, 0), (0, 0, 0), env(26.0, 7.0)),
+        ],
+    },
+
+    "venus_kdm_berth": {
+        "faction": "kingdom", "pack": "construction", "art": "VEN_MendersBerth",
+        "desc": "Mender's Berth - dry-dock cradles, workshops, and the only hot meal for miles",
+        "parts": [
+            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.4, 0), (90, 0, 0), (4.2, 3.4, 0.5)),
+            # Cradles and gantries: a berth is defined by the SPACE it leaves for a ship,
+            # so the gear is pushed to the edges and the middle is left open.
+            ("SM_Prop_Crane_Section_01", (-7.0, 2.6, 3.0), (0, 0, 30), (0.4, 0.4, 1.1)),
+            ("SM_Prop_Crane_Section_01", (7.0, 2.6, -3.0), (0, 0, -30), (0.4, 0.4, 1.1)),
+            ("SM_Prop_Elevator_Frame_01", (0, 2.6, 6.0), (0, 0, 0), (0.7, 1.0, 0.7)),
+            ("SM_Prop_Fuel_Tank_01", (-5.0, 2.2, -5.0), (0, 0, 0), (0.6, 0.6, 0.6)),
+            ("pirates:" + ENVELOPE_PART, (-10.0, -0.6, 0), (0, 0, 0), env(30.0, 8.0)),
+            ("pirates:" + ENVELOPE_PART, (10.0, -0.6, 0), (0, 0, 0), env(30.0, 8.0)),
+        ],
+    },
+
+    "venus_pir_hub": {
+        "faction": "armada", "pack": "scifi", "art": "VEN_ArmadaHub",
+        "desc": "An Armada hub - plasma turrets on a captured platform, and a market below decks",
+        "parts": [
+            # A CAPTURED platform, so it is a sci-fi station hull rather than a Kingdom
+            # deck: the Armada did not build this, it took it.
+            # 121 x 202 x 105 after unit_scale; 0.10 gives a ~12 x 20 x 10 platform.
+            ("SM_Ship_Station_06", (0, -2.0, 0), (0, 0, 0), (0.10, 0.06, 0.10)),
+            ("SM_Prop_Turret_Base_Double_03", (-4.0, 2.0, 3.0), (0, 0, 0), (0.9, 0.9, 0.9)),
+            ("SM_Prop_Turret_Base_Double_03", (4.0, 2.0, -3.0), (0, 0, 0), (0.9, 0.9, 0.9)),
+        ] + armada_floats(30.0, x=8.0, y=-3.4),
+    },
 }
 
 
