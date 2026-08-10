@@ -1382,6 +1382,41 @@
       - -10.544
       - purple
   venus_art: VEN_BroodSwarmer
+  hull_port_sets: &id001
+    beam Primary Beams:
+    - position:
+      - 0.0
+      - 0.0
+      - 120.0
+      color: '#7c3'
+      arccolor: '#250'
+      cycle_time: 12
+      damage_coeff: 1.6
+      range: 900
+      arcwidth: 90
+      barrel_angle: 0
+    - position:
+      - -30.0
+      - 0.0
+      - 80.0
+      color: '#7c3'
+      arccolor: '#250'
+      cycle_time: 16
+      damage_coeff: 1.2
+      range: 800
+      arcwidth: 80
+      barrel_angle: 0
+    - position:
+      - 30.0
+      - 0.0
+      - 80.0
+      color: '#7c3'
+      arccolor: '#250'
+      cycle_time: 16
+      damage_coeff: 1.2
+      range: 800
+      arcwidth: 80
+      barrel_angle: 0
 - key: venus_brd_render
   name: Render
   origin: Brood
@@ -1462,6 +1497,7 @@
       - -10.544
       - purple
   venus_art: VEN_BroodSwarmer
+  hull_port_sets: *id001
 - key: venus_civ_skycity
   name: Free City
   origin: Guild

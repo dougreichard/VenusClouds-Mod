@@ -45,6 +45,30 @@ GUILD = "Guild"
 BROOD = "Brood"
 
 
+
+# The Brood's weapons, because the stock biomech hulls it derives from ship NO
+# `hull_port_sets` at all - a swarm that cannot hurt anything, discovered only by reading
+# "npc(armed) w/beams 0/2" out of a headless run. The mission's climax was two harmless
+# creatures drifting at the players.
+#
+# SHORT RANGE AND FAST, deliberately. A Kingdom beam reaches 1,680 and an Armada raider
+# further; the Brood reaches 900, so it has to close, and closing is the only tactic it
+# has. Wide arc because it does not aim - it arrives. No torpedoes: nothing aboard it is
+# machinery.
+BROOD_PORTS = {
+    "beam Primary Beams": [
+        {"position": [0.0, 0.0, 120.0], "color": "#7c3",
+         "arccolor": "#250", "cycle_time": 12, "damage_coeff": 1.6,
+         "range": 900, "arcwidth": 90, "barrel_angle": 0},
+        {"position": [-30.0, 0.0, 80.0], "color": "#7c3",
+         "arccolor": "#250", "cycle_time": 16, "damage_coeff": 1.2,
+         "range": 800, "arcwidth": 80, "barrel_angle": 0},
+        {"position": [30.0, 0.0, 80.0], "color": "#7c3",
+         "arccolor": "#250", "cycle_time": 16, "damage_coeff": 1.2,
+         "range": 800, "arcwidth": 80, "barrel_angle": 0},
+    ]
+}
+
 # key, base stock key, borrowed art root, the VEN_ root it wants, side, deltas
 HULLS = [
     # ---- Kingdom: slow, armored, ceremonial brass ------------------------
@@ -155,11 +179,13 @@ HULLS = [
     ("venus_brd_swarmer", "biomech_a", "Drone1", "VEN_BroodSwarmer", BROOD, dict(
         name="Swarmer", roles="ship,brood,light,airship",
         speed_coeff=1.05, turn_rate=1.45, hullpoints=4,
+        hull_port_sets=BROOD_PORTS,
         long_desc="It does not hail, it does not surrender, and nothing aboard it is "
                   "machinery. It comes up when the deck is disturbed.")),
     ("venus_brd_render", "biomech_c", "Drone3", "VEN_BroodSwarmer", BROOD, dict(
         name="Render", roles="ship,brood,medium,leader,airship",
         speed_coeff=0.95, turn_rate=1.10, hullpoints=9,
+        hull_port_sets=BROOD_PORTS,
         long_desc="Larger, older, and slower to break off. The Armada has a word for "
                   "these and it is not a word for an animal.")),
 
