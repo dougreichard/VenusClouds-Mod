@@ -1302,6 +1302,166 @@
   venus_art: VEN_ArmadaHub
   long_desc: An Armada hub. Plasma turrets on a captured platform, and a market below
     decks that will buy anything with the numbers filed off.
+- key: venus_brd_swarmer
+  name: Swarmer
+  origin: Brood
+  side: Brood
+  artfileroot: VEN_BroodSwarmer
+  meshscale: 2.96728181838989
+  radarscale: 1.0
+  exclusionradius: 50.0
+  meshrotate: 0
+  shields:
+  - 200
+  - 200
+  hullpoints: 4
+  long_desc: It does not hail, it does not surrender, and nothing aboard it is machinery.
+    It comes up when the deck is disturbed.
+  internalmapscale: 1.0
+  internalmapw: 20
+  internalmaph: 20
+  internalsymmetry: 1
+  turn_rate: 1.45
+  speed_coeff: 1.05
+  scan_strength_coeff: 1
+  ship_energy_cost: 1
+  warp_energy_cost: 1
+  jump_energy_cost: 1
+  roles: ship,brood,light,airship
+  hull_portsets:
+  - type: beam
+    uiname: Primary Beams
+    position:
+    - - -8.61
+      - 7.1375
+      - 19.8675
+    - - 8.61
+      - 7.1375
+      - 19.8675
+    beamcolor:
+    - red
+    - red
+    arccolor:
+    - red
+    - red
+    damage: 12.0
+    cycletime: 1
+    range: 1000
+  - type: engine
+    exhaust:
+    - - -3.08
+      - 3.381
+      - -7.546
+      - purple
+    - - -2.098
+      - 3.406
+      - -8.026
+      - purple
+    - - -1.244
+      - 3.4
+      - -8.731
+      - purple
+    - - -0.397
+      - 2.136
+      - -10.544
+      - purple
+    - - 3.08
+      - 3.381
+      - -7.546
+      - purple
+    - - 2.098
+      - 3.406
+      - -8.026
+      - purple
+    - - 1.244
+      - 3.4
+      - -8.731
+      - purple
+    - - 0.397
+      - 2.136
+      - -10.544
+      - purple
+  venus_art: VEN_BroodSwarmer
+- key: venus_brd_render
+  name: Render
+  origin: Brood
+  side: Brood
+  artfileroot: VEN_BroodSwarmer
+  meshscale: 2.5
+  radarscale: 1.0
+  exclusionradius: 50.0
+  meshrotate: 0
+  shields:
+  - 200
+  - 200
+  hullpoints: 9
+  long_desc: Larger, older, and slower to break off. The Armada has a word for these
+    and it is not a word for an animal.
+  internalmapscale: 1.0
+  internalmapw: 20
+  internalmaph: 20
+  internalsymmetry: 1
+  turn_rate: 1.1
+  speed_coeff: 0.95
+  scan_strength_coeff: 1
+  ship_energy_cost: 1
+  warp_energy_cost: 1
+  jump_energy_cost: 1
+  roles: ship,brood,medium,leader,airship
+  hull_portsets:
+  - type: beam
+    uiname: Primary Beams
+    position:
+    - - -8.61
+      - 7.1375
+      - 19.8675
+    - - 8.61
+      - 7.1375
+      - 19.8675
+    beamcolor:
+    - red
+    - red
+    arccolor:
+    - red
+    - red
+    damage: 12.0
+    cycletime: 1
+    range: 1000
+  - type: engine
+    exhaust:
+    - - -3.08
+      - 3.381
+      - -7.546
+      - purple
+    - - -2.098
+      - 3.406
+      - -8.026
+      - purple
+    - - -1.244
+      - 3.4
+      - -8.731
+      - purple
+    - - -0.397
+      - 2.136
+      - -10.544
+      - purple
+    - - 3.08
+      - 3.381
+      - -7.546
+      - purple
+    - - 2.098
+      - 3.406
+      - -8.026
+      - purple
+    - - 1.244
+      - 3.4
+      - -8.731
+      - purple
+    - - 0.397
+      - 2.136
+      - -10.544
+      - purple
+  venus_art: VEN_BroodSwarmer
 - key: venus_civ_skycity
   name: Free City
   origin: Guild

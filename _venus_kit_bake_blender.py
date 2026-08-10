@@ -101,6 +101,8 @@ for part in job["parts"]:
         # and those are the packs with the organic, spined parts the Brood needs.
         if path.lower().endswith(".fbx"):
             bpy.ops.import_scene.fbx(filepath=path)
+        elif path.lower().endswith(".glb") or path.lower().endswith(".gltf"):
+            bpy.ops.import_scene.gltf(filepath=path)
         else:
             bpy.ops.wm.obj_import(filepath=path)
     except Exception as e:                       # noqa: BLE001
@@ -114,15 +116,20 @@ for part in job["parts"]:
     off = part.get("offset", [0, 0, 0])
     rot = part.get("rot", [0, 0, 0])
     scl = part.get("scale", [1, 1, 1])
-    mat = _material_for(part.get("diffuse"), part.get("emissive"))
+    # A part with NO pack atlas brings its own baked material (prop-farm output), and
+    # overriding it with an empty material would throw away the only texture it has.
+    # Generated parts are exactly the case the bake exists to accommodate.
+    diffuse_path = part.get("diffuse") or ""
+    mat = _material_for(diffuse_path, part.get("emissive")) if diffuse_path else None
     for o in new:
         o.scale = tuple(o.scale[i] * scl[i] for i in range(3))
         o.rotation_euler = tuple(o.rotation_euler[i] + math.radians(rot[i]) for i in range(3))
         # The importer maps the file's Y-up into Blender's Z-up, so a recipe offset written
         # in COSMOS axes (x, y=up, z=long) is mapped the same way.
         o.location = (o.location[0] + off[0], o.location[1] + off[2], o.location[2] + off[1])
-        o.data.materials.clear()
-        o.data.materials.append(mat)
+        if mat is not None:
+            o.data.materials.clear()
+            o.data.materials.append(mat)
         o.name = os.path.splitext(os.path.basename(path))[0]
     placed += 1
 
@@ -148,10 +155,14 @@ high = [o for o in bpy.context.selected_objects]
 for o in high:
     o.name = "HIGH_" + o.name
 bpy.ops.object.select_all(action="DESELECT")
+high = [o for o in high if o.type == "MESH"]      # gltf import leaves an Empty root behind
 for o in high:
     o.select_set(True)
 bpy.context.view_layer.objects.active = high[0]
-bpy.ops.object.join()
+# join() needs two or more MESH objects and a matching active object; a single-part recipe
+# (a generated Brood hull is one mesh) makes its poll fail with "context is incorrect".
+if len(high) > 1:
+    bpy.ops.object.join()
 high_obj = bpy.context.view_layer.objects.active
 high_obj.name = "KIT_HIGH"
 if high_obj.data.uv_layers:
@@ -159,7 +170,8 @@ if high_obj.data.uv_layers:
 high_obj.hide_render = False
 _log("high-poly reference: %d tris" % len(high_obj.data.polygons))
 
-work = [o for o in scene.objects if o.type == "MESH" and o is not high_obj]
+work = [o for o in scene.objects if o.type == "MESH" and o is not high_obj
+        and o not in high]
 
 # ----------------------------------------------------- triangulate/budget ----
 for o in work:

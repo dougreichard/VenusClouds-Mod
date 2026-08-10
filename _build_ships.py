@@ -42,6 +42,7 @@ KIT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "media", "shi
 KINGDOM = "Kingdom"
 ARMADA = "Armada"
 GUILD = "Guild"
+BROOD = "Brood"
 
 
 # key, base stock key, borrowed art root, the VEN_ root it wants, side, deltas
@@ -146,6 +147,22 @@ HULLS = [
         long_desc="An Armada hub. Plasma turrets on a captured platform, and a market "
                   "below decks that will buy anything with the numbers filed off.")),
 
+    # ---- The Brood: grown, not built -------------------------------------
+    #
+    # Borrows `biomech` art until its own is in place, because that is the only stock
+    # family that is not a ship - and an unresolvable artfileroot segfaults the engine, so
+    # the fallback has to be something real.
+    ("venus_brd_swarmer", "biomech_a", "Drone1", "VEN_BroodSwarmer", BROOD, dict(
+        name="Swarmer", roles="ship,brood,light,airship",
+        speed_coeff=1.05, turn_rate=1.45, hullpoints=4,
+        long_desc="It does not hail, it does not surrender, and nothing aboard it is "
+                  "machinery. It comes up when the deck is disturbed.")),
+    ("venus_brd_render", "biomech_c", "Drone3", "VEN_BroodSwarmer", BROOD, dict(
+        name="Render", roles="ship,brood,medium,leader,airship",
+        speed_coeff=0.95, turn_rate=1.10, hullpoints=9,
+        long_desc="Larger, older, and slower to break off. The Armada has a word for "
+                  "these and it is not a word for an animal.")),
+
     # ---- Neutral: the sky cities everyone needs and nobody owns ----------
     ("venus_civ_skycity", "starbase_civil", "civil_station", "VEN_SkyCity", GUILD, dict(
         name="Free City", roles="station,civilian,neutral,airship",
@@ -241,10 +258,11 @@ def main():
     print("  %d hull(s) on kitbashed Venus art; the rest on stock silhouettes" % on_kit)
     kdm = sum(1 for e in entries if e["side"] == KINGDOM)
     arm = sum(1 for e in entries if e["side"] == ARMADA)
-    civ = len(entries) - kdm - arm
+    brd = sum(1 for e in entries if e["side"] == BROOD)
+    civ = len(entries) - kdm - arm - brd
     print("  wrote %s" % a.out)
-    print("  %d hulls: %d Kingdom, %d Armada, %d neutral%s"
-          % (len(entries), kdm, arm, civ, "  (VENUS ART)" if a.venus_art else ""))
+    print("  %d hulls: %d Kingdom, %d Armada, %d Brood, %d neutral%s"
+          % (len(entries), kdm, arm, brd, civ, "  (VENUS ART)" if a.venus_art else ""))
 
 
 if __name__ == "__main__":

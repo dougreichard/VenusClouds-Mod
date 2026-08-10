@@ -61,6 +61,21 @@ PACKS = {
         "atlas": "PolygonConstruction_Texture_01_A.png",
         "emissive": None,          # this pack ships no emissive map
     },
+    # GENERATED parts - prop-farm output, which brings its OWN baked texture rather than
+    # indexing a shared atlas. That is fine now the pipeline bakes: a part with no pack
+    # atlas keeps the material it arrived with, and the bake resolves everything into one
+    # texture set regardless of where each part's colour came from.
+    #
+    # This is what Phase 3 was for. The Kaiju pack turned out to be two whole-creature FBXs
+    # rather than a parts kit, so the Brood cannot be kitbashed from it - but the prop farm
+    # already produced exactly the right thing.
+    "generated": {
+        "unit_scale": 1.0,
+        "obj": os.path.join(os.path.dirname(os.path.abspath(__file__)), "_propfarm"),
+        "atlas": None,          # brings its own material
+        "emissive": None,
+    },
+
     # NOT yet copied into the kit folder - still sitting in E:/tmp, which is a temp
     # directory and can be cleaned out from under us. Pull it from the N: archive
     # (POLYGON_ScifiSpace_SourceFiles.zip) before any Armada recipe depends on it.
@@ -338,6 +353,24 @@ RECIPES = {
             ("pirates:SM_Prop_Crate_01", (2.2, 3.0, 4.0), (0, 22, 0), (1.5, 1.5, 1.5)),
         ] + armada_floats(26.0, x=7.0, y=-3.6),
     },
+
+    # ---- the Brood ----------------------------------------------------------
+    #
+    # Neither boats nor spacecraft, which is the whole point - the Brood is the faction a
+    # kit cannot build. The Kaiju pack ships two whole creatures rather than parts, so this
+    # uses the prop-farm mesh generated earlier: a chitinous carapace with spines and red
+    # markings, which is the battle-scene concept art almost exactly.
+    #
+    # It arrives with its own baked texture instead of a pack atlas, and the bake folds it
+    # into one Cosmos texture set like anything else.
+
+    "venus_brd_swarmer": {
+        "faction": "brood", "pack": "generated", "art": "VEN_BroodSwarmer",
+        "desc": "Brood swarmer - grown, not built; it comes up when the deck is disturbed",
+        "parts": [
+            ("venus_brood_raider_painted", (0, 0, 0), (0, 0, 0), (9.0, 9.0, 9.0)),
+        ],
+    },
 }
 
 
@@ -363,7 +396,8 @@ def kit_part_path(pack, obj_name):
     p = PACKS.get(pack)
     if not p:
         return None
-    for root_dir, ext in ((p.get("obj"), ".obj"), (p.get("fbx") or p.get("obj"), ".fbx")):
+    for root_dir, ext in ((p.get("obj"), ".obj"), (p.get("obj"), ".glb"),
+                          (p.get("fbx") or p.get("obj"), ".fbx")):
         if not root_dir:
             continue
         path = os.path.join(root_dir, obj_name + ext)
@@ -425,11 +459,20 @@ def kit_check(name):
             problems.append("unknown pack: " + pack)
         elif kit_part_path(pack, name) is None:
             problems.append("missing part: " + obj_name)
-    diffuse, emissive = kit_atlas_path(r["faction"])
-    if diffuse is None:
-        problems.append("missing diffuse atlas for faction " + r["faction"])
-    if emissive is None:
-        problems.append("missing emissive atlas for faction " + r["faction"])
+    # Textures are checked PER PART, not per faction. A generated part carries its own
+    # baked material and needs no atlas at all - demanding a faction atlas for the whole
+    # recipe would reject a perfectly valid Brood hull that has no Synty parts in it.
+    for obj_name, _o, _r, _s in r["parts"]:
+        pack, name = kit_split_part(obj_name, r["pack"])
+        if pack not in PACKS:
+            continue
+        needs_atlas = bool((PACKS[pack].get("atlas") is not None) or pack == "pirates")
+        if not needs_atlas:
+            continue
+        diffuse, _e = kit_part_textures(pack, r["faction"])
+        if diffuse is None:
+            problems.append("no diffuse atlas for %s part %s (faction %s)"
+                            % (pack, name, r["faction"]))
     return problems
 
 
