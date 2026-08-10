@@ -15,7 +15,7 @@
   name: Valiant
   origin: Kingdom
   side: Kingdom
-  artfileroot: TSN_Escort
+  artfileroot: VEN_Valiant
   meshscale: 0.10013423115015
   radarscale: 1.0
   exclusionradius: 44.0

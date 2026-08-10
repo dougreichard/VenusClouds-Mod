@@ -31,3 +31,6 @@ _refs/
 # Prop farm output - generated meshes and renders. Large, and reproducible from the
 # scripts plus a GPU. Art that is chosen for the mod gets promoted into media/ships.
 _propfarm/
+
+# Kitbash job files (written and removed per build; only stragglers from a failed run)
+media/ships/_*_job.json

@@ -37,6 +37,7 @@ import yaml
 
 STOCK = r"E:/a/Cosmos-dev/data/shipData.yaml"
 GFX = r"E:/a/Cosmos-dev/data/graphics/ships"
+KIT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "media", "ships")
 
 KINGDOM = "Kingdom"
 ARMADA = "Armada"
@@ -181,7 +182,14 @@ def build(use_venus_art=False):
         e["key"] = key
         e["side"] = side
         e["origin"] = side
-        e["artfileroot"] = venus_art if use_venus_art else art
+        # --venus-art is INCREMENTAL and per-hull, not a global switch. A hull only moves
+        # to its VEN_* root once that art actually exists in media/ships; the rest keep the
+        # stock silhouette. Without this, turning the flag on with a half-built kit points
+        # 18 hulls at art that is not there - and an unresolvable artfileroot SEGFAULTS the
+        # engine at render (reproduced 4/4). Half a fleet in Venus art is fine; half a
+        # fleet crashing is not.
+        have_kit = os.path.exists(os.path.join(KIT_DIR, venus_art + ".obj"))
+        e["artfileroot"] = venus_art if (use_venus_art and have_kit) else art
         e["venus_art"] = venus_art          # not read by the engine; the swap target
         e.update(deltas)
 
@@ -229,6 +237,8 @@ def main():
         yaml.safe_dump({"#ship-list": entries}, f, sort_keys=False, allow_unicode=False,
                        default_flow_style=False)
 
+    on_kit = sum(1 for e in entries if not str(e["artfileroot"]).startswith(("TSN", "tsn", "skaraan", "kralien", "Torgoth", "Brigantine", "longbow", "transport", "cargo", "civil", "science", "industry", "arvonian")))
+    print("  %d hull(s) on kitbashed Venus art; the rest on stock silhouettes" % on_kit)
     kdm = sum(1 for e in entries if e["side"] == KINGDOM)
     arm = sum(1 for e in entries if e["side"] == ARMADA)
     civ = len(entries) - kdm - arm
