@@ -1,0 +1,88 @@
+# Brood swarms, by difficulty.
+#
+# The Brood does not have a fleet ladder in the sense the other factions do - it has no
+# doctrine, no capital ships and no escorts. It climbs by COUNT alone, because that is the
+# only thing about it that varies: more of the same thing, until there are too many.
+#
+# That is deliberately a different SHAPE of ladder from the Armada's (which climbs by count
+# then weight) and the Kingdom's (which climbs by weight). A player who has learned to read
+# the other two should find this one reads wrong, because it is not a navy.
+race: Brood
+fleets:
+  # difficulty 0
+  -
+    - [venus_brd_swarmer]
+    - [venus_brd_swarmer]
+    - [venus_brd_swarmer]
+    - [venus_brd_swarmer]
+    - [venus_brd_swarmer]
+  # difficulty 1
+  -
+    - [venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer]
+  # difficulty 2
+  -
+    - [venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render]
+    - [venus_brd_swarmer, venus_brd_swarmer]
+  # difficulty 3
+  -
+    - [venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render]
+    - [venus_brd_render, venus_brd_swarmer]
+  # difficulty 4
+  -
+    - [venus_brd_render, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render]
+    - [venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+  # difficulty 5
+  -
+    - [venus_brd_render, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_swarmer, venus_brd_swarmer]
+  # difficulty 6
+  -
+    - [venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+  # difficulty 7
+  -
+    - [venus_brd_render, venus_brd_render, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_swarmer, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_render]
+  # difficulty 8
+  -
+    - [venus_brd_render, venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_render, venus_brd_swarmer, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_render, venus_brd_swarmer, venus_brd_swarmer]
+  # difficulty 9
+  -
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_swarmer]
+  # difficulty 10
+  -
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_swarmer]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render]
+    - [venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render, venus_brd_render]

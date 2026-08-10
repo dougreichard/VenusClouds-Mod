@@ -6,7 +6,7 @@
 # `_ship` in the TNG pack took down a whole run against LM's standard_consoles.mast, which
 # assigns to `_ship`.
 
-VENUS_FACTIONS = ("Kingdom", "Armada", "Guild")
+VENUS_FACTIONS = ("Kingdom", "Armada", "Guild")   # playable; Brood is NPC-only
 
 # The one hull the library is asked about to decide whether the merge already happened.
 VENUS_PROBE_KEY = "venus_kdm_valiant"
@@ -28,8 +28,13 @@ def venus_register_races():
     added = []
     # The Guild is a station-only faction - neutral sky cities - so it is playable (someone
     # will want a free-trader campaign) but never an NPC fleet ladder.
+    #
+    # The Brood is the mirror image: an NPC race and NOT playable. It has no consoles, no
+    # doctrine and nothing to talk to. Leaving it out of NPC_RACES silently drops its fleet
+    # ladder at load - the swarm still spawns, but as whatever stock race the caller named,
+    # which is exactly the bug this gate is meant to prevent.
     for key, wanted in (("PLAYABLE_RACES", VENUS_FACTIONS),
-                        ("NPC_RACES", ("Kingdom", "Armada"))):
+                        ("NPC_RACES", ("Kingdom", "Armada", "Brood"))):
         raw = settings.get(key) or ""
         if not isinstance(raw, str):
             raw = ",".join(str(x) for x in raw)
