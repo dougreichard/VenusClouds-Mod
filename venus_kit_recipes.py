@@ -27,12 +27,33 @@ and scales are in the pack's own units; the hull above is ~14 long, which is the
 import os
 
 # ---------------------------------------------------------------- packs ----
+# Packs are read from a LOCAL kit folder, never from OneDrive or the N: share.
+#
+# The canonical archive is `N:\data_backup\purchased-backupsD-assets\synty` (59 source
+# packs), but it is an SMB mount: building off it is slow and depends on the network being
+# up. `E:/ai/kits/` holds an extracted copy of just the packs this mod uses, pulled from
+# that archive - so provenance is the archive, and the build only ever touches local disk.
+#
+# A OneDrive path was used first and is deliberately NOT here: sync state is not a build
+# dependency anyone wants, and files can be cloud-only placeholders that stall a read.
+KIT_ROOT = r"E:/ai/kits"
+
 PACKS = {
     "pirates": {
-        "obj": r"E:/o/OneDrive/b/poly-pirate-test/POLYGON_Pirates_Pack_Source_Files/SourceFiles/OBJ",
-        "tex": r"E:/o/OneDrive/b/poly-pirate-test/POLYGON_Pirates_Pack_Source_Files/SourceFiles/Textures",
+        "obj": KIT_ROOT + "/POLYGON_Pirates_Pack_Source_Files/SourceFiles/OBJ",
+        "tex": KIT_ROOT + "/POLYGON_Pirates_Pack_Source_Files/SourceFiles/Textures",
         "emissive": "Texture_Emmisive.png",   # the pack's own spelling
     },
+    # Cranes, girders, pipes, tanks - the Mender's workshop gear and the refinery modules
+    # on Harvester's Reach. 576 parts.
+    "construction": {
+        "obj": KIT_ROOT + "/POLYGON_Construction_SourceFiles_v3/SourceFiles/OBJ",
+        "tex": KIT_ROOT + "/POLYGON_Construction_SourceFiles_v3/SourceFiles/Textures",
+        "emissive": "Texture_Emmisive.png",
+    },
+    # NOT yet copied into the kit folder - still sitting in E:/tmp, which is a temp
+    # directory and can be cleaned out from under us. Pull it from the N: archive
+    # (POLYGON_ScifiSpace_SourceFiles.zip) before any Armada recipe depends on it.
     "scifi": {
         "obj": r"E:/tmp/POLYGON_ScifiSpace_SourceFiles/OBJ",
         "tex": r"E:/tmp/POLYGON_ScifiSpace_SourceFiles/Textures",
@@ -48,6 +69,30 @@ FACTION_ATLAS = {
     "armada":  ("pirates", "Texture_02_B.png"),
     "guild":   ("pirates", "Texture_03_C.png"),
 }
+
+
+# ------------------------------------------------------------ envelope ----
+# The gas envelope is a stretched barrel. `SM_Prop_Barrel_03` rather than `_01` because the
+# two are the same 0.86 x 1.07 x 0.88 shape but land on different atlas regions - measured
+# through the Kingdom atlas, _01 is grey (117,114,112) and _03 is warm (133,97,89). The
+# first Valiant looked like it had a stone envelope for exactly that reason.
+ENVELOPE_PART = "SM_Prop_Barrel_03"
+_BARREL = (0.86, 1.07, 0.88)
+
+
+def env(length, diameter):
+    """Barrel scale factors for an envelope of a given length and diameter.
+
+    Written in the units the schematics think in - "a 20-unit envelope 4.5 across" - rather
+    than as raw multipliers nobody can picture. Proportion that reads as an airship:
+    envelope roughly 1.4x the hull length, and about a third as thick as it is long.
+    """
+    return (diameter / _BARREL[0], diameter / _BARREL[1], length / _BARREL[2])
+
+
+def env_height(hull_height, diameter, gap=2.0):
+    """How far above the origin the envelope centre sits: clear of the hull, plus a gap."""
+    return hull_height * 0.5 + diameter * 0.5 + gap
 
 # ------------------------------------------------------------- recipes ----
 #
@@ -81,7 +126,64 @@ RECIPES = {
             # The happy accident worth preserving: the boat's own rigging lines run from
             # the hull up to roughly this height, so they read as the envelope's
             # suspension cables. Move the envelope far and that stops working.
-            ("SM_Prop_Barrel_01", (0, 9.2, 0), (0, 0, 0), (4.8, 4.4, 23.0)),
+            (ENVELOPE_PART, (0, 9.2, 0), (0, 0, 0), env(20.2, 4.4)),
+        ],
+    },
+
+    # ---- the rest of the Kingdom -------------------------------------------
+    #
+    # Same kit, bigger hull, more masts. Envelope length is ~1.4x the hull. Hull lengths
+    # are measured, not guessed: rowing 5.4, small 8.5, medium 14.3, large 33.0.
+
+    "venus_kdm_skiff": {
+        "faction": "kingdom", "pack": "pirates", "art": "VEN_ScoutSkiff",
+        "desc": "Scout skiff - a rowing hull under a small envelope",
+        "parts": [
+            ("SM_Veh_Boat_Rowing_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            # A shrunken medium mast, so there is something the envelope hangs FROM.
+            ("SM_Veh_Boat_Medium_01_Mast", (0, -0.2, 0), (0, 0, 0), (0.32, 0.20, 0.34)),
+            (ENVELOPE_PART, (0, 2.3, 0), (0, 0, 0), env(7.6, 2.0)),
+        ],
+    },
+
+    "venus_kdm_thunderbolt": {
+        "faction": "kingdom", "pack": "pirates", "art": "VEN_Thunderbolt",
+        "desc": "Thunderbolt gunboat - one enormous mortar on the smallest hull that carries it",
+        "parts": [
+            ("SM_Veh_Boat_Small_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            # The mortar, forward and raised - the whole identity of the class.
+            ("SM_Prop_Cannon_01", (0, 1.0, 2.2), (0, 0, 0), (1.4, 1.4, 1.4)),
+            ("SM_Veh_Boat_Medium_01_Mast", (0, -0.3, 0), (0, 0, 0), (0.45, 0.26, 0.50)),
+            ("SM_Veh_Boat_Medium_01_Rigging", (0, -0.3, 0), (0, 0, 0), (0.45, 0.30, 0.50)),
+            (ENVELOPE_PART, (0, 3.1, 0), (0, 0, 0), env(11.9, 2.8)),
+        ],
+    },
+
+    "venus_kdm_vanguard": {
+        "faction": "kingdom", "pack": "pirates", "art": "VEN_GoldenVanguard",
+        "desc": "Golden Vanguard heavy cruiser - twin envelopes over a large hull",
+        "parts": [
+            ("SM_Veh_Veh_Boat_Large_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Large_Mast_01", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Veh_Boat_Large_01_Rigging", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            # TWIN envelopes, which is what the schematic gives this class and what reads
+            # as "heavy cruiser" at a glance rather than "bigger escort".
+            (ENVELOPE_PART, (-4.2, 16.0, 0), (0, 0, 0), env(40.0, 7.0)),
+            (ENVELOPE_PART, (4.2, 16.0, 0), (0, 0, 0), env(40.0, 7.0)),
+        ],
+    },
+
+    "venus_kdm_bulwark": {
+        "faction": "kingdom", "pack": "pirates", "art": "VEN_ImperialBulwark",
+        "desc": "Imperial Bulwark ironclad - it does not maneuver, it arrives",
+        "parts": [
+            # The BARE warship hull: the dressed one is 14,693 verts alone, which would
+            # spend the whole ship's budget before an envelope is added.
+            ("SM_Veh_Boat_Warship_01_Hull_Bare", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Warship_01_Mast_01", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Warship_01_Mast_02", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Warship_01_Rigging", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            (ENVELOPE_PART, (0, 26.0, 0), (0, 0, 0), env(52.0, 11.0)),
         ],
     },
 }

@@ -95,7 +95,7 @@
   name: Golden Vanguard
   origin: Kingdom
   side: Kingdom
-  artfileroot: TSN_Heavy_Cruiser
+  artfileroot: VEN_GoldenVanguard
   meshscale: 0.183785244822502
   radarscale: 1.1
   exclusionradius: 50.0
@@ -184,7 +184,7 @@
   name: Imperial Bulwark
   origin: Kingdom
   side: Kingdom
-  artfileroot: TSNBattleship
+  artfileroot: VEN_ImperialBulwark
   meshscale: 0.223782032728195
   radarscale: 1.0
   exclusionradius: 50.0
@@ -291,7 +291,7 @@
   name: Thunderbolt
   origin: Kingdom
   side: Kingdom
-  artfileroot: TSN_Destroyer
+  artfileroot: VEN_Thunderbolt
   meshscale: 0.0895302072167397
   radarscale: 0.8
   exclusionradius: 45.0
@@ -515,7 +515,7 @@
   name: Scout Skiff
   origin: Kingdom
   side: Kingdom
-  artfileroot: TSN_Scout
+  artfileroot: VEN_ScoutSkiff
   meshscale: 0.100000001490116
   radarscale: 0.9
   exclusionradius: 50.0
