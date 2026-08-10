@@ -317,14 +317,20 @@ RECIPES = {
             #
             # It also fixes what three previous attempts could not: a single envelope was
             # either too small to lift the hull, or big enough and floating free above it.
-            # Slung LOW and kept smaller than the hull. At deck height and 5.4 across they
-            # swallowed the ship - the hull has to ride between them and stay the thing you
-            # look at, with the pontoons reading as equipment hung off it.
-            ("pirates:" + ENVELOPE_PART, (-7.4, -1.4, -0.5), (0, 0, 0), env(22.0, 4.2)),
-            ("pirates:" + ENVELOPE_PART, (7.4, -1.4, -0.5), (0, 0, 0), env(22.0, 4.2)),
-            # Short struts tying each pontoon to the hull.
-            ("SM_Veh_Part_Wing_011", (-5.0, -0.6, -1.0), (0, 0, 70), (0.5, 0.5, 0.5)),
-            ("SM_Veh_Part_Wing_011", (5.0, -0.6, -1.0), (0, 0, 110), (0.5, 0.5, 0.5)),
+            # UNDERSLUNG, like a floatplane or a hovercraft skirt: the lift sits BENEATH
+            # the mass rather than beside it, which is both the more honest reading and the
+            # one that keeps the hull unobstructed from every angle. Outboard pontoons at
+            # deck height kept competing with the hull for the silhouette; tucked under,
+            # they ground it instead.
+            # Between the two extremes tried: fully outboard at deck height they competed
+            # with the hull, fully tucked underneath they vanished (one sliver of blue).
+            # Low AND slightly proud of the beam reads as a catamaran float - visible from
+            # the side, clearly carrying the hull rather than flanking it.
+            ("pirates:" + ENVELOPE_PART, (-5.8, -3.3, -0.5), (0, 0, 0), env(22.0, 4.6)),
+            ("pirates:" + ENVELOPE_PART, (5.8, -3.3, -0.5), (0, 0, 0), env(22.0, 4.6)),
+            # Stubby struts where each float meets the keel.
+            ("SM_Veh_Part_Wing_011", (-4.6, -2.0, -1.0), (0, 0, 80), (0.45, 0.45, 0.45)),
+            ("SM_Veh_Part_Wing_011", (4.6, -2.0, -1.0), (0, 0, 100), (0.45, 0.45, 0.45)),
         ],
     },
 
