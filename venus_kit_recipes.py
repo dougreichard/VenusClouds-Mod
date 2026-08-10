@@ -371,6 +371,63 @@ RECIPES = {
             ("venus_brood_raider_painted", (0, 0, 0), (0, 0, 0), (9.0, 9.0, 9.0)),
         ],
     },
+
+    # ---- Platforms ----------------------------------------------------------
+    #
+    # A Venus platform is a DECK ON BUOYANCY HULLS, which is what the schematics draw and
+    # what separates a station from a ship here: ships have one envelope and go somewhere,
+    # platforms have several and stay. Twin envelopes below, working gear above.
+    #
+    # Budget discipline matters more here than on ships: SM_Bld_Crane_01 is 8,862 faces on
+    # its own - more than a whole station - so the cheap Construction parts do the work
+    # (water tower 734, tank 407, fuel tank 567, pipe 90, crane section 150).
+
+    "venus_kdm_harvester": {
+        "faction": "kingdom", "pack": "construction", "art": "VEN_HarvestersReach",
+        "desc": "Harvester's Reach - refinery modules and arms that strip lifting gas from the deck",
+        "parts": [
+            # A CATAMARAN, not a raft. The first pass hid the buoyancy hulls under a small
+            # deck and the platform read as a water tower on a pallet - the envelopes are
+            # the reason it is in the sky and they have to be the biggest thing in the
+            # silhouette. Deck spans BETWEEN them at their tops; gear sits on the deck.
+            # 6.1 x 6.3 x 2.5 after unit_scale, so these factors give ~20 x 22 and a 1-thick
+            # slab. The previous 11x read as an aircraft carrier deck with a toy on it.
+            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.4, 0), (90, 0, 0), (3.3, 3.5, 0.4)),
+            # Refinery gear, asymmetric on purpose - a working platform is not a parade,
+            # and scaled DOWN so the deck still reads as a deck rather than a plinth.
+            ("SM_Bld_WaterTank_01", (-5.0, 3.4, -3.0), (0, 0, 0), (0.7, 0.7, 0.7)),
+            ("SM_Prop_Fuel_Tank_01", (4.5, 2.8, 2.0), (0, 0, 0), (1.6, 1.6, 1.6)),
+            ("SM_Prop_Fuel_Tank_01", (7.0, 2.8, -1.0), (0, 0, 0), (1.6, 1.6, 1.6)),
+            ("SM_Bld_WaterTower_01", (0.5, 3.4, 6.0), (0, 0, 0), (0.8, 0.8, 0.8)),
+            ("SM_Prop_Pipe_Concrete_Huge_01", (-1.5, 2.6, 2.0), (0, 20, 0), (0.7, 0.7, 1.6)),
+            ("SM_Prop_Crane_Section_01", (-8.0, 3.0, 5.0), (0, 0, 35), (1.0, 1.0, 3.2)),
+            # Buoyancy hulls: outboard, large, and with their tops at deck level so they
+            # are the first thing read.
+            ("pirates:" + ENVELOPE_PART, (-11.0, -0.6, 0), (0, 0, 0), env(34.0, 8.5)),
+            ("pirates:" + ENVELOPE_PART, (11.0, -0.6, 0), (0, 0, 0), env(34.0, 8.5)),
+        ],
+    },
+
+    "venus_civ_skycity": {
+        "faction": "guild", "pack": "construction", "art": "VEN_SkyCity",
+        "desc": "A free city - neutral by treaty and by necessity; it sells gas to whoever moors",
+        "parts": [
+            ("SM_Bld_ConcreteFrame_Wall_01", (0, 1.6, 0), (90, 0, 0), (4.4, 4.6, 0.4)),
+            # A skyline rather than a refinery: towers and tanks at several heights, so it
+            # reads as somewhere people LIVE instead of somewhere gas is cracked.
+            ("SM_Bld_WaterTower_01", (-6.0, 4.2, -4.0), (0, 0, 0), (1.1, 1.1, 1.1)),
+            ("SM_Bld_WaterTower_01", (5.0, 3.6, 5.0), (0, 0, 0), (0.9, 0.9, 0.9)),
+            ("SM_Bld_WaterTank_02", (0, 3.8, 0), (0, 0, 0), (0.8, 0.8, 0.8)),
+            ("SM_Bld_WaterTank_01", (8.0, 3.0, -6.0), (0, 0, 0), (0.8, 0.8, 0.8)),
+            ("SM_Prop_Elevator_Frame_01", (-3.0, 3.2, 7.5), (0, 0, 0), (1.6, 2.2, 1.6)),
+            # FOUR hulls, because a city is heavier than a refinery and the second pair
+            # reads as permanence - this thing is not going anywhere.
+            ("pirates:" + ENVELOPE_PART, (-11.5, -1.0, -6.0), (0, 0, 0), env(26.0, 7.0)),
+            ("pirates:" + ENVELOPE_PART, (11.5, -1.0, -6.0), (0, 0, 0), env(26.0, 7.0)),
+            ("pirates:" + ENVELOPE_PART, (-11.5, -1.0, 6.0), (0, 0, 0), env(26.0, 7.0)),
+            ("pirates:" + ENVELOPE_PART, (11.5, -1.0, 6.0), (0, 0, 0), env(26.0, 7.0)),
+        ],
+    },
 }
 
 

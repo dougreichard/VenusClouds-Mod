@@ -635,7 +635,7 @@
   name: Harvester's Reach
   origin: Kingdom
   side: Kingdom
-  artfileroot: industry_station
+  artfileroot: VEN_HarvestersReach
   meshscale: 10.0
   radarscale: 1.0
   internalmapscale: 1.0
@@ -1466,7 +1466,7 @@
   name: Free City
   origin: Guild
   side: Guild
-  artfileroot: civil_station
+  artfileroot: VEN_SkyCity
   meshscale: 10.0
   radarscale: 1.0
   internalmapscale: 1.0
