@@ -62,12 +62,23 @@ PACKS = {
 }
 
 # Faction palette = which colour variant of the shared layout to ship as the diffuse.
-# Measured mean hull colour through each: 01_C is the warmest (96,70,57), 02_B the darkest
-# (54,48,36). That is the entire difference between a Kingdom brass hull and an Armada one.
+#
+# CHOOSE IT ON THE ENVELOPE, NOT THE HULL. The variants recolour atlas REGIONS
+# independently, so a variant picked for its hull colour says nothing about the rest of the
+# ship. 02_B was chosen because it is the darkest at the hull's UVs (54,48,36) - and the
+# Armada came out with BRIGHT BLUE gasbags, because the barrel's UVs land on a region that
+# variant paints blue (66,81,95). The envelope is the biggest single surface on any of
+# these ships, so it is what the palette has to be judged on.
+#
+# Measured at Barrel_03's own UVs:
+#   01_C  (133, 97, 89)  warm terracotta   -> Kingdom
+#   03_B  ( 90, 76, 72)  dark, desaturated -> Armada: grimier, same hue family, which is
+#                                             the fiction - they fly stolen Kingdom hulls
+#   04_C  (126,131, 88)  olive/brass       -> Guild
 FACTION_ATLAS = {
     "kingdom": ("pirates", "Texture_01_C.png"),
-    "armada":  ("pirates", "Texture_02_B.png"),
-    "guild":   ("pirates", "Texture_03_C.png"),
+    "armada":  ("pirates", "Texture_03_B.png"),
+    "guild":   ("pirates", "Texture_04_C.png"),
 }
 
 
@@ -183,7 +194,75 @@ RECIPES = {
             ("SM_Veh_Boat_Warship_01_Mast_01", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
             ("SM_Veh_Boat_Warship_01_Mast_02", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
             ("SM_Veh_Boat_Warship_01_Rigging", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
-            (ENVELOPE_PART, (0, 26.0, 0), (0, 0, 0), env(52.0, 11.0)),
+            # 6.5:1 rather than the ~4.6:1 the smaller hulls use. At the same ratio the
+            # envelope read as STUBBY here, because it is being judged against a 39.7-long
+            # hull instead of a 14-long one - a capital ship needs a longer, leaner gasbag
+            # to look like it could lift that much.
+            (ENVELOPE_PART, (0, 22.5, 0), (0, 0, 0), env(62.0, 9.5)),
+        ],
+    },
+
+    # ---- the Armada --------------------------------------------------------
+    #
+    # SAME PACK, DARK ATLAS. An Armada hull cannot mix in Sci-Fi parts: two packs means two
+    # atlases means two texture sets, and Cosmos allows one. It does not need to - the
+    # Pirates pack ships `_Pirate` variants of every mast and sail plus three shipwrecks,
+    # and the faction reads from the 02_B atlas (54,48,36 against the Kingdom's 96,70,57).
+    #
+    # That is also honest to the fiction: the Armada flies stolen and salvaged Kingdom
+    # hulls, so it SHOULD be the same boats in worse condition.
+
+    "venus_pir_scavenger": {
+        "faction": "armada", "pack": "pirates", "art": "VEN_Scavenger",
+        "desc": "Scavenger trolley raider - an engine, a claw, and someone willing to fly it",
+        "parts": [
+            ("SM_Veh_Boat_Rowing_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Prop_Cannon_01", (0, 0.7, 1.4), (0, 0, 0), (0.9, 0.9, 0.9)),
+            ("SM_Veh_Boat_Medium_01_Mast_Pirate", (0, -0.2, 0), (0, 0, 0), (0.30, 0.18, 0.32)),
+            (ENVELOPE_PART, (0, 2.2, 0), (0, 0, 0), env(7.0, 1.8)),
+        ],
+    },
+
+    "venus_pir_blacksails": {
+        "faction": "armada", "pack": "pirates", "art": "VEN_BlackSails",
+        "desc": "Black Sails raider escort - patched envelope, grappling gear where armor should be",
+        "parts": [
+            ("SM_Veh_Boat_Medium_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Medium_01_Mast_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Medium_01_Rigging", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            # A narrower envelope than the Kingdom escort of the same hull - the Armada
+            # runs its gasbags lean and fast, and it is the silhouette difference a player
+            # reads at distance before any colour.
+            (ENVELOPE_PART, (0, 8.6, 0), (0, 0, 0), env(21.0, 3.6)),
+        ],
+    },
+
+    "venus_pir_bloodhawk": {
+        "faction": "armada", "pack": "pirates", "art": "VEN_BloodHawk",
+        "desc": "Blood Hawk heavy raider - it closes fast and it does not turn away",
+        "parts": [
+            ("SM_Veh_Veh_Boat_Large_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Large_Mast_01_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Veh_Boat_Large_01_Rigging", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            # The ram. A cannon barrel run forward past the bow reads as the dreadnought
+            # prow the schematic gives this class.
+            ("SM_Prop_Cannon_Pole_01", (0, 0.6, 14.5), (0, 0, 0), (2.2, 2.2, 3.0)),
+            (ENVELOPE_PART, (0, 14.5, 0), (0, 0, 0), env(44.0, 7.5)),
+        ],
+    },
+
+    "venus_pir_scrapking": {
+        "faction": "armada", "pack": "pirates", "art": "VEN_ScrapKing",
+        "desc": "Scrap King armored logistics - what it kills, it eats",
+        "parts": [
+            ("SM_Veh_Veh_Boat_Large_01_Hull_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            ("SM_Veh_Boat_Large_Mast_01_Pirate", (0, 0, 0), (0, 0, 0), (1, 1, 1)),
+            # Salvage lashed to the deck - the class identity, and the reason to use the
+            # wreck props the pack already ships.
+            ("SM_Prop_Shipwreck_03", (0, 3.4, -6.0), (0, 14, 0), (0.55, 0.55, 0.55)),
+            ("SM_Prop_Crate_01", (2.1, 3.6, 5.0), (0, 20, 0), (1.6, 1.6, 1.6)),
+            ("SM_Prop_Barrel_05", (-2.2, 3.6, 7.5), (0, 0, 0), (1.5, 1.5, 1.5)),
+            (ENVELOPE_PART, (0, 15.0, 0), (0, 0, 0), env(42.0, 8.5)),
         ],
     },
 }

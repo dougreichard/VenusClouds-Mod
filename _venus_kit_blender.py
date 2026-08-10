@@ -96,14 +96,41 @@ if BUDGET and meshes:
 
     before = _faces()
     if before > BUDGET:
-        ratio = max(0.05, float(BUDGET) / float(before))
-        for o in meshes:
-            bpy.context.view_layer.objects.active = o
-            mod = o.modifiers.new("kit_decimate", "DECIMATE")
-            mod.ratio = ratio
-            bpy.ops.object.modifier_apply(modifier=mod.name)
-        print("KIT: decimated %d -> %d tris (ratio %.3f, budget %d)"
-              % (before, _faces(), ratio, BUDGET))
+        # SPEND THE CUT WHERE THE TRIANGLES ARE. A uniform ratio across every object
+        # charges the cheap parts the same percentage as the expensive one, and the cheap
+        # parts are usually what carries the read: on the Bulwark the hull is most of
+        # 33,206 tris, so a uniform 0.235 also flattened the envelope's rib bands and left
+        # a smooth red lozenge. The hull had detail to spare; the envelope did not.
+        #
+        # So: anything already under PROTECT keeps full resolution, and the whole
+        # reduction comes out of the objects that are actually expensive.
+        PROTECT = 1200
+        small = [o for o in meshes if len(o.data.polygons) <= PROTECT]
+        big = [o for o in meshes if len(o.data.polygons) > PROTECT]
+        kept = sum(len(o.data.polygons) for o in small)
+        big_tris = sum(len(o.data.polygons) for o in big)
+
+        if big and big_tris > 0 and (BUDGET - kept) > 0:
+            ratio = max(0.05, float(BUDGET - kept) / float(big_tris))
+            for o in big:
+                bpy.context.view_layer.objects.active = o
+                mod = o.modifiers.new("kit_decimate", "DECIMATE")
+                mod.ratio = ratio
+                bpy.ops.object.modifier_apply(modifier=mod.name)
+            print("KIT: decimated %d -> %d tris (%d protected in %d small part(s), "
+                  "ratio %.3f on %d big, budget %d)"
+                  % (before, _faces(), kept, len(small), ratio, len(big), BUDGET))
+        else:
+            # Everything is small, or the protected parts alone blow the budget - fall
+            # back to uniform rather than silently shipping over budget.
+            ratio = max(0.05, float(BUDGET) / float(before))
+            for o in meshes:
+                bpy.context.view_layer.objects.active = o
+                mod = o.modifiers.new("kit_decimate", "DECIMATE")
+                mod.ratio = ratio
+                bpy.ops.object.modifier_apply(modifier=mod.name)
+            print("KIT: decimated %d -> %d tris (uniform %.3f, budget %d)"
+                  % (before, _faces(), ratio, BUDGET))
     else:
         print("KIT: %d tris, within budget %d - no decimation" % (before, BUDGET))
 

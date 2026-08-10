@@ -673,7 +673,7 @@
   name: Black Sails
   origin: Armada
   side: Armada
-  artfileroot: kralien_cruiser
+  artfileroot: VEN_BlackSails
   meshscale: 0.0887114182114601
   radarscale: 1.0
   exclusionradius: 50.0
@@ -743,7 +743,7 @@
   name: Blood Hawk
   origin: Armada
   side: Armada
-  artfileroot: skaraan_enforcer
+  artfileroot: VEN_BloodHawk
   meshscale: 0.14738255739212
   radarscale: 1.0
   exclusionradius: 50.0
@@ -1082,7 +1082,7 @@
   name: Scrap King
   origin: Armada
   side: Armada
-  artfileroot: Brigantine
+  artfileroot: VEN_ScrapKing
   meshscale: 0.059763390570879
   radarscale: 1.0
   exclusionradius: 50.0
@@ -1194,7 +1194,7 @@
   name: Scavenger
   origin: Armada
   side: Armada
-  artfileroot: longbow
+  artfileroot: VEN_Scavenger
   meshscale: 0.0656711384654045
   radarscale: 1.0
   exclusionradius: 50.0
