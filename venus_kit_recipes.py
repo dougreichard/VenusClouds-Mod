@@ -97,9 +97,13 @@ PACKS = {
 #   03_B  ( 90, 76, 72)  dark, desaturated -> Armada: grimier, same hue family, which is
 #                                             the fiction - they fly stolen Kingdom hulls
 #   04_C  (126,131, 88)  olive/brass       -> Guild
+# ARMADA uses 02_B for its Pirates-pack parts specifically because that variant paints the
+# BARREL blue-grey (66,81,95) - which read as "wrong" when the whole ship was a boat, but
+# reads as painted steel on a raider whose only Pirates part is its envelope. Same
+# measurement that once looked like a mistake, now the right answer for a different ship.
 FACTION_ATLAS = {
     "kingdom": ("pirates", "Texture_01_C.png"),
-    "armada":  ("pirates", "Texture_03_B.png"),
+    "armada":  ("pirates", "Texture_02_B.png"),
     "guild":   ("pirates", "Texture_04_C.png"),
 }
 
@@ -121,6 +125,20 @@ def env(length, diameter):
     envelope roughly 1.4x the hull length, and about a third as thick as it is long.
     """
     return (diameter / _BARREL[0], diameter / _BARREL[1], length / _BARREL[2])
+
+
+# The ARMADA's envelope is a different object entirely: an industrial cylinder, not a
+# ship's barrel. A wooden gasbag over a steel warship was the last thing making the Blood
+# Hawk read as two unrelated models bolted together - the silhouette was right and the
+# MATERIAL was wrong. `SM_Prop_Pipe_Concrete_Huge_01` is a clean 90-face cylinder already
+# long on Z, so it costs almost nothing and reads as an armoured gas cell.
+ARMADA_ENVELOPE = "construction:SM_Prop_Pipe_Concrete_Huge_01"
+_PIPE = (227.0 * 0.02, 227.0 * 0.02, 513.4 * 0.02)     # after the pack's unit_scale
+
+
+def env_pipe(length, diameter):
+    """Scale factors for the Armada's cylindrical envelope, in fleet units."""
+    return (diameter / _PIPE[0], diameter / _PIPE[1], length / _PIPE[2])
 
 
 def env_height(hull_height, diameter, gap=2.0):
@@ -285,7 +303,28 @@ RECIPES = {
             # pass sat a small gasbag above the spine like a hat, which read as two
             # objects; sunk into the deck and run most of the hull's length it reads as
             # armoured buoyancy - lift the Armada has bolted on rather than built around.
-            ("pirates:" + ENVELOPE_PART, (0, 2.6, -0.5), (0, 0, 0), env(21.0, 4.2)),
+            # SIZED TO THE MASS IT LIFTS. The body is ~19 long x 12 wide x 8 tall once
+            # unit-scaled, and a 4.2-diameter gasbag over that read as a garnish - the eye
+            # does the buoyancy arithmetic even when the game does not. At 9 across and 30
+            # long it spans past both ends of the hull and looks like the reason the thing
+            # is airborne, while still being leaner than a Kingdom envelope of equal lift.
+            # PONTOONS, NOT A GASBAG. This is the Armada's whole lift philosophy in one
+            # silhouette: two hard cylinders slung either side of the hull instead of one
+            # elegant envelope over it. It cannot be mistaken for a Kingdom dirigible at
+            # any distance, it needs no mast or rigging to look connected because it sits
+            # ALONGSIDE rather than above, and it reads as engineering rather than
+            # seamanship - lift bolted on by people who care more about thrust.
+            #
+            # It also fixes what three previous attempts could not: a single envelope was
+            # either too small to lift the hull, or big enough and floating free above it.
+            # Slung LOW and kept smaller than the hull. At deck height and 5.4 across they
+            # swallowed the ship - the hull has to ride between them and stay the thing you
+            # look at, with the pontoons reading as equipment hung off it.
+            ("pirates:" + ENVELOPE_PART, (-7.4, -1.4, -0.5), (0, 0, 0), env(22.0, 4.2)),
+            ("pirates:" + ENVELOPE_PART, (7.4, -1.4, -0.5), (0, 0, 0), env(22.0, 4.2)),
+            # Short struts tying each pontoon to the hull.
+            ("SM_Veh_Part_Wing_011", (-5.0, -0.6, -1.0), (0, 0, 70), (0.5, 0.5, 0.5)),
+            ("SM_Veh_Part_Wing_011", (5.0, -0.6, -1.0), (0, 0, 110), (0.5, 0.5, 0.5)),
         ],
     },
 
