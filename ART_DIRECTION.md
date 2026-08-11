@@ -463,3 +463,50 @@ three green spheres are CORRECT. Everything with `art_file_path` falls back to
 list, so it never needs the engine. `ship_data.py` is explicit that in the real engine
 "stats travel through the library, artfileroot does not" - which is the open question
 `visual_mod_art` exists to settle.
+
+---
+
+## BUG: the built kit ships are X-long; the engine expects Z-long
+
+Found while checking which orientation a GENERATED ship should use. Measured, not inferred.
+
+**The engine's convention is +Z long.** Of the stock hulls that are clearly elongated
+(long axis at least 1.15x the next), **8 of 8 are Z-long and none is X- or Y-long**:
+
+    tsn_light_cruiser   291.9 x 118.7 x 583.3   Z   2.00
+    tsn_scout           216.1 x 121.8 x 550.4   Z   2.55
+    skaraan_defiler     311.2 x 147.3 x 583.7   Z   1.88
+    kralien_dreadnought 298.2 x  77.2 x 430.5   Z   1.44
+    torgoth_behemoth      9.6 x   4.7 x  30.7   Z   3.21
+    Brigantine          822.4 x 244.2 x 1027.5  Z   1.25
+    ArvoCarrier1         13.2 x   3.5 x  19.9   Z   1.50
+    monster2              4.2 x   4.0 x  13.9   Z   3.34
+
+**Every built Venus hull is X-long**, and `meshrotate` is 0 on all 15 ship-data entries, so
+nothing compensates:
+
+    VEN_GoldenVanguard  17.6 x 10.6 x 6.0   X
+    VEN_Valiant         12.6 x  7.9 x 4.3   X
+    VEN_ImperialBulwark 20.2 x 12.2 x 7.3   X
+    VEN_BloodHawk       18.4 x  6.4 x 4.6   X
+
+They should therefore render broadside to their direction of travel.
+
+**What is NOT the cause** (each ruled out by measurement):
+
+* not the source art - `SM_Veh_Boat_Medium_01_Hull_Pirate.obj` measures 5.07 x 4.67 x 14.29,
+  Z-long, exactly as this file's header states;
+* not the Blender OBJ round trip - importing that part and re-exporting it with the kit's own
+  default flags gives back 5.07 x 4.67 x 14.29, Z-long. (In-Blender it sits Y-long, which is
+  just Blender being Z-up; the exporter converts it back.)
+* not `env()` - it returns `(d/_BARREL[0], d/_BARREL[1], length/_BARREL[2])`, i.e. it puts
+  LENGTH on Z, which is the right intent.
+
+So the rotation enters during kit assembly, and the output also does not match the recipes'
+own stated intent - the Valiant comment predicts "roughly 4.1 x 4.7 x 20" and the built ship
+is 12.6 x 7.9 x 4.3. Finding the exact line needs stepping through `_venus_kit_blender.py`
+with a single-part recipe; that is not done here.
+
+**Consequence for generated ships:** `_venus_orient.py` targets +Z long, which matches the
+ENGINE and therefore does NOT match the current kit output. Do not "fix" a generated ship to
+agree with the kit hulls - the kit hulls are the ones that are wrong.
