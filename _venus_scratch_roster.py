@@ -206,9 +206,15 @@ def pir_palette():
 # Slot names are shared between palettes so the archetypes can index them by meaning.
 HULL, DECK, SKIN, TRIM, MECH, GLOW = range(6)
 
-# How far lit texels are pulled toward white. 0 = the authored hue at full
-# chroma, 1 = pure white. Around half reads as light rather than paint.
-EMISSIVE_DESAT = 0.55
+# How far lit texels are pulled toward white. 0 = the authored hue at full chroma,
+# 1 = pure white.
+#
+# Held at 0. The engine's emissive intensity is clamped 0-1.0, so it can only ATTENUATE -
+# there is no headroom above 1.0 to clip toward white, and no way to recover a hue that
+# was baked out. The map therefore has to carry the final look. A ladder at 0/0.15/0.30/
+# 0.50 confirmed it by eye: the pirate glow is firebox, draught slots and plasma, and
+# fire that is not orange stops reading as fire.
+EMISSIVE_DESAT = 0.0
 
 PROFILE = [
     (1.00, 0.00), (0.99, -0.28), (0.86, -0.60), (0.56, -0.87),
