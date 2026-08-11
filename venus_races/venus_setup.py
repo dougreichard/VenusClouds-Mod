@@ -69,10 +69,12 @@ def venus_declare_ships(ships_file):
         prefab finds "an Armada raider" and `get_ship_name` is what a console displays.
         The engine call does not populate that, so it is merged here too.
 
-    NOT `ship_data_merge_mod`, the other route: it gets ships to the engine by GENERATING
-    `extraShipData.json` in the mission folder during sim_create(). That file then stays on
-    disk and the next run reads it back AND merges the same entries again - the TNG pack
-    measured 51 hulls becoming 102 from run 2 onward. Writing nothing avoids the class.
+    NOT `ship_data_merge_mod`: it is the BROKEN route, not the alternative one. It gets
+    ships to the engine by GENERATING `extraShipData.json` in the mission folder during
+    sim_create(). That file stays on disk, and on the next run `get_ship_data()` prepends it
+    whole - `#mod` entries and all - while the add-on declares the same entries again. The
+    TNG pack measured 51 hulls becoming 102 from run 2 onward. The file the feature
+    generates is the input that breaks it.
 
     NO `artfilepath` IS SET, deliberately. These hulls borrow STOCK art roots, which the
     engine already resolves out of `data/graphics/ships`. Pointing them at this pack's own
