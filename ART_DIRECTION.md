@@ -502,11 +502,32 @@ They should therefore render broadside to their direction of travel.
 * not `env()` - it returns `(d/_BARREL[0], d/_BARREL[1], length/_BARREL[2])`, i.e. it puts
   LENGTH on Z, which is the right intent.
 
-So the rotation enters during kit assembly, and the output also does not match the recipes'
-own stated intent - the Valiant comment predicts "roughly 4.1 x 4.7 x 20" and the built ship
-is 12.6 x 7.9 x 4.3. Finding the exact line needs stepping through `_venus_kit_blender.py`
-with a single-part recipe; that is not done here.
+**RESOLVED: the code is right and the COMMITTED ART IS STALE.**
 
-**Consequence for generated ships:** `_venus_orient.py` targets +Z long, which matches the
-ENGINE and therefore does NOT match the current kit output. Do not "fix" a generated ship to
-agree with the kit hulls - the kit hulls are the ones that are wrong.
+Rebuilding one hull with the current pipeline settles it:
+
+    rebuilt  VEN_Valiant.obj   5.07 x 18.99 x 20.19   Z-long   9,250 tris
+    shipped  VEN_Valiant.obj  12.61 x  7.89 x  4.32   X-long
+
+The rebuild is Z-long, matches the engine, and matches this file's own prediction for the
+Valiant ("roughly 4.1 x 4.7 x 20" - the rebuild is 20.19 on Z). The face count differs too,
+which is corroboration rather than coincidence: the shipped OBJs were produced by an earlier
+version of the builder and never regenerated.
+
+Every stage of the CURRENT pipeline was traced and each is axis-neutral: the source part is
+Z-long; an obj import/export round trip with the kit's own flags returns it unchanged; the
+single-part trace through `_venus_kit_blender.py` comes out Z-long; the bake step comes out
+Z-long; `env()` puts length on Z; and the recipe-to-job driver passes offset/rot/scale
+straight through.
+
+**The fix is to rebuild, not to edit anything:**
+
+    python _venus_kit_bake.py            # all recipes
+    python _venus_kit_bake.py venus_kdm_valiant --out <dir>   # one, to check first
+
+Recipe KEYS are `venus_kdm_valiant`-style, not the `VEN_Valiant` art name - the driver
+refuses an art name outright, which is the good failure.
+
+**Consequence for generated ships is unchanged:** `_venus_orient.py` targets +Z long, which
+agrees with the engine AND with freshly built kit hulls. It disagrees only with the stale
+committed art.
