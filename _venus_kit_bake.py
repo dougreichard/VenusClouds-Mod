@@ -18,6 +18,7 @@ both are honest neutral defaults rather than invented detail. The engine wants t
 exist; it does not want us to make up surface detail the artist never authored.
 """
 import argparse
+import glob
 import json
 import os
 import shutil
@@ -29,13 +30,43 @@ sys.path.insert(0, HERE)
 
 import venus_kit_recipes as KIT     # noqa: E402
 
-BLENDER = r"C:\Program Files\Blender Foundation\Blender 4.5\blender.exe"
+
+def _find_blender():
+    """Locate blender.exe.
+
+    The pipeline targets the unzipped 5.2 LTS build under C:/b/stable, whose folder name
+    carries the build hash and therefore changes on every Blender update - so glob for it
+    rather than pinning the path. Installed Program Files builds are the fallback, which
+    keeps an older machine working. Set VENUS_BLENDER to force a specific build.
+    """
+    override = os.environ.get("VENUS_BLENDER")
+    if override:
+        return override
+    for pattern in (r"C:\b\stable\blender-*\blender.exe",
+                    r"C:\Program Files\Blender Foundation\Blender *\blender.exe"):
+        # Reverse-sorted so the newest build wins. Lexicographic, so a hypothetical 5.10
+        # would sort under 5.2 - set VENUS_BLENDER if that ever matters.
+        for path in sorted(glob.glob(pattern), reverse=True):
+            if os.path.exists(path):
+                return path
+    return ""
+
+
+BLENDER = _find_blender()
 BLENDER_SCRIPT = os.path.join(HERE, "_venus_kit_blender.py")
 BAKE_SCRIPT = os.path.join(HERE, "_venus_kit_bake_blender.py")
 
-# Stock Cosmos hulls measured across all 201 .obj: 1,790-7,784 faces. Over this and the
-# hull is heavier than anything the game ships, which is the point at which to decimate.
-FACE_BUDGET = 7800
+# The stock hulls (1,790-7,784 faces across all 201 .obj) describe what the base game
+# happens to ship - they are NOT an engine limit, and the old 7,800 budget here mistook
+# one for the other. Measured across the 46 meshes in Cosmos-TNG-Mod, which load and
+# render in engine: max 145,856 tris (FED_Ambassador), median 14,092, several in the
+# 34-61k band, and up to 31 separate objects in a single model.
+#
+# 27,000 sits comfortably above the TNG median with room for detail, and still well under
+# what the engine demonstrably takes - the cap is now about fleet-scale render cost rather
+# than about the loader. Existing art must be RE-BAKED to use the extra headroom; hulls
+# built under the old budget were decimated to ~7,800 and stay there until rebuilt.
+FACE_BUDGET = 27000
 
 
 def _flat_png(path, rgb, size=512):
@@ -139,6 +170,12 @@ def main():
     ap.add_argument("--mirror", default=None, metavar="MISSION_DIR",
                     help="also copy the art into MISSION_DIR/ships so the mock can serve it")
     a = ap.parse_args()
+
+    if not BLENDER:
+        print("blender.exe not found. Looked under C:/b/stable and Program Files; "
+              "set VENUS_BLENDER to its path.")
+        return 1
+    print("blender: %s" % BLENDER)
 
     names = a.names or list(KIT.RECIPES)
     ok = 0

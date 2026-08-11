@@ -64,9 +64,17 @@ w.node_tree.nodes["Background"].inputs[0].default_value = (0.30, 0.28, 0.26, 1)
 bpy.context.scene.world = w
 
 s = bpy.context.scene
-s.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in \
-    [i.identifier for i in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items] \
-    else "BLENDER_WORKBENCH"
+# Pick the engine by ASSIGNING, not by testing the enum. Blender 5.2 lists only
+# BLENDER_EEVEE in `engine`'s enum even though CYCLES and WORKBENCH both assign fine, so
+# a membership test silently demotes this to grey Workbench clay - and a TEXTURED preview
+# is half the point of rendering one. EEVEE Next is BLENDER_EEVEE_NEXT on 4.x and back to
+# plain BLENDER_EEVEE on 5.x; same engine either way, so try both before giving up.
+for _engine in ("BLENDER_EEVEE_NEXT", "BLENDER_EEVEE", "BLENDER_WORKBENCH"):
+    try:
+        s.render.engine = _engine
+        break
+    except Exception:
+        continue
 s.render.resolution_x, s.render.resolution_y = 1000, 700
 s.render.film_transparent = False
 s.render.filepath = OUT
