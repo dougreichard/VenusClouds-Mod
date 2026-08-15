@@ -101,7 +101,11 @@ def venus_declare_ships(ships_file):
     told_engine = None
     try:
         sbs = FrameContext.context.sbs
-        sbs.add_extra_ship_data("venus_ships", pack_dir)
+        # ONE argument, the whole file. The 2026-08-15 engine takes
+        # `add_extra_ship_data(fully_pathed_file)`; the old `(name, folder)` form is a
+        # TypeError, caught below as "failed:" and otherwise silent - the library merge
+        # still runs, so the hulls have every stat and simply do not exist in the engine.
+        sbs.add_extra_ship_data(ships_file)
         told_engine = True
     except AttributeError:
         # An older engine or sbslib without the call. Not fatal: the library merge below
