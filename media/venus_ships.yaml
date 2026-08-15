@@ -10,1510 +10,2180 @@
 # the engine at render, so until mod-carried art works these hulls borrow a
 # silhouette. `venus_art` records the art each one wants; the engine ignores it.
 # Rebuild with --venus-art to swap them over.
-'#ship-list':
-- key: venus_kdm_valiant
-  name: Valiant
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_Valiant
-  meshscale: 0.10013423115015
-  radarscale: 1.0
-  exclusionradius: 44.0
-  meshrotate: 0
-  long_desc: 'Valiant-class escort airship. The Kingdom''s workhorse: a single gas
-    envelope over an armored gondola, slow but nearly unsinkable.'
-  tubecount: 0
-  torpedostart:
-  - Homing: 0
-  - Nuke: 0
-  - EMP: 0
-  - Mine: 0
-  - PShock: 0
-  - Tag: 0
-  internalmapscale: 1.0
-  internalmapw: 9
-  internalmaph: 8
-  internalsymmetry: 1
-  turn_rate: 0.75
-  speed_coeff: 0.62
-  scan_strength_coeff: 1
-  ship_energy_cost: 0.8
-  warp_energy_cost: 0.8
-  jump_energy_cost: 2.0
-  roles: ship,warship,patrol,light,defender,airship
-  shields:
-  - 80
-  - 80
-  hullpoints: 8
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - -42.6733055114746
-      - 39.1680679321289
-      - 189.357040405273
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 342
-    - position:
-      - 42.6733055114746
-      - 39.1680679321289
-      - 189.357040405273
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 18
-    exhaust:
-    - position:
-      - -115.543487548828
-      - -0.351449012756348
-      - -50.7658843994141
-      color: blue
-    - position:
-      - 115.543487548828
-      - -0.351449012756348
-      - -50.7658843994141
-      color: blue
-    - position:
-      - -28.6708393096924
-      - 10.7746868133545
-      - -134.157424926758
-      color: blue
-    - position:
-      - 28.6708393096924
-      - 10.7746868133545
-      - -134.157424926758
-      color: blue
-  venus_art: VEN_Valiant
-- key: venus_kdm_vanguard
-  name: Golden Vanguard
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_GoldenVanguard
-  meshscale: 0.183785244822502
-  radarscale: 1.1
-  exclusionradius: 50.0
-  meshrotate: 0
-  long_desc: Golden Vanguard-class heavy cruiser. Twin envelopes, paddle-wheel drives
-    and a ceremonial deck the Kingdom will not give up.
-  tubecount: 2
-  torpedostart:
-  - Homing: 10
-  - Nuke: 3
-  - EMP: 6
-  - Mine: 8
-  - PShock: 4
-  - Tag: 3
-  internalmapscale: 1.0
-  internalmapw: 13
-  internalmaph: 17
-  internalsymmetry: 1
-  turn_rate: 0.42
-  speed_coeff: 0.55
-  scan_strength_coeff: 1
-  ship_energy_cost: 1.1
-  warp_energy_cost: 1.1
-  jump_energy_cost: 2.0
-  roles: ship,warship,patrol,heavy,leader,airship
-  shields:
-  - 120
-  - 120
-  hullpoints: 14
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 0.0
-      - 8.3303861618042
-      - 282.335235595703
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1.2
-      range: 1200
-      arcwidth: 160
-      barrel_angle: 0
-    - position:
-      - -111.876594543457
-      - 8.3303861618042
-      - 258.132202148438
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1.2
-      range: 1200
-      arcwidth: 160
-    - position:
-      - 111.876594543457
-      - 8.3303861618042
-      - 258.132202148438
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1.2
-      range: 1200
-      arcwidth: 160
-    exhaust:
-    - position:
-      - -86.904
-      - 17.905
-      - -242.103
-      color: blue
-    - position:
-      - 86.904
-      - 17.905
-      - -242.103
-      color: blue
-    - position:
-      - 0.0
-      - -9.19834327697754
-      - -277.295318603516
-      color: blue
-    - position:
-      - 0.0
-      - 29.5803546905518
-      - -277.295318603516
-      color: blue
-  venus_art: VEN_GoldenVanguard
-- key: venus_kdm_bulwark
-  name: Imperial Bulwark
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_ImperialBulwark
-  meshscale: 0.223782032728195
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  long_desc: Imperial Bulwark-class ironclad. A flying fortress of brasswork and gear
-    drives. It does not maneuver; it arrives.
-  tubecount: 2
-  torpedostart:
-  - Homing: 10
-  - Nuke: 3
-  - EMP: 6
-  - Mine: 6
-  - PShock: 5
-  - Tag: 2
-  internalmapscale: 1.0
-  internalmapw: 17
-  internalmaph: 15
-  internalsymmetry: 1
-  turn_rate: 0.24
-  speed_coeff: 0.4
-  scan_strength_coeff: 1
-  ship_energy_cost: 1.2
-  warp_energy_cost: 1.9
-  jump_energy_cost: 2.0
-  roles: ship,warship,heavy,leader,airship
-  shields:
-  - 200
-  - 160
-  hullpoints: 22
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 51.8250007629395
-      - 3.59899997711182
-      - 281.377014160156
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1.2
-      range: 1300
-      arcwidth: 144
-      barrel_angle: 12
-    - position:
-      - 121.365997314453
-      - 6.60300016403198
-      - 241.675003051758
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 24
-    - position:
-      - -51.8250007629395
-      - 3.59899997711182
-      - 281.377014160156
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1.2
-      range: 1300
-      arcwidth: 144
-      barrel_angle: 348
-    - position:
-      - -121.365997314453
-      - 6.60300016403198
-      - 241.675003051758
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 336
-    exhaust:
-    - position:
-      - 0.0
-      - 30.0
-      - -280.0
-      color: blue
-    - position:
-      - 0.0
-      - -9.0
-      - -280.0
-      color: blue
-    - position:
-      - 0.0
-      - 104.0
-      - -180.0
-      color: blue
-    - position:
-      - -116.827003479004
-      - -39.9519996643066
-      - -235.283996582031
-      color: blue
-    - position:
-      - 116.827003479004
-      - -39.9519996643066
-      - -235.283996582031
-      color: blue
-  venus_art: VEN_ImperialBulwark
-- key: venus_kdm_thunderbolt
-  name: Thunderbolt
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_Thunderbolt
-  meshscale: 0.0895302072167397
-  radarscale: 0.8
-  exclusionradius: 45.0
-  meshrotate: 0
-  long_desc: Thunderbolt-class rail-cannon gunboat. One enormous mortar bolted to
-    the smallest hull that can carry it.
-  tubecount: 0
-  torpedostart:
-  - Homing: 0
-  - Nuke: 0
-  - EMP: 0
-  - Mine: 0
-  - PShock: 0
-  - Tag: 0
-  internalmapscale: 1.0
-  internalmapw: 11
-  internalmaph: 8
-  internalsymmetry: 1
-  turn_rate: 0.8
-  speed_coeff: 0.7
-  scan_strength_coeff: 1
-  ship_energy_cost: 0.8
-  warp_energy_cost: 0.8
-  jump_energy_cost: 1.3
-  roles: ship,warship,support,patrol,light,airship
-  shields:
-  - 90
-  - 90
-  hullpoints: 7
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - -104.014854431152
-      - 8.50327014923096
-      - 263.489349365234
-      color: green
-      arccolor: '#090'
-      cycle_time: 4
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 342
-    - position:
-      - 104.014854431152
-      - 8.50327014923096
-      - 263.489349365234
-      color: green
-      arccolor: '#090'
-      cycle_time: 4
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 18
-    exhaust:
-    - position:
-      - -136.388381958008
-      - 25.4588928222656
-      - -140.421096801758
-      color: blue
-    - position:
-      - 136.388381958008
-      - 25.4588928222656
-      - -140.421096801758
-      color: blue
-    - position:
-      - 17.1012477874756
-      - 19.9353313446045
-      - -94.3822250366211
-      color: blue
-    - position:
-      - -27.49560546875
-      - 20.0106906890869
-      - -92.6703796386719
-      color: blue
-  venus_art: VEN_Thunderbolt
-- key: venus_kdm_mender
-  name: Mender
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_Mender
-  meshscale: 5.82530164718628
-  radarscale: 1.0
-  exclusionradius: 55.0
-  meshrotate: 0
-  shields:
-  - 90
-  - 90
-  hullpoints: 9
-  long_desc: Mender-class repair tender. Articulated cranes and a workshop deck; the
-    reason Kingdom hulls come home at all.
-  tubecount: 0
-  torpedostart:
-  - Homing: 0
-  - Nuke: 0
-  - EMP: 0
-  - Mine: 0
-  - PShock: 0
-  - Tag: 0
-  internalmapscale: 1.0
-  internalmapw: 20
-  internalmaph: 21
-  internalsymmetry: 1
-  turn_rate: 0.55
-  speed_coeff: 0.5
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 2.0
-  jump_energy_cost: 1
-  roles: ship,civilian,support,transport,airship
-  hull_port_sets:
-    exhaust:
-    - position:
-      - -1.931
-      - 1.702
-      - -9.889
-      color: purple
-    - position:
-      - 1.931
-      - 1.702
-      - -9.889
-      color: purple
-    - position:
-      - -4.566
-      - 1.793
-      - -9.114
-      color: purple
-    - position:
-      - 4.566
-      - 1.793
-      - -9.114
-      color: purple
-    - position:
-      - -7.138
-      - 1.812
-      - -8.379
-      color: purple
-    - position:
-      - 7.138
-      - 1.812
-      - -8.379
-      color: purple
-  venus_art: VEN_Mender
-- key: venus_kdm_goldharvest
-  name: Gold-Harvest
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_GoldHarvest
-  meshscale: 5.5595555305481
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  shields:
-  - 70
-  - 70
-  hullpoints: 10
-  long_desc: 'Gold-Harvest-class logistics vessel. Bulk lift for the sky cities: sulfur,
-    water ice and refined lifting gas.'
-  tubecount: 0
-  torpedostart:
-  - Homing: 0
-  - Nuke: 0
-  - EMP: 0
-  - Mine: 0
-  - PShock: 0
-  - Tag: 0
-  internalmapscale: 1.0
-  internalmapw: 20
-  internalmaph: 20
-  internalsymmetry: 1
-  turn_rate: 0.4
-  speed_coeff: 0.45
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 1
-  jump_energy_cost: 1
-  roles: ship,civilian,cargo,transport,airship
-  hull_port_sets:
-    exhaust:
-    - position:
-      - -2.99830627441406
-      - 0.11535706371069
-      - -7.56566381454468
-      color: yellow
-    - position:
-      - -2.04807686805725
-      - 0.11535706371069
-      - -8.03491306304932
-      color: yellow
-    - position:
-      - -1.2141820192337
-      - 0.11535706371069
-      - -8.72314548492432
-      color: yellow
-    - position:
-      - -0.328474342823029
-      - -1.07242977619171
-      - -10.4965152740479
-      color: yellow
-    - position:
-      - 2.99830627441406
-      - 0.11535706371069
-      - -7.56566381454468
-      color: yellow
-    - position:
-      - 2.04807686805725
-      - 0.11535706371069
-      - -8.03491306304932
-      color: yellow
-    - position:
-      - 1.2141820192337
-      - 0.11535706371069
-      - -8.72314548492432
-      color: yellow
-    - position:
-      - 0.328474342823029
-      - -1.07242977619171
-      - -10.4965152740479
-      color: yellow
-  venus_art: VEN_GoldHarvest
-- key: venus_kdm_skiff
-  name: Scout Skiff
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_ScoutSkiff
-  meshscale: 0.100000001490116
-  radarscale: 0.9
-  exclusionradius: 50.0
-  meshrotate: 0
-  long_desc: Single-rotor scout skiff. Fast, unarmored, and the only thing in the
-    Kingdom fleet that can climb out of a storm cell.
-  tubecount: 2
-  torpedostart:
-  - Homing: 6
-  - Nuke: 0
-  - EMP: 2
-  - Mine: 2
-  - PShock: 1
-  - Tag: 8
-  internalmapscale: 1.0
-  internalmapw: 12
-  internalmaph: 11
-  internalsymmetry: 1
-  turn_rate: 1.3
-  speed_coeff: 0.95
-  scan_strength_coeff: 2
-  ship_energy_cost: 0.7
-  warp_energy_cost: 0.7
-  jump_energy_cost: 2.0
-  roles: ship,scout,patrol,support,light,airship
-  shields:
-  - 80
-  - 80
-  hullpoints: 4
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 0.0
-      - 0.0
-      - 241.200012207031
-      color: green
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 160
-      barrel_angle: 0
-    exhaust:
-    - position:
-      - 55.0
-      - 16.386100769043
-      - -270.345001220703
-      color: blue
-    - position:
-      - -55.0
-      - 16.386100769043
-      - -270.345001220703
-      color: blue
-    - position:
-      - 0.0
-      - 33.386100769043
-      - -280.345001220703
-      color: blue
-    - position:
-      - 0.0
-      - -6.68325042724609
-      - -275.345001220703
-      color: blue
-  venus_art: VEN_ScoutSkiff
-- key: venus_kdm_citadel
-  name: Skyward Citadel
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_SkywardCitadel
-  meshscale: 14.5201349258423
-  radarscale: 1.0
-  internalmapscale: 1.0
-  internalmapw: 30
-  internalmaph: 30
-  internalsymmetry: 1
-  exclusionradius: 120.0
-  shields:
-  - 600
-  hullpoints: 200
-  roles: station,fortress,airship
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 0
-      - 4.277
-      - 0.033
-      color: red
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1100
-      arcwidth: 360
-      barrel_angle: 0
-  venus_art: VEN_SkywardCitadel
-  long_desc: 'Skyward Citadel. An aerial fortress on high-altitude buoyancy engines:
-    garrisons, cannon emplacements and a repair bay under the deck.'
-- key: venus_kdm_skydome
-  name: Observatory Sky-Dome
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_SkyDome
-  meshscale: 12.3993291854858
-  radarscale: 1.0
-  internalmapscale: 1.0
-  internalmapw: 30
-  internalmaph: 30
-  internalsymmetry: 1
-  exclusionradius: 120.0
-  shields:
-  - 200
-  hullpoints: 100
-  roles: station,science,airship
-  venus_art: VEN_SkyDome
-  long_desc: Observatory Sky-Dome. Celestial and atmospheric sensors above the murk
-    - the Kingdom's eyes, and its listening post.
-- key: venus_kdm_harvester
-  name: Harvester's Reach
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_HarvestersReach
-  meshscale: 10.0
-  radarscale: 1.0
-  internalmapscale: 1.0
-  internalmapw: 31
-  internalmaph: 31
-  internalsymmetry: 1
-  exclusionradius: 120.0
-  shields:
-  - 300
-  hullpoints: 200
-  roles: station,industry,airship
-  venus_art: VEN_HarvestersReach
-  long_desc: Harvester's Reach. Refinery modules and harvesting arms that strip lifting
-    gas straight out of the deck.
-- key: venus_kdm_berth
-  name: Mender's Berth
-  origin: Kingdom
-  side: Kingdom
-  artfileroot: VEN_MendersBerth
-  meshscale: 10.0
-  radarscale: 1.0
-  internalmapscale: 1.0
-  internalmapw: 41
-  internalmaph: 40
-  internalsymmetry: 1
-  exclusionradius: 120.0
-  shields:
-  - 300
-  hullpoints: 100
-  roles: station,civilian,airship
-  venus_art: VEN_MendersBerth
-  long_desc: 'Mender''s Berth. A fleet logistics platform: dry-dock cradles, workshops,
-    and the only hot meal for four hundred miles.'
-- key: venus_pir_blacksails
-  name: Black Sails
-  origin: Armada
-  side: Armada
-  artfileroot: VEN_BlackSails
-  meshscale: 0.0887114182114601
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  shields:
-  - 80
-  - 80
-  hullpoints: 5
-  long_desc: Black Sails-class raider escort. Patched envelope, oversized plasma engines,
-    and grappling gear where the armor should be.
-  tubecount: 0
-  torpedostart:
-  - Homing: 0
-  - Nuke: 0
-  - EMP: 0
-  - Mine: 0
-  - PShock: 0
-  - Tag: 0
-  internalmapscale: 1.0
-  internalmapw: 12
-  internalmaph: 14
-  internalsymmetry: 1
-  turn_rate: 1.25
-  speed_coeff: 1.15
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 1
-  jump_energy_cost: 1
-  roles: ship,warship,light,patrol,pirate,airship
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - -84.2798080444336
-      - -8.23482894897461
-      - 277.607360839844
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 342
-    - position:
-      - 84.2798080444336
-      - -8.23482894897461
-      - 277.607360839844
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 18
-    exhaust:
-    - position:
-      - -70.6253967285156
-      - 29.2247085571289
-      - -243.703277587891
-      color: purple
-    - position:
-      - 70.6253967285156
-      - 29.2247085571289
-      - -243.703277587891
-      color: purple
-  venus_art: VEN_BlackSails
-- key: venus_pir_bloodhawk
-  name: Blood Hawk
-  origin: Armada
-  side: Armada
-  artfileroot: VEN_BloodHawk
-  meshscale: 0.14738255739212
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  long_desc: Blood Hawk-class heavy raider. High-output plasma engines and a dreadnought
-    ram - it closes fast and it does not turn away.
-  tubecount: 0
-  torpedostart:
-  - Homing: 0
-  - Nuke: 0
-  - EMP: 0
-  - Mine: 0
-  - PShock: 0
-  - Tag: 0
-  internalmapscale: 1.0
-  internalmapw: 13
-  internalmaph: 14
-  internalsymmetry: 1
-  turn_rate: 0.95
-  speed_coeff: 1.3
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 1
-  jump_energy_cost: 1
-  roles: ship,warship,heavy,leader,pirate,airship
-  shields:
-  - 300
-  - 150
-  hullpoints: 11
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 39.2598724365234
-      - 0.0
-      - 217.586898803711
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1200
-      arcwidth: 108
-      barrel_angle: 20
-    - position:
-      - -39.2598724365234
-      - 0.0
-      - 217.586898803711
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1200
-      arcwidth: 108
-      barrel_angle: 340
-    - position:
-      - 22.5119361877441
-      - -35.6124877929688
-      - -112.150894165039
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1200
-      arcwidth: 144
-      barrel_angle: 150
-    - position:
-      - -22.5119361877441
-      - -35.6124877929688
-      - -112.150894165039
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1200
-      arcwidth: 144
-      barrel_angle: 210
-    exhaust:
-    - position:
-      - -95.4049377441406
-      - 8.28743267059326
-      - -82.9946823120117
-      color: orange
-    - position:
-      - -21.2387847900391
-      - 7.26791572570801
-      - -209.689376831055
-      color: orange
-    - position:
-      - 95.4049377441406
-      - 8.28743267059326
-      - -82.9946823120117
-      color: orange
-    - position:
-      - 21.2387847900391
-      - 7.26791572570801
-      - -209.689376831055
-      color: orange
-  venus_art: VEN_BloodHawk
-- key: venus_pir_nighthawk
-  name: Nighthawk
-  origin: Armada
-  side: Armada
-  artfileroot: VEN_Nighthawk
-  meshscale: 0.0900000035762787
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  long_desc: Nighthawk-class stealth raider. Camouflage panels and a quiet drive;
-    in this murk you hear it before the scope finds it.
-  tubecount: 0
-  torpedostart:
-  - Homing: 0
-  - Nuke: 0
-  - EMP: 0
-  - Mine: 0
-  - PShock: 0
-  - Tag: 0
-  internalmapscale: 1.0
-  internalmapw: 17
-  internalmaph: 17
-  internalsymmetry: 1
-  turn_rate: 1.05
-  speed_coeff: 1.2
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 1
-  jump_energy_cost: 1
-  roles: ship,warship,medium,loner,pirate,airship
-  shields:
-  - 250
-  - 100
-  hullpoints: 7
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 37.9396743774414
-      - -15.8503198623657
-      - 274.560089111328
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 3
-      range: 1200
-      arcwidth: 108
-      barrel_angle: 40
-    - position:
-      - -37.9396743774414
-      - -15.8503198623657
-      - 274.560089111328
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 3
-      range: 1200
-      arcwidth: 108
-      barrel_angle: 320
-    exhaust:
-    - position:
-      - -113.822891235352
-      - -18.32741355896
-      - -221.858169555664
-      color: orange
-    - position:
-      - 113.822891235352
-      - -18.32741355896
-      - -221.858169555664
-      color: orange
-    - position:
-      - 0.0
-      - -17.362813949585
-      - -197.7431640625
-      color: orange
-  venus_art: VEN_Nighthawk
-- key: venus_pir_blacktide
-  name: Black-Tide
-  origin: Armada
-  side: Armada
-  artfileroot: VEN_BlackTide
-  meshscale: 8.34446334838867
-  radarscale: 1.2
-  exclusionradius: 50.0
-  meshrotate: 0
-  long_desc: Black-Tide-class dreadnought. A stolen Kingdom keel grown over with salvage
-    plating, a ramming prow, and a hangar full of skiffs.
-  tubecount: 0
-  torpedostart:
-  - Homing: 0
-  - Nuke: 0
-  - EMP: 0
-  - Mine: 0
-  - PShock: 0
-  - Tag: 0
-  roles: ship,warship,heavy,leader,carrier,pirate,airship
-  internalmapscale: 1.0
-  internalmapw: 15
-  internalmaph: 24
-  internalsymmetry: 1
-  turn_rate: 0.35
-  speed_coeff: 0.85
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 1
-  jump_energy_cost: 1
-  drone_launch_timer: 20
-  shields:
-  - 600
-  - 600
-  hullpoints: 20
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - -3.06892991065979
-      - 0.0
-      - 12.8686723709106
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-    - position:
-      - -4.29089260101318
-      - 0.0
-      - 8.10301685333252
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-    - position:
-      - -3.32834672927856
-      - 0.0
-      - 1.11579239368439
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-    - position:
-      - -2.51504015922546
-      - 0.0
-      - -7.50605773925781
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-    - position:
-      - -1.88402664661407
-      - 0.0
-      - -9.64849948883057
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-    - position:
-      - 3.06892991065979
-      - 0.0
-      - 12.8686723709106
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-    - position:
-      - 4.09958553314209
-      - 0.0
-      - 9.47421932220459
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-    - position:
-      - 3.32834672927856
-      - 0.0
-      - 1.11579239368439
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 270
-    - position:
-      - 4.29089260101318
-      - 0.0
-      - 8.10301685333252
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 234
-    - position:
-      - 1.88402664661407
-      - 0.0
-      - -9.64849948883057
-      color: red
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 198
-    exhaust:
-    - position:
-      - 2.24660897254944
-      - 0.756214737892151
-      - -9.86985492706299
-      color: orange
-    - position:
-      - 1.83094108104706
-      - 1.36819791793823
-      - -9.45919609069824
-      color: orange
-    - position:
-      - -2.24660897254944
-      - 0.756214737892151
-      - -9.86985492706299
-      color: orange
-    - position:
-      - -1.83094108104706
-      - 1.36819791793823
-      - -9.45919609069824
-      color: orange
-  venus_art: VEN_BlackTide
-- key: venus_pir_scrapking
-  name: Scrap King
-  origin: Armada
-  side: Armada
-  artfileroot: VEN_ScrapKing
-  meshscale: 0.059763390570879
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  shields:
-  - 100
-  - 100
-  hullpoints: 13
-  long_desc: 'Scrap King-class armored logistics hull. Recovery cranes and an internal
-    smelter: what it kills, it eats.'
-  tubecount: 2
-  torpedostart:
-  - Homing: 12
-  - Nuke: 0
-  - EMP: 12
-  - Mine: 4
-  - PShock: 8
-  - Tag: 2
-  baycount: 6
-  internalmapscale: 1.0
-  internalmapw: 12
-  internalmaph: 12
-  internalsymmetry: 1
-  turn_rate: 0.5
-  speed_coeff: 0.75
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 1.5
-  jump_energy_cost: 2.2
-  roles: ship,pirate,carrier,cargo,airship
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 27.2436256408691
-      - 88.7021255493164
-      - 82.4280090332031
-      color: yellow
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 12
-    - position:
-      - -27.2436256408691
-      - 88.7021255493164
-      - 82.4280090332031
-      color: yellow
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 348
-    - position:
-      - 0.0
-      - 109.569381713867
-      - -629.429077148438
-      color: yellow
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 180
-    exhaust:
-    - position:
-      - -248.325
-      - -3.335
-      - -570.747
-      color: purple
-    - position:
-      - 248.325
-      - -3.335
-      - -570.747
-      color: purple
-    - position:
-      - -190.0
-      - -3.335
-      - -570.747
-      color: purple
-    - position:
-      - 190.0
-      - -3.335
-      - -570.747
-      color: purple
-    - position:
-      - -99.4990005493164
-      - 32.8330001831055
-      - -624.247985839844
-      color: purple
-    - position:
-      - 99.4990005493164
-      - 32.8330001831055
-      - -624.247985839844
-      color: purple
-    - position:
-      - 0.0
-      - 54.0
-      - -580.0
-      color: purple
-    - position:
-      - 0.0
-      - -16.0
-      - -580.0
-      color: purple
-  venus_art: VEN_ScrapKing
-- key: venus_pir_scavenger
-  name: Scavenger
-  origin: Armada
-  side: Armada
-  artfileroot: VEN_Scavenger
-  meshscale: 0.0656711384654045
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  shields:
-  - 80
-  - 80
-  hullpoints: 4
-  long_desc: Scavenger-class trolley raider. Barely a hull - an engine, a claw, and
-    someone willing to fly it.
-  tubecount: 1
-  torpedostart:
-  - Homing: 8
-  - Nuke: 0
-  - EMP: 2
-  - Mine: 1
-  - PShock: 1
-  - Tag: 2
-  internalmapscale: 1.0
-  internalmapw: 15
-  internalmaph: 15
-  internalsymmetry: 1
-  turn_rate: 1.4
-  speed_coeff: 1.35
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 0.9
-  jump_energy_cost: 1.4
-  roles: ship,scout,pirate,light,airship
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 0.0
-      - -25.0344066619873
-      - 270.154418945312
-      color: yellow
-      arccolor: '#500'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 144
-      barrel_angle: 0
-    exhaust:
-    - position:
-      - -50.2840347290039
-      - -26.6387996673584
-      - -233.061477661133
-      color: purple
-    - position:
-      - 50.2840347290039
-      - -26.6387996673584
-      - -233.061477661133
-      color: purple
-    - position:
-      - -50.2840347290039
-      - -60.6387996673584
-      - -233.061477661133
-      color: purple
-    - position:
-      - 50.2840347290039
-      - -60.6387996673584
-      - -233.061477661133
-      color: purple
-  venus_art: VEN_Scavenger
-- key: venus_pir_hub
-  name: Armada Hub
-  origin: Armada
-  side: Armada
-  artfileroot: VEN_ArmadaHub
-  meshscale: 10.0
-  radarscale: 1.0
-  internalmapscale: 1.0
-  internalmapw: 30
-  internalmaph: 30
-  internalsymmetry: 1
-  exclusionradius: 120.0
-  shields:
-  - 500
-  hullpoints: 100
-  roles: station,fortress,pirate,airship
-  hull_port_sets:
-    beam Primary Beams:
-    - position:
-      - 0.0
-      - 7.476
-      - 0.0
-      color: red
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 360
-      barrel_angle: 0
-    - position:
-      - 0.0
-      - -5.476
-      - 0.0
-      color: red
-      arccolor: '#090'
-      cycle_time: 6
-      damage_coeff: 1
-      range: 1000
-      arcwidth: 360
-      barrel_angle: 0
-  venus_art: VEN_ArmadaHub
-  long_desc: An Armada hub. Plasma turrets on a captured platform, and a market below
-    decks that will buy anything with the numbers filed off.
-- key: venus_brd_swarmer
-  name: Swarmer
-  origin: Brood
-  side: Brood
-  artfileroot: VEN_BroodSwarmer
-  meshscale: 2.96728181838989
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  shields:
-  - 200
-  - 200
-  hullpoints: 4
-  long_desc: It does not hail, it does not surrender, and nothing aboard it is machinery.
-    It comes up when the deck is disturbed.
-  internalmapscale: 1.0
-  internalmapw: 20
-  internalmaph: 20
-  internalsymmetry: 1
-  turn_rate: 1.45
-  speed_coeff: 1.05
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 1
-  jump_energy_cost: 1
-  roles: ship,brood,light,airship
-  hull_portsets:
-  - type: beam
-    uiname: Primary Beams
-    position:
-    - - -8.61
-      - 7.1375
-      - 19.8675
-    - - 8.61
-      - 7.1375
-      - 19.8675
-    beamcolor:
-    - red
-    - red
-    arccolor:
-    - red
-    - red
-    damage: 12.0
-    cycletime: 1
-    range: 1000
-  - type: engine
-    exhaust:
-    - - -3.08
-      - 3.381
-      - -7.546
-      - purple
-    - - -2.098
-      - 3.406
-      - -8.026
-      - purple
-    - - -1.244
-      - 3.4
-      - -8.731
-      - purple
-    - - -0.397
-      - 2.136
-      - -10.544
-      - purple
-    - - 3.08
-      - 3.381
-      - -7.546
-      - purple
-    - - 2.098
-      - 3.406
-      - -8.026
-      - purple
-    - - 1.244
-      - 3.4
-      - -8.731
-      - purple
-    - - 0.397
-      - 2.136
-      - -10.544
-      - purple
-  venus_art: VEN_BroodSwarmer
-  hull_port_sets: &id001
-    beam Primary Beams:
-    - position:
-      - 0.0
-      - 0.0
-      - 120.0
-      color: '#7c3'
-      arccolor: '#250'
-      cycle_time: 12
-      damage_coeff: 1.6
-      range: 900
-      arcwidth: 90
-      barrel_angle: 0
-    - position:
-      - -30.0
-      - 0.0
-      - 80.0
-      color: '#7c3'
-      arccolor: '#250'
-      cycle_time: 16
-      damage_coeff: 1.2
-      range: 800
-      arcwidth: 80
-      barrel_angle: 0
-    - position:
-      - 30.0
-      - 0.0
-      - 80.0
-      color: '#7c3'
-      arccolor: '#250'
-      cycle_time: 16
-      damage_coeff: 1.2
-      range: 800
-      arcwidth: 80
-      barrel_angle: 0
-- key: venus_brd_render
-  name: Render
-  origin: Brood
-  side: Brood
-  artfileroot: VEN_BroodRender
-  meshscale: 2.5
-  radarscale: 1.0
-  exclusionradius: 50.0
-  meshrotate: 0
-  shields:
-  - 200
-  - 200
-  hullpoints: 9
-  long_desc: Larger, older, and slower to break off. The Armada has a word for these
-    and it is not a word for an animal.
-  internalmapscale: 1.0
-  internalmapw: 20
-  internalmaph: 20
-  internalsymmetry: 1
-  turn_rate: 1.1
-  speed_coeff: 0.95
-  scan_strength_coeff: 1
-  ship_energy_cost: 1
-  warp_energy_cost: 1
-  jump_energy_cost: 1
-  roles: ship,brood,medium,leader,airship
-  hull_portsets:
-  - type: beam
-    uiname: Primary Beams
-    position:
-    - - -8.61
-      - 7.1375
-      - 19.8675
-    - - 8.61
-      - 7.1375
-      - 19.8675
-    beamcolor:
-    - red
-    - red
-    arccolor:
-    - red
-    - red
-    damage: 12.0
-    cycletime: 1
-    range: 1000
-  - type: engine
-    exhaust:
-    - - -3.08
-      - 3.381
-      - -7.546
-      - purple
-    - - -2.098
-      - 3.406
-      - -8.026
-      - purple
-    - - -1.244
-      - 3.4
-      - -8.731
-      - purple
-    - - -0.397
-      - 2.136
-      - -10.544
-      - purple
-    - - 3.08
-      - 3.381
-      - -7.546
-      - purple
-    - - 2.098
-      - 3.406
-      - -8.026
-      - purple
-    - - 1.244
-      - 3.4
-      - -8.731
-      - purple
-    - - 0.397
-      - 2.136
-      - -10.544
-      - purple
-  venus_art: VEN_BroodRender
-  hull_port_sets: *id001
-- key: venus_civ_skycity
-  name: Free City
-  origin: Guild
-  side: Guild
-  artfileroot: VEN_SkyCity
-  meshscale: 10.0
-  radarscale: 1.0
-  internalmapscale: 1.0
-  internalmapw: 41
-  internalmaph: 40
-  internalsymmetry: 1
-  exclusionradius: 120.0
-  shields:
-  - 300
-  hullpoints: 100
-  roles: station,civilian,neutral,airship
-  venus_art: VEN_SkyCity
-  long_desc: 'A free-floating sky city. Neutral by treaty and by necessity: it sells
-    lifting gas to whoever lands, and it has outlived three kingdoms.'
+#
+# HJSON, NOT BLOCK YAML - and that is not a style preference.
+# The engine parses extra ship data as HJSON (data/shipData.yaml says so in its own
+# header). HJSON has no block sequences and no whitespace in a key, so a valid
+# block-YAML file is REJECTED WHOLE, with a RuntimeError naming the line. Measured on
+# engine 1.3.6: every hull in this file was absent from the engine, and nothing said
+# so, because the add-on also merges library-side - so the mod's own test range, every
+# headless run and every ship-name lookup passed regardless.
+# The .yaml EXTENSION is fine and is the engine's own convention: data/shipData.yaml
+# is HJSON too. It is the CONTENT that has to be brace-style.
+{
+  "#ship-list": [
+    {
+      "key": "venus_kdm_valiant",
+      "name": "Valiant",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_Valiant",
+      "meshscale": 0.10013423115015,
+      "radarscale": 1.0,
+      "exclusionradius": 44.0,
+      "meshrotate": 0,
+      "long_desc": "Valiant-class escort airship. The Kingdom's workhorse: a single gas envelope over an armored gondola, slow but nearly unsinkable.",
+      "tubecount": 0,
+      "torpedostart": [
+        {
+          "Homing": 0
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 0
+        },
+        {
+          "Mine": 0
+        },
+        {
+          "PShock": 0
+        },
+        {
+          "Tag": 0
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 9,
+      "internalmaph": 8,
+      "internalsymmetry": 1,
+      "turn_rate": 0.75,
+      "speed_coeff": 0.62,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 0.8,
+      "warp_energy_cost": 0.8,
+      "jump_energy_cost": 2.0,
+      "roles": "ship,warship,patrol,light,defender,airship",
+      "shields": [
+        80,
+        80
+      ],
+      "hullpoints": 8,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              -42.6733055114746,
+              39.1680679321289,
+              189.357040405273
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 342
+          },
+          {
+            "position": [
+              42.6733055114746,
+              39.1680679321289,
+              189.357040405273
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 18
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              -115.543487548828,
+              -0.351449012756348,
+              -50.7658843994141
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              115.543487548828,
+              -0.351449012756348,
+              -50.7658843994141
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              -28.6708393096924,
+              10.7746868133545,
+              -134.157424926758
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              28.6708393096924,
+              10.7746868133545,
+              -134.157424926758
+            ],
+            "color": "blue"
+          }
+        ]
+      },
+      "venus_art": "VEN_Valiant"
+    },
+    {
+      "key": "venus_kdm_vanguard",
+      "name": "Golden Vanguard",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_GoldenVanguard",
+      "meshscale": 0.183785244822502,
+      "radarscale": 1.1,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "long_desc": "Golden Vanguard-class heavy cruiser. Twin envelopes, paddle-wheel drives and a ceremonial deck the Kingdom will not give up.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 10
+        },
+        {
+          "Nuke": 3
+        },
+        {
+          "EMP": 6
+        },
+        {
+          "Mine": 8
+        },
+        {
+          "PShock": 4
+        },
+        {
+          "Tag": 3
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 13,
+      "internalmaph": 17,
+      "internalsymmetry": 1,
+      "turn_rate": 0.42,
+      "speed_coeff": 0.55,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1.1,
+      "warp_energy_cost": 1.1,
+      "jump_energy_cost": 2.0,
+      "roles": "ship,warship,patrol,heavy,leader,airship",
+      "shields": [
+        120,
+        120
+      ],
+      "hullpoints": 14,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0.0,
+              8.3303861618042,
+              282.335235595703
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1.2,
+            "range": 1200,
+            "arcwidth": 160,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -111.876594543457,
+              8.3303861618042,
+              258.132202148438
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1.2,
+            "range": 1200,
+            "arcwidth": 160
+          },
+          {
+            "position": [
+              111.876594543457,
+              8.3303861618042,
+              258.132202148438
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1.2,
+            "range": 1200,
+            "arcwidth": 160
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              -86.904,
+              17.905,
+              -242.103
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              86.904,
+              17.905,
+              -242.103
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              0.0,
+              -9.19834327697754,
+              -277.295318603516
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              0.0,
+              29.5803546905518,
+              -277.295318603516
+            ],
+            "color": "blue"
+          }
+        ]
+      },
+      "venus_art": "VEN_GoldenVanguard"
+    },
+    {
+      "key": "venus_kdm_bulwark",
+      "name": "Imperial Bulwark",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_ImperialBulwark",
+      "meshscale": 0.223782032728195,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "long_desc": "Imperial Bulwark-class ironclad. A flying fortress of brasswork and gear drives. It does not maneuver; it arrives.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 10
+        },
+        {
+          "Nuke": 3
+        },
+        {
+          "EMP": 6
+        },
+        {
+          "Mine": 6
+        },
+        {
+          "PShock": 5
+        },
+        {
+          "Tag": 2
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 17,
+      "internalmaph": 15,
+      "internalsymmetry": 1,
+      "turn_rate": 0.24,
+      "speed_coeff": 0.4,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1.2,
+      "warp_energy_cost": 1.9,
+      "jump_energy_cost": 2.0,
+      "roles": "ship,warship,heavy,leader,airship",
+      "shields": [
+        200,
+        160
+      ],
+      "hullpoints": 22,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              51.8250007629395,
+              3.59899997711182,
+              281.377014160156
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1.2,
+            "range": 1300,
+            "arcwidth": 144,
+            "barrel_angle": 12
+          },
+          {
+            "position": [
+              121.365997314453,
+              6.60300016403198,
+              241.675003051758
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 24
+          },
+          {
+            "position": [
+              -51.8250007629395,
+              3.59899997711182,
+              281.377014160156
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1.2,
+            "range": 1300,
+            "arcwidth": 144,
+            "barrel_angle": 348
+          },
+          {
+            "position": [
+              -121.365997314453,
+              6.60300016403198,
+              241.675003051758
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 336
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              0.0,
+              30.0,
+              -280.0
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              0.0,
+              -9.0,
+              -280.0
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              0.0,
+              104.0,
+              -180.0
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              -116.827003479004,
+              -39.9519996643066,
+              -235.283996582031
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              116.827003479004,
+              -39.9519996643066,
+              -235.283996582031
+            ],
+            "color": "blue"
+          }
+        ]
+      },
+      "venus_art": "VEN_ImperialBulwark"
+    },
+    {
+      "key": "venus_kdm_thunderbolt",
+      "name": "Thunderbolt",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_Thunderbolt",
+      "meshscale": 0.0895302072167397,
+      "radarscale": 0.8,
+      "exclusionradius": 45.0,
+      "meshrotate": 0,
+      "long_desc": "Thunderbolt-class rail-cannon gunboat. One enormous mortar bolted to the smallest hull that can carry it.",
+      "tubecount": 0,
+      "torpedostart": [
+        {
+          "Homing": 0
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 0
+        },
+        {
+          "Mine": 0
+        },
+        {
+          "PShock": 0
+        },
+        {
+          "Tag": 0
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 11,
+      "internalmaph": 8,
+      "internalsymmetry": 1,
+      "turn_rate": 0.8,
+      "speed_coeff": 0.7,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 0.8,
+      "warp_energy_cost": 0.8,
+      "jump_energy_cost": 1.3,
+      "roles": "ship,warship,support,patrol,light,airship",
+      "shields": [
+        90,
+        90
+      ],
+      "hullpoints": 7,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              -104.014854431152,
+              8.50327014923096,
+              263.489349365234
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 4,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 342
+          },
+          {
+            "position": [
+              104.014854431152,
+              8.50327014923096,
+              263.489349365234
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 4,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 18
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              -136.388381958008,
+              25.4588928222656,
+              -140.421096801758
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              136.388381958008,
+              25.4588928222656,
+              -140.421096801758
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              17.1012477874756,
+              19.9353313446045,
+              -94.3822250366211
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              -27.49560546875,
+              20.0106906890869,
+              -92.6703796386719
+            ],
+            "color": "blue"
+          }
+        ]
+      },
+      "venus_art": "VEN_Thunderbolt"
+    },
+    {
+      "key": "venus_kdm_mender",
+      "name": "Mender",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_Mender",
+      "meshscale": 5.82530164718628,
+      "radarscale": 1.0,
+      "exclusionradius": 55.0,
+      "meshrotate": 0,
+      "shields": [
+        90,
+        90
+      ],
+      "hullpoints": 9,
+      "long_desc": "Mender-class repair tender. Articulated cranes and a workshop deck; the reason Kingdom hulls come home at all.",
+      "tubecount": 0,
+      "torpedostart": [
+        {
+          "Homing": 0
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 0
+        },
+        {
+          "Mine": 0
+        },
+        {
+          "PShock": 0
+        },
+        {
+          "Tag": 0
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 20,
+      "internalmaph": 21,
+      "internalsymmetry": 1,
+      "turn_rate": 0.55,
+      "speed_coeff": 0.5,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 2.0,
+      "jump_energy_cost": 1,
+      "roles": "ship,civilian,support,transport,airship",
+      "hull_port_sets": {
+        "exhaust": [
+          {
+            "position": [
+              -1.931,
+              1.702,
+              -9.889
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              1.931,
+              1.702,
+              -9.889
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              -4.566,
+              1.793,
+              -9.114
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              4.566,
+              1.793,
+              -9.114
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              -7.138,
+              1.812,
+              -8.379
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              7.138,
+              1.812,
+              -8.379
+            ],
+            "color": "purple"
+          }
+        ]
+      },
+      "venus_art": "VEN_Mender"
+    },
+    {
+      "key": "venus_kdm_goldharvest",
+      "name": "Gold-Harvest",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_GoldHarvest",
+      "meshscale": 5.5595555305481,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "shields": [
+        70,
+        70
+      ],
+      "hullpoints": 10,
+      "long_desc": "Gold-Harvest-class logistics vessel. Bulk lift for the sky cities: sulfur, water ice and refined lifting gas.",
+      "tubecount": 0,
+      "torpedostart": [
+        {
+          "Homing": 0
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 0
+        },
+        {
+          "Mine": 0
+        },
+        {
+          "PShock": 0
+        },
+        {
+          "Tag": 0
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 20,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.4,
+      "speed_coeff": 0.45,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 1,
+      "roles": "ship,civilian,cargo,transport,airship",
+      "hull_port_sets": {
+        "exhaust": [
+          {
+            "position": [
+              -2.99830627441406,
+              0.11535706371069,
+              -7.56566381454468
+            ],
+            "color": "yellow"
+          },
+          {
+            "position": [
+              -2.04807686805725,
+              0.11535706371069,
+              -8.03491306304932
+            ],
+            "color": "yellow"
+          },
+          {
+            "position": [
+              -1.2141820192337,
+              0.11535706371069,
+              -8.72314548492432
+            ],
+            "color": "yellow"
+          },
+          {
+            "position": [
+              -0.328474342823029,
+              -1.07242977619171,
+              -10.4965152740479
+            ],
+            "color": "yellow"
+          },
+          {
+            "position": [
+              2.99830627441406,
+              0.11535706371069,
+              -7.56566381454468
+            ],
+            "color": "yellow"
+          },
+          {
+            "position": [
+              2.04807686805725,
+              0.11535706371069,
+              -8.03491306304932
+            ],
+            "color": "yellow"
+          },
+          {
+            "position": [
+              1.2141820192337,
+              0.11535706371069,
+              -8.72314548492432
+            ],
+            "color": "yellow"
+          },
+          {
+            "position": [
+              0.328474342823029,
+              -1.07242977619171,
+              -10.4965152740479
+            ],
+            "color": "yellow"
+          }
+        ]
+      },
+      "venus_art": "VEN_GoldHarvest"
+    },
+    {
+      "key": "venus_kdm_skiff",
+      "name": "Scout Skiff",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_ScoutSkiff",
+      "meshscale": 0.100000001490116,
+      "radarscale": 0.9,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "long_desc": "Single-rotor scout skiff. Fast, unarmored, and the only thing in the Kingdom fleet that can climb out of a storm cell.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 6
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 2
+        },
+        {
+          "Mine": 2
+        },
+        {
+          "PShock": 1
+        },
+        {
+          "Tag": 8
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 11,
+      "internalsymmetry": 1,
+      "turn_rate": 1.3,
+      "speed_coeff": 0.95,
+      "scan_strength_coeff": 2,
+      "ship_energy_cost": 0.7,
+      "warp_energy_cost": 0.7,
+      "jump_energy_cost": 2.0,
+      "roles": "ship,scout,patrol,support,light,airship",
+      "shields": [
+        80,
+        80
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0.0,
+              0.0,
+              241.200012207031
+            ],
+            "color": "green",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 160,
+            "barrel_angle": 0
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              55.0,
+              16.386100769043,
+              -270.345001220703
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              -55.0,
+              16.386100769043,
+              -270.345001220703
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              0.0,
+              33.386100769043,
+              -280.345001220703
+            ],
+            "color": "blue"
+          },
+          {
+            "position": [
+              0.0,
+              -6.68325042724609,
+              -275.345001220703
+            ],
+            "color": "blue"
+          }
+        ]
+      },
+      "venus_art": "VEN_ScoutSkiff"
+    },
+    {
+      "key": "venus_kdm_citadel",
+      "name": "Skyward Citadel",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_SkywardCitadel",
+      "meshscale": 14.5201349258423,
+      "radarscale": 1.0,
+      "internalmapscale": 1.0,
+      "internalmapw": 30,
+      "internalmaph": 30,
+      "internalsymmetry": 1,
+      "exclusionradius": 120.0,
+      "shields": [
+        600
+      ],
+      "hullpoints": 200,
+      "roles": "station,fortress,airship",
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              4.277,
+              0.033
+            ],
+            "color": "red",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1100,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "venus_art": "VEN_SkywardCitadel",
+      "long_desc": "Skyward Citadel. An aerial fortress on high-altitude buoyancy engines: garrisons, cannon emplacements and a repair bay under the deck."
+    },
+    {
+      "key": "venus_kdm_skydome",
+      "name": "Observatory Sky-Dome",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_SkyDome",
+      "meshscale": 12.3993291854858,
+      "radarscale": 1.0,
+      "internalmapscale": 1.0,
+      "internalmapw": 30,
+      "internalmaph": 30,
+      "internalsymmetry": 1,
+      "exclusionradius": 120.0,
+      "shields": [
+        200
+      ],
+      "hullpoints": 100,
+      "roles": "station,science,airship",
+      "venus_art": "VEN_SkyDome",
+      "long_desc": "Observatory Sky-Dome. Celestial and atmospheric sensors above the murk - the Kingdom's eyes, and its listening post."
+    },
+    {
+      "key": "venus_kdm_harvester",
+      "name": "Harvester's Reach",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_HarvestersReach",
+      "meshscale": 10.0,
+      "radarscale": 1.0,
+      "internalmapscale": 1.0,
+      "internalmapw": 31,
+      "internalmaph": 31,
+      "internalsymmetry": 1,
+      "exclusionradius": 120.0,
+      "shields": [
+        300
+      ],
+      "hullpoints": 200,
+      "roles": "station,industry,airship",
+      "venus_art": "VEN_HarvestersReach",
+      "long_desc": "Harvester's Reach. Refinery modules and harvesting arms that strip lifting gas straight out of the deck."
+    },
+    {
+      "key": "venus_kdm_berth",
+      "name": "Mender's Berth",
+      "origin": "Kingdom",
+      "side": "Kingdom",
+      "artfileroot": "VEN_MendersBerth",
+      "meshscale": 10.0,
+      "radarscale": 1.0,
+      "internalmapscale": 1.0,
+      "internalmapw": 41,
+      "internalmaph": 40,
+      "internalsymmetry": 1,
+      "exclusionradius": 120.0,
+      "shields": [
+        300
+      ],
+      "hullpoints": 100,
+      "roles": "station,civilian,airship",
+      "venus_art": "VEN_MendersBerth",
+      "long_desc": "Mender's Berth. A fleet logistics platform: dry-dock cradles, workshops, and the only hot meal for four hundred miles."
+    },
+    {
+      "key": "venus_pir_blacksails",
+      "name": "Black Sails",
+      "origin": "Armada",
+      "side": "Armada",
+      "artfileroot": "VEN_BlackSails",
+      "meshscale": 0.0887114182114601,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "shields": [
+        80,
+        80
+      ],
+      "hullpoints": 5,
+      "long_desc": "Black Sails-class raider escort. Patched envelope, oversized plasma engines, and grappling gear where the armor should be.",
+      "tubecount": 0,
+      "torpedostart": [
+        {
+          "Homing": 0
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 0
+        },
+        {
+          "Mine": 0
+        },
+        {
+          "PShock": 0
+        },
+        {
+          "Tag": 0
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 14,
+      "internalsymmetry": 1,
+      "turn_rate": 1.25,
+      "speed_coeff": 1.15,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 1,
+      "roles": "ship,warship,light,patrol,pirate,airship",
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              -84.2798080444336,
+              -8.23482894897461,
+              277.607360839844
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 342
+          },
+          {
+            "position": [
+              84.2798080444336,
+              -8.23482894897461,
+              277.607360839844
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 18
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              -70.6253967285156,
+              29.2247085571289,
+              -243.703277587891
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              70.6253967285156,
+              29.2247085571289,
+              -243.703277587891
+            ],
+            "color": "purple"
+          }
+        ]
+      },
+      "venus_art": "VEN_BlackSails"
+    },
+    {
+      "key": "venus_pir_bloodhawk",
+      "name": "Blood Hawk",
+      "origin": "Armada",
+      "side": "Armada",
+      "artfileroot": "VEN_BloodHawk",
+      "meshscale": 0.14738255739212,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "long_desc": "Blood Hawk-class heavy raider. High-output plasma engines and a dreadnought ram - it closes fast and it does not turn away.",
+      "tubecount": 0,
+      "torpedostart": [
+        {
+          "Homing": 0
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 0
+        },
+        {
+          "Mine": 0
+        },
+        {
+          "PShock": 0
+        },
+        {
+          "Tag": 0
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 13,
+      "internalmaph": 14,
+      "internalsymmetry": 1,
+      "turn_rate": 0.95,
+      "speed_coeff": 1.3,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 1,
+      "roles": "ship,warship,heavy,leader,pirate,airship",
+      "shields": [
+        300,
+        150
+      ],
+      "hullpoints": 11,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              39.2598724365234,
+              0.0,
+              217.586898803711
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1200,
+            "arcwidth": 108,
+            "barrel_angle": 20
+          },
+          {
+            "position": [
+              -39.2598724365234,
+              0.0,
+              217.586898803711
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1200,
+            "arcwidth": 108,
+            "barrel_angle": 340
+          },
+          {
+            "position": [
+              22.5119361877441,
+              -35.6124877929688,
+              -112.150894165039
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1200,
+            "arcwidth": 144,
+            "barrel_angle": 150
+          },
+          {
+            "position": [
+              -22.5119361877441,
+              -35.6124877929688,
+              -112.150894165039
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1200,
+            "arcwidth": 144,
+            "barrel_angle": 210
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              -95.4049377441406,
+              8.28743267059326,
+              -82.9946823120117
+            ],
+            "color": "orange"
+          },
+          {
+            "position": [
+              -21.2387847900391,
+              7.26791572570801,
+              -209.689376831055
+            ],
+            "color": "orange"
+          },
+          {
+            "position": [
+              95.4049377441406,
+              8.28743267059326,
+              -82.9946823120117
+            ],
+            "color": "orange"
+          },
+          {
+            "position": [
+              21.2387847900391,
+              7.26791572570801,
+              -209.689376831055
+            ],
+            "color": "orange"
+          }
+        ]
+      },
+      "venus_art": "VEN_BloodHawk"
+    },
+    {
+      "key": "venus_pir_nighthawk",
+      "name": "Nighthawk",
+      "origin": "Armada",
+      "side": "Armada",
+      "artfileroot": "VEN_Nighthawk",
+      "meshscale": 0.0900000035762787,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "long_desc": "Nighthawk-class stealth raider. Camouflage panels and a quiet drive; in this murk you hear it before the scope finds it.",
+      "tubecount": 0,
+      "torpedostart": [
+        {
+          "Homing": 0
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 0
+        },
+        {
+          "Mine": 0
+        },
+        {
+          "PShock": 0
+        },
+        {
+          "Tag": 0
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 17,
+      "internalmaph": 17,
+      "internalsymmetry": 1,
+      "turn_rate": 1.05,
+      "speed_coeff": 1.2,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 1,
+      "roles": "ship,warship,medium,loner,pirate,airship",
+      "shields": [
+        250,
+        100
+      ],
+      "hullpoints": 7,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              37.9396743774414,
+              -15.8503198623657,
+              274.560089111328
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 3,
+            "range": 1200,
+            "arcwidth": 108,
+            "barrel_angle": 40
+          },
+          {
+            "position": [
+              -37.9396743774414,
+              -15.8503198623657,
+              274.560089111328
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 3,
+            "range": 1200,
+            "arcwidth": 108,
+            "barrel_angle": 320
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              -113.822891235352,
+              -18.32741355896,
+              -221.858169555664
+            ],
+            "color": "orange"
+          },
+          {
+            "position": [
+              113.822891235352,
+              -18.32741355896,
+              -221.858169555664
+            ],
+            "color": "orange"
+          },
+          {
+            "position": [
+              0.0,
+              -17.362813949585,
+              -197.7431640625
+            ],
+            "color": "orange"
+          }
+        ]
+      },
+      "venus_art": "VEN_Nighthawk"
+    },
+    {
+      "key": "venus_pir_blacktide",
+      "name": "Black-Tide",
+      "origin": "Armada",
+      "side": "Armada",
+      "artfileroot": "VEN_BlackTide",
+      "meshscale": 8.34446334838867,
+      "radarscale": 1.2,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "long_desc": "Black-Tide-class dreadnought. A stolen Kingdom keel grown over with salvage plating, a ramming prow, and a hangar full of skiffs.",
+      "tubecount": 0,
+      "torpedostart": [
+        {
+          "Homing": 0
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 0
+        },
+        {
+          "Mine": 0
+        },
+        {
+          "PShock": 0
+        },
+        {
+          "Tag": 0
+        }
+      ],
+      "roles": "ship,warship,heavy,leader,carrier,pirate,airship",
+      "internalmapscale": 1.0,
+      "internalmapw": 15,
+      "internalmaph": 24,
+      "internalsymmetry": 1,
+      "turn_rate": 0.35,
+      "speed_coeff": 0.85,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 1,
+      "drone_launch_timer": 20,
+      "shields": [
+        600,
+        600
+      ],
+      "hullpoints": 20,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              -3.06892991065979,
+              0.0,
+              12.8686723709106
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144
+          },
+          {
+            "position": [
+              -4.29089260101318,
+              0.0,
+              8.10301685333252
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144
+          },
+          {
+            "position": [
+              -3.32834672927856,
+              0.0,
+              1.11579239368439
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144
+          },
+          {
+            "position": [
+              -2.51504015922546,
+              0.0,
+              -7.50605773925781
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144
+          },
+          {
+            "position": [
+              -1.88402664661407,
+              0.0,
+              -9.64849948883057
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144
+          },
+          {
+            "position": [
+              3.06892991065979,
+              0.0,
+              12.8686723709106
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144
+          },
+          {
+            "position": [
+              4.09958553314209,
+              0.0,
+              9.47421932220459
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144
+          },
+          {
+            "position": [
+              3.32834672927856,
+              0.0,
+              1.11579239368439
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 270
+          },
+          {
+            "position": [
+              4.29089260101318,
+              0.0,
+              8.10301685333252
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 234
+          },
+          {
+            "position": [
+              1.88402664661407,
+              0.0,
+              -9.64849948883057
+            ],
+            "color": "red",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 198
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              2.24660897254944,
+              0.756214737892151,
+              -9.86985492706299
+            ],
+            "color": "orange"
+          },
+          {
+            "position": [
+              1.83094108104706,
+              1.36819791793823,
+              -9.45919609069824
+            ],
+            "color": "orange"
+          },
+          {
+            "position": [
+              -2.24660897254944,
+              0.756214737892151,
+              -9.86985492706299
+            ],
+            "color": "orange"
+          },
+          {
+            "position": [
+              -1.83094108104706,
+              1.36819791793823,
+              -9.45919609069824
+            ],
+            "color": "orange"
+          }
+        ]
+      },
+      "venus_art": "VEN_BlackTide"
+    },
+    {
+      "key": "venus_pir_scrapking",
+      "name": "Scrap King",
+      "origin": "Armada",
+      "side": "Armada",
+      "artfileroot": "VEN_ScrapKing",
+      "meshscale": 0.059763390570879,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "shields": [
+        100,
+        100
+      ],
+      "hullpoints": 13,
+      "long_desc": "Scrap King-class armored logistics hull. Recovery cranes and an internal smelter: what it kills, it eats.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 12
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 12
+        },
+        {
+          "Mine": 4
+        },
+        {
+          "PShock": 8
+        },
+        {
+          "Tag": 2
+        }
+      ],
+      "baycount": 6,
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 12,
+      "internalsymmetry": 1,
+      "turn_rate": 0.5,
+      "speed_coeff": 0.75,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1.5,
+      "jump_energy_cost": 2.2,
+      "roles": "ship,pirate,carrier,cargo,airship",
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              27.2436256408691,
+              88.7021255493164,
+              82.4280090332031
+            ],
+            "color": "yellow",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 12
+          },
+          {
+            "position": [
+              -27.2436256408691,
+              88.7021255493164,
+              82.4280090332031
+            ],
+            "color": "yellow",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 348
+          },
+          {
+            "position": [
+              0.0,
+              109.569381713867,
+              -629.429077148438
+            ],
+            "color": "yellow",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 180
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              -248.325,
+              -3.335,
+              -570.747
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              248.325,
+              -3.335,
+              -570.747
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              -190.0,
+              -3.335,
+              -570.747
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              190.0,
+              -3.335,
+              -570.747
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              -99.4990005493164,
+              32.8330001831055,
+              -624.247985839844
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              99.4990005493164,
+              32.8330001831055,
+              -624.247985839844
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              0.0,
+              54.0,
+              -580.0
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              0.0,
+              -16.0,
+              -580.0
+            ],
+            "color": "purple"
+          }
+        ]
+      },
+      "venus_art": "VEN_ScrapKing"
+    },
+    {
+      "key": "venus_pir_scavenger",
+      "name": "Scavenger",
+      "origin": "Armada",
+      "side": "Armada",
+      "artfileroot": "VEN_Scavenger",
+      "meshscale": 0.0656711384654045,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "shields": [
+        80,
+        80
+      ],
+      "hullpoints": 4,
+      "long_desc": "Scavenger-class trolley raider. Barely a hull - an engine, a claw, and someone willing to fly it.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 8
+        },
+        {
+          "Nuke": 0
+        },
+        {
+          "EMP": 2
+        },
+        {
+          "Mine": 1
+        },
+        {
+          "PShock": 1
+        },
+        {
+          "Tag": 2
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 15,
+      "internalmaph": 15,
+      "internalsymmetry": 1,
+      "turn_rate": 1.4,
+      "speed_coeff": 1.35,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 0.9,
+      "jump_energy_cost": 1.4,
+      "roles": "ship,scout,pirate,light,airship",
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0.0,
+              -25.0344066619873,
+              270.154418945312
+            ],
+            "color": "yellow",
+            "arccolor": "#500",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 144,
+            "barrel_angle": 0
+          }
+        ],
+        "exhaust": [
+          {
+            "position": [
+              -50.2840347290039,
+              -26.6387996673584,
+              -233.061477661133
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              50.2840347290039,
+              -26.6387996673584,
+              -233.061477661133
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              -50.2840347290039,
+              -60.6387996673584,
+              -233.061477661133
+            ],
+            "color": "purple"
+          },
+          {
+            "position": [
+              50.2840347290039,
+              -60.6387996673584,
+              -233.061477661133
+            ],
+            "color": "purple"
+          }
+        ]
+      },
+      "venus_art": "VEN_Scavenger"
+    },
+    {
+      "key": "venus_pir_hub",
+      "name": "Armada Hub",
+      "origin": "Armada",
+      "side": "Armada",
+      "artfileroot": "VEN_ArmadaHub",
+      "meshscale": 10.0,
+      "radarscale": 1.0,
+      "internalmapscale": 1.0,
+      "internalmapw": 30,
+      "internalmaph": 30,
+      "internalsymmetry": 1,
+      "exclusionradius": 120.0,
+      "shields": [
+        500
+      ],
+      "hullpoints": 100,
+      "roles": "station,fortress,pirate,airship",
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0.0,
+              7.476,
+              0.0
+            ],
+            "color": "red",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -5.476,
+              0.0
+            ],
+            "color": "red",
+            "arccolor": "#090",
+            "cycle_time": 6,
+            "damage_coeff": 1,
+            "range": 1000,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "venus_art": "VEN_ArmadaHub",
+      "long_desc": "An Armada hub. Plasma turrets on a captured platform, and a market below decks that will buy anything with the numbers filed off."
+    },
+    {
+      "key": "venus_brd_swarmer",
+      "name": "Swarmer",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "VEN_BroodSwarmer",
+      "meshscale": 2.96728181838989,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "shields": [
+        200,
+        200
+      ],
+      "hullpoints": 4,
+      "long_desc": "It does not hail, it does not surrender, and nothing aboard it is machinery. It comes up when the deck is disturbed.",
+      "internalmapscale": 1.0,
+      "internalmapw": 20,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 1.45,
+      "speed_coeff": 1.05,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 1,
+      "roles": "ship,brood,light,airship",
+      "hull_portsets": [
+        {
+          "type": "beam",
+          "uiname": "Primary Beams",
+          "position": [
+            [
+              -8.61,
+              7.1375,
+              19.8675
+            ],
+            [
+              8.61,
+              7.1375,
+              19.8675
+            ]
+          ],
+          "beamcolor": [
+            "red",
+            "red"
+          ],
+          "arccolor": [
+            "red",
+            "red"
+          ],
+          "damage": 12.0,
+          "cycletime": 1,
+          "range": 1000
+        },
+        {
+          "type": "engine",
+          "exhaust": [
+            [
+              -3.08,
+              3.381,
+              -7.546,
+              "purple"
+            ],
+            [
+              -2.098,
+              3.406,
+              -8.026,
+              "purple"
+            ],
+            [
+              -1.244,
+              3.4,
+              -8.731,
+              "purple"
+            ],
+            [
+              -0.397,
+              2.136,
+              -10.544,
+              "purple"
+            ],
+            [
+              3.08,
+              3.381,
+              -7.546,
+              "purple"
+            ],
+            [
+              2.098,
+              3.406,
+              -8.026,
+              "purple"
+            ],
+            [
+              1.244,
+              3.4,
+              -8.731,
+              "purple"
+            ],
+            [
+              0.397,
+              2.136,
+              -10.544,
+              "purple"
+            ]
+          ]
+        }
+      ],
+      "venus_art": "VEN_BroodSwarmer",
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0.0,
+              0.0,
+              120.0
+            ],
+            "color": "#7c3",
+            "arccolor": "#250",
+            "cycle_time": 12,
+            "damage_coeff": 1.6,
+            "range": 900,
+            "arcwidth": 90,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -30.0,
+              0.0,
+              80.0
+            ],
+            "color": "#7c3",
+            "arccolor": "#250",
+            "cycle_time": 16,
+            "damage_coeff": 1.2,
+            "range": 800,
+            "arcwidth": 80,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              30.0,
+              0.0,
+              80.0
+            ],
+            "color": "#7c3",
+            "arccolor": "#250",
+            "cycle_time": 16,
+            "damage_coeff": 1.2,
+            "range": 800,
+            "arcwidth": 80,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_brd_render",
+      "name": "Render",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "VEN_BroodRender",
+      "meshscale": 2.5,
+      "radarscale": 1.0,
+      "exclusionradius": 50.0,
+      "meshrotate": 0,
+      "shields": [
+        200,
+        200
+      ],
+      "hullpoints": 9,
+      "long_desc": "Larger, older, and slower to break off. The Armada has a word for these and it is not a word for an animal.",
+      "internalmapscale": 1.0,
+      "internalmapw": 20,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 1.1,
+      "speed_coeff": 0.95,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 1,
+      "roles": "ship,brood,medium,leader,airship",
+      "hull_portsets": [
+        {
+          "type": "beam",
+          "uiname": "Primary Beams",
+          "position": [
+            [
+              -8.61,
+              7.1375,
+              19.8675
+            ],
+            [
+              8.61,
+              7.1375,
+              19.8675
+            ]
+          ],
+          "beamcolor": [
+            "red",
+            "red"
+          ],
+          "arccolor": [
+            "red",
+            "red"
+          ],
+          "damage": 12.0,
+          "cycletime": 1,
+          "range": 1000
+        },
+        {
+          "type": "engine",
+          "exhaust": [
+            [
+              -3.08,
+              3.381,
+              -7.546,
+              "purple"
+            ],
+            [
+              -2.098,
+              3.406,
+              -8.026,
+              "purple"
+            ],
+            [
+              -1.244,
+              3.4,
+              -8.731,
+              "purple"
+            ],
+            [
+              -0.397,
+              2.136,
+              -10.544,
+              "purple"
+            ],
+            [
+              3.08,
+              3.381,
+              -7.546,
+              "purple"
+            ],
+            [
+              2.098,
+              3.406,
+              -8.026,
+              "purple"
+            ],
+            [
+              1.244,
+              3.4,
+              -8.731,
+              "purple"
+            ],
+            [
+              0.397,
+              2.136,
+              -10.544,
+              "purple"
+            ]
+          ]
+        }
+      ],
+      "venus_art": "VEN_BroodRender",
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0.0,
+              0.0,
+              120.0
+            ],
+            "color": "#7c3",
+            "arccolor": "#250",
+            "cycle_time": 12,
+            "damage_coeff": 1.6,
+            "range": 900,
+            "arcwidth": 90,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -30.0,
+              0.0,
+              80.0
+            ],
+            "color": "#7c3",
+            "arccolor": "#250",
+            "cycle_time": 16,
+            "damage_coeff": 1.2,
+            "range": 800,
+            "arcwidth": 80,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              30.0,
+              0.0,
+              80.0
+            ],
+            "color": "#7c3",
+            "arccolor": "#250",
+            "cycle_time": 16,
+            "damage_coeff": 1.2,
+            "range": 800,
+            "arcwidth": 80,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_civ_skycity",
+      "name": "Free City",
+      "origin": "Guild",
+      "side": "Guild",
+      "artfileroot": "VEN_SkyCity",
+      "meshscale": 10.0,
+      "radarscale": 1.0,
+      "internalmapscale": 1.0,
+      "internalmapw": 41,
+      "internalmaph": 40,
+      "internalsymmetry": 1,
+      "exclusionradius": 120.0,
+      "shields": [
+        300
+      ],
+      "hullpoints": 100,
+      "roles": "station,civilian,neutral,airship",
+      "venus_art": "VEN_SkyCity",
+      "long_desc": "A free-floating sky city. Neutral by treaty and by necessity: it sells lifting gas to whoever lands, and it has outlived three kingdoms."
+    }
+  ]
+}

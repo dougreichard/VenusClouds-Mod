@@ -33,6 +33,7 @@ import argparse
 import copy
 import os
 
+import json
 import yaml
 
 STOCK = r"E:/a/Cosmos-dev/data/shipData.yaml"
@@ -277,8 +278,20 @@ def main():
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
     with open(a.out, "w", encoding="utf-8", newline="\n") as f:
         f.write(header)
-        yaml.safe_dump({"#ship-list": entries}, f, sort_keys=False, allow_unicode=False,
-                       default_flow_style=False)
+        # HJSON, NOT BLOCK YAML. The engine parses extra ship data as HJSON
+        # (data/shipData.yaml says so in its own header): no block sequences, no
+        # whitespace in a key. safe_dump writes exactly those, so the file was
+        # REJECTED WHOLE by the engine - `RuntimeError: Found whitespace in your key
+        # name ... >>> - 2000` - and not one hull in it ever existed there. Nothing
+        # reported it, because the add-on merges library-side too, so the test range,
+        # every headless run and every name lookup passed regardless. Measured on
+        # engine 1.3.6, 2026-08-15.
+        #
+        # The .yaml EXTENSION stays: that is the engine's own convention
+        # (data/shipData.yaml is HJSON). It is the CONTENT that has to be brace-style.
+        # JSON is a subset of HJSON, and `#` header comments above are valid HJSON.
+        f.write(json.dumps({"#ship-list": entries}, indent=2,
+                           ensure_ascii=True) + chr(10))
 
     on_kit = sum(1 for e in entries if not str(e["artfileroot"]).startswith(("TSN", "tsn", "skaraan", "kralien", "Torgoth", "Brigantine", "longbow", "transport", "cargo", "civil", "science", "industry", "arvonian")))
     print("  %d hull(s) on kitbashed Venus art; the rest on stock silhouettes" % on_kit)
