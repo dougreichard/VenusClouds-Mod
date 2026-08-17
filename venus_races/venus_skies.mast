@@ -19,33 +19,24 @@
 #      deep        below the trade lanes, where salvage and pirates live
 #      nightside   no sun at all, only the glow of the deck
 #
-#  MUSIC: each label schedules random music, which is what LM's own skybox labels do and
-#  therefore what a mission loading both expects. Music in Cosmos is scheduled FROM the
-#  skybox label - `consoles/server_console.mast` calls `skybox_schedule_random()` at start
-#  and nothing else picks music - so a label with an empty body leaves the game silent.
-#  A mission that wants its own music should schedule it after the skybox, not before.
+#  MUSIC: none of these touch it. Each label used to end in a two-line body that scheduled
+#  random music, because scheduling a skybox runs its body and nothing anywhere else ever
+#  chose a track - so an empty body left a game silent. Music is now selected on its own,
+#  from the MUSIC_SELECT setting, a map's `Defaults:`, or the server console's dropdown,
+#  and a mod supplies a soundtrack by declaring `@media/music/<bank>`.
+#
+#  That matters more here than for most packs: these skies are picked deliberately, per
+#  band, and re-rolling the music every time a mission changed the sky was never wanted.
 #
 
 @media/skybox/venus_sky_high_haze "Venus - High Haze (pale gold)"
-if client_id==0:
-    music_schedule_random()
 
 @media/skybox/venus_sky_midday "Venus - Midday Deck (amber)"
-if client_id==0:
-    music_schedule_random()
 
 @media/skybox/venus_sky_dusk "Venus - Terminator Dusk (orange)"
-if client_id==0:
-    music_schedule_random()
 
 @media/skybox/venus_sky_stormwall "Venus - Storm Wall (dark umber)"
-if client_id==0:
-    music_schedule_random()
 
 @media/skybox/venus_sky_deep "Venus - Deep Deck (oppressive)"
-if client_id==0:
-    music_schedule_random()
 
 @media/skybox/venus_sky_nightside "Venus - Nightside (dim sulfur)"
-if client_id==0:
-    music_schedule_random()
