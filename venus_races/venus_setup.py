@@ -57,79 +57,54 @@ def venus_safe_status(text):
     return text if len(text) <= 300 else text[:297] + "..."
 
 
-def venus_declare_ships(ships_file):
+def venus_declare_ships(ships_file=None):
     """Give the hulls to the ENGINE and to the library, without writing a file.
 
-    TWO CONSUMERS, and they are not the same thing:
+    THROUGH `ship_data.add_extra`, NEVER `sbs.add_extra_ship_data` DIRECTLY.
 
-      * the ENGINE needs them to build hulls, and learns them from a real file on disk.
-        `sbs.add_extra_ship_data(name, path)` points it straight at the mod's own copy -
-        no extension on the name, the engine tries .yaml then .json itself.
-      * the LIBRARY needs them for its own queries: `filter_ship_data_by_side` is how a
-        prefab finds "an Armada raider" and `get_ship_name` is what a console displays.
-        The engine call does not populate that, so it is merged here too.
+    `create_new_sim()` REBUILDS the engine's ship table and drops everything registered
+    before it. `sim_create()` compensates by replaying afterwards - but `extra_replay()`
+    can only replay files it has a RECORD of, and the only thing that records one is
+    `add_extra`. This add-on declares at story load, always before the first map calls
+    `sim_create()`, so calling the engine raw meant the hulls were registered and then
+    thrown away with nothing reporting it: the LIBRARY kept every stat, so headless runs,
+    name lookups, pickers and lint all said the hulls were there while the engine had none
+    of them. It surfaced as a spawn dying inside the engine with `bad allocation`, minutes
+    later, against a line that never mentions ship data. Measured on engine 1.3.6-A,
+    2026-08-21, on the sibling TNG mod; this one had the identical defect.
+
+    `add_extra` also finds the file (this mission, then each pinned pack, PREFERRING the
+    unpacked `__lib__/media` copy - the only one the engine can open), decides the
+    extension by which file actually opens, merges library-side so
+    `filter_ship_data_by_side` and `get_ship_name` work, and writes one line to
+    `debug.log` saying whether the engine took it.
 
     NOT `ship_data_merge_mod`: it is the BROKEN route, not the alternative one. It gets
-    ships to the engine by GENERATING `extraShipData.json` in the mission folder during
-    sim_create(). That file stays on disk, and on the next run `get_ship_data()` prepends it
-    whole - `#mod` entries and all - while the add-on declares the same entries again. The
-    TNG pack measured 51 hulls becoming 102 from run 2 onward. The file the feature
-    generates is the input that breaks it.
+    ships to the engine by GENERATING `extraShipData.json` during sim_create(); that file
+    stays on disk and is read back next run while the add-on declares the same entries
+    again - the TNG pack measured 51 hulls becoming 102 from run 2 onward. On engine 1.3.6
+    the route is dead outright: the binary no longer contains the string `extraShipData`.
 
-    NO `artfilepath` IS SET, deliberately. These hulls borrow STOCK art roots, which the
-    engine already resolves out of `data/graphics/ships`. Pointing them at this pack's own
-    art would currently segfault the engine at render - see the mod README.
+    NO `artfilepath` IS SET, deliberately - and as of engine v1.3.6 the field is obsolete
+    anyway. These hulls borrow STOCK art roots, which the engine already resolves out of
+    `data/graphics/ships`. Pointing them at this pack's own art would currently segfault
+    the engine at render - see the mod README.
+
+    `ships_file` is accepted and ignored, so an older call site still works.
 
     Returns a short STATUS STRING rather than a dict: MAST re-runs an assigned string
     through f-string formatting, so a dict's braces reaching `log(f"...{result}")` die.
     """
-    import os
-    import re
-    from sbs_utils.helpers import FrameContext
-    from sbs_utils.fs import get_mission_dir
-    from sbs_utils.procedural.ship_data import get_ship_data_for, merge_mod_ship_yaml
+    from sbs_utils.procedural.ship_data import add_extra, get_ship_data_for
 
-    if not ships_file:
-        return "NOT DECLARED - the media pack was not found"
+    # No extension: add_extra decides the format by which file opens, and hands the engine
+    # the exact file it read.
+    reached = add_extra("venus_ships", mod="venus_races")
 
-    # media_shared answers RELATIVE TO THE MISSION. Neither open() nor the engine is
-    # standing in the mission folder, so resolve it before using it either way.
-    if not os.path.isabs(ships_file):
-        ships_file = os.path.abspath(os.path.join(get_mission_dir(), ships_file))
-    pack_dir = os.path.dirname(ships_file)
-
-    told_engine = None
-    try:
-        sbs = FrameContext.context.sbs
-        # ONE argument, the whole file. The 2026-08-15 engine takes
-        # `add_extra_ship_data(fully_pathed_file)`; the old `(name, folder)` form is a
-        # TypeError, caught below as "failed:" and otherwise silent - the library merge
-        # still runs, so the hulls have every stat and simply do not exist in the engine.
-        sbs.add_extra_ship_data(ships_file)
-        told_engine = True
-    except AttributeError:
-        # An older engine or sbslib without the call. Not fatal: the library merge below
-        # still gives the mission its ships, they just have no engine-side hull.
-        told_engine = False
-    except Exception as e:
-        told_engine = "failed: " + str(e)
-
-    # The presence guard is what makes this safe to call twice: the MOCK's
-    # add_extra_ship_data already merges library-side, the real engine does not, and one
-    # guard covers both without either knowing about the other.
-    merged = 0
-    if get_ship_data_for(VENUS_PROBE_KEY) is None:
-        try:
-            with open(ships_file, encoding="utf-8") as f:
-                text = f.read()
-        except OSError as e:
-            return venus_safe_status("engine=" + str(told_engine)
-                                     + " library=unreadable " + str(e))
-        merge_mod_ship_yaml(re.sub(r"^[ \t]*//.*$", "", text, flags=re.M), "venus_races")
-        merged = 1
-    return "engine=" + str(told_engine) + " library=" + ("merged" if merged else "already present")
-
-
+    # A verification, NOT a merge gate - add_extra has already merged library-side.
+    have = get_ship_data_for(VENUS_PROBE_KEY) is not None
+    return venus_safe_status("engine=" + str(reached)
+                             + " library=" + ("ok" if have else "MISSING - file not found"))
 def venus_hull_count():
     """How many Venus hulls the LIBRARY can see. The test range asserts this, because a
     mastlib that fails to load still reports PASS."""

@@ -38,10 +38,11 @@ log("venus_races: " + venus_manifest.get("mod") + " " + venus_version, "venus_ra
 # without turning the whole Armada on.
 #
 # The ship list lives in the MEDIA PACK, not in this mastlib, because the ENGINE opens it
-# itself and a mastlib is a zip. `media_shared` resolves it out of the unpacked pack, which
-# is why a mission has to declare the pack in `shared_media` alongside this mastlib.
-venus_ships_file = media_shared("venus_ships.yaml")
-venus_declared = venus_declare_ships(venus_ships_file)
+# itself and a mastlib is a zip - which is why a mission has to declare the pack in
+# `shared_media` alongside this mastlib. `venus_declare_ships` finds it through
+# `ship_data_add_extra`, which searches the mission and then each pinned pack and PREFERS
+# the unpacked `__lib__/media` copy: the only one the engine can open.
+venus_declared = venus_declare_ships()
 log("venus_races: hulls declared, " + venus_declared, "venus_races")
 
 
