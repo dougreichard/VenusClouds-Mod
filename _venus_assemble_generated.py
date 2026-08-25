@@ -94,7 +94,7 @@ bpy.context.view_layer.update()
 # than one ship. A kit recipe would fill this slot with a part; procedural pylons are cheaper
 # and always fit, because they are measured from the actual gap after placement.
 gmin, gmax = bounds(gon)
-strut_r = esize[ea] * 0.013
+strut_r = esize[ea] * 0.030
 top = emin[up] + esize[up] * 0.02      # bite slightly into the envelope
 bot = gmax[up] - esize[up] * 0.02      # and into the gondola roof
 mid = (top + bot) / 2.0
