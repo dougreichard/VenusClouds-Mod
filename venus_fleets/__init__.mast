@@ -81,6 +81,7 @@ default shared VENUS_TICKER_ON = False
     await delay_sim(1)
     venus_turrets_tick()
     venus_world_tick(2)
+    venus_bolts_tick()
     venus_abilities_tick(2)
     venus_wind_tick(2)
     venus_lift_tick(2)

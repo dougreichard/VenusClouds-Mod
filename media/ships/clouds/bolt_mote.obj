@@ -1,0 +1,12 @@
+# bolt_mote - a near-zero mesh for the storm-lightning Typhons (venus_world.py). A Typhon
+# cannot be scaled, so its body is swapped for this: one tiny triangle, effectively invisible.
+mtllib bolt_mote.mtl
+v 0 0 0
+v 0.5 0 0
+v 0 0 0.5
+vt 0 0
+vt 1 0
+vt 0 1
+vn 0 1 0
+usemtl bolt_mote
+f 1/1/1 2/2/1 3/3/1

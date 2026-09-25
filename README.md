@@ -42,7 +42,8 @@ industrial, civil, science). Keys are `venus_<tag>_<role>`, with the tags `steam
   tagged `venus_in_cloud`, and turrets and missile volleys will not shoot at it. Every
   cloud also sits in a large tinted nebula halo; the halo is scenery, not cover.
 - **Storms.** Storm cells strike ships inside them every few seconds, draining lift and
-  hull. Their lightning flickers (`blink_state`).
+  hull. Their lightning is real beam fire: hidden Typhons high in the cell shoot long,
+  wandering bolts down at hidden anchors below them.
 - **Harvest and salvage.** A ship sitting in a resource cloud fills its hold: ice gives
   coolant, sulfur fuel, ore materials, spores medicine and aether aether. The cloud shrinks
   and finally disperses. Wrecks give salvage plus a replacement ring. Missions decide what

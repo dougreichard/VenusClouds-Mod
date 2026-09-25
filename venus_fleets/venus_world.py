@@ -150,6 +150,8 @@ def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
     # tinted to the cloud, and COVER - hiding in a cloud means hiding in this. Placed here
     # directly: terrain_nebula_spawn forces y onto the 0 plane.
     kind = "storm" if info.get("storm") else info.get("resource")
+    if kind == "storm":
+        venus_storm_bolts(cid, x, y, z, radius)
     nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * VENUS_BODY_SPAN),
                        VENUS_STORM_DENSITY if kind == "storm" else VENUS_BODY_DENSITY,
                        venus_cloud_color(kind), cover=cover)
@@ -171,6 +173,165 @@ def venus_in_cover_nebula(ship):
     except Exception:
         pass
     return False
+
+
+# ---- storm lightning ---------------------------------------------------------------
+# A storm's lightning is BEAM FIRE: pairs of tiny Typhon monsters hidden in the cell shoot
+# each other, and a Typhon beam reads as lightning (user's idea, 2026-09-25). They are
+# shrunk to nothing, unselectable, re-healed every tick and never move.
+VENUS_BOLT_ROLE = "venus_bolt"
+VENUS_BOLT_ANCHOR_ROLE = "venus_bolt_anchor"
+VENUS_BOLT_PAIRS = 3
+VENUS_BOLT_SCALE = 0.05            # the anchor's size (a Typhon ignores it)
+VENUS_BOLT_BODY = "#4a4c58"        # storm grey
+VENUS_BOLT_CYCLE = (1.5, 4.0)       # seconds between one Typhon's beam shots
+VENUS_BOLT_RANGE = 4000.0
+VENUS_BOLT_LENGTH = (1500.0, 3000.0)
+VENUS_BOLT_COLOR = "#dde8ff"
+VENUS_BOLT_HEALTH = 1.0e9
+
+
+def venus_storm_bolts(storm_id, x, y, z, radius):
+    """VENUS_BOLT_PAIRS lightning bolts in a storm cell: a tiny Typhon high in the cell
+    firing down at a tiny NPC anchor below it, which moves around (venus_bolts_tick).
+
+    Engine-measured 2026-09-25, each rule the reason for a line below:
+      * a Typhon will not fire at another Typhon - the anchor is an ordinary NPC;
+      * nor at a cloaked one - the anchor's art is a real hull, not "invisible";
+      * nor at its own side - the Typhon is `monster`, the anchor `venus`;
+      * held still it fires only inside beam range - 600 fired, 2000 never did;
+      * steering at its own position is a NaN assert - it aims at the anchor, and is held
+        by a zero monster_speed. Returns the ids."""
+    from sbs_utils.procedural.spawn import npc_spawn
+    from sbs_utils.procedural.query import to_id, to_object
+    from sbs_utils.procedural.inventory import set_inventory_value
+    from sbs_utils.procedural.space_objects import target
+    ids = []
+    for k in range(VENUS_BOLT_PAIRS):
+        tx = x + random.uniform(-0.5, 0.5) * radius
+        ty = y + random.uniform(0.6, 1.0) * radius
+        tz = z + random.uniform(-0.5, 0.5) * radius
+        # Both shrunk to nothing: an engine run with full-size and tiny pairs side by side
+        # fired all of them, so scale does not matter. The anchor is a VISIBLE hull:
+        # "invisible" is the cloak, and a Typhon does not fire at a cloaked target.
+        bolt = to_id(npc_spawn(tx, ty, tz, "", "monster," + VENUS_BOLT_ROLE, "-", "behav_typhon"))
+        ax, ay, az = _venus_bolt_ground(tx, ty, tz)
+        # The anchor is an ordinary NPC ship, shrunk. Every alternative drew the 3D bolt to
+        # the ORIGIN (engine, 2026-09-25): the "invisible" art is a cloak (no fire at all),
+        # and a behav_selection marker or a made-up behavior is not in the 3D view, so the
+        # beam has no endpoint there - the 2D view still drew it to the right place.
+        anchor = to_id(npc_spawn(ax, ay, az, "", "venus," + VENUS_BOLT_ANCHOR_ROLE,
+                                 "tsn_light_cruiser", "behav_npcship"))
+        if anchor is None or bolt is None:
+            continue
+        for oid in (anchor, bolt):
+            o = to_object(oid)
+            try:
+                # A near-zero radar icon hides it on the 2D views. NOT elite_low_vis, and
+                # NOT elite_main_scn_invis on the anchor: a target missing from the 3D view
+                # has its bolt drawn to the origin (engine, 2026-09-25).
+                o.data_set.set("icon_scale", 0.01, 0)
+                if oid == bolt:
+                    o.data_set.set("elite_main_scn_invis", 1, 0)
+                # hiding on the 2D view: elite_low_vis and icon_scale do nothing for a
+                # monster (engine); a transparent radar color is the next try
+                o.data_set.set("radar_color_override", "#00000000", 0)
+                o.data_set.set("local_scale_coeff", VENUS_BOLT_SCALE, 0)
+                if oid == bolt:
+                    # Scale does nothing to a Typhon (local_scale_coeff and the body size
+                    # coeffs both tried, engine), and any body it wears hides the bolt it
+                    # fires. So both bodies are a near-zero mesh the mod ships (bolt_mote).
+                    # Bodies resolve from data/graphics (stock "typhon-balls" is
+                    # graphics/typhon-balls), so the pack is reached relative to that.
+                    ds = o.data_set
+                    for i in ("1", "2"):
+                        ds.set("body_" + i + "_geom_filename", venus_bolt_mote_path(), 0)
+                        ds.set("body_" + i + "_color", VENUS_BOLT_BODY, 0)
+                    for i in ("1", "2", "3"):
+                        ds.set("particle_color_" + i, VENUS_BOLT_BODY, 0)
+                    ds.set("unselectable", 1, 0)   # the TARGET stays selectable
+                o.engine_object.exclusion_radius = 1      # never 0: a divide waiting
+            except Exception:
+                pass
+            set_inventory_value(oid, "venus_bolt_storm", storm_id)
+        try:
+            ad = to_object(anchor).data_set
+            ad.set("throttle", 0.0, 0)
+            # no shields, so no shield ring on the 2D view; at 0.01 damage a shot the
+            # hull outlasts any game
+            for i in range(2):
+                ad.set("shield_max_val", 0.0, i)
+                ad.set("shield_val", 0.0, i)
+            bd = to_object(bolt).data_set
+            bd.set("monster_health_max", VENUS_BOLT_HEALTH, 0)
+            bd.set("monster_health", VENUS_BOLT_HEALTH, 0)
+            bd.set("beamColor", VENUS_BOLT_COLOR, 0)
+            target(bolt, anchor, True, 1.0)              # as LM's Typhon brain does
+            bd.set("monster_speed", 0.0, 0)              # ...then held still
+            n = int(bd.get("beamCount", 0) or 0)
+            for i in range(max(n, 1)):
+                bd.set("beamCycleTime", random.uniform(*VENUS_BOLT_CYCLE), i)
+                bd.set("beamRange", VENUS_BOLT_RANGE, i)
+                # near-harmless, never 0: LM's Bulwark sets 0 and "never attacks". The
+                # anchor's shields are refilled too - unrefilled test targets were killed.
+                bd.set("beamDamage", 0.01, i)
+        except Exception:
+            pass
+        set_inventory_value(bolt, "venus_bolt_mate", anchor)
+        set_inventory_value(anchor, "venus_bolt_home", (tx, ty, tz))
+        ids += [bolt, anchor]
+    return ids
+
+
+def _venus_bolt_ground(tx, ty, tz):
+    """A point well BELOW a bolt-thrower for its anchor: a held-still Typhon with beamRange
+    4000 fired at 1200, 2000 and 3000 (engine, 2026-09-25), so the bolt is long."""
+    d = random.uniform(*VENUS_BOLT_LENGTH)
+    j = d * 0.25
+    return tx + random.uniform(-j, j), ty - d, tz + random.uniform(-j, j)
+
+
+def venus_bolt_mote_path():
+    """The bolt_mote body mesh, as a Typhon body filename: relative to data/graphics,
+    into this mod's unpacked media pack, no extension."""
+    ver = venus_manifest().get("version") or "v0.2.0"
+    return "../missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media." + ver + "/ships/clouds/bolt_mote"
+
+
+def venus_bolts_tick():
+    """Keep every bolt firing: its anchor moves to a new spot below it (so the bolt
+    wanders), its target is re-set to the anchor, and the anchor's shields are refilled."""
+    from sbs_utils.procedural.roles import role
+    from sbs_utils.procedural.query import to_object_list, to_object, object_exists
+    from sbs_utils.procedural.inventory import get_inventory_value
+    from sbs_utils.procedural.space_objects import set_pos
+    n = 0
+    for a in to_object_list(role(VENUS_BOLT_ANCHOR_ROLE)):
+        if a is None:
+            continue
+        try:
+            home = get_inventory_value(a.id, "venus_bolt_home", None)
+            if home is not None:
+                set_pos(a, *_venus_bolt_ground(*home))
+        except Exception:
+            pass
+    for b in to_object_list(role(VENUS_BOLT_ROLE)):
+        if b is None:
+            continue
+        try:
+            bd = b.data_set
+            bd.set("monster_health", VENUS_BOLT_HEALTH, 0)
+            mate = get_inventory_value(b.id, "venus_bolt_mate", None)
+            mo = to_object(mate) if mate and object_exists(mate) else None
+            if mo is not None:
+                bd.set("target_id", mate, 0)
+                bd.set("target_pos_x", mo.pos.x, 0)
+                bd.set("target_pos_y", mo.pos.y, 0)
+                bd.set("target_pos_z", mo.pos.z, 0)
+                n += 1
+        except Exception:
+            pass
+    return n
 
 
 def venus_cloud_puff(x, y, z, diameter, cover=True):
