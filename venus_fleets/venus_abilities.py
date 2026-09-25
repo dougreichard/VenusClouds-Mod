@@ -225,7 +225,7 @@ def _venus_wind_wisps(x0, z0, x1, z1, y):
             from sbs_utils.procedural.query import to_object
             o = to_object(cid)
             o.engine_object.steer_yaw = 0
-            o.data_set.set("local_scale_coeff", 0.45, 0)
+            venus_cloud_scale(o, (0.45, 0.35, 0.8))           # a thin streak along the wind
         except Exception:
             pass
         try:

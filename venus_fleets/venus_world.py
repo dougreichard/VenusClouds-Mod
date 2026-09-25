@@ -24,6 +24,15 @@ VENUS_STORM_BLINK = (18, 30)     # storm cells: lightning blink delay range
 VENUS_PULSE = (40, 70)           # aether and spore clouds: slow pulse delay range
 VENUS_PULSE_RESOURCES = ("aether", "medicine")
 VENUS_NPC_LIFT_PER_HULL = 0.12
+# Clouds are scaled per instance, the way LM scales asteroids: a size, stretched a little
+# per axis, and a slow drift in yaw - so no two read as the same mesh.
+VENUS_CLOUD_SIZE = (0.7, 2.4)     # plain clouds
+VENUS_RESOURCE_SIZE = (0.8, 1.5)  # resource clouds (their stock does not scale with them)
+VENUS_CLOUD_DRIFT = (0.00003, 0.00025)
+# The engine nebula inside a cloud (its sensor cover). The library caps a nebula at 1500
+# across (terrain.NEB_MAX_SIZE); a cloud's own nebula is written past that cap.
+VENUS_NEBULA_SPAN = 2.6           # nebula diameter as a multiple of the cloud's radius
+VENUS_NEBULA_MAX = 5000.0
 # Units a hold carries, by role. Without a cap a crew parked in one cloud until it was gone
 # (a balance session hauled 200 a trip only because the autopilot chose to turn back).
 # The cap is what makes the logistics hulls worth flying and the trip home the game.
@@ -91,7 +100,7 @@ def venus_hangar_stock(obj, info=None):
 
 
 # --------------------------------------------------------------------------- spawning
-def venus_cloud_spawn(key, x, y, z, cover=True):
+def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
     """Place one cloud (a venus_cloud_* hull) as passive terrain. Resource clouds get a
     stock to harvest. cover=True puts an engine nebula inside it - the engine's own
     sensor cover, which is what makes hiding in a cloud real."""
@@ -107,7 +116,18 @@ def venus_cloud_spawn(key, x, y, z, cover=True):
     if cid is None:
         return None
     add_role(cid, VENUS_CLOUD_ROLE)
-    set_inventory_value(cid, "venus_radius", info["radius"])
+    if scale is None:
+        scale = random.uniform(*(VENUS_RESOURCE_SIZE if info.get("resource") else VENUS_CLOUD_SIZE))
+    sx = scale * random.uniform(0.9, 1.3)
+    sy = scale * random.uniform(0.6, 1.0)
+    sz = scale * random.uniform(0.9, 1.3)
+    venus_cloud_scale(obj, (sx, sy, sz))
+    try:
+        obj.engine_object.steer_yaw = random.uniform(*VENUS_CLOUD_DRIFT) * random.choice((-1, 1))
+    except Exception:
+        pass
+    radius = info["radius"] * max(sx, sz)
+    set_inventory_value(cid, "venus_radius", radius)
     if info.get("resource"):
         add_role(cid, "venus_resource")
         set_inventory_value(cid, "venus_resource", info["resource"])
@@ -130,21 +150,47 @@ def venus_cloud_spawn(key, x, y, z, cover=True):
         # ONE engine nebula, cloud-sized, at the cloud's own position. Engine-measured: the
         # sphere-cluster helper spawned none inside a 600-unit cloud (inside_nebula_count
         # stayed 0), and terrain_nebula_spawn forces y onto the 0 plane.
-        try:
-            from sbs_utils.procedural.terrain import terrain_setup_nebula
-            neb = terrain_spawn(x, y, z, None, "#, nebula", "nebula", "behav_nebula")
-            neb.blob.set("unselectable", 1)
-            terrain_setup_nebula(neb, min(1500.0, info["radius"] * 2.0), 0.6, "yellow")
-            set_inventory_value(cid, "venus_nebulae", [to_id(neb)])
-        except Exception:
-            pass
+        nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * VENUS_NEBULA_SPAN), 0.6)
+        if nid is not None:
+            set_inventory_value(cid, "venus_nebulae", [nid])
     return cid
 
 
+def venus_cloud_scale(obj, scale):
+    """Set a cloud's per-axis scale and remember it (depletion shrinks FROM it)."""
+    from sbs_utils.procedural.inventory import set_inventory_value
+    sx, sy, sz = scale
+    try:
+        ds = obj.data_set
+        ds.set("local_scale_x_coeff", sx, 0)
+        ds.set("local_scale_y_coeff", sy, 0)
+        ds.set("local_scale_z_coeff", sz, 0)
+        set_inventory_value(obj.id, "venus_scale", (sx, sy, sz))
+    except Exception:
+        pass
+
+
+def venus_nebula(x, y, z, diameter, density=0.6, color="yellow"):
+    """An engine nebula of any size (the library setup caps it at 1500). Returns its id."""
+    from sbs_utils.procedural.spawn import terrain_spawn
+    from sbs_utils.procedural.query import to_id
+    try:
+        from sbs_utils.procedural.terrain import terrain_setup_nebula
+        neb = terrain_spawn(x, y, z, None, "#, nebula", "nebula", "behav_nebula")
+        neb.blob.set("unselectable", 1)
+        terrain_setup_nebula(neb, diameter, density, color)
+        for k in ("size", "display_size", "effect_size"):
+            neb.blob.set(k, float(diameter))
+        return to_id(neb)
+    except Exception:
+        return None
+
+
 def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, storms=2, wrecks=3,
-                      floor=36, seed=None):
-    """Dress a map: a cloud-sea floor at the deck band, scattered lane clouds, resource
-    clouds, storm cells and wrecks. Returns a short status string."""
+                      floor=60, under=40, base=36, seed=None):
+    """Dress a map: a cloud-sea floor at the deck band, a layer of cloud BELOW the lanes
+    (between the crews and the floor), nebula haze along the cloud base, scattered lane
+    clouds, resource clouds, storm cells and wrecks. Returns a short status string."""
     rng = random.Random(seed)
     clouds = list((venus_manifest().get("clouds") or {}).keys())
     plain = [k for k in clouds if not (venus_manifest()["clouds"][k].get("resource")
@@ -162,7 +208,18 @@ def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, st
     n = 0
     for i in range(floor):                         # the sea you can see down there
         x, z = at(0, radius * 1.2)
-        n += venus_cloud_spawn("venus_cloud_stratus_bank", x, floor_y + rng.uniform(-400, 400), z, cover=False) is not None
+        n += venus_cloud_spawn("venus_cloud_stratus_bank", x, floor_y + rng.uniform(-400, 400), z, cover=False,
+                               scale=rng.uniform(1.6, 3.6)) is not None
+    below = [k for k in plain if "stratus" in k or "cumulus" in k] or plain
+    for i in range(under):                         # the layer between you and the floor
+        x, z = at(0, radius * 1.1)
+        n += venus_cloud_spawn(rng.choice(below), x, rng.uniform(floor_y + 800, -1800), z, cover=False,
+                               scale=rng.uniform(1.2, 3.0)) is not None
+    nebs = 0
+    for i in range(base):                          # the haze the cloud base sits in
+        x, z = at(0, radius * 1.15)
+        nebs += venus_nebula(x, floor_y + rng.uniform(-200, 900), z, rng.uniform(3500, VENUS_NEBULA_MAX),
+                             0.8) is not None
     for i in range(lanes):
         x, z = at(radius * 0.1, radius)
         n += venus_cloud_spawn(rng.choice(plain), x, rng.uniform(-2500, 2500), z) is not None
@@ -175,7 +232,7 @@ def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, st
     for i in range(wrecks):
         x, z = at(radius * 0.3, radius)
         n += venus_cloud_spawn(rng.choice(wreck), x, rng.uniform(-5000, -2000), z) is not None
-    return "venus world: " + str(n) + " clouds"
+    return "venus world: " + str(n) + " clouds, " + str(nebs) + " base nebulae"
 
 
 # --------------------------------------------------------------------------- the tick
@@ -262,10 +319,10 @@ def _venus_harvest(ship, cloud, dt):
     if res == "salvage" and venus_lift_get(ship) < 1.0:
         venus_lift_restore(ship, take / 60.0)
     full = get_inventory_value(cloud.id, "venus_stock_full", stock) or 1.0
-    try:
-        cloud.data_set.set("local_scale_coeff", max(0.35, stock / full), 0)
-    except Exception:
-        pass
+    base = get_inventory_value(cloud.id, "venus_scale", None) or (1.0, 1.0, 1.0)
+    f = max(0.35, stock / full)
+    venus_cloud_scale(cloud, tuple(b * f for b in base))
+    set_inventory_value(cloud.id, "venus_scale", base)      # keep the FULL size as the base
     if stock <= 0:
         for nid in get_inventory_value(cloud.id, "venus_nebulae", []) or []:
             try:

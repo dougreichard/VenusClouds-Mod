@@ -196,6 +196,165 @@ def _ramp(alt, stops):
     return out
 
 
+def _billow(q, seed, octaves=5):
+    """Puffy cumulus heights: |noise| folded UP (the inverse of ridged), so the tops are
+    round and the gaps between them are the sharp creases."""
+    total = np.zeros(q.shape[:-1], dtype=np.float32)
+    amp, freq, norm = 1.0, 1.0, 0.0
+    for o in range(octaves):
+        n = _value_noise(q * freq, seed + o * 577)
+        total += amp * np.abs(n * 2.0 - 1.0)
+        norm += amp
+        amp *= 0.5
+        freq *= 2.0
+    return 1.0 - total / norm
+
+
+def _puffs(u, v, seed, jitter=0.9):
+    """Cellular cumulus as a SOFT field: every cell's puff is a smooth kernel (1-d^2)^2 and
+    the kernels are SUMMED over the 3x3 neighborhood, so neighboring lobes merge the way
+    cloud does. (Taking the max instead left hard creases - a cracked tile floor.)"""
+    iu = np.floor(u).astype(np.int64)
+    iv = np.floor(v).astype(np.int64)
+    total = np.zeros(u.shape, np.float32)
+    for oy in (-1, 0, 1):
+        for ox in (-1, 0, 1):
+            cu, cv = iu + ox, iv + oy
+            zero = np.zeros_like(cu)
+            pu = cu + 0.5 + (_hash3(cu, cv, zero, seed) - 0.5) * jitter
+            pv = cv + 0.5 + (_hash3(cu, cv, zero, seed + 17) - 0.5) * jitter
+            r = 0.75 + 0.55 * _hash3(cu, cv, zero, seed + 29)
+            d2 = ((u - pu) ** 2 + (v - pv) ** 2) / (r * r)
+            k = np.clip(1.0 - d2, 0.0, 1.0)
+            total += k * k * r
+    return total
+
+
+def _domes(az, alt, seed, count, height, width):
+    """Cumulus towers on the horizon as a SOFT field in (azimuth, altitude): each tower is a
+    column of lobes shrinking as it rises, every lobe a smooth kernel, all SUMMED so the
+    lobes merge. Threshold it for the silhouette; its slope is the lighting."""
+    rng = np.random.default_rng(seed)
+    field = np.zeros(az.shape, np.float32)
+    for i in range(count):
+        a0 = rng.uniform(-math.pi, math.pi)
+        tall = height * rng.uniform(0.3, 1.0) ** 1.5
+        w0 = width * rng.uniform(0.6, 1.4)
+        lobes = 4 + int(tall / height * 8)
+        for k in range(lobes):
+            f = rng.uniform(0.0, 1.0) ** 0.8
+            cx = a0 + rng.normal(0.0, 0.45) * w0 * (1.0 - 0.6 * f)
+            cy = tall * f * 0.9
+            rw = w0 * (0.55 + 0.5 * rng.uniform()) * (1.0 - 0.5 * f)
+            rh = rw * 0.85
+            da = np.angle(np.exp(1j * (az - cx))) / rw
+            dl = (alt - cy) / rh
+            kk = np.clip(1.0 - (da * da + dl * dl), 0.0, 1.0)
+            field += kk * kk
+    return field
+
+
+def _plane(d, y_sign, height, scale):
+    """Where each direction meets a horizontal cloud plane `height` above (+1) or below (-1)
+    the viewer, as 3D noise coordinates; plus the distance to it (for the haze fade)."""
+    dy = np.maximum(d[..., 1] * y_sign, 1e-3)
+    t = height / dy
+    q = np.stack([d[..., 0] * t * scale, np.full(dy.shape, 0.37, np.float32),
+                  d[..., 2] * t * scale], -1)
+    return q, t
+
+
+def _cloud_forms(d, alt, base, p):
+    sea_amp = p.get("sea_amp", 0.0)
+    bank_amp = p.get("bank_amp", 0.0)
+    ceil_amp = p.get("ceil_amp", 0.0)
+    fog = p.get("fog", 0.0)
+    sd = np.array(p["sun_dir"], np.float32)
+    sd = sd / np.linalg.norm(sd)
+    lit_c = np.array(p.get("sea_lit", (250, 232, 196)), np.float32)
+    shade_c = np.array(p.get("sea_shadow", (150, 110, 70)), np.float32)
+
+    if sea_amp > 0:
+        # The sea below. A fractal DENSITY on a plane under the viewer (billowed, so it
+        # clumps into lobes), cut to a silhouette, and SELF-SHADOWED: a few samples stepped
+        # toward the sun - thick cloud between a point and the sun darkens it, which is
+        # what gives cumulus its volume. The horizon haze eats it with distance.
+        q, t = _plane(d, -1.0, p.get("sea_depth", 1.0), p.get("sea_scale", 0.5))
+        u, v = q[..., 0] * 0.8, q[..., 2] * 0.8
+        near = np.exp(-t * 0.35)
+
+        def dens(uu, vv):
+            pp = np.stack([uu, np.full(uu.shape, 0.5, np.float32), vv], -1)
+            big = _billow(pp, p["seed"] + 1201, octaves=4)
+            fine = _billow(pp * 5.0, p["seed"] + 1211, octaves=3)
+            return big * 0.9 + (fine - 0.5) * 0.35 * (0.3 + 0.7 * near)
+
+        dd = dens(u, v)
+        su, sv = sd[0], sd[2]
+        sl = math.hypot(su, sv) or 1.0
+        occl = np.zeros(u.shape, np.float32)
+        for k in range(1, 5):
+            st = 0.06 * k
+            occl += np.clip(dens(u + su / sl * st, v + sv / sl * st) - dd * 0.9, 0.0, None)
+        light = np.exp(-occl * 5.0) * (0.45 + 0.55 * np.clip((dd - 0.5) * 3.0, 0.0, 1.0))
+        light = np.clip(light, 0.0, 1.0)[..., None]
+        cover = np.clip((dd - p.get("sea_gap", 0.5)) / 0.08, 0.0, 1.0)
+        color = shade_c * (1 - light) + lit_c * light
+        below = np.clip((-alt - 0.015) / 0.06, 0.0, 1.0)
+        far = np.exp(-t * p.get("sea_haze", 0.12))
+        w = (cover * below * far * sea_amp)[..., None]
+        base = base * (1 - w) + color * w
+
+    if bank_amp > 0:
+        # Towers on the horizon, the same way in (azimuth, altitude): a billowed density
+        # under a ragged height envelope that varies around the ring, self-shadowed by
+        # stepping toward the sun (sideways by azimuth, upward by altitude).
+        az = np.arctan2(d[..., 0], d[..., 2])
+        height = p.get("bank_height", 0.22)
+        ring = np.stack([np.cos(az) * 2.2, np.sin(az) * 2.2, np.full(az.shape, 0.3, np.float32)], -1)
+        top = height * (0.25 + 1.1 * np.power(np.clip(_fbm(ring, p["seed"] + 1301, 4) * 1.6 - 0.3, 0.0, 1.0), 2.0))
+
+        def dens(a_, l_):
+            pp = np.stack([np.cos(a_) * 16.0, l_ * 16.0, np.sin(a_) * 16.0], -1)
+            b_ = _billow(pp, p["seed"] + 1307, octaves=4)
+            env = 1.0 - np.clip((l_ + 0.02) / np.maximum(top, 1e-3), 0.0, 1.2)
+            return b_ * 0.6 + env * 0.75 - 0.15
+
+        dd = dens(az, alt)
+        saz = math.atan2(sd[0], sd[2])
+        rel = np.sign(np.sin(np.angle(np.exp(1j * (saz - az)))))
+        occl = np.zeros(az.shape, np.float32)
+        for k in range(1, 5):
+            st = 0.006 * k
+            occl += np.clip(dens(az + rel * st, alt + st * 0.8) - 0.45, 0.0, None)
+        feet = np.clip((alt + 0.02) / max(height, 1e-3), 0.0, 1.0)
+        light = np.clip(np.exp(-occl * 0.8) * (0.45 + 0.55 * feet) + 0.1, 0.0, 1.0)[..., None]
+        inside = np.clip((dd - 0.45) / 0.1, 0.0, 1.0) * np.clip((alt + 0.06) / 0.05, 0.0, 1.0)
+        color = shade_c * (1 - light) + lit_c * light
+        w = (inside * bank_amp)[..., None]
+        base = base * (1 - w) + color * w
+
+    if ceil_amp > 0:
+        # An overcast overhead - the layer above you - streaked along the zonal wind.
+        q, t = _plane(d, 1.0, p.get("ceil_height", 1.0), p.get("ceil_scale", 1.2))
+        q = q * np.array([0.7, 1.0, 1.0], np.float32)        # a little stretched: wind
+        n = _fbm(q, p["seed"] + 1401, 5)
+        cover = np.clip((n - p.get("ceil_gap", 0.42)) / 0.2, 0.0, 1.0)
+        # faded out well above the horizon: the plane's grazing rows stretch into arcs
+        above = np.clip((alt - 0.12) / 0.3, 0.0, 1.0)
+        far = np.exp(-t * 0.3)
+        under = np.array(p.get("ceil_color", (190, 150, 104)), np.float32)
+        w = (cover * above * (0.35 + 0.65 * far) * ceil_amp)[..., None]
+        base = base * (1 - w) + under * w
+
+    if fog > 0:
+        # Inside the layer: everything milky toward the horizon, where the most air is.
+        mist = np.array(p.get("fog_color", (214, 186, 146)), np.float32)
+        w = (fog * (1.0 - np.abs(alt)) ** 3)[..., None]
+        base = base * (1 - w) + mist * w
+    return base
+
+
 def shade(d, p):
     """Color a set of directions. `p` is the variant's parameter dict."""
     alt = d[..., 1].copy()
@@ -228,6 +387,10 @@ def shade(d, p):
     cosang = np.clip((d * sd).sum(-1), -1.0, 1.0)
     glow = np.power(np.clip(cosang, 0.0, 1.0), p["sun_tight"])
     base += glow[..., None] * np.array(p["sun_tint"], np.float32) * p["sun_amp"]
+
+    # ---- Cloud FORMS (2026-09-25). Everything above is gradients and bands; nothing in it
+    # reads as a CLOUD, so the sky said "haze" and never "you are flying in the clouds".
+    base = _cloud_forms(d, alt, base, p)
 
     # Lightning: sparse, only down in the deck, where the concept art puts it.
     if p.get("lightning_amp", 0) > 0:
@@ -310,22 +473,36 @@ def _v(**kw):
 
 
 VARIANTS = {
+    # Cloud forms by band (2026-09-25): high = the sea far below; lanes = the sea below and
+    # towers on the horizon; storm/deep = INSIDE the layer, cloud overhead as well as below.
     "venus_sky_high_haze": ("Venus - High Haze (pale gold)", _v(
-        seed=1101, stops=_HIGH, bands=6.0, cloud_amp=40.0, sun_amp=86.0, sun_tight=5.5)),
+        seed=1101, stops=_HIGH, bands=6.0, cloud_amp=40.0, sun_amp=86.0, sun_tight=5.5,
+        sea_amp=1.0, sea_depth=2.2, sea_scale=0.35, bank_amp=0.8, bank_height=0.1,
+        fog=0.1, sea_lit=(255, 244, 218), sea_shadow=(176, 140, 96))),
     "venus_sky_midday": ("Venus - Midday Deck (amber)", _v(
-        seed=2202, stops=_DAY)),
+        seed=2202, stops=_DAY, sea_amp=1.0, bank_amp=0.9, ceil_amp=0.35, fog=0.18,
+        sea_shadow=(132, 92, 54))),
     "venus_sky_dusk": ("Venus - Terminator Dusk (orange)", _v(
         seed=3303, stops=_DUSK, sun_dir=(0.95, -0.05, 0.30), sun_tight=4.0, sun_amp=96.0,
-        bands=8.0)),
+        bands=8.0, sea_amp=1.0, bank_amp=0.95, bank_height=0.26, ceil_amp=0.3, fog=0.16,
+        sea_lit=(250, 190, 130), sea_shadow=(110, 56, 32))),
     "venus_sky_stormwall": ("Venus - Storm Wall (dark umber)", _v(
         seed=4404, stops=_STORM, warp=0.85, cloud_freq=5.5, cloud_amp=64.0,
-        sun_amp=34.0, lightning_amp=150.0)),
+        sun_amp=34.0, lightning_amp=150.0, sea_amp=0.95, sea_depth=0.7, bank_amp=1.0,
+        bank_height=0.38, ceil_amp=0.5, ceil_height=0.6, ceil_gap=0.45, fog=0.3,
+        sea_lit=(196, 164, 124), sea_shadow=(58, 40, 28), ceil_color=(96, 72, 50),
+        fog_color=(120, 94, 66))),
     "venus_sky_deep": ("Venus - Deep Deck (oppressive)", _v(
         seed=5505, stops=_DEEP, bands=9.0, cloud_amp=58.0, sun_amp=22.0, sun_tight=10.0,
-        lightning_amp=110.0, lightning_thresh=0.84)),
+        lightning_amp=110.0, lightning_thresh=0.84, sea_amp=0.9, sea_depth=0.45,
+        bank_amp=0.9, bank_height=0.3, ceil_amp=0.9, ceil_height=0.5, ceil_gap=0.25,
+        fog=0.38, sea_lit=(150, 112, 70), sea_shadow=(40, 26, 16), ceil_color=(84, 60, 38),
+        fog_color=(96, 70, 44))),
     "venus_sky_nightside": ("Venus - Nightside (dim sulfur)", _v(
         seed=6606, stops=_NIGHT, sun_amp=8.0, cloud_amp=34.0, detail_amp=9.0,
-        lightning_amp=190.0, lightning_thresh=0.86)),
+        lightning_amp=190.0, lightning_thresh=0.86, sea_amp=0.9, bank_amp=0.8,
+        ceil_amp=0.4, fog=0.2, sea_lit=(120, 102, 86), sea_shadow=(34, 24, 18),
+        ceil_color=(60, 50, 44), fog_color=(70, 58, 50))),
 }
 
 
