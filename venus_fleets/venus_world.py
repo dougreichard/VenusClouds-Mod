@@ -145,16 +145,14 @@ def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
             obj.engine_object.blink_state = random.randint(*VENUS_PULSE)
     except Exception:
         pass
-    # ONE engine nebula inside every cloud, tinted to it: a soft haze that blurs the mesh's
-    # hard silhouette. Engine-measured: the sphere-cluster helper spawned none inside a
-    # 600-unit cloud, and terrain_nebula_spawn forces y onto the 0 plane - so it is placed
-    # here directly.
+    # The cloud BODY is an engine nebula now; the mesh keeps only what is inside it
+    # (crystals, veins, spores, ore, debris, lightning). Sized like the puff it replaced,
+    # tinted to the cloud, and COVER - hiding in a cloud means hiding in this. Placed here
+    # directly: terrain_nebula_spawn forces y onto the 0 plane.
     kind = "storm" if info.get("storm") else info.get("resource")
-    # The halo is scenery for every cloud now: hiding is the cloud itself (the proximity
-    # check in venus_world_tick) or the cloud base (venus_cover nebulae).
-    nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * VENUS_HALO_SPAN),
-                       VENUS_STORM_DENSITY if kind == "storm" else VENUS_HALO_DENSITY,
-                       venus_cloud_color(kind))
+    nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * VENUS_BODY_SPAN),
+                       VENUS_STORM_DENSITY if kind == "storm" else VENUS_BODY_DENSITY,
+                       venus_cloud_color(kind), cover=cover)
     if nid is not None:
         set_inventory_value(cid, "venus_nebulae", [nid])
     return cid
@@ -173,6 +171,12 @@ def venus_in_cover_nebula(ship):
     except Exception:
         pass
     return False
+
+
+def venus_cloud_puff(x, y, z, diameter, cover=True):
+    """A plain cloud: an engine nebula alone - no mesh (a mesh puff reads as a hard slab,
+    and the engine ignores mesh alpha). Cover like any cloud. Returns its id."""
+    return venus_nebula(x, y, z, diameter, VENUS_BODY_DENSITY, venus_cloud_color(None), cover=cover)
 
 
 def venus_cloud_scale(obj, scale):
@@ -194,34 +198,62 @@ def venus_cloud_scale(obj, scale):
 # noise alpha on the cloud textures changed nothing), so a soft edge has to come from a
 # nebula around the mesh instead.
 VENUS_CLOUD_TINTS = {
-    None:        ((1.35, 1.22, 0.98), 1.0),   # plain cloud: cream
-    "coolant":   ((0.95, 1.2, 1.5), 1.0),     # ice
-    "fuel":      ((1.5, 1.32, 0.45), 1.0),    # sulfur
-    "materials": ((1.05, 0.8, 0.55), 1.3),    # ore dust
-    "medicine":  ((0.75, 1.4, 0.7), 1.0),     # spores
-    "aether":    ((1.15, 0.75, 1.55), 1.0),   # aether
-    "salvage":   ((0.95, 0.92, 0.88), 1.2),   # wreck haze
-    "storm":     ((0.38, 0.38, 0.48), 2.2),   # storm cell: dark and thick
+    # kind: (emission rgb, absorption scale, scattering scale). The nebula IS the cloud body
+    # now (the meshes keep only what is inside). Resource clouds glow more than plain cloud
+    # (user: "the resource ones can be more emissive"); a storm is dark but scatters hard,
+    # so its lightning lights it up from inside.
+    None:        ((0.95, 0.86, 0.62), 1.2, 1.0),   # plain cloud: warm, NOT white - nebulae ADD
+    "coolant":   ((1.4, 1.8, 2.3), 1.0, 1.0),      # ice
+    "fuel":      ((2.3, 2.0, 0.6), 1.0, 1.0),      # sulfur
+    "materials": ((1.6, 1.15, 0.75), 1.3, 1.0),    # ore dust
+    "medicine":  ((1.1, 2.1, 1.0), 1.0, 1.0),      # spores
+    "aether":    ((1.8, 1.1, 2.4), 1.0, 1.0),      # aether
+    "salvage":   ((1.3, 1.25, 1.2), 1.2, 1.0),     # wreck haze
+    "storm":     ((0.22, 0.22, 0.3), 2.6, 1.6),    # storm cell: dark, thick, scattering
 }
 VENUS_COVER_ROLE = "venus_cover"  # nebulae that hide a ship (the cloud base); halos do not
+VENUS_MURK_TOP = -600.0            # the top of the cloud base: ships ride just above it
+VENUS_BODY_SPAN = 2.8              # a cloud's nebula body, as a multiple of its radius
+VENUS_BODY_DENSITY = 0.8
 VENUS_HALO_SPAN = 5.0              # halo diameter as a multiple of the cloud's radius
 VENUS_HALO_DENSITY = 0.55          # 0.35 did not show at all, 0.7 was a wall at 4x (user, 2026-09-25)
-VENUS_STORM_DENSITY = 0.9
+VENUS_STORM_DENSITY = 1.4
 
 
 def venus_cloud_color(kind=None):
     """A Venus cloud as an engine nebula color: the library's white, warmed and made to
     scatter more, tinted for `kind` (a resource, "storm", or None for plain cloud). A fresh
     dict per call: swirl, warp and anisotropy are drawn per nebula so no two bank alike."""
-    (er, eg, eb), absorb = VENUS_CLOUD_TINTS.get(kind, VENUS_CLOUD_TINTS[None])
+    (er, eg, eb), absorb, scat = VENUS_CLOUD_TINTS.get(kind, VENUS_CLOUD_TINTS[None])
     return {
         "display_text": "cloud" if kind is None else str(kind),
         "absorption_red": 0.22 * absorb, "absorption_green": 0.26 * absorb, "absorption_blue": 0.36 * absorb,
         "emission_red": er, "emission_green": eg, "emission_blue": eb,
-        "scattering_red": 0.8, "scattering_green": 0.76, "scattering_blue": 0.68,
+        "scattering_red": 0.8 * scat, "scattering_green": 0.76 * scat, "scattering_blue": 0.68 * scat,
         "anisotropy": random.uniform(-0.2, 0.1),
         "base_frequency": 1.8, "base_amplitude": 1.1,
         "detail_frequency": 1.3055, "detail_amplitude": 1.1, "detail_lacunarity": 2.43,
+        "domain_warp": random.random(), "swirl": random.random() * 10,
+    }
+
+
+def venus_murk_color(depth=0.0):
+    """The cloud BASE: Venus's sulfuric murk, not Earth's white cloud. Nebulae are
+    ADDITIVE, so dozens of bright ones stacked into pure white; this is dim olive-ochre
+    that absorbs blue (sulfur haze) and darkens with `depth` (0 top .. 1 bottom), so the
+    deck reads as heavy and dark (user reference, 2026-09-25)."""
+    t = max(0.0, min(1.0, float(depth)))
+    glow = 1.0 - 0.6 * t
+    return {
+        "display_text": "murk",
+        # olive, not gold: red ~ green, blue about half, and DIM - the first cut (0.62/0.56/
+        # 0.24, blue absorbed hard) stacked into saturated gold
+        "absorption_red": 0.5 * (1 + t), "absorption_green": 0.5 * (1 + t), "absorption_blue": 0.7 * (1 + t),
+        "emission_red": 0.34 * glow, "emission_green": 0.33 * glow, "emission_blue": 0.17 * glow,
+        "scattering_red": 0.32, "scattering_green": 0.31, "scattering_blue": 0.2,
+        "anisotropy": random.uniform(-0.1, 0.25),
+        "base_frequency": 1.2, "base_amplitude": 1.3,
+        "detail_frequency": 1.3055, "detail_amplitude": 1.4, "detail_lacunarity": 2.43,
         "domain_warp": random.random(), "swirl": random.random() * 10,
     }
 
@@ -247,7 +279,7 @@ def venus_nebula(x, y, z, diameter, density=0.6, color="yellow", cover=False):
 
 
 def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, storms=2, wrecks=3,
-                      floor=10, under=0, base=48, mid=24, seed=None):
+                      floor=0, under=0, base=110, mid=40, seed=None):
     """Dress a map. The cloud BASE is nebulae - a soft volume you fly into, and the
     engine's own cover - in two tiers: the cloud sea at the deck (`base`) and a patchier
     layer between the lanes and the floor (`mid`). A few big stratus banks (`floor`) stay
@@ -270,52 +302,55 @@ def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, st
         return cx + math.cos(a) * d, cz + math.sin(a) * d
 
     n = 0
-    for i in range(floor):                         # the sea you can see down there
-        x, z = at(0, radius * 1.2)
-        n += venus_cloud_spawn("venus_cloud_stratus_bank", x, floor_y + rng.uniform(-400, 400), z, cover=False,
-                               scale=rng.uniform(1.6, 3.6)) is not None
-    below = [k for k in plain if "stratus" in k or "cumulus" in k] or plain
-    for i in range(under):                         # the layer between you and the floor
-        x, z = at(0, radius * 1.1)
-        n += venus_cloud_spawn(rng.choice(below), x, rng.uniform(floor_y + 800, -1800), z, cover=False,
-                               scale=rng.uniform(1.2, 3.0)) is not None
+    # THE MURK: the cloud base is a sea of dim olive nebulae whose TOP sits just under the
+    # lanes, so ships ride on it (user, 2026-09-25: "I'd like the ships to be riding on top
+    # of that"). Density and darkness grade with depth down past the deck (the library maps
+    # a coefficient to shader density as 7.24x, clamped 1.95..20 - ~2.8 is opaque). Each
+    # nebula is capped so its top never rises above VENUS_MURK_TOP: the lanes stay clear,
+    # and a crew is not "in cover" until it dips into the murk.
+    top_y, deep_y = VENUS_MURK_TOP, floor_y - 2500.0
     nebs = 0
-    # DENSITY GRADES WITH DEPTH: thin wisps just under the lanes, thickening toward the
-    # floor, near-opaque at the base and solid below it (user, engine view 2026-09-25:
-    # "the lower clouds should be the more dense ones"). The library maps the coefficient
-    # to the shader's density as 7.24x, clamped 1.95..20 - so ~2.8 is fully opaque.
-    top_y, deep_y = -2000.0, floor_y - 2500.0
+
+    def depth(y):
+        return max(0.0, min(1.0, (top_y - y) / (top_y - deep_y)))
 
     def dens(y):
-        t = max(0.0, min(1.0, (top_y - y) / (top_y - deep_y)))
-        return 0.35 + 2.45 * t ** 1.3
+        return 0.35 + 2.45 * depth(y) ** 1.3
 
-    for i in range(base):                          # the cloud sea itself
+    def murk(y, d):
+        d = min(d, 2.0 * (top_y - y))                 # keep its top at or below the surface
+        if d < 1200:
+            return 0
+        return venus_nebula(x, y, z, d, dens(y), venus_murk_color(depth(y)), cover=True) is not None
+
+    for i in range(base):                          # the surface you ride on
         x, z = at(0, radius * 1.15)
-        y = floor_y + rng.uniform(-400, 1200)
-        nebs += venus_nebula(x, y, z, rng.uniform(4000, 5000), dens(y),
-                             venus_cloud_color(), cover=True) is not None
-    for i in range(base // 2):                     # and solid beneath it
+        nebs += murk(top_y - rng.uniform(1600, 2600), rng.uniform(3600, 5000))
+    for i in range(mid):                           # the body of the murk
         x, z = at(0, radius * 1.15)
-        y = floor_y - rng.uniform(1200, 2500)
-        nebs += venus_nebula(x, y, z, 5000.0, dens(y), venus_cloud_color(), cover=True) is not None
-    for i in range(mid):                           # patchier, thinner cloud above the sea
-        x, z = at(0, radius)
-        y = rng.uniform(floor_y + 1500, top_y)
-        # its TOP must stay under the lanes: a 4500-wide nebula at -1500 reached +750, so a
-        # crew at the Haven (y 0) was inside cover from the first second (measured)
-        d = min(rng.uniform(2500, 4500), 2.0 * (top_y + 500.0 - y))
-        if d >= 1200:
-            nebs += venus_nebula(x, y, z, d, dens(y), venus_cloud_color(), cover=True) is not None
-    for i in range(lanes):
+        nebs += murk(rng.uniform(floor_y, top_y - 2600), 5000.0)
+    for i in range(base // 3):                     # solid below the deck
+        x, z = at(0, radius * 1.15)
+        nebs += murk(floor_y - rng.uniform(800, 2500), 5000.0)
+    for i in range(floor):                         # landmark banks breaking the surface
+        x, z = at(0, radius * 1.2)
+        n += venus_cloud_spawn("venus_cloud_stratus_bank", x, top_y - rng.uniform(0, 350), z, cover=False,
+                               scale=rng.uniform(1.6, 3.6)) is not None
+    below = [k for k in plain if "stratus" in k or "cumulus" in k] or plain
+    for i in range(under):                         # optional mesh cloud down in the murk
+        x, z = at(0, radius * 1.1)
+        n += venus_cloud_spawn(rng.choice(below), x, rng.uniform(floor_y + 800, top_y - 800), z, cover=False,
+                               scale=rng.uniform(1.2, 3.0)) is not None
+    for i in range(lanes):                         # plain cloud: a nebula and nothing else
         x, z = at(radius * 0.1, radius)
-        n += venus_cloud_spawn(rng.choice(plain), x, rng.uniform(-2500, 2500), z) is not None
+        n += venus_cloud_puff(x, rng.uniform(VENUS_MURK_TOP + 900, 3000), z,
+                              rng.uniform(1500, 4500)) is not None
     for i in range(resources):
         x, z = at(radius * 0.2, radius)
-        n += venus_cloud_spawn(rng.choice(res), x, rng.uniform(-3500, 2000), z) is not None
+        n += venus_cloud_spawn(rng.choice(res), x, rng.uniform(VENUS_MURK_TOP + 500, 2500), z) is not None
     for i in range(storms):
         x, z = at(radius * 0.3, radius)
-        n += venus_cloud_spawn(rng.choice(storm), x, rng.uniform(-1500, 1500), z) is not None
+        n += venus_cloud_spawn(rng.choice(storm), x, rng.uniform(VENUS_MURK_TOP + 800, 2000), z) is not None
     for i in range(wrecks):
         x, z = at(radius * 0.3, radius)
         n += venus_cloud_spawn(rng.choice(wreck), x, rng.uniform(-5000, -2000), z) is not None

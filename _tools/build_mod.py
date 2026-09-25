@@ -53,6 +53,17 @@ def obj_extent(path):
     return lo, hi
 
 
+def design_target_len(art, cloud):
+    """TARGET_LEN from a terrain recipe (E:/ai/art/terrain/designs/<cloud>.py), or None."""
+    import re
+    path = os.path.join(art, "terrain", "designs", cloud + ".py")
+    try:
+        m = re.search(r"^TARGET_LEN\s*=\s*([0-9.]+)", open(path, encoding="utf-8").read(), re.M)
+    except OSError:
+        return None
+    return float(m.group(1)) if m else None
+
+
 def copy_art(src_dir, dst_dir, root):
     """The engine-read files of one art set. Radar sprites are derived art: the engine
     bakes them from the .obj on first draw, so shipping ours would only go stale."""
@@ -329,8 +340,14 @@ def main():
         obj = os.path.join(src, f"{cloud}.obj")
         if not args.no_copy:
             copy_art(src, os.path.join(media, "ships", "clouds"), cloud)
-        lo, hi = obj_extent(obj)
-        span_xz = max(hi[0] - lo[0], hi[2] - lo[2])
+        # The OBJ is exported at its recipe's TARGET_LEN, so that - not the measured extent -
+        # is its span. A cloud exported without its body (SKY_NO_BODY: the puff is a nebula in
+        # game) measures only its crystals or bolts, and would be blown up to fill the whole
+        # cloud's world_len.
+        span_xz = design_target_len(args.art, cloud)
+        if span_xz is None:
+            lo, hi = obj_extent(obj)
+            span_xz = max(hi[0] - lo[0], hi[2] - lo[2])
         key = f"venus_cloud_{cloud}"
         roles = "terrain,cloud" + (",resource," + cc["resource"] if cc["resource"] else "") + \
             (",storm" if cc["storm"] else "")

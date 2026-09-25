@@ -222,18 +222,13 @@ def _venus_wind_wisps(x0, z0, x1, z1, y):
     yaw = math.atan2(x1 - x0, z1 - z0)
     for i in range(steps + 1):
         t = i / steps
-        cid = venus_cloud_spawn("venus_cloud_cumulus_small", x0 + (x1 - x0) * t, y, z0 + (z1 - z0) * t, cover=False)
-        if cid is None:
+        # a small, flattened nebula puff marks the lane; the streaks ride on it (scenery,
+        # not cover - a lane you could hide in would be a road of invisibility)
+        nid = venus_cloud_puff(x0 + (x1 - x0) * t, y, z0 + (z1 - z0) * t, 900.0, cover=False)
+        if nid is None:
             continue
         try:
-            from sbs_utils.procedural.query import to_object
-            o = to_object(cid)
-            o.engine_object.steer_yaw = 0
-            venus_cloud_scale(o, (0.45, 0.35, 0.8))           # a thin streak along the wind
-        except Exception:
-            pass
-        try:
-            particle_effect(cid, "venus_wind", slot="venus_wind", priority=0)
+            particle_effect(nid, "venus_wind", slot="venus_wind", priority=0)
         except Exception:
             pass
     return steps + 1
