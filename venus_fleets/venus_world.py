@@ -17,8 +17,11 @@ VENUS_HARVEST_RATE = 2.0          # units per second inside a resource cloud
 VENUS_CLOUD_STOCK = (150, 400)    # units a resource cloud starts with
 VENUS_SINK_RATE = 60.0            # world units per second while above the ceiling lift allows
 VENUS_STORM_EVERY = 6.0           # seconds between storm strikes on a ship inside a cell
-VENUS_STORM_BLINK = -3           # blink_state for storm cells: lightning flicker
-VENUS_PULSE = 6                  # blink_state pulse for aether and spore clouds
+# blink_state: positive = pulse delay, negative = blink delay; bigger is SLOWER. The unit
+# is undocumented - -3 / 6 read far too fast in the engine (user, 2026-09-25). Each cloud
+# picks from a range so a sky full of them does not flash in step.
+VENUS_STORM_BLINK = (18, 30)     # storm cells: lightning blink delay range
+VENUS_PULSE = (40, 70)           # aether and spore clouds: slow pulse delay range
 VENUS_PULSE_RESOURCES = ("aether", "medicine")
 VENUS_NPC_LIFT_PER_HULL = 0.12
 # Units a hold carries, by role. Without a cap a crew parked in one cloud until it was gone
@@ -118,9 +121,9 @@ def venus_cloud_spawn(key, x, y, z, cover=True):
     # exotic resource clouds breathe.
     try:
         if info.get("storm"):
-            obj.engine_object.blink_state = VENUS_STORM_BLINK
+            obj.engine_object.blink_state = -random.randint(*VENUS_STORM_BLINK)
         elif info.get("resource") in VENUS_PULSE_RESOURCES:
-            obj.engine_object.blink_state = VENUS_PULSE
+            obj.engine_object.blink_state = random.randint(*VENUS_PULSE)
     except Exception:
         pass
     if cover:

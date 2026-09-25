@@ -78,5 +78,5 @@ That renders the exported OBJ with its four maps under one sun and a dim ambient
   Brood. Each plume comes from the stack tops the art recorded, or from the stern on
   fleets without stacks.
 - **Lift shimmer:** one glow point under each ring, in the fleet's lift color.
-- **Blink:** storm-cell lightning blinks; aether and spore clouds pulse slowly
+- **Blink:** storm-cell lightning blinks; aether and spore clouds pulse slowly, each at its own rate
   (`blink_state`).
