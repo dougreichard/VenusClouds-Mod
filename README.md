@@ -102,8 +102,9 @@ The bake walks every hull through the browser's 3D widget. It also re-hulls a se
 player ship through each key, so the server loads each hull as ship art, not just as a
 picture.
 
-**Re-run the bake after every `sbs lib VenusClouds-Mod`.** Unpacking the pack removes the
-baked files.
+Bake again when the art (the `.obj` files) changes. A script-only rebuild does not need
+it: the engine re-bakes a hull the first time it draws it, and the prebake only exists so
+that never happens in the middle of a live session.
 
 ## Layout
 

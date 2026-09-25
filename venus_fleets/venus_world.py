@@ -170,6 +170,22 @@ def venus_cloud_scale(obj, scale):
         pass
 
 
+def venus_cloud_color():
+    """The cream of Venus cloud, as an engine nebula color (the library's white, warmed
+    and made to scatter more). A fresh dict per call: the shader's swirl, warp and
+    anisotropy are drawn per nebula so no two bank the same way."""
+    return {
+        "display_text": "cloud",
+        "absorption_red": 0.22, "absorption_green": 0.26, "absorption_blue": 0.36,
+        "emission_red": 1.35, "emission_green": 1.22, "emission_blue": 0.98,
+        "scattering_red": 0.8, "scattering_green": 0.76, "scattering_blue": 0.68,
+        "anisotropy": random.uniform(-0.2, 0.1),
+        "base_frequency": 1.8, "base_amplitude": 1.1,
+        "detail_frequency": 1.3055, "detail_amplitude": 1.1, "detail_lacunarity": 2.43,
+        "domain_warp": random.random(), "swirl": random.random() * 10,
+    }
+
+
 def venus_nebula(x, y, z, diameter, density=0.6, color="yellow"):
     """An engine nebula of any size (the library setup caps it at 1500). Returns its id."""
     from sbs_utils.procedural.spawn import terrain_spawn
@@ -187,10 +203,14 @@ def venus_nebula(x, y, z, diameter, density=0.6, color="yellow"):
 
 
 def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, storms=2, wrecks=3,
-                      floor=60, under=40, base=36, seed=None):
-    """Dress a map: a cloud-sea floor at the deck band, a layer of cloud BELOW the lanes
-    (between the crews and the floor), nebula haze along the cloud base, scattered lane
-    clouds, resource clouds, storm cells and wrecks. Returns a short status string."""
+                      floor=10, under=0, base=48, mid=24, seed=None):
+    """Dress a map. The cloud BASE is nebulae - a soft volume you fly into, and the
+    engine's own cover - in two tiers: the cloud sea at the deck (`base`) and a patchier
+    layer between the lanes and the floor (`mid`). A few big stratus banks (`floor`) stay
+    as landmarks, since haze alone does not show where the floor is from above; `under`
+    mesh clouds are off by default (they read as hard slabs). Then lane clouds, resource
+    clouds, storm cells and wrecks, which are meshes because they are things you fly TO.
+    Returns a short status string."""
     rng = random.Random(seed)
     clouds = list((venus_manifest().get("clouds") or {}).keys())
     plain = [k for k in clouds if not (venus_manifest()["clouds"][k].get("resource")
@@ -216,10 +236,30 @@ def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, st
         n += venus_cloud_spawn(rng.choice(below), x, rng.uniform(floor_y + 800, -1800), z, cover=False,
                                scale=rng.uniform(1.2, 3.0)) is not None
     nebs = 0
-    for i in range(base):                          # the haze the cloud base sits in
+    # DENSITY GRADES WITH DEPTH: thin wisps just under the lanes, thickening toward the
+    # floor, near-opaque at the base and solid below it (user, engine view 2026-09-25:
+    # "the lower clouds should be the more dense ones"). The library maps the coefficient
+    # to the shader's density as 7.24x, clamped 1.95..20 - so ~2.8 is fully opaque.
+    top_y, deep_y = -1500.0, floor_y - 2500.0
+
+    def dens(y):
+        t = max(0.0, min(1.0, (top_y - y) / (top_y - deep_y)))
+        return 0.35 + 2.45 * t ** 1.3
+
+    for i in range(base):                          # the cloud sea itself
         x, z = at(0, radius * 1.15)
-        nebs += venus_nebula(x, floor_y + rng.uniform(-200, 900), z, rng.uniform(3500, VENUS_NEBULA_MAX),
-                             0.8) is not None
+        y = floor_y + rng.uniform(-400, 1200)
+        nebs += venus_nebula(x, y, z, rng.uniform(4000, VENUS_NEBULA_MAX), dens(y),
+                             venus_cloud_color()) is not None
+    for i in range(base // 2):                     # and solid beneath it
+        x, z = at(0, radius * 1.15)
+        y = floor_y - rng.uniform(1200, 2500)
+        nebs += venus_nebula(x, y, z, VENUS_NEBULA_MAX, dens(y), venus_cloud_color()) is not None
+    for i in range(mid):                           # patchier, thinner cloud above the sea
+        x, z = at(0, radius)
+        y = rng.uniform(floor_y + 1500, top_y)
+        nebs += venus_nebula(x, y, z, rng.uniform(2500, 4500), dens(y),
+                             venus_cloud_color()) is not None
     for i in range(lanes):
         x, z = at(radius * 0.1, radius)
         n += venus_cloud_spawn(rng.choice(plain), x, rng.uniform(-2500, 2500), z) is not None
