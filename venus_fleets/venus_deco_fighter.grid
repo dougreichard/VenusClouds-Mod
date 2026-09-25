@@ -1,0 +1,21 @@
+ship: venus_deco_fighter
+layout: default
+size: 7x7
+damcons: 1
+legend:
+  E: sensors
+  L: lift-ring
+  M: maneuver
+  T: torp-tube
+  W: warp
+  a: aft-shield
+  d: fwd-shield
+  i: impulse
+---
+   T   
+  dE.  
+  ...  
+...L...
+.......
+  .M.  
+  iaW  

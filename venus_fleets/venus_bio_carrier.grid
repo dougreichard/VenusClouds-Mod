@@ -1,0 +1,48 @@
+ship: venus_bio_carrier
+layout: default
+size: 18x28
+damcons: 3
+legend:
+  C: computer
+  E: sensors
+  K: workshop
+  L: lift-ring
+  M: maneuver
+  T: torp-tube
+  W: warp
+  a: aft-shield
+  d: fwd-shield
+  h: shuttle-bay
+  i: impulse
+  k: sick-bay
+  s: crew-mess
+  u: crew-quarters
+---
+                  
+       ETTE       
+       .dd.       
+       .C..       
+      ......      
+      ......      
+     ........     
+    ..........    
+    L........L    
+   .L........L.   
+  .....hhL......  
+ hKuuuuskLsuuuKKh 
+..................
+..................
+ ...L........L... 
+   .L........L.   
+     ........     
+       ....       
+       MWM.       
+        ii        
+        aa        
+                  
+                  
+                  
+                  
+                  
+                  
+                  

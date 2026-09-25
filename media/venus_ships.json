@@ -1,0 +1,4775 @@
+{
+  "#ship-list": [
+    {
+      "key": "venus_steam_carrier",
+      "name": "Salvage Flotilla Carrier",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/carrier",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 78.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Carrier^Carrier. Launches fighters; point-defense turrets welded to the deck.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 12
+        },
+        {
+          "Mine": 6
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 18,
+      "internalmaph": 28,
+      "internalsymmetry": 1,
+      "turn_rate": 0.35,
+      "speed_coeff": 0.45,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,carrier,heavy",
+      "shields": [
+        260,
+        220
+      ],
+      "hullpoints": 10,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 18,
+      "baycount": 4
+    },
+    {
+      "key": "venus_steam_cruiser",
+      "name": "Salvage Flotilla Cruiser",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/cruiser",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 57.2,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Cruiser^Cruiser, the fleet flagship. Heavy missile battery and welded point-defense turrets.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 16
+        },
+        {
+          "Nuke": 3
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 14,
+      "internalmaph": 24,
+      "internalsymmetry": 1,
+      "turn_rate": 0.6,
+      "speed_coeff": 0.6,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,cruiser,heavy",
+      "shields": [
+        200,
+        170
+      ],
+      "hullpoints": 7,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_destroyer",
+      "name": "Salvage Flotilla Destroyer",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/destroyer",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 39.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Destroyer^Destroyer. Fast, with racks of missiles.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 14
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 1.0,
+      "speed_coeff": 0.95,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,destroyer,medium",
+      "shields": [
+        130,
+        110
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_frigate",
+      "name": "Salvage Flotilla Frigate",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/frigate",
+      "meshscale": 0.144737,
+      "radarscale": 1.0,
+      "exclusionradius": 28.6,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Frigate^Frigate. Compact escort.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 10
+        },
+        {
+          "Mine": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 14,
+      "internalsymmetry": 1,
+      "turn_rate": 1.1,
+      "speed_coeff": 0.85,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,frigate,light",
+      "shields": [
+        110,
+        90
+      ],
+      "hullpoints": 3,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_cargo_barge",
+      "name": "Salvage Flotilla Cargo Barge",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/cargo_barge",
+      "meshscale": 0.141667,
+      "radarscale": 1.0,
+      "exclusionradius": 44.2,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Cargo Barge^Cargo barge. Open holds and deck cranes.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.5,
+      "speed_coeff": 0.5,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,freighter,cargo,civilian",
+      "shields": [
+        80,
+        80
+      ],
+      "hullpoints": 5,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_steam_tender",
+      "name": "Salvage Flotilla Tender",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/steam_tender",
+      "meshscale": 0.14,
+      "radarscale": 1.0,
+      "exclusionradius": 36.4,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Tender^Tender. Fuel and water for the fleet.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 10,
+      "internalmaph": 18,
+      "internalsymmetry": 1,
+      "turn_rate": 0.55,
+      "speed_coeff": 0.55,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tanker,tender,civilian",
+      "shields": [
+        80,
+        70
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_fighter",
+      "name": "Salvage Flotilla Fighter",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/fighter",
+      "meshscale": 0.155556,
+      "radarscale": 0.4,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Fighter^Fighter. One pilot, one missile rail.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 7,
+      "internalmaph": 7,
+      "internalsymmetry": 1,
+      "turn_rate": 2.0,
+      "speed_coeff": 1.6,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,fighter,cockpit",
+      "shields": [
+        30
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_launch",
+      "name": "Salvage Flotilla Launch",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/launch",
+      "meshscale": 0.133333,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Launch^Launch. A passenger shuttle.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 5,
+      "internalmaph": 9,
+      "internalsymmetry": 1,
+      "turn_rate": 1.4,
+      "speed_coeff": 1.1,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,shuttle,civilian",
+      "shields": [
+        40
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_tug",
+      "name": "Salvage Flotilla Tug",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/tug",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Tug^Tug. Push-bow and tow winch.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 6,
+      "internalmaph": 8,
+      "internalsymmetry": 1,
+      "turn_rate": 1.2,
+      "speed_coeff": 0.8,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tug,civilian",
+      "shields": [
+        50
+      ],
+      "hullpoints": 2,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_station_command",
+      "name": "Salvage Flotilla Command Station",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/station_command",
+      "meshscale": 0.306667,
+      "radarscale": 1.0,
+      "exclusionradius": 184.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Command Station^Command station. Docking arms and welded turrets.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 6,
+      "torpedostart": [
+        {
+          "Homing": 40
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,command",
+      "shields": [
+        800,
+        800
+      ],
+      "hullpoints": 220,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 15
+    },
+    {
+      "key": "venus_steam_station_industrial",
+      "name": "Salvage Flotilla Industrial Station",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/station_industrial",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Industrial Station^Industrial station. Buys harvested resources.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,industry",
+      "shields": [
+        600,
+        600
+      ],
+      "hullpoints": 180,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 25
+    },
+    {
+      "key": "venus_steam_station_civil",
+      "name": "Salvage Flotilla Civil Station",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/station_civil",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Civil Station^Civil station. A floating town.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,civil",
+      "shields": [
+        500,
+        500
+      ],
+      "hullpoints": 160,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_steam_station_science",
+      "name": "Salvage Flotilla Science Station",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/station_science",
+      "meshscale": 0.28,
+      "radarscale": 1.0,
+      "exclusionradius": 112.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Science Station^Science station. Observatories and sensor arrays.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,science",
+      "shields": [
+        500,
+        500
+      ],
+      "hullpoints": 140,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 30
+    },
+    {
+      "key": "venus_steam_turret",
+      "name": "Salvage Flotilla Turret",
+      "origin": "Flotilla",
+      "side": "Flotilla",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/turret",
+      "meshscale": 0.3,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Salvage Flotilla Turret^Point-defense turret.^Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "turret",
+      "shields": [
+        60
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "color": "#4df",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_carrier",
+      "name": "Aurelian Concord Carrier",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/carrier",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 78.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Carrier^Carrier. Launches fighters; point-defense turrets welded to the deck.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 12
+        },
+        {
+          "Mine": 6
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 18,
+      "internalmaph": 28,
+      "internalsymmetry": 1,
+      "turn_rate": 0.315,
+      "speed_coeff": 0.495,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,carrier,heavy",
+      "shields": [
+        286,
+        242
+      ],
+      "hullpoints": 9,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 18,
+      "baycount": 4
+    },
+    {
+      "key": "venus_deco_cruiser",
+      "name": "Aurelian Concord Cruiser",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/cruiser",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 57.2,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Cruiser^Cruiser, the fleet flagship. Heavy missile battery and welded point-defense turrets.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 16
+        },
+        {
+          "Nuke": 3
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 14,
+      "internalmaph": 24,
+      "internalsymmetry": 1,
+      "turn_rate": 0.54,
+      "speed_coeff": 0.66,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,cruiser,heavy",
+      "shields": [
+        220,
+        187
+      ],
+      "hullpoints": 6,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_destroyer",
+      "name": "Aurelian Concord Destroyer",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/destroyer",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 39.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Destroyer^Destroyer. Fast, with racks of missiles.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 14
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.9,
+      "speed_coeff": 1.045,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,destroyer,medium",
+      "shields": [
+        143,
+        121
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_frigate",
+      "name": "Aurelian Concord Frigate",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/frigate",
+      "meshscale": 0.144737,
+      "radarscale": 1.0,
+      "exclusionradius": 28.6,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Frigate^Frigate. Compact escort.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 10
+        },
+        {
+          "Mine": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 14,
+      "internalsymmetry": 1,
+      "turn_rate": 0.99,
+      "speed_coeff": 0.935,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,frigate,light",
+      "shields": [
+        121,
+        99
+      ],
+      "hullpoints": 3,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_cargo_barge",
+      "name": "Aurelian Concord Cargo Barge",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/cargo_barge",
+      "meshscale": 0.141667,
+      "radarscale": 1.0,
+      "exclusionradius": 44.2,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Cargo Barge^Cargo barge. Open holds and deck cranes.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.45,
+      "speed_coeff": 0.55,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,freighter,cargo,civilian",
+      "shields": [
+        88,
+        88
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_steam_tender",
+      "name": "Aurelian Concord Tender",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/steam_tender",
+      "meshscale": 0.14,
+      "radarscale": 1.0,
+      "exclusionradius": 36.4,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Tender^Tender. Fuel and water for the fleet.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 10,
+      "internalmaph": 18,
+      "internalsymmetry": 1,
+      "turn_rate": 0.495,
+      "speed_coeff": 0.605,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tanker,tender,civilian",
+      "shields": [
+        88,
+        77
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_fighter",
+      "name": "Aurelian Concord Fighter",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/fighter",
+      "meshscale": 0.155556,
+      "radarscale": 0.4,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Fighter^Fighter. One pilot, one missile rail.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 7,
+      "internalmaph": 7,
+      "internalsymmetry": 1,
+      "turn_rate": 1.8,
+      "speed_coeff": 1.76,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,fighter,cockpit",
+      "shields": [
+        33
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_launch",
+      "name": "Aurelian Concord Launch",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/launch",
+      "meshscale": 0.133333,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Launch^Launch. A passenger shuttle.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 5,
+      "internalmaph": 9,
+      "internalsymmetry": 1,
+      "turn_rate": 1.26,
+      "speed_coeff": 1.21,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,shuttle,civilian",
+      "shields": [
+        44
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_tug",
+      "name": "Aurelian Concord Tug",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/tug",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Tug^Tug. Push-bow and tow winch.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 6,
+      "internalmaph": 8,
+      "internalsymmetry": 1,
+      "turn_rate": 1.08,
+      "speed_coeff": 0.88,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tug,civilian",
+      "shields": [
+        55
+      ],
+      "hullpoints": 2,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_station_command",
+      "name": "Aurelian Concord Command Station",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/station_command",
+      "meshscale": 0.306667,
+      "radarscale": 1.0,
+      "exclusionradius": 184.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Command Station^Command station. Docking arms and welded turrets.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 6,
+      "torpedostart": [
+        {
+          "Homing": 40
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,command",
+      "shields": [
+        880,
+        880
+      ],
+      "hullpoints": 198,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 15
+    },
+    {
+      "key": "venus_deco_station_industrial",
+      "name": "Aurelian Concord Industrial Station",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/station_industrial",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Industrial Station^Industrial station. Buys harvested resources.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,industry",
+      "shields": [
+        660,
+        660
+      ],
+      "hullpoints": 162,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 25
+    },
+    {
+      "key": "venus_deco_station_civil",
+      "name": "Aurelian Concord Civil Station",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/station_civil",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Civil Station^Civil station. A floating town.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,civil",
+      "shields": [
+        550,
+        550
+      ],
+      "hullpoints": 144,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_deco_station_science",
+      "name": "Aurelian Concord Science Station",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/station_science",
+      "meshscale": 0.28,
+      "radarscale": 1.0,
+      "exclusionradius": 112.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Science Station^Science station. Observatories and sensor arrays.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,science",
+      "shields": [
+        550,
+        550
+      ],
+      "hullpoints": 126,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 30
+    },
+    {
+      "key": "venus_deco_turret",
+      "name": "Aurelian Concord Turret",
+      "origin": "Concord",
+      "side": "Concord",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/turret",
+      "meshscale": 0.3,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Aurelian Concord Turret^Point-defense turret.^A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "turret",
+      "shields": [
+        66
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_carrier",
+      "name": "Atomic Directorate Carrier",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/carrier",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 78.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Carrier^Carrier. Launches fighters; point-defense turrets welded to the deck.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 12
+        },
+        {
+          "Mine": 6
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 18,
+      "internalmaph": 28,
+      "internalsymmetry": 1,
+      "turn_rate": 0.315,
+      "speed_coeff": 0.54,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,carrier,heavy",
+      "shields": [
+        260,
+        220
+      ],
+      "hullpoints": 9,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 18,
+      "baycount": 4
+    },
+    {
+      "key": "venus_atom_cruiser",
+      "name": "Atomic Directorate Cruiser",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/cruiser",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 57.2,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Cruiser^Cruiser, the fleet flagship. Heavy missile battery and welded point-defense turrets.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 16
+        },
+        {
+          "Nuke": 3
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 14,
+      "internalmaph": 24,
+      "internalsymmetry": 1,
+      "turn_rate": 0.54,
+      "speed_coeff": 0.72,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,cruiser,heavy",
+      "shields": [
+        200,
+        170
+      ],
+      "hullpoints": 6,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_destroyer",
+      "name": "Atomic Directorate Destroyer",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/destroyer",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 39.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Destroyer^Destroyer. Fast, with racks of missiles.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 14
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.9,
+      "speed_coeff": 1.14,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,destroyer,medium",
+      "shields": [
+        130,
+        110
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_frigate",
+      "name": "Atomic Directorate Frigate",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/frigate",
+      "meshscale": 0.144737,
+      "radarscale": 1.0,
+      "exclusionradius": 28.6,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Frigate^Frigate. Compact escort.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 10
+        },
+        {
+          "Mine": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 14,
+      "internalsymmetry": 1,
+      "turn_rate": 0.99,
+      "speed_coeff": 1.02,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,frigate,light",
+      "shields": [
+        110,
+        90
+      ],
+      "hullpoints": 3,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_cargo_barge",
+      "name": "Atomic Directorate Cargo Barge",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/cargo_barge",
+      "meshscale": 0.141667,
+      "radarscale": 1.0,
+      "exclusionradius": 44.2,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Cargo Barge^Cargo barge. Open holds and deck cranes.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.45,
+      "speed_coeff": 0.6,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,freighter,cargo,civilian",
+      "shields": [
+        80,
+        80
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_steam_tender",
+      "name": "Atomic Directorate Tender",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/steam_tender",
+      "meshscale": 0.14,
+      "radarscale": 1.0,
+      "exclusionradius": 36.4,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Tender^Tender. Fuel and water for the fleet.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 10,
+      "internalmaph": 18,
+      "internalsymmetry": 1,
+      "turn_rate": 0.495,
+      "speed_coeff": 0.66,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tanker,tender,civilian",
+      "shields": [
+        80,
+        70
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_fighter",
+      "name": "Atomic Directorate Fighter",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/fighter",
+      "meshscale": 0.155556,
+      "radarscale": 0.4,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Fighter^Fighter. One pilot, one missile rail.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 7,
+      "internalmaph": 7,
+      "internalsymmetry": 1,
+      "turn_rate": 1.8,
+      "speed_coeff": 1.92,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,fighter,cockpit",
+      "shields": [
+        30
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_launch",
+      "name": "Atomic Directorate Launch",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/launch",
+      "meshscale": 0.133333,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Launch^Launch. A passenger shuttle.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 5,
+      "internalmaph": 9,
+      "internalsymmetry": 1,
+      "turn_rate": 1.26,
+      "speed_coeff": 1.32,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,shuttle,civilian",
+      "shields": [
+        40
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_tug",
+      "name": "Atomic Directorate Tug",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/tug",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Tug^Tug. Push-bow and tow winch.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 6,
+      "internalmaph": 8,
+      "internalsymmetry": 1,
+      "turn_rate": 1.08,
+      "speed_coeff": 0.96,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tug,civilian",
+      "shields": [
+        50
+      ],
+      "hullpoints": 2,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_station_command",
+      "name": "Atomic Directorate Command Station",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/station_command",
+      "meshscale": 0.306667,
+      "radarscale": 1.0,
+      "exclusionradius": 184.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Command Station^Command station. Docking arms and welded turrets.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 6,
+      "torpedostart": [
+        {
+          "Homing": 40
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,command",
+      "shields": [
+        800,
+        800
+      ],
+      "hullpoints": 198,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 15
+    },
+    {
+      "key": "venus_atom_station_industrial",
+      "name": "Atomic Directorate Industrial Station",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/station_industrial",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Industrial Station^Industrial station. Buys harvested resources.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,industry",
+      "shields": [
+        600,
+        600
+      ],
+      "hullpoints": 162,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 25
+    },
+    {
+      "key": "venus_atom_station_civil",
+      "name": "Atomic Directorate Civil Station",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/station_civil",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Civil Station^Civil station. A floating town.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,civil",
+      "shields": [
+        500,
+        500
+      ],
+      "hullpoints": 144,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_atom_station_science",
+      "name": "Atomic Directorate Science Station",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/station_science",
+      "meshscale": 0.28,
+      "radarscale": 1.0,
+      "exclusionradius": 112.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Science Station^Science station. Observatories and sensor arrays.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,science",
+      "shields": [
+        500,
+        500
+      ],
+      "hullpoints": 126,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 30
+    },
+    {
+      "key": "venus_atom_turret",
+      "name": "Atomic Directorate Turret",
+      "origin": "Directorate",
+      "side": "Directorate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/turret",
+      "meshscale": 0.3,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Atomic Directorate Turret^Point-defense turret.^Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "turret",
+      "shields": [
+        60
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_carrier",
+      "name": "Iron Syndicate Carrier",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/carrier",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 78.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Carrier^Carrier. Launches fighters; point-defense turrets welded to the deck.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 12
+        },
+        {
+          "Mine": 6
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 18,
+      "internalmaph": 28,
+      "internalsymmetry": 1,
+      "turn_rate": 0.28,
+      "speed_coeff": 0.383,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,carrier,heavy",
+      "shields": [
+        234,
+        198
+      ],
+      "hullpoints": 14,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 18,
+      "baycount": 4
+    },
+    {
+      "key": "venus_diesel_cruiser",
+      "name": "Iron Syndicate Cruiser",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/cruiser",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 57.2,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Cruiser^Cruiser, the fleet flagship. Heavy missile battery and welded point-defense turrets.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 16
+        },
+        {
+          "Nuke": 3
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 14,
+      "internalmaph": 24,
+      "internalsymmetry": 1,
+      "turn_rate": 0.48,
+      "speed_coeff": 0.51,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,cruiser,heavy",
+      "shields": [
+        180,
+        153
+      ],
+      "hullpoints": 10,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_destroyer",
+      "name": "Iron Syndicate Destroyer",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/destroyer",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 39.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Destroyer^Destroyer. Fast, with racks of missiles.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 14
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.8,
+      "speed_coeff": 0.807,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,destroyer,medium",
+      "shields": [
+        117,
+        99
+      ],
+      "hullpoints": 6,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_frigate",
+      "name": "Iron Syndicate Frigate",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/frigate",
+      "meshscale": 0.144737,
+      "radarscale": 1.0,
+      "exclusionradius": 28.6,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Frigate^Frigate. Compact escort.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 10
+        },
+        {
+          "Mine": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 14,
+      "internalsymmetry": 1,
+      "turn_rate": 0.88,
+      "speed_coeff": 0.722,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,frigate,light",
+      "shields": [
+        99,
+        81
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_cargo_barge",
+      "name": "Iron Syndicate Cargo Barge",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/cargo_barge",
+      "meshscale": 0.141667,
+      "radarscale": 1.0,
+      "exclusionradius": 44.2,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Cargo Barge^Cargo barge. Open holds and deck cranes.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.4,
+      "speed_coeff": 0.425,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,freighter,cargo,civilian",
+      "shields": [
+        72,
+        72
+      ],
+      "hullpoints": 7,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_steam_tender",
+      "name": "Iron Syndicate Tender",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/steam_tender",
+      "meshscale": 0.14,
+      "radarscale": 1.0,
+      "exclusionradius": 36.4,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Tender^Tender. Fuel and water for the fleet.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 10,
+      "internalmaph": 18,
+      "internalsymmetry": 1,
+      "turn_rate": 0.44,
+      "speed_coeff": 0.468,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tanker,tender,civilian",
+      "shields": [
+        72,
+        63
+      ],
+      "hullpoints": 6,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_fighter",
+      "name": "Iron Syndicate Fighter",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/fighter",
+      "meshscale": 0.155556,
+      "radarscale": 0.4,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Fighter^Fighter. One pilot, one missile rail.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 7,
+      "internalmaph": 7,
+      "internalsymmetry": 1,
+      "turn_rate": 1.6,
+      "speed_coeff": 1.36,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,fighter,cockpit",
+      "shields": [
+        27
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_launch",
+      "name": "Iron Syndicate Launch",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/launch",
+      "meshscale": 0.133333,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Launch^Launch. A passenger shuttle.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 5,
+      "internalmaph": 9,
+      "internalsymmetry": 1,
+      "turn_rate": 1.12,
+      "speed_coeff": 0.935,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,shuttle,civilian",
+      "shields": [
+        36
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_tug",
+      "name": "Iron Syndicate Tug",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/tug",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Tug^Tug. Push-bow and tow winch.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 6,
+      "internalmaph": 8,
+      "internalsymmetry": 1,
+      "turn_rate": 0.96,
+      "speed_coeff": 0.68,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tug,civilian",
+      "shields": [
+        45
+      ],
+      "hullpoints": 3,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_station_command",
+      "name": "Iron Syndicate Command Station",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/station_command",
+      "meshscale": 0.306667,
+      "radarscale": 1.0,
+      "exclusionradius": 184.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Command Station^Command station. Docking arms and welded turrets.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 6,
+      "torpedostart": [
+        {
+          "Homing": 40
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,command",
+      "shields": [
+        720,
+        720
+      ],
+      "hullpoints": 308,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 15
+    },
+    {
+      "key": "venus_diesel_station_industrial",
+      "name": "Iron Syndicate Industrial Station",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/station_industrial",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Industrial Station^Industrial station. Buys harvested resources.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,industry",
+      "shields": [
+        540,
+        540
+      ],
+      "hullpoints": 252,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 25
+    },
+    {
+      "key": "venus_diesel_station_civil",
+      "name": "Iron Syndicate Civil Station",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/station_civil",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Civil Station^Civil station. A floating town.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,civil",
+      "shields": [
+        450,
+        450
+      ],
+      "hullpoints": 224,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_diesel_station_science",
+      "name": "Iron Syndicate Science Station",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/station_science",
+      "meshscale": 0.28,
+      "radarscale": 1.0,
+      "exclusionradius": 112.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Science Station^Science station. Observatories and sensor arrays.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,science",
+      "shields": [
+        450,
+        450
+      ],
+      "hullpoints": 196,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 30
+    },
+    {
+      "key": "venus_diesel_turret",
+      "name": "Iron Syndicate Turret",
+      "origin": "Syndicate",
+      "side": "Syndicate",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/turret",
+      "meshscale": 0.3,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Iron Syndicate Turret^Point-defense turret.^Armored warships of a militarist world: rivets, props and black exhaust.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "turret",
+      "shields": [
+        54
+      ],
+      "hullpoints": 6,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_carrier",
+      "name": "Sunward Commons Carrier",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/carrier",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 78.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Carrier^Carrier. Launches fighters; point-defense turrets welded to the deck.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 12
+        },
+        {
+          "Mine": 6
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 18,
+      "internalmaph": 28,
+      "internalsymmetry": 1,
+      "turn_rate": 0.385,
+      "speed_coeff": 0.473,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,carrier,heavy",
+      "shields": [
+        312,
+        264
+      ],
+      "hullpoints": 8,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 18,
+      "baycount": 4
+    },
+    {
+      "key": "venus_solar_cruiser",
+      "name": "Sunward Commons Cruiser",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/cruiser",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 57.2,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Cruiser^Cruiser, the fleet flagship. Heavy missile battery and welded point-defense turrets.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 16
+        },
+        {
+          "Nuke": 3
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 14,
+      "internalmaph": 24,
+      "internalsymmetry": 1,
+      "turn_rate": 0.66,
+      "speed_coeff": 0.63,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,cruiser,heavy",
+      "shields": [
+        240,
+        204
+      ],
+      "hullpoints": 6,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_destroyer",
+      "name": "Sunward Commons Destroyer",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/destroyer",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 39.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Destroyer^Destroyer. Fast, with racks of missiles.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 14
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 1.1,
+      "speed_coeff": 0.997,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,destroyer,medium",
+      "shields": [
+        156,
+        132
+      ],
+      "hullpoints": 3,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_frigate",
+      "name": "Sunward Commons Frigate",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/frigate",
+      "meshscale": 0.144737,
+      "radarscale": 1.0,
+      "exclusionradius": 28.6,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Frigate^Frigate. Compact escort.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 10
+        },
+        {
+          "Mine": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 14,
+      "internalsymmetry": 1,
+      "turn_rate": 1.21,
+      "speed_coeff": 0.892,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,frigate,light",
+      "shields": [
+        132,
+        108
+      ],
+      "hullpoints": 2,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_cargo_barge",
+      "name": "Sunward Commons Cargo Barge",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/cargo_barge",
+      "meshscale": 0.141667,
+      "radarscale": 1.0,
+      "exclusionradius": 44.2,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Cargo Barge^Cargo barge. Open holds and deck cranes.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.55,
+      "speed_coeff": 0.525,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,freighter,cargo,civilian",
+      "shields": [
+        96,
+        96
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_steam_tender",
+      "name": "Sunward Commons Tender",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/steam_tender",
+      "meshscale": 0.14,
+      "radarscale": 1.0,
+      "exclusionradius": 36.4,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Tender^Tender. Fuel and water for the fleet.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 10,
+      "internalmaph": 18,
+      "internalsymmetry": 1,
+      "turn_rate": 0.605,
+      "speed_coeff": 0.578,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tanker,tender,civilian",
+      "shields": [
+        96,
+        84
+      ],
+      "hullpoints": 3,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_fighter",
+      "name": "Sunward Commons Fighter",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/fighter",
+      "meshscale": 0.155556,
+      "radarscale": 0.4,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Fighter^Fighter. One pilot, one missile rail.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 7,
+      "internalmaph": 7,
+      "internalsymmetry": 1,
+      "turn_rate": 2.2,
+      "speed_coeff": 1.68,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,fighter,cockpit",
+      "shields": [
+        36
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_launch",
+      "name": "Sunward Commons Launch",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/launch",
+      "meshscale": 0.133333,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Launch^Launch. A passenger shuttle.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 5,
+      "internalmaph": 9,
+      "internalsymmetry": 1,
+      "turn_rate": 1.54,
+      "speed_coeff": 1.155,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,shuttle,civilian",
+      "shields": [
+        48
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_tug",
+      "name": "Sunward Commons Tug",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/tug",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Tug^Tug. Push-bow and tow winch.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 6,
+      "internalmaph": 8,
+      "internalsymmetry": 1,
+      "turn_rate": 1.32,
+      "speed_coeff": 0.84,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tug,civilian",
+      "shields": [
+        60
+      ],
+      "hullpoints": 2,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_station_command",
+      "name": "Sunward Commons Command Station",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/station_command",
+      "meshscale": 0.306667,
+      "radarscale": 1.0,
+      "exclusionradius": 184.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Command Station^Command station. Docking arms and welded turrets.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 6,
+      "torpedostart": [
+        {
+          "Homing": 40
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,command",
+      "shields": [
+        960,
+        960
+      ],
+      "hullpoints": 176,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 15
+    },
+    {
+      "key": "venus_solar_station_industrial",
+      "name": "Sunward Commons Industrial Station",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/station_industrial",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Industrial Station^Industrial station. Buys harvested resources.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,industry",
+      "shields": [
+        720,
+        720
+      ],
+      "hullpoints": 144,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 25
+    },
+    {
+      "key": "venus_solar_station_civil",
+      "name": "Sunward Commons Civil Station",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/station_civil",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Civil Station^Civil station. A floating town.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,civil",
+      "shields": [
+        600,
+        600
+      ],
+      "hullpoints": 128,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_solar_station_science",
+      "name": "Sunward Commons Science Station",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/station_science",
+      "meshscale": 0.28,
+      "radarscale": 1.0,
+      "exclusionradius": 112.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Science Station^Science station. Observatories and sensor arrays.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,science",
+      "shields": [
+        600,
+        600
+      ],
+      "hullpoints": 112,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 30
+    },
+    {
+      "key": "venus_solar_turret",
+      "name": "Sunward Commons Turret",
+      "origin": "Commons",
+      "side": "Commons",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/turret",
+      "meshscale": 0.3,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Sunward Commons Turret^Point-defense turret.^Garden-grown eco-starships flying on solar-sail wings.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "turret",
+      "shields": [
+        72
+      ],
+      "hullpoints": 3,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_carrier",
+      "name": "Verdant Brood Carrier",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/carrier",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 78.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Carrier^Carrier. Launches fighters; point-defense turrets welded to the deck.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 12
+        },
+        {
+          "Mine": 6
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 18,
+      "internalmaph": 28,
+      "internalsymmetry": 1,
+      "turn_rate": 0.455,
+      "speed_coeff": 0.495,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,carrier,heavy",
+      "shields": [
+        208,
+        176
+      ],
+      "hullpoints": 12,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 18,
+      "baycount": 4
+    },
+    {
+      "key": "venus_bio_cruiser",
+      "name": "Verdant Brood Cruiser",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/cruiser",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 57.2,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Cruiser^Cruiser, the fleet flagship. Heavy missile battery and welded point-defense turrets.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 16
+        },
+        {
+          "Nuke": 3
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 14,
+      "internalmaph": 24,
+      "internalsymmetry": 1,
+      "turn_rate": 0.78,
+      "speed_coeff": 0.66,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,cruiser,heavy",
+      "shields": [
+        160,
+        136
+      ],
+      "hullpoints": 8,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_destroyer",
+      "name": "Verdant Brood Destroyer",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/destroyer",
+      "meshscale": 0.136364,
+      "radarscale": 1.0,
+      "exclusionradius": 39.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Destroyer^Destroyer. Fast, with racks of missiles.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 4,
+      "torpedostart": [
+        {
+          "Homing": 14
+        },
+        {
+          "EMP": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 1.3,
+      "speed_coeff": 1.045,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,destroyer,medium",
+      "shields": [
+        104,
+        88
+      ],
+      "hullpoints": 5,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_frigate",
+      "name": "Verdant Brood Frigate",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/frigate",
+      "meshscale": 0.144737,
+      "radarscale": 1.0,
+      "exclusionradius": 28.6,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Frigate^Frigate. Compact escort.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 2,
+      "torpedostart": [
+        {
+          "Homing": 10
+        },
+        {
+          "Mine": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 8,
+      "internalmaph": 14,
+      "internalsymmetry": 1,
+      "turn_rate": 1.43,
+      "speed_coeff": 0.935,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,warship,frigate,light",
+      "shields": [
+        88,
+        72
+      ],
+      "hullpoints": 4,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_cargo_barge",
+      "name": "Verdant Brood Cargo Barge",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/cargo_barge",
+      "meshscale": 0.141667,
+      "radarscale": 1.0,
+      "exclusionradius": 44.2,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Cargo Barge^Cargo barge. Open holds and deck cranes.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 12,
+      "internalmaph": 20,
+      "internalsymmetry": 1,
+      "turn_rate": 0.65,
+      "speed_coeff": 0.55,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,freighter,cargo,civilian",
+      "shields": [
+        64,
+        64
+      ],
+      "hullpoints": 6,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_steam_tender",
+      "name": "Verdant Brood Tender",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/steam_tender",
+      "meshscale": 0.14,
+      "radarscale": 1.0,
+      "exclusionradius": 36.4,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Tender^Tender. Fuel and water for the fleet.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 10,
+      "internalmaph": 18,
+      "internalsymmetry": 1,
+      "turn_rate": 0.715,
+      "speed_coeff": 0.605,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tanker,tender,civilian",
+      "shields": [
+        64,
+        56
+      ],
+      "hullpoints": 5,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_fighter",
+      "name": "Verdant Brood Fighter",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/fighter",
+      "meshscale": 0.155556,
+      "radarscale": 0.4,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Fighter^Fighter. One pilot, one missile rail.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 1,
+      "torpedostart": [
+        {
+          "Homing": 4
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 7,
+      "internalmaph": 7,
+      "internalsymmetry": 1,
+      "turn_rate": 2.6,
+      "speed_coeff": 1.76,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,fighter,cockpit",
+      "shields": [
+        24
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_launch",
+      "name": "Verdant Brood Launch",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/launch",
+      "meshscale": 0.133333,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Launch^Launch. A passenger shuttle.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 5,
+      "internalmaph": 9,
+      "internalsymmetry": 1,
+      "turn_rate": 1.82,
+      "speed_coeff": 1.21,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,shuttle,civilian",
+      "shields": [
+        32
+      ],
+      "hullpoints": 1,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_tug",
+      "name": "Verdant Brood Tug",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/tug",
+      "meshscale": 0.1375,
+      "radarscale": 1.0,
+      "exclusionradius": 25.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Tug^Tug. Push-bow and tow winch.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 6,
+      "internalmaph": 8,
+      "internalsymmetry": 1,
+      "turn_rate": 1.56,
+      "speed_coeff": 0.88,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "ship,tug,civilian",
+      "shields": [
+        40
+      ],
+      "hullpoints": 2,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_station_command",
+      "name": "Verdant Brood Command Station",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/station_command",
+      "meshscale": 0.306667,
+      "radarscale": 1.0,
+      "exclusionradius": 184.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Command Station^Command station. Docking arms and welded turrets.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 6,
+      "torpedostart": [
+        {
+          "Homing": 40
+        }
+      ],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,command",
+      "shields": [
+        640,
+        640
+      ],
+      "hullpoints": 264,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 15
+    },
+    {
+      "key": "venus_bio_station_industrial",
+      "name": "Verdant Brood Industrial Station",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/station_industrial",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Industrial Station^Industrial station. Buys harvested resources.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,industry",
+      "shields": [
+        480,
+        480
+      ],
+      "hullpoints": 216,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 25
+    },
+    {
+      "key": "venus_bio_station_civil",
+      "name": "Verdant Brood Civil Station",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/station_civil",
+      "meshscale": 0.285714,
+      "radarscale": 1.0,
+      "exclusionradius": 160.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Civil Station^Civil station. A floating town.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,civil",
+      "shields": [
+        400,
+        400
+      ],
+      "hullpoints": 192,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_bio_station_science",
+      "name": "Verdant Brood Science Station",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/station_science",
+      "meshscale": 0.28,
+      "radarscale": 1.0,
+      "exclusionradius": 112.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Science Station^Science station. Observatories and sensor arrays.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "station,science",
+      "shields": [
+        400,
+        400
+      ],
+      "hullpoints": 168,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      },
+      "drone_launch_timer": 30
+    },
+    {
+      "key": "venus_bio_turret",
+      "name": "Verdant Brood Turret",
+      "origin": "Brood",
+      "side": "Brood",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/turret",
+      "meshscale": 0.3,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Verdant Brood Turret^Point-defense turret.^Living bio-starships regrown into flying creatures.",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "turn_rate": 0.0,
+      "speed_coeff": 0.0,
+      "scan_strength_coeff": 1,
+      "ship_energy_cost": 1,
+      "warp_energy_cost": 1,
+      "jump_energy_cost": 2,
+      "roles": "turret",
+      "shields": [
+        48
+      ],
+      "hullpoints": 5,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0.5,
+              0
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_cumulus_small",
+      "name": "Cumulus Small",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/cumulus_small",
+      "meshscale": 0.75,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Cumulus Small",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_cumulus_large",
+      "name": "Cumulus Large",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/cumulus_large",
+      "meshscale": 0.666667,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Cumulus Large",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_stratus_bank",
+      "name": "Stratus Bank",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/stratus_bank",
+      "meshscale": 0.833333,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Stratus Bank",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_cumulonimbus_tower",
+      "name": "Cumulonimbus Tower",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/cumulonimbus_tower",
+      "meshscale": 0.75,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Cumulonimbus Tower",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_storm_cell",
+      "name": "Storm Cell",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/storm_cell",
+      "meshscale": 0.777778,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Storm Cell",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud,storm",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_ice_crystal",
+      "name": "Ice Crystal",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/ice_crystal",
+      "meshscale": 0.666667,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Ice Crystal",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud,resource,coolant",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_sulfur_bloom",
+      "name": "Sulfur Bloom",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/sulfur_bloom",
+      "meshscale": 0.65,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Sulfur Bloom",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud,resource,fuel",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_aether_vein",
+      "name": "Aether Vein",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/aether_vein",
+      "meshscale": 0.636364,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Aether Vein",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud,resource,aether",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_spore_drift",
+      "name": "Spore Drift",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/spore_drift",
+      "meshscale": 0.6875,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Spore Drift",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud,resource,medicine",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_ore_dust",
+      "name": "Ore Dust",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/ore_dust",
+      "meshscale": 0.65,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Ore Dust",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud,resource,materials",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "venus_cloud_wreck_haze",
+      "name": "Wreck Haze",
+      "origin": "Venus",
+      "side": "Venus",
+      "artfileroot": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/wreck_haze",
+      "meshscale": 0.666667,
+      "radarscale": 1.0,
+      "exclusionradius": 0.0,
+      "meshrotate": 0,
+      "long_desc": "Wreck Haze",
+      "tubecount": 0,
+      "torpedostart": [],
+      "internalmapscale": 1.0,
+      "internalmapw": 4,
+      "internalmaph": 4,
+      "internalsymmetry": 1,
+      "roles": "terrain,cloud,resource,salvage",
+      "shields": [
+        0
+      ],
+      "hullpoints": 9999,
+      "hull_port_sets": {
+        "beam Primary Beams": [
+          {
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "color": "white",
+            "arccolor": "#090",
+            "cycle_time": 60,
+            "damage_coeff": 0,
+            "range": 0,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          }
+        ]
+      }
+    }
+  ]
+}

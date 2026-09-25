@@ -1,0 +1,21 @@
+ship: venus_bio_tug
+layout: default
+size: 6x8
+damcons: 1
+legend:
+  E: sensors
+  L: lift-ring
+  M: maneuver
+  W: warp
+  a: aft-shield
+  d: fwd-shield
+  i: impulse
+---
+      
+E    d
+......
+......
+...L..
+ .M.. 
+  iW  
+   a  

@@ -1,0 +1,40 @@
+{
+  "_comment": "The single source of every generated number in media/venus_ships.json. world_len is the drawn length in world units (stock: tsn_light_cruiser 100, tsn_battle_cruiser 118, starbases 175-463). Stats are per ROLE; a faction applies multipliers on top. Missiles only: ships carry torpedo tubes and zeroed beams; NPC warships fire missile volleys (sim.launch_torpedo, engine-verified by venus_probe); carriers and stations also launch drones as fighter wings (drone_launch_timer); only turrets keep a beam, as point defense. grid is the interior size WxH (bow at the top row); stations are not flown and get no interior.",
+  "roles": {
+    "carrier":      {"world_len": 150, "hull": 10, "shields": [260, 220], "speed": 0.45, "turn": 0.35, "tubes": 2, "torps": {"Homing": 12, "Mine": 6}, "drone_timer": 18, "grid": [18, 28], "flyable": true,  "roles": "ship,warship,carrier,heavy", "long": "Carrier. Launches fighters; point-defense turrets welded to the deck."},
+    "cruiser":      {"world_len": 110, "hull": 7,  "shields": [200, 170], "speed": 0.6,  "turn": 0.6,  "tubes": 4, "torps": {"Homing": 16, "Nuke": 3, "EMP": 4}, "drone_timer": 0, "grid": [14, 24], "flyable": true,  "roles": "ship,warship,cruiser,heavy", "long": "Cruiser, the fleet flagship. Heavy missile battery and welded point-defense turrets."},
+    "destroyer":    {"world_len": 75,  "hull": 4,  "shields": [130, 110], "speed": 0.95, "turn": 1.0,  "tubes": 4, "torps": {"Homing": 14, "EMP": 4}, "drone_timer": 0, "grid": [8, 20],  "flyable": true,  "roles": "ship,warship,destroyer,medium", "long": "Destroyer. Fast, with racks of missiles."},
+    "frigate":      {"world_len": 55,  "hull": 3,  "shields": [110, 90],  "speed": 0.85, "turn": 1.1,  "tubes": 2, "torps": {"Homing": 10, "Mine": 4}, "drone_timer": 0, "grid": [8, 14],  "flyable": true,  "roles": "ship,warship,frigate,light", "long": "Frigate. Compact escort."},
+    "cargo_barge":  {"world_len": 85,  "hull": 5,  "shields": [80, 80],   "speed": 0.5,  "turn": 0.5,  "tubes": 1, "torps": {"Homing": 4}, "drone_timer": 0, "grid": [12, 20], "flyable": true,  "roles": "ship,freighter,cargo,civilian", "long": "Cargo barge. Open holds and deck cranes."},
+    "steam_tender": {"world_len": 70,  "hull": 4,  "shields": [80, 70],   "speed": 0.55, "turn": 0.55, "tubes": 1, "torps": {"Homing": 4}, "drone_timer": 0, "grid": [10, 18], "flyable": true,  "roles": "ship,tanker,tender,civilian", "long": "Tender. Fuel and water for the fleet."},
+    "fighter":      {"world_len": 7,   "hull": 1,  "shields": [30],       "speed": 1.6,  "turn": 2.0,  "tubes": 1, "torps": {"Homing": 4}, "drone_timer": 0, "grid": [7, 7],   "flyable": true,  "roles": "ship,fighter,cockpit", "long": "Fighter. One pilot, one missile rail."},
+    "launch":       {"world_len": 12,  "hull": 1,  "shields": [40],       "speed": 1.1,  "turn": 1.4,  "tubes": 0, "torps": {}, "drone_timer": 0, "grid": [5, 9],   "flyable": true,  "roles": "ship,shuttle,civilian", "long": "Launch. A passenger shuttle."},
+    "tug":          {"world_len": 11,  "hull": 2,  "shields": [50],       "speed": 0.8,  "turn": 1.2,  "tubes": 0, "torps": {}, "drone_timer": 0, "grid": [6, 8],   "flyable": true,  "roles": "ship,tug,civilian", "long": "Tug. Push-bow and tow winch."},
+    "station_command":    {"world_len": 460, "hull": 220, "shields": [800, 800], "speed": 0, "turn": 0, "tubes": 6, "torps": {"Homing": 40}, "drone_timer": 15, "grid": null, "flyable": false, "roles": "station,command", "long": "Command station. Docking arms and welded turrets."},
+    "station_industrial": {"world_len": 400, "hull": 180, "shields": [600, 600], "speed": 0, "turn": 0, "tubes": 0, "torps": {}, "drone_timer": 25, "grid": null, "flyable": false, "roles": "station,industry", "long": "Industrial station. Buys harvested resources."},
+    "station_civil":      {"world_len": 400, "hull": 160, "shields": [500, 500], "speed": 0, "turn": 0, "tubes": 0, "torps": {}, "drone_timer": 0,  "grid": null, "flyable": false, "roles": "station,civil", "long": "Civil station. A floating town."},
+    "station_science":    {"world_len": 280, "hull": 140, "shields": [500, 500], "speed": 0, "turn": 0, "tubes": 0, "torps": {}, "drone_timer": 30, "grid": null, "flyable": false, "roles": "station,science", "long": "Science station. Observatories and sensor arrays."},
+    "turret":             {"world_len": 12,  "hull": 4,  "shields": [60],       "speed": 0, "turn": 0, "tubes": 0, "torps": {}, "drone_timer": 0,  "grid": null, "flyable": false, "roles": "turret", "long": "Point-defense turret."}
+  },
+  "fleets": {
+    "steampunk":  {"tag": "steam",  "race": "Flotilla",    "faction": "Salvage Flotilla",   "speed": 1.0,  "turn": 1.0, "shield": 1.0, "hull": 1.0, "emitter": "steam",   "lift_color": [0.3, 0.85, 1.0],  "lore": "Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls."},
+    "decopunk":   {"tag": "deco",   "race": "Concord",     "faction": "Aurelian Concord",   "speed": 1.1,  "turn": 0.9, "shield": 1.1, "hull": 0.9, "emitter": "steam",   "lift_color": [0.25, 0.92, 0.82], "lore": "A luxury zeppelin navy rebuilt from chrome ocean-liner starships."},
+    "atompunk":   {"tag": "atom",   "race": "Directorate", "faction": "Atomic Directorate", "speed": 1.2,  "turn": 0.9, "shield": 1.0, "hull": 0.9, "emitter": "atomic",  "lift_color": [0.25, 1.0, 0.82],  "lore": "Finned rocket ships; every lift ring orbits a glowing reactor."},
+    "dieselpunk": {"tag": "diesel", "race": "Syndicate",   "faction": "Iron Syndicate",     "speed": 0.85, "turn": 0.8, "shield": 0.9, "hull": 1.4, "emitter": "exhaust", "lift_color": [1.0, 0.5, 0.12],   "lore": "Armored warships of a militarist world: rivets, props and black exhaust."},
+    "solarpunk":  {"tag": "solar",  "race": "Commons",     "faction": "Sunward Commons",    "speed": 1.05, "turn": 1.1, "shield": 1.2, "hull": 0.8, "emitter": "pollen",  "lift_color": [1.0, 0.82, 0.42],  "lore": "Garden-grown eco-starships flying on solar-sail wings."},
+    "biopunk":    {"tag": "bio",    "race": "Brood",       "faction": "Verdant Brood",      "speed": 1.1,  "turn": 1.3, "shield": 0.8, "hull": 1.2, "emitter": "spores",  "lift_color": [0.2, 1.0, 0.72],   "lore": "Living bio-starships regrown into flying creatures."}
+  },
+  "clouds": {
+    "cumulus_small":      {"world_len": 300,  "resource": null,        "storm": false},
+    "cumulus_large":      {"world_len": 800,  "resource": null,        "storm": false},
+    "stratus_bank":       {"world_len": 2500, "resource": null,        "storm": false},
+    "cumulonimbus_tower": {"world_len": 1200, "resource": null,        "storm": false},
+    "storm_cell":         {"world_len": 1400, "resource": null,        "storm": true},
+    "ice_crystal":        {"world_len": 600,  "resource": "coolant",   "storm": false},
+    "sulfur_bloom":       {"world_len": 650,  "resource": "fuel",      "storm": false},
+    "aether_vein":        {"world_len": 700,  "resource": "aether",    "storm": false},
+    "spore_drift":        {"world_len": 550,  "resource": "medicine",  "storm": false},
+    "ore_dust":           {"world_len": 650,  "resource": "materials", "storm": false},
+    "wreck_haze":         {"world_len": 800,  "resource": "salvage",   "storm": false}
+  }
+}

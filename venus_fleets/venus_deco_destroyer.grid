@@ -1,0 +1,39 @@
+ship: venus_deco_destroyer
+layout: default
+size: 8x20
+damcons: 2
+legend:
+  C: computer
+  E: sensors
+  K: workshop
+  L: lift-ring
+  M: maneuver
+  T: torp-tube
+  W: warp
+  a: aft-shield
+  d: fwd-shield
+  i: impulse
+  k: sick-bay
+  s: crew-mess
+  u: crew-quarters
+---
+   TT   
+  ETTE  
+  .dd.  
+  .C..  
+ ...L.. 
+ ...L.. 
+ ...... 
+ ...... 
+ ...... 
+ .KuuK. 
+ uskLsu 
+ ...L.. 
+ ...... 
+ ...... 
+ ...... 
+........
+........
+........
+........
+MWiaaiM.

@@ -1,0 +1,5894 @@
+{
+  "mod": "Above the Venusian Clouds",
+  "version": "v0.2.0",
+  "addon": "venus_fleets",
+  "factions": {
+    "Flotilla": {
+      "fleet": "steampunk",
+      "tag": "steam",
+      "name": "Salvage Flotilla",
+      "lore": "Riverboat superstructures and paddlewheels bolted onto wrecked starship hulls.",
+      "emitter": "steam",
+      "lift_color": [
+        0.3,
+        0.85,
+        1.0
+      ],
+      "turret": "venus_steam_turret",
+      "turret_ref": 0.3479
+    },
+    "Concord": {
+      "fleet": "decopunk",
+      "tag": "deco",
+      "name": "Aurelian Concord",
+      "lore": "A luxury zeppelin navy rebuilt from chrome ocean-liner starships.",
+      "emitter": "steam",
+      "lift_color": [
+        0.25,
+        0.92,
+        0.82
+      ],
+      "turret": "venus_deco_turret",
+      "turret_ref": 0.3795
+    },
+    "Directorate": {
+      "fleet": "atompunk",
+      "tag": "atom",
+      "name": "Atomic Directorate",
+      "lore": "Finned rocket ships; every lift ring orbits a glowing reactor.",
+      "emitter": "atomic",
+      "lift_color": [
+        0.25,
+        1.0,
+        0.82
+      ],
+      "turret": "venus_atom_turret",
+      "turret_ref": 0.3967
+    },
+    "Syndicate": {
+      "fleet": "dieselpunk",
+      "tag": "diesel",
+      "name": "Iron Syndicate",
+      "lore": "Armored warships of a militarist world: rivets, props and black exhaust.",
+      "emitter": "exhaust",
+      "lift_color": [
+        1.0,
+        0.5,
+        0.12
+      ],
+      "turret": "venus_diesel_turret",
+      "turret_ref": 0.6121
+    },
+    "Commons": {
+      "fleet": "solarpunk",
+      "tag": "solar",
+      "name": "Sunward Commons",
+      "lore": "Garden-grown eco-starships flying on solar-sail wings.",
+      "emitter": "pollen",
+      "lift_color": [
+        1.0,
+        0.82,
+        0.42
+      ],
+      "turret": "venus_solar_turret",
+      "turret_ref": 0.4288
+    },
+    "Brood": {
+      "fleet": "biopunk",
+      "tag": "bio",
+      "name": "Verdant Brood",
+      "lore": "Living bio-starships regrown into flying creatures.",
+      "emitter": "spores",
+      "lift_color": [
+        0.2,
+        1.0,
+        0.72
+      ],
+      "turret": "venus_bio_turret",
+      "turret_ref": 0.369
+    }
+  },
+  "hulls": {
+    "venus_steam_carrier": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "carrier",
+      "world_len": 150,
+      "grid": "venus_steam_carrier.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            19.07,
+            -20.6,
+            -34.43
+          ],
+          "radius": 5.47
+        },
+        {
+          "pos": [
+            19.07,
+            -20.6,
+            2.05
+          ],
+          "radius": 5.47
+        },
+        {
+          "pos": [
+            19.07,
+            -20.6,
+            38.52
+          ],
+          "radius": 5.47
+        },
+        {
+          "pos": [
+            -19.07,
+            -20.6,
+            -34.43
+          ],
+          "radius": 5.47
+        },
+        {
+          "pos": [
+            -19.07,
+            -20.6,
+            2.05
+          ],
+          "radius": 5.47
+        },
+        {
+          "pos": [
+            -19.07,
+            -20.6,
+            38.52
+          ],
+          "radius": 5.47
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            -16.58,
+            21.26,
+            -20.34
+          ],
+          "size": 1.96
+        },
+        {
+          "pos": [
+            -16.58,
+            21.26,
+            -15.36
+          ],
+          "size": 1.96
+        }
+      ],
+      "mounts": [
+        {
+          "pos": [
+            17.41,
+            -0.79,
+            63.39
+          ],
+          "size": 1.49,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            -17.41,
+            -0.79,
+            63.39
+          ],
+          "size": 1.49,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -75.0
+      ]
+    },
+    "venus_steam_cruiser": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "cruiser",
+      "world_len": 110,
+      "grid": "venus_steam_cruiser.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -18.03,
+            -16.39
+          ],
+          "radius": 4.66
+        },
+        {
+          "pos": [
+            0.0,
+            -18.03,
+            3.79
+          ],
+          "radius": 5.28
+        },
+        {
+          "pos": [
+            0.0,
+            -18.03,
+            23.96
+          ],
+          "radius": 4.66
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            3.41,
+            18.66,
+            12.32
+          ],
+          "size": 1.83
+        },
+        {
+          "pos": [
+            -3.41,
+            18.66,
+            12.32
+          ],
+          "size": 1.83
+        }
+      ],
+      "mounts": [
+        {
+          "pos": [
+            0.0,
+            -4.77,
+            27.84
+          ],
+          "size": 1.78,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -1.05,
+            19.62
+          ],
+          "size": 1.55,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -1.05,
+            -23.37
+          ],
+          "size": 1.55,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            2.21,
+            -12.98
+          ],
+          "size": 1.4,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -55.0
+      ]
+    },
+    "venus_steam_destroyer": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "destroyer",
+      "world_len": 75,
+      "grid": "venus_steam_destroyer.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -10.7,
+            -12.48
+          ],
+          "radius": 2.95
+        },
+        {
+          "pos": [
+            0.0,
+            -10.7,
+            2.3
+          ],
+          "radius": 2.95
+        },
+        {
+          "pos": [
+            0.0,
+            -10.7,
+            17.07
+          ],
+          "radius": 2.95
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.0,
+            11.03,
+            -8.52
+          ],
+          "size": 1.68
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -37.5
+      ]
+    },
+    "venus_steam_frigate": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "frigate",
+      "world_len": 55,
+      "grid": "venus_steam_frigate.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -12.08,
+            -12.0
+          ],
+          "radius": 3.53
+        },
+        {
+          "pos": [
+            0.0,
+            -12.08,
+            7.98
+          ],
+          "radius": 3.53
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.0,
+            12.5,
+            -9.23
+          ],
+          "size": 1.68
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -27.5
+      ]
+    },
+    "venus_steam_cargo_barge": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "cargo_barge",
+      "world_len": 85,
+      "grid": "venus_steam_cargo_barge.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            5.31,
+            -12.77,
+            -11.17
+          ],
+          "radius": 3.98
+        },
+        {
+          "pos": [
+            5.31,
+            -12.77,
+            18.32
+          ],
+          "radius": 3.98
+        },
+        {
+          "pos": [
+            -5.31,
+            -12.77,
+            -11.17
+          ],
+          "radius": 3.98
+        },
+        {
+          "pos": [
+            -5.31,
+            -12.77,
+            18.32
+          ],
+          "radius": 3.98
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            -3.24,
+            13.25,
+            -22.97
+          ],
+          "size": 1.61
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -42.5
+      ]
+    },
+    "venus_steam_steam_tender": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "steam_tender",
+      "world_len": 70,
+      "grid": "venus_steam_steam_tender.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -14.08,
+            -10.5
+          ],
+          "radius": 3.73
+        },
+        {
+          "pos": [
+            0.0,
+            -14.08,
+            4.14
+          ],
+          "radius": 3.73
+        },
+        {
+          "pos": [
+            0.0,
+            -14.08,
+            18.77
+          ],
+          "radius": 3.73
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.0,
+            14.52,
+            -18.48
+          ],
+          "size": 1.69
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -35.0
+      ]
+    },
+    "venus_steam_fighter": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "fighter",
+      "world_len": 7,
+      "grid": "venus_steam_fighter.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -1.69,
+            0.88
+          ],
+          "radius": 1.25
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -3.48
+      ]
+    },
+    "venus_steam_launch": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "launch",
+      "world_len": 12,
+      "grid": "venus_steam_launch.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -3.02,
+            -2.01
+          ],
+          "radius": 0.96
+        },
+        {
+          "pos": [
+            0.0,
+            -3.02,
+            2.34
+          ],
+          "radius": 0.96
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.0,
+            3.13,
+            2.52
+          ],
+          "size": 0.44
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_steam_tug": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "tug",
+      "world_len": 11,
+      "grid": "venus_steam_tug.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -3.15,
+            1.75
+          ],
+          "radius": 1.57
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.0,
+            3.34,
+            0.89
+          ],
+          "size": 0.55
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -5.5
+      ]
+    },
+    "venus_steam_station_command": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "station_command",
+      "world_len": 460,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -145.41,
+            -86.14,
+            60.23
+          ],
+          "radius": 28.2
+        },
+        {
+          "pos": [
+            -60.23,
+            -86.14,
+            145.41
+          ],
+          "radius": 28.2
+        },
+        {
+          "pos": [
+            60.23,
+            -86.14,
+            145.41
+          ],
+          "radius": 28.2
+        },
+        {
+          "pos": [
+            145.41,
+            -86.14,
+            60.23
+          ],
+          "radius": 28.2
+        },
+        {
+          "pos": [
+            145.41,
+            -86.14,
+            -60.23
+          ],
+          "radius": 28.2
+        },
+        {
+          "pos": [
+            60.23,
+            -86.14,
+            -145.41
+          ],
+          "radius": 28.2
+        },
+        {
+          "pos": [
+            -60.23,
+            -86.14,
+            -145.41
+          ],
+          "radius": 28.2
+        },
+        {
+          "pos": [
+            -145.41,
+            -86.14,
+            -60.23
+          ],
+          "radius": 28.2
+        },
+        {
+          "pos": [
+            0.0,
+            -177.95,
+            0.0
+          ],
+          "radius": 59.02
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            68.86,
+            75.19,
+            -68.86
+          ],
+          "size": 9.54
+        },
+        {
+          "pos": [
+            68.86,
+            75.19,
+            68.86
+          ],
+          "size": 9.54
+        },
+        {
+          "pos": [
+            -68.86,
+            75.19,
+            -68.86
+          ],
+          "size": 9.54
+        },
+        {
+          "pos": [
+            -68.86,
+            75.19,
+            68.86
+          ],
+          "size": 9.54
+        }
+      ],
+      "mounts": [
+        {
+          "pos": [
+            -190.18,
+            -33.02,
+            0.0
+          ],
+          "size": 8.53,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -0.0,
+            -33.02,
+            190.18
+          ],
+          "size": 8.53,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            190.18,
+            -33.02,
+            0.0
+          ],
+          "size": 8.53,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -33.02,
+            -190.18
+          ],
+          "size": 8.53,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -230.0
+      ]
+    },
+    "venus_steam_station_industrial": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "station_industrial",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -134.22,
+            -48.35,
+            94.08
+          ],
+          "radius": 25.92
+        },
+        {
+          "pos": [
+            -39.25,
+            -48.35,
+            148.91
+          ],
+          "radius": 25.92
+        },
+        {
+          "pos": [
+            55.71,
+            -48.35,
+            94.08
+          ],
+          "radius": 25.92
+        },
+        {
+          "pos": [
+            55.71,
+            -48.35,
+            -15.58
+          ],
+          "radius": 25.92
+        },
+        {
+          "pos": [
+            -39.25,
+            -48.35,
+            -70.4
+          ],
+          "radius": 25.92
+        },
+        {
+          "pos": [
+            -134.22,
+            -48.35,
+            -15.58
+          ],
+          "radius": 25.92
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            -30.53,
+            70.28,
+            69.16
+          ],
+          "size": 6.34
+        },
+        {
+          "pos": [
+            -8.1,
+            83.24,
+            99.07
+          ],
+          "size": 6.34
+        },
+        {
+          "pos": [
+            -30.53,
+            70.28,
+            128.97
+          ],
+          "size": 6.34
+        },
+        {
+          "pos": [
+            -87.85,
+            70.28,
+            79.13
+          ],
+          "size": 6.34
+        },
+        {
+          "pos": [
+            -70.4,
+            83.24,
+            109.03
+          ],
+          "size": 6.34
+        },
+        {
+          "pos": [
+            -89.1,
+            70.28,
+            9.35
+          ],
+          "size": 6.34
+        },
+        {
+          "pos": [
+            -69.16,
+            83.24,
+            39.25
+          ],
+          "size": 6.34
+        },
+        {
+          "pos": [
+            0.62,
+            61.31,
+            9.35
+          ],
+          "size": 12.69
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -200.0
+      ]
+    },
+    "venus_steam_station_civil": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "station_civil",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -104.61,
+            -75.42,
+            84.56
+          ],
+          "radius": 19.69
+        },
+        {
+          "pos": [
+            -43.33,
+            -75.42,
+            145.84
+          ],
+          "radius": 19.69
+        },
+        {
+          "pos": [
+            43.33,
+            -75.42,
+            145.84
+          ],
+          "radius": 19.69
+        },
+        {
+          "pos": [
+            104.61,
+            -75.42,
+            84.56
+          ],
+          "radius": 19.69
+        },
+        {
+          "pos": [
+            104.61,
+            -75.42,
+            -2.1
+          ],
+          "radius": 19.69
+        },
+        {
+          "pos": [
+            43.33,
+            -75.42,
+            -63.38
+          ],
+          "radius": 19.69
+        },
+        {
+          "pos": [
+            -43.33,
+            -75.42,
+            -63.38
+          ],
+          "radius": 19.69
+        },
+        {
+          "pos": [
+            -104.61,
+            -75.42,
+            -2.1
+          ],
+          "radius": 19.69
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -200.0
+      ]
+    },
+    "venus_steam_station_science": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "station_science",
+      "world_len": 280,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -83.14,
+            -109.41,
+            48.0
+          ],
+          "radius": 19.2
+        },
+        {
+          "pos": [
+            -0.0,
+            -109.41,
+            96.0
+          ],
+          "radius": 19.2
+        },
+        {
+          "pos": [
+            83.14,
+            -109.41,
+            48.0
+          ],
+          "radius": 19.2
+        },
+        {
+          "pos": [
+            83.14,
+            -109.41,
+            -48.0
+          ],
+          "radius": 19.2
+        },
+        {
+          "pos": [
+            0.0,
+            -109.41,
+            -96.0
+          ],
+          "radius": 19.2
+        },
+        {
+          "pos": [
+            -83.14,
+            -109.41,
+            -48.0
+          ],
+          "radius": 19.2
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -140.0
+      ]
+    },
+    "venus_steam_turret": {
+      "faction": "Flotilla",
+      "fleet": "steampunk",
+      "design": "turret",
+      "world_len": 12,
+      "grid": null,
+      "station": false,
+      "rings": [],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_deco_carrier": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "carrier",
+      "world_len": 150,
+      "grid": "venus_deco_carrier.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -14.81,
+            -52.37
+          ],
+          "radius": 5.26
+        },
+        {
+          "pos": [
+            10.22,
+            -23.05,
+            -31.93
+          ],
+          "radius": 5.26
+        },
+        {
+          "pos": [
+            -10.22,
+            -23.05,
+            -31.93
+          ],
+          "radius": 5.26
+        },
+        {
+          "pos": [
+            10.22,
+            -23.05,
+            32.3
+          ],
+          "radius": 5.26
+        },
+        {
+          "pos": [
+            -10.22,
+            -23.05,
+            32.3
+          ],
+          "radius": 5.26
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -75.0
+      ]
+    },
+    "venus_deco_cruiser": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "cruiser",
+      "world_len": 110,
+      "grid": "venus_deco_cruiser.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -26.74,
+            -25.07
+          ],
+          "radius": 5.37
+        },
+        {
+          "pos": [
+            0.0,
+            -26.74,
+            0.12
+          ],
+          "radius": 6.04
+        },
+        {
+          "pos": [
+            0.0,
+            -26.74,
+            25.3
+          ],
+          "radius": 5.37
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            0.0,
+            -12.84,
+            25.3
+          ],
+          "size": 2.18,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -12.84,
+            -28.43
+          ],
+          "size": 2.18,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -9.14,
+            14.89
+          ],
+          "size": 1.93,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -9.14,
+            -17.68
+          ],
+          "size": 1.93,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -19.77,
+            15.23
+          ],
+          "size": 1.68,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -19.77,
+            -11.64
+          ],
+          "size": 1.68,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            7.39,
+            -13.34,
+            3.47
+          ],
+          "size": 1.34,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -7.39,
+            -13.34,
+            3.47
+          ],
+          "size": 1.34,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -55.0
+      ]
+    },
+    "venus_deco_destroyer": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "destroyer",
+      "world_len": 75,
+      "grid": "venus_deco_destroyer.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -12.57,
+            -5.76
+          ],
+          "radius": 3.52
+        },
+        {
+          "pos": [
+            0.0,
+            -12.57,
+            18.57
+          ],
+          "radius": 3.52
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -37.5
+      ]
+    },
+    "venus_deco_frigate": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "frigate",
+      "world_len": 55,
+      "grid": "venus_deco_frigate.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -17.04,
+            -3.25
+          ],
+          "radius": 5.65
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -27.5
+      ]
+    },
+    "venus_deco_cargo_barge": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "cargo_barge",
+      "world_len": 85,
+      "grid": "venus_deco_cargo_barge.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            8.26,
+            -18.26,
+            -26.33
+          ],
+          "radius": 4.41
+        },
+        {
+          "pos": [
+            8.26,
+            -18.26,
+            3.97
+          ],
+          "radius": 4.41
+        },
+        {
+          "pos": [
+            -8.26,
+            -18.26,
+            -26.33
+          ],
+          "radius": 4.41
+        },
+        {
+          "pos": [
+            -8.26,
+            -18.26,
+            3.97
+          ],
+          "radius": 4.41
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -42.5
+      ]
+    },
+    "venus_deco_steam_tender": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "steam_tender",
+      "world_len": 70,
+      "grid": "venus_deco_steam_tender.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -23.73,
+            -10.17
+          ],
+          "radius": 4.99
+        },
+        {
+          "pos": [
+            0.0,
+            -23.73,
+            10.39
+          ],
+          "radius": 4.99
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.0,
+            -3.47,
+            -25.29
+          ],
+          "size": 1.32
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -35.0
+      ]
+    },
+    "venus_deco_fighter": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "fighter",
+      "world_len": 7,
+      "grid": "venus_deco_fighter.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -1.38,
+            0.02
+          ],
+          "radius": 1.27
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -3.5
+      ]
+    },
+    "venus_deco_launch": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "launch",
+      "world_len": 12,
+      "grid": "venus_deco_launch.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -4.58,
+            0.26
+          ],
+          "radius": 1.14
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_deco_tug": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "tug",
+      "world_len": 11,
+      "grid": "venus_deco_tug.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -4.99,
+            0.99
+          ],
+          "radius": 1.32
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -5.5
+      ]
+    },
+    "venus_deco_station_command": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "station_command",
+      "world_len": 460,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -99.35,
+            -97.5,
+            41.15
+          ],
+          "radius": 18.93
+        },
+        {
+          "pos": [
+            -41.15,
+            -97.5,
+            99.35
+          ],
+          "radius": 18.93
+        },
+        {
+          "pos": [
+            41.15,
+            -97.5,
+            99.35
+          ],
+          "radius": 18.93
+        },
+        {
+          "pos": [
+            99.35,
+            -97.5,
+            41.15
+          ],
+          "radius": 18.93
+        },
+        {
+          "pos": [
+            99.35,
+            -97.5,
+            -41.15
+          ],
+          "radius": 18.93
+        },
+        {
+          "pos": [
+            41.15,
+            -97.5,
+            -99.35
+          ],
+          "radius": 18.93
+        },
+        {
+          "pos": [
+            -41.15,
+            -97.5,
+            -99.35
+          ],
+          "radius": 18.93
+        },
+        {
+          "pos": [
+            -99.35,
+            -97.5,
+            -41.15
+          ],
+          "radius": 18.93
+        },
+        {
+          "pos": [
+            -0.0,
+            -146.96,
+            0.0
+          ],
+          "radius": 34.41
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            -124.74,
+            -56.2,
+            0.0
+          ],
+          "size": 6.02,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -0.0,
+            -56.2,
+            124.74
+          ],
+          "size": 6.02,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            124.74,
+            -56.2,
+            0.0
+          ],
+          "size": 6.02,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -0.0,
+            -56.2,
+            -124.74
+          ],
+          "size": 6.02,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -230.0
+      ]
+    },
+    "venus_deco_station_industrial": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "station_industrial",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -135.82,
+            -99.22,
+            -59.13
+          ],
+          "radius": 19.71
+        },
+        {
+          "pos": [
+            -135.82,
+            -99.22,
+            59.13
+          ],
+          "radius": 19.71
+        },
+        {
+          "pos": [
+            164.77,
+            -89.36,
+            -108.41
+          ],
+          "radius": 22.67
+        },
+        {
+          "pos": [
+            164.77,
+            -89.36,
+            0.0
+          ],
+          "radius": 22.67
+        },
+        {
+          "pos": [
+            164.77,
+            -89.36,
+            108.41
+          ],
+          "radius": 22.67
+        },
+        {
+          "pos": [
+            16.94,
+            -89.36,
+            -108.41
+          ],
+          "radius": 22.67
+        },
+        {
+          "pos": [
+            16.94,
+            -89.36,
+            0.0
+          ],
+          "radius": 22.67
+        },
+        {
+          "pos": [
+            16.94,
+            -89.36,
+            108.41
+          ],
+          "radius": 22.67
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            162.3,
+            91.48,
+            74.9
+          ],
+          "size": 7.89
+        },
+        {
+          "pos": [
+            135.2,
+            106.27,
+            82.79
+          ],
+          "size": 7.89
+        },
+        {
+          "pos": [
+            108.1,
+            91.48,
+            74.9
+          ],
+          "size": 7.89
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -178.14
+      ]
+    },
+    "venus_deco_station_civil": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "station_civil",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -99.71,
+            -85.12,
+            -22.84
+          ],
+          "radius": 17.99
+        },
+        {
+          "pos": [
+            -41.3,
+            -85.12,
+            35.56
+          ],
+          "radius": 17.99
+        },
+        {
+          "pos": [
+            41.3,
+            -85.12,
+            35.56
+          ],
+          "radius": 17.99
+        },
+        {
+          "pos": [
+            99.71,
+            -85.12,
+            -22.84
+          ],
+          "radius": 17.99
+        },
+        {
+          "pos": [
+            99.71,
+            -85.12,
+            -105.44
+          ],
+          "radius": 17.99
+        },
+        {
+          "pos": [
+            41.3,
+            -85.12,
+            -163.85
+          ],
+          "radius": 17.99
+        },
+        {
+          "pos": [
+            -41.3,
+            -85.12,
+            -163.85
+          ],
+          "radius": 17.99
+        },
+        {
+          "pos": [
+            -99.71,
+            -85.12,
+            -105.44
+          ],
+          "radius": 17.99
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -200.0
+      ]
+    },
+    "venus_deco_station_science": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "station_science",
+      "world_len": 280,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -95.05,
+            -94.76,
+            39.37
+          ],
+          "radius": 19.55
+        },
+        {
+          "pos": [
+            -39.37,
+            -94.76,
+            95.05
+          ],
+          "radius": 19.55
+        },
+        {
+          "pos": [
+            39.37,
+            -94.76,
+            95.05
+          ],
+          "radius": 19.55
+        },
+        {
+          "pos": [
+            95.05,
+            -94.76,
+            39.37
+          ],
+          "radius": 19.55
+        },
+        {
+          "pos": [
+            95.05,
+            -94.76,
+            -39.37
+          ],
+          "radius": 19.55
+        },
+        {
+          "pos": [
+            39.37,
+            -94.76,
+            -95.05
+          ],
+          "radius": 19.55
+        },
+        {
+          "pos": [
+            -39.37,
+            -94.76,
+            -95.05
+          ],
+          "radius": 19.55
+        },
+        {
+          "pos": [
+            -95.05,
+            -94.76,
+            -39.37
+          ],
+          "radius": 19.55
+        },
+        {
+          "pos": [
+            0.0,
+            -141.06,
+            0.0
+          ],
+          "radius": 30.86
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -140.0
+      ]
+    },
+    "venus_deco_turret": {
+      "faction": "Concord",
+      "fleet": "decopunk",
+      "design": "turret",
+      "world_len": 12,
+      "grid": null,
+      "station": false,
+      "rings": [],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_atom_carrier": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "carrier",
+      "world_len": 150,
+      "grid": "venus_atom_carrier.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            24.04,
+            -28.16,
+            -38.54
+          ],
+          "radius": 7.21
+        },
+        {
+          "pos": [
+            24.04,
+            -28.16,
+            35.43
+          ],
+          "radius": 7.21
+        },
+        {
+          "pos": [
+            -24.04,
+            -28.16,
+            -38.54
+          ],
+          "radius": 7.21
+        },
+        {
+          "pos": [
+            -24.04,
+            -28.16,
+            35.43
+          ],
+          "radius": 7.21
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            36.98,
+            -3.01,
+            20.63
+          ],
+          "size": 1.66,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            -36.98,
+            -3.01,
+            20.63
+          ],
+          "size": 1.66,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -75.0
+      ]
+    },
+    "venus_atom_cruiser": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "cruiser",
+      "world_len": 110,
+      "grid": "venus_atom_cruiser.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -22.5,
+            -20.84
+          ],
+          "radius": 6.27
+        },
+        {
+          "pos": [
+            0.0,
+            -22.5,
+            20.42
+          ],
+          "radius": 6.27
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            0.0,
+            -1.95,
+            34.45
+          ],
+          "size": 2.15,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            3.75,
+            26.7
+          ],
+          "size": 1.81,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -0.71,
+            -24.14
+          ],
+          "size": 1.81,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            6.27,
+            -3.35,
+            -1.03
+          ],
+          "size": 1.32,
+          "facing": [
+            0.9397,
+            0.0,
+            0.342
+          ]
+        },
+        {
+          "pos": [
+            -6.27,
+            -3.35,
+            -1.03
+          ],
+          "size": 1.32,
+          "facing": [
+            -0.9397,
+            0.0,
+            0.342
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -55.0
+      ]
+    },
+    "venus_atom_destroyer": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "destroyer",
+      "world_len": 75,
+      "grid": "venus_atom_destroyer.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -8.55,
+            -11.65
+          ],
+          "radius": 3.92
+        },
+        {
+          "pos": [
+            0.0,
+            -8.55,
+            10.68
+          ],
+          "radius": 3.92
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -37.5
+      ]
+    },
+    "venus_atom_frigate": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "frigate",
+      "world_len": 55,
+      "grid": "venus_atom_frigate.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -13.78,
+            1.56
+          ],
+          "radius": 7.91
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -27.5
+      ]
+    },
+    "venus_atom_cargo_barge": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "cargo_barge",
+      "world_len": 85,
+      "grid": "venus_atom_cargo_barge.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -9.57,
+            -21.11
+          ],
+          "radius": 5.38
+        },
+        {
+          "pos": [
+            0.0,
+            -9.57,
+            0.14
+          ],
+          "radius": 5.38
+        },
+        {
+          "pos": [
+            0.0,
+            -9.57,
+            21.39
+          ],
+          "radius": 5.38
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -42.5
+      ]
+    },
+    "venus_atom_steam_tender": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "steam_tender",
+      "world_len": 70,
+      "grid": "venus_atom_steam_tender.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -8.4,
+            -17.63
+          ],
+          "radius": 4.7
+        },
+        {
+          "pos": [
+            0.0,
+            -8.4,
+            0.0
+          ],
+          "radius": 4.7
+        },
+        {
+          "pos": [
+            0.0,
+            -8.4,
+            17.63
+          ],
+          "radius": 4.7
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -35.0
+      ]
+    },
+    "venus_atom_fighter": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "fighter",
+      "world_len": 7,
+      "grid": "venus_atom_fighter.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -1.09,
+            -0.13
+          ],
+          "radius": 0.98
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -3.5
+      ]
+    },
+    "venus_atom_launch": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "launch",
+      "world_len": 12,
+      "grid": "venus_atom_launch.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -2.57,
+            0.61
+          ],
+          "radius": 2.6
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_atom_tug": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "tug",
+      "world_len": 11,
+      "grid": "venus_atom_tug.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -2.56,
+            -0.58
+          ],
+          "radius": 1.99
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -5.5
+      ]
+    },
+    "venus_atom_station_command": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "station_command",
+      "world_len": 460,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -130.14,
+            -153.2,
+            53.91
+          ],
+          "radius": 26.89
+        },
+        {
+          "pos": [
+            -53.91,
+            -153.2,
+            130.14
+          ],
+          "radius": 26.89
+        },
+        {
+          "pos": [
+            53.91,
+            -153.2,
+            130.14
+          ],
+          "radius": 26.89
+        },
+        {
+          "pos": [
+            130.14,
+            -153.2,
+            53.91
+          ],
+          "radius": 26.89
+        },
+        {
+          "pos": [
+            130.14,
+            -153.2,
+            -53.91
+          ],
+          "radius": 26.89
+        },
+        {
+          "pos": [
+            53.91,
+            -153.2,
+            -130.14
+          ],
+          "radius": 26.89
+        },
+        {
+          "pos": [
+            -53.91,
+            -153.2,
+            -130.14
+          ],
+          "radius": 26.89
+        },
+        {
+          "pos": [
+            -130.14,
+            -153.2,
+            -53.91
+          ],
+          "radius": 26.89
+        },
+        {
+          "pos": [
+            -0.0,
+            -249.24,
+            0.0
+          ],
+          "radius": 51.22
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            -172.88,
+            -101.33,
+            0.0
+          ],
+          "size": 8.96,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -0.0,
+            -101.33,
+            172.88
+          ],
+          "size": 8.96,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            172.88,
+            -101.33,
+            0.0
+          ],
+          "size": 8.96,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -0.0,
+            -101.33,
+            -172.88
+          ],
+          "size": 8.96,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -230.0
+      ]
+    },
+    "venus_atom_station_industrial": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "station_industrial",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -118.19,
+            -43.61,
+            68.24
+          ],
+          "radius": 29.89
+        },
+        {
+          "pos": [
+            -0.0,
+            -43.61,
+            136.48
+          ],
+          "radius": 29.89
+        },
+        {
+          "pos": [
+            118.19,
+            -43.61,
+            68.24
+          ],
+          "radius": 29.89
+        },
+        {
+          "pos": [
+            118.19,
+            -43.61,
+            -68.24
+          ],
+          "radius": 29.89
+        },
+        {
+          "pos": [
+            0.0,
+            -43.61,
+            -136.48
+          ],
+          "radius": 29.89
+        },
+        {
+          "pos": [
+            -118.19,
+            -43.61,
+            -68.24
+          ],
+          "radius": 29.89
+        },
+        {
+          "pos": [
+            0.0,
+            -115.1,
+            0.0
+          ],
+          "radius": 42.24
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            90.98,
+            158.5,
+            64.99
+          ],
+          "size": 26.21
+        },
+        {
+          "pos": [
+            129.98,
+            132.51,
+            -13.0
+          ],
+          "size": 21.45
+        },
+        {
+          "pos": [
+            64.99,
+            113.01,
+            6.5
+          ],
+          "size": 17.87
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -200.0
+      ]
+    },
+    "venus_atom_station_civil": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "station_civil",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -140.38,
+            -52.1,
+            -153.84
+          ],
+          "radius": 8.79
+        },
+        {
+          "pos": [
+            -82.33,
+            -77.91,
+            23.25
+          ],
+          "radius": 24.17
+        },
+        {
+          "pos": [
+            -23.91,
+            -77.91,
+            104.51
+          ],
+          "radius": 24.17
+        },
+        {
+          "pos": [
+            76.06,
+            -77.91,
+            109.5
+          ],
+          "radius": 24.17
+        },
+        {
+          "pos": [
+            142.28,
+            -77.91,
+            34.46
+          ],
+          "radius": 24.17
+        },
+        {
+          "pos": [
+            124.9,
+            -77.91,
+            -64.11
+          ],
+          "radius": 24.17
+        },
+        {
+          "pos": [
+            37.0,
+            -77.91,
+            -111.98
+          ],
+          "radius": 24.17
+        },
+        {
+          "pos": [
+            -55.23,
+            -77.91,
+            -73.1
+          ],
+          "radius": 24.17
+        },
+        {
+          "pos": [
+            31.25,
+            -135.58,
+            3.22
+          ],
+          "radius": 32.95
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -171.96
+      ]
+    },
+    "venus_atom_station_science": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "station_science",
+      "world_len": 280,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -90.79,
+            -69.78,
+            0.0
+          ],
+          "radius": 23.35
+        },
+        {
+          "pos": [
+            -45.39,
+            -69.78,
+            78.62
+          ],
+          "radius": 23.35
+        },
+        {
+          "pos": [
+            45.39,
+            -69.78,
+            78.62
+          ],
+          "radius": 23.35
+        },
+        {
+          "pos": [
+            90.79,
+            -69.78,
+            0.0
+          ],
+          "radius": 23.35
+        },
+        {
+          "pos": [
+            45.39,
+            -69.78,
+            -78.62
+          ],
+          "radius": 23.35
+        },
+        {
+          "pos": [
+            -45.39,
+            -69.78,
+            -78.62
+          ],
+          "radius": 23.35
+        },
+        {
+          "pos": [
+            0.0,
+            -118.42,
+            0.0
+          ],
+          "radius": 31.13
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -140.0
+      ]
+    },
+    "venus_atom_turret": {
+      "faction": "Directorate",
+      "fleet": "atompunk",
+      "design": "turret",
+      "world_len": 12,
+      "grid": null,
+      "station": false,
+      "rings": [],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_diesel_carrier": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "carrier",
+      "world_len": 150,
+      "grid": "venus_diesel_carrier.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            9.13,
+            -26.92,
+            -44.72
+          ],
+          "radius": 6.31
+        },
+        {
+          "pos": [
+            -9.13,
+            -26.92,
+            -44.72
+          ],
+          "radius": 6.31
+        },
+        {
+          "pos": [
+            9.13,
+            -26.92,
+            1.74
+          ],
+          "radius": 6.31
+        },
+        {
+          "pos": [
+            -9.13,
+            -26.92,
+            1.74
+          ],
+          "radius": 6.31
+        },
+        {
+          "pos": [
+            9.13,
+            -26.92,
+            44.88
+          ],
+          "radius": 6.31
+        },
+        {
+          "pos": [
+            -9.13,
+            -26.92,
+            44.88
+          ],
+          "radius": 6.31
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            -13.94,
+            15.28,
+            -8.24
+          ],
+          "size": 3.58
+        },
+        {
+          "pos": [
+            20.41,
+            -7.51,
+            -42.11
+          ],
+          "size": 0.41
+        },
+        {
+          "pos": [
+            20.41,
+            -7.51,
+            -8.93
+          ],
+          "size": 0.41
+        },
+        {
+          "pos": [
+            20.41,
+            -7.51,
+            24.26
+          ],
+          "size": 0.41
+        },
+        {
+          "pos": [
+            -24.72,
+            -7.51,
+            -42.11
+          ],
+          "size": 0.41
+        },
+        {
+          "pos": [
+            -24.72,
+            -7.51,
+            -8.93
+          ],
+          "size": 0.41
+        },
+        {
+          "pos": [
+            -24.72,
+            -7.51,
+            24.26
+          ],
+          "size": 0.41
+        }
+      ],
+      "mounts": [
+        {
+          "pos": [
+            14.1,
+            0.21,
+            61.48
+          ],
+          "size": 1.16,
+          "facing": [
+            0.866,
+            0.0,
+            0.5
+          ]
+        },
+        {
+          "pos": [
+            -16.59,
+            0.21,
+            64.8
+          ],
+          "size": 1.16,
+          "facing": [
+            -0.866,
+            0.0,
+            0.5
+          ]
+        },
+        {
+          "pos": [
+            -19.08,
+            0.21,
+            -51.36
+          ],
+          "size": 1.16,
+          "facing": [
+            -0.866,
+            0.0,
+            -0.5
+          ]
+        },
+        {
+          "pos": [
+            19.08,
+            0.21,
+            -64.63
+          ],
+          "size": 1.16,
+          "facing": [
+            0.5,
+            0.0,
+            -0.866
+          ]
+        },
+        {
+          "pos": [
+            -16.92,
+            0.21,
+            -24.81
+          ],
+          "size": 1.33,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -16.92,
+            0.21,
+            38.25
+          ],
+          "size": 1.33,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            16.26,
+            0.21,
+            41.57
+          ],
+          "size": 1.33,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -75.0
+      ]
+    },
+    "venus_diesel_cruiser": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "cruiser",
+      "world_len": 110,
+      "grid": "venus_diesel_cruiser.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            8.65,
+            -22.23,
+            -18.7
+          ],
+          "radius": 4.97
+        },
+        {
+          "pos": [
+            -8.65,
+            -22.23,
+            -18.7
+          ],
+          "radius": 4.97
+        },
+        {
+          "pos": [
+            8.65,
+            -22.23,
+            22.96
+          ],
+          "radius": 4.97
+        },
+        {
+          "pos": [
+            -8.65,
+            -22.23,
+            22.96
+          ],
+          "radius": 4.97
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.0,
+            10.28,
+            -4.4
+          ],
+          "size": 2.66
+        },
+        {
+          "pos": [
+            0.0,
+            8.84,
+            -9.27
+          ],
+          "size": 2.66
+        },
+        {
+          "pos": [
+            4.97,
+            -7.75,
+            -45.78
+          ],
+          "size": 0.39
+        },
+        {
+          "pos": [
+            -9.77,
+            -7.75,
+            -45.78
+          ],
+          "size": 0.39
+        }
+      ],
+      "mounts": [
+        {
+          "pos": [
+            0.0,
+            -6.85,
+            34.17
+          ],
+          "size": 2.32,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -3.96,
+            24.88
+          ],
+          "size": 2.16,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -6.85,
+            -29.11
+          ],
+          "size": 2.32,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -3.96,
+            -20.62
+          ],
+          "size": 2.16,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            8.49,
+            -6.85,
+            10.94
+          ],
+          "size": 0.96,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            8.49,
+            -6.85,
+            -5.08
+          ],
+          "size": 0.96,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            5.29,
+            -3.0,
+            -11.49
+          ],
+          "size": 1.12,
+          "facing": [
+            0.9397,
+            0.0,
+            0.342
+          ]
+        },
+        {
+          "pos": [
+            4.01,
+            -3.0,
+            16.23
+          ],
+          "size": 1.12,
+          "facing": [
+            0.6428,
+            0.0,
+            0.766
+          ]
+        },
+        {
+          "pos": [
+            -8.49,
+            -6.85,
+            10.94
+          ],
+          "size": 0.96,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -8.49,
+            -6.85,
+            -5.08
+          ],
+          "size": 0.96,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -5.29,
+            -3.0,
+            -11.49
+          ],
+          "size": 1.12,
+          "facing": [
+            -0.9397,
+            0.0,
+            0.342
+          ]
+        },
+        {
+          "pos": [
+            -4.01,
+            -3.0,
+            16.23
+          ],
+          "size": 1.12,
+          "facing": [
+            -0.6428,
+            0.0,
+            0.766
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -55.0
+      ]
+    },
+    "venus_diesel_destroyer": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "destroyer",
+      "world_len": 75,
+      "grid": "venus_diesel_destroyer.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.64,
+            -10.25,
+            -22.89
+          ],
+          "radius": 3.47
+        },
+        {
+          "pos": [
+            0.64,
+            -10.25,
+            -4.77
+          ],
+          "radius": 3.47
+        },
+        {
+          "pos": [
+            0.64,
+            -10.25,
+            13.35
+          ],
+          "radius": 3.47
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.64,
+            6.77,
+            -9.02
+          ],
+          "size": 1.48
+        },
+        {
+          "pos": [
+            8.43,
+            -0.86,
+            -1.48
+          ],
+          "size": 0.37
+        },
+        {
+          "pos": [
+            -10.29,
+            -0.86,
+            -1.48
+          ],
+          "size": 0.37
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -37.5
+      ]
+    },
+    "venus_diesel_frigate": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "frigate",
+      "world_len": 55,
+      "grid": "venus_diesel_frigate.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.65,
+            -10.98,
+            -13.18
+          ],
+          "radius": 3.91
+        },
+        {
+          "pos": [
+            0.65,
+            -10.98,
+            9.6
+          ],
+          "radius": 3.91
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.65,
+            8.44,
+            -10.21
+          ],
+          "size": 1.28
+        },
+        {
+          "pos": [
+            8.18,
+            -1.1,
+            -7.19
+          ],
+          "size": 0.4
+        },
+        {
+          "pos": [
+            -10.05,
+            -1.1,
+            -7.19
+          ],
+          "size": 0.4
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -27.5
+      ]
+    },
+    "venus_diesel_cargo_barge": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "cargo_barge",
+      "world_len": 85,
+      "grid": "venus_diesel_cargo_barge.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            5.63,
+            -10.38,
+            -19.23
+          ],
+          "radius": 3.91
+        },
+        {
+          "pos": [
+            -5.63,
+            -10.38,
+            -19.23
+          ],
+          "radius": 3.91
+        },
+        {
+          "pos": [
+            5.63,
+            -10.38,
+            22.96
+          ],
+          "radius": 3.91
+        },
+        {
+          "pos": [
+            -5.63,
+            -10.38,
+            22.96
+          ],
+          "radius": 3.91
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            2.81,
+            8.83,
+            -30.22
+          ],
+          "size": 1.12
+        },
+        {
+          "pos": [
+            3.49,
+            1.51,
+            -35.83
+          ],
+          "size": 0.38
+        },
+        {
+          "pos": [
+            -2.81,
+            8.83,
+            -30.22
+          ],
+          "size": 1.12
+        },
+        {
+          "pos": [
+            -7.14,
+            1.51,
+            -35.83
+          ],
+          "size": 0.38
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -42.5
+      ]
+    },
+    "venus_diesel_steam_tender": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "steam_tender",
+      "world_len": 70,
+      "grid": "venus_diesel_steam_tender.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -9.49,
+            -16.16
+          ],
+          "radius": 3.8
+        },
+        {
+          "pos": [
+            0.0,
+            -9.49,
+            4.3
+          ],
+          "radius": 3.8
+        },
+        {
+          "pos": [
+            0.0,
+            -9.49,
+            23.31
+          ],
+          "radius": 3.8
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            0.0,
+            10.67,
+            -30.53
+          ],
+          "size": 1.45
+        },
+        {
+          "pos": [
+            4.28,
+            -0.12,
+            -28.76
+          ],
+          "size": 0.36
+        },
+        {
+          "pos": [
+            -7.7,
+            -0.12,
+            -28.76
+          ],
+          "size": 0.36
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -35.0
+      ]
+    },
+    "venus_diesel_fighter": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "fighter",
+      "world_len": 7,
+      "grid": "venus_diesel_fighter.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -0.85,
+            -0.6
+          ],
+          "radius": 0.89
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            1.31,
+            0.42,
+            0.34
+          ],
+          "size": 0.06
+        },
+        {
+          "pos": [
+            -1.98,
+            0.42,
+            0.34
+          ],
+          "size": 0.06
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -2.9
+      ]
+    },
+    "venus_diesel_launch": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "launch",
+      "world_len": 12,
+      "grid": "venus_diesel_launch.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -3.19,
+            -1.4
+          ],
+          "radius": 1.15
+        },
+        {
+          "pos": [
+            0.0,
+            -3.19,
+            3.4
+          ],
+          "radius": 1.15
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            1.25,
+            2.29,
+            -1.59
+          ],
+          "size": 0.07
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_diesel_tug": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "tug",
+      "world_len": 11,
+      "grid": "venus_diesel_tug.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -3.4,
+            0.46
+          ],
+          "radius": 2.09
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            1.04,
+            3.27,
+            -0.01
+          ],
+          "size": 0.23
+        },
+        {
+          "pos": [
+            -1.04,
+            3.27,
+            -0.01
+          ],
+          "size": 0.23
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -5.5
+      ]
+    },
+    "venus_diesel_station_command": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "station_command",
+      "world_len": 460,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -129.93,
+            -129.93,
+            75.01
+          ],
+          "radius": 31.37
+        },
+        {
+          "pos": [
+            -0.0,
+            -129.93,
+            150.03
+          ],
+          "radius": 31.37
+        },
+        {
+          "pos": [
+            129.93,
+            -129.93,
+            75.01
+          ],
+          "radius": 31.37
+        },
+        {
+          "pos": [
+            129.93,
+            -129.93,
+            -75.01
+          ],
+          "radius": 31.37
+        },
+        {
+          "pos": [
+            0.0,
+            -129.93,
+            -150.03
+          ],
+          "radius": 31.37
+        },
+        {
+          "pos": [
+            -129.93,
+            -129.93,
+            -75.01
+          ],
+          "radius": 31.37
+        },
+        {
+          "pos": [
+            0.0,
+            -211.77,
+            0.0
+          ],
+          "radius": 57.97
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            15.0,
+            155.87,
+            -15.0
+          ],
+          "size": 4.47
+        }
+      ],
+      "mounts": [
+        {
+          "pos": [
+            51.83,
+            115.3,
+            -51.83
+          ],
+          "size": 8.87,
+          "facing": [
+            0.7071,
+            0.0,
+            -0.7071
+          ]
+        },
+        {
+          "pos": [
+            51.83,
+            115.3,
+            51.83
+          ],
+          "size": 8.87,
+          "facing": [
+            0.7071,
+            0.0,
+            0.7071
+          ]
+        },
+        {
+          "pos": [
+            -51.83,
+            115.3,
+            -51.83
+          ],
+          "size": 8.87,
+          "facing": [
+            -0.7071,
+            0.0,
+            -0.7071
+          ]
+        },
+        {
+          "pos": [
+            -51.83,
+            115.3,
+            51.83
+          ],
+          "size": 8.87,
+          "facing": [
+            -0.7071,
+            0.0,
+            0.7071
+          ]
+        },
+        {
+          "pos": [
+            -73.65,
+            55.63,
+            -27.28
+          ],
+          "size": 6.14,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -73.65,
+            55.63,
+            0.0
+          ],
+          "size": 6.14,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -73.65,
+            55.63,
+            27.28
+          ],
+          "size": 6.14,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            -27.28,
+            55.63,
+            73.65
+          ],
+          "size": 6.14,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            -0.0,
+            55.63,
+            73.65
+          ],
+          "size": 6.14,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            27.28,
+            55.63,
+            73.65
+          ],
+          "size": 6.14,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            73.65,
+            55.63,
+            27.28
+          ],
+          "size": 6.14,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            73.65,
+            55.63,
+            0.0
+          ],
+          "size": 6.14,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            73.65,
+            55.63,
+            -27.28
+          ],
+          "size": 6.14,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            27.28,
+            55.63,
+            -73.65
+          ],
+          "size": 6.14,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            55.63,
+            -73.65
+          ],
+          "size": 6.14,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            -27.28,
+            55.63,
+            -73.65
+          ],
+          "size": 6.14,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -230.0
+      ]
+    },
+    "venus_diesel_station_industrial": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "station_industrial",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -130.97,
+            -102.52,
+            75.62
+          ],
+          "radius": 34.57
+        },
+        {
+          "pos": [
+            -0.0,
+            -102.52,
+            151.23
+          ],
+          "radius": 34.57
+        },
+        {
+          "pos": [
+            130.97,
+            -102.52,
+            75.62
+          ],
+          "radius": 34.57
+        },
+        {
+          "pos": [
+            130.97,
+            -102.52,
+            -75.62
+          ],
+          "radius": 34.57
+        },
+        {
+          "pos": [
+            0.0,
+            -102.52,
+            -151.23
+          ],
+          "radius": 34.57
+        },
+        {
+          "pos": [
+            -130.97,
+            -102.52,
+            -75.62
+          ],
+          "radius": 34.57
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            43.21,
+            151.05,
+            57.61
+          ],
+          "size": 3.46
+        },
+        {
+          "pos": [
+            7.2,
+            107.84,
+            97.22
+          ],
+          "size": 2.51
+        },
+        {
+          "pos": [
+            144.03,
+            150.69,
+            -59.77
+          ],
+          "size": 8.43
+        },
+        {
+          "pos": [
+            115.23,
+            99.92,
+            113.07
+          ],
+          "size": 6.48
+        },
+        {
+          "pos": [
+            -28.81,
+            75.8,
+            156.28
+          ],
+          "size": 5.83
+        },
+        {
+          "pos": [
+            100.82,
+            21.42,
+            21.6
+          ],
+          "size": 5.66
+        },
+        {
+          "pos": [
+            72.02,
+            28.63,
+            21.6
+          ],
+          "size": 5.66
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -200.0
+      ]
+    },
+    "venus_diesel_station_civil": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "station_civil",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -78.13,
+            -110.05,
+            95.48
+          ],
+          "radius": 27.84
+        },
+        {
+          "pos": [
+            31.93,
+            -110.05,
+            159.02
+          ],
+          "radius": 27.84
+        },
+        {
+          "pos": [
+            141.99,
+            -110.05,
+            95.48
+          ],
+          "radius": 27.84
+        },
+        {
+          "pos": [
+            141.99,
+            -110.05,
+            -31.61
+          ],
+          "radius": 27.84
+        },
+        {
+          "pos": [
+            31.93,
+            -110.05,
+            -95.15
+          ],
+          "radius": 27.84
+        },
+        {
+          "pos": [
+            -78.13,
+            -110.05,
+            -31.61
+          ],
+          "radius": 27.84
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            -107.39,
+            -52.5,
+            82.65
+          ],
+          "size": 6.05,
+          "facing": [
+            -0.9397,
+            0.0,
+            0.342
+          ]
+        },
+        {
+          "pos": [
+            171.26,
+            -52.5,
+            82.65
+          ],
+          "size": 6.05,
+          "facing": [
+            0.9397,
+            0.0,
+            0.342
+          ]
+        },
+        {
+          "pos": [
+            82.65,
+            -52.5,
+            -107.39
+          ],
+          "size": 6.05,
+          "facing": [
+            0.342,
+            0.0,
+            -0.9397
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -200.0
+      ]
+    },
+    "venus_diesel_station_science": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "station_science",
+      "world_len": 280,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -0.0,
+            -100.32,
+            103.04
+          ],
+          "radius": 26.1
+        },
+        {
+          "pos": [
+            98.0,
+            -100.32,
+            31.84
+          ],
+          "radius": 26.1
+        },
+        {
+          "pos": [
+            60.57,
+            -100.32,
+            -83.36
+          ],
+          "radius": 26.1
+        },
+        {
+          "pos": [
+            -60.57,
+            -100.32,
+            -83.36
+          ],
+          "radius": 26.1
+        },
+        {
+          "pos": [
+            -98.0,
+            -100.32,
+            31.84
+          ],
+          "radius": 26.1
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            68.69,
+            -13.01,
+            89.3
+          ],
+          "size": 2.4
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -140.0
+      ]
+    },
+    "venus_diesel_turret": {
+      "faction": "Syndicate",
+      "fleet": "dieselpunk",
+      "design": "turret",
+      "world_len": 12,
+      "grid": null,
+      "station": false,
+      "rings": [],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_solar_carrier": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "carrier",
+      "world_len": 150,
+      "grid": "venus_solar_carrier.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            11.09,
+            -25.56,
+            -46.68
+          ],
+          "radius": 6.49
+        },
+        {
+          "pos": [
+            11.09,
+            -25.56,
+            -5.72
+          ],
+          "radius": 6.49
+        },
+        {
+          "pos": [
+            11.09,
+            -25.56,
+            35.24
+          ],
+          "radius": 6.49
+        },
+        {
+          "pos": [
+            -11.09,
+            -25.56,
+            -46.68
+          ],
+          "radius": 6.49
+        },
+        {
+          "pos": [
+            -11.09,
+            -25.56,
+            -5.72
+          ],
+          "radius": 6.49
+        },
+        {
+          "pos": [
+            -11.09,
+            -25.56,
+            35.24
+          ],
+          "radius": 6.49
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            21.33,
+            -4.91,
+            52.3
+          ],
+          "size": 1.71,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            -21.33,
+            -4.91,
+            31.82
+          ],
+          "size": 1.71,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            21.33,
+            -4.91,
+            -60.33
+          ],
+          "size": 1.71,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            -22.19,
+            -4.91,
+            -63.74
+          ],
+          "size": 1.71,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -75.0
+      ]
+    },
+    "venus_solar_cruiser": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "cruiser",
+      "world_len": 110,
+      "grid": "venus_solar_cruiser.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -21.02,
+            -26.37
+          ],
+          "radius": 5.08
+        },
+        {
+          "pos": [
+            0.0,
+            -21.02,
+            -2.58
+          ],
+          "radius": 5.71
+        },
+        {
+          "pos": [
+            0.0,
+            -21.02,
+            21.22
+          ],
+          "radius": 5.08
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            0.0,
+            -3.91,
+            30.73
+          ],
+          "size": 1.9,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -0.26,
+            18.84
+          ],
+          "size": 1.74,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            6.66,
+            -0.26,
+            -0.99
+          ],
+          "size": 1.43,
+          "facing": [
+            0.866,
+            0.0,
+            0.5
+          ]
+        },
+        {
+          "pos": [
+            -6.66,
+            -0.26,
+            -0.99
+          ],
+          "size": 1.43,
+          "facing": [
+            -0.866,
+            0.0,
+            0.5
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -0.26,
+            -35.09
+          ],
+          "size": 1.59,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -3.91,
+            -43.82
+          ],
+          "size": 1.74,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -55.0
+      ]
+    },
+    "venus_solar_destroyer": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "destroyer",
+      "world_len": 75,
+      "grid": "venus_solar_destroyer.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -6.15,
+            -12.96
+          ],
+          "radius": 3.31
+        },
+        {
+          "pos": [
+            0.0,
+            -6.15,
+            11.86
+          ],
+          "radius": 3.31
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -37.5
+      ]
+    },
+    "venus_solar_frigate": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "frigate",
+      "world_len": 55,
+      "grid": "venus_solar_frigate.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -20.74,
+            -10.59
+          ],
+          "radius": 4.4
+        },
+        {
+          "pos": [
+            0.0,
+            -20.74,
+            9.73
+          ],
+          "radius": 4.4
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -27.5
+      ]
+    },
+    "venus_solar_cargo_barge": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "cargo_barge",
+      "world_len": 85,
+      "grid": "venus_solar_cargo_barge.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            7.52,
+            -18.49,
+            -22.49
+          ],
+          "radius": 5.01
+        },
+        {
+          "pos": [
+            7.52,
+            -18.49,
+            15.09
+          ],
+          "radius": 5.01
+        },
+        {
+          "pos": [
+            -7.52,
+            -18.49,
+            -22.49
+          ],
+          "radius": 5.01
+        },
+        {
+          "pos": [
+            -7.52,
+            -18.49,
+            15.09
+          ],
+          "radius": 5.01
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -42.5
+      ]
+    },
+    "venus_solar_steam_tender": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "steam_tender",
+      "world_len": 70,
+      "grid": "venus_solar_steam_tender.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.3,
+            -12.16,
+            -19.63
+          ],
+          "radius": 4.38
+        },
+        {
+          "pos": [
+            0.3,
+            -12.16,
+            -1.52
+          ],
+          "radius": 4.38
+        },
+        {
+          "pos": [
+            0.3,
+            -12.16,
+            16.59
+          ],
+          "radius": 4.38
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -35.0
+      ]
+    },
+    "venus_solar_fighter": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "fighter",
+      "world_len": 7,
+      "grid": "venus_solar_fighter.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -0.79,
+            -0.08
+          ],
+          "radius": 0.61
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -2.33
+      ]
+    },
+    "venus_solar_launch": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "launch",
+      "world_len": 12,
+      "grid": "venus_solar_launch.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -3.73,
+            0.18
+          ],
+          "radius": 1.5
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_solar_tug": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "tug",
+      "world_len": 11,
+      "grid": "venus_solar_tug.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -4.86,
+            -0.02
+          ],
+          "radius": 2.09
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -5.5
+      ]
+    },
+    "venus_solar_station_command": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "station_command",
+      "world_len": 460,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -100.73,
+            -113.51,
+            41.72
+          ],
+          "radius": 21.81
+        },
+        {
+          "pos": [
+            -41.72,
+            -113.51,
+            100.73
+          ],
+          "radius": 21.81
+        },
+        {
+          "pos": [
+            41.72,
+            -113.51,
+            100.73
+          ],
+          "radius": 21.81
+        },
+        {
+          "pos": [
+            100.73,
+            -113.51,
+            41.72
+          ],
+          "radius": 21.81
+        },
+        {
+          "pos": [
+            100.73,
+            -113.51,
+            -41.72
+          ],
+          "radius": 21.81
+        },
+        {
+          "pos": [
+            41.72,
+            -113.51,
+            -100.73
+          ],
+          "radius": 21.81
+        },
+        {
+          "pos": [
+            -41.72,
+            -113.51,
+            -100.73
+          ],
+          "radius": 21.81
+        },
+        {
+          "pos": [
+            -100.73,
+            -113.51,
+            -41.72
+          ],
+          "radius": 21.81
+        },
+        {
+          "pos": [
+            0.0,
+            -181.0,
+            0.0
+          ],
+          "radius": 25.96
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -230.0
+      ]
+    },
+    "venus_solar_station_industrial": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "station_industrial",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -131.78,
+            -122.45,
+            54.58
+          ],
+          "radius": 26.05
+        },
+        {
+          "pos": [
+            -54.58,
+            -122.45,
+            131.78
+          ],
+          "radius": 26.05
+        },
+        {
+          "pos": [
+            54.58,
+            -122.45,
+            131.78
+          ],
+          "radius": 26.05
+        },
+        {
+          "pos": [
+            131.78,
+            -122.45,
+            54.58
+          ],
+          "radius": 26.05
+        },
+        {
+          "pos": [
+            131.78,
+            -122.45,
+            -54.58
+          ],
+          "radius": 26.05
+        },
+        {
+          "pos": [
+            54.58,
+            -122.45,
+            -131.78
+          ],
+          "radius": 26.05
+        },
+        {
+          "pos": [
+            -54.58,
+            -122.45,
+            -131.78
+          ],
+          "radius": 26.05
+        },
+        {
+          "pos": [
+            -131.78,
+            -122.45,
+            -54.58
+          ],
+          "radius": 26.05
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            86.82,
+            36.31,
+            -124.03
+          ],
+          "size": 8.68
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -200.0
+      ]
+    },
+    "venus_solar_station_civil": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "station_civil",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -104.61,
+            -68.58,
+            84.56
+          ],
+          "radius": 20.68
+        },
+        {
+          "pos": [
+            -43.33,
+            -68.58,
+            145.84
+          ],
+          "radius": 20.68
+        },
+        {
+          "pos": [
+            43.33,
+            -68.58,
+            145.84
+          ],
+          "radius": 20.68
+        },
+        {
+          "pos": [
+            104.61,
+            -68.58,
+            84.56
+          ],
+          "radius": 20.68
+        },
+        {
+          "pos": [
+            104.61,
+            -68.58,
+            -2.1
+          ],
+          "radius": 20.68
+        },
+        {
+          "pos": [
+            43.33,
+            -68.58,
+            -63.38
+          ],
+          "radius": 20.68
+        },
+        {
+          "pos": [
+            -43.33,
+            -68.58,
+            -63.38
+          ],
+          "radius": 20.68
+        },
+        {
+          "pos": [
+            -104.61,
+            -68.58,
+            -2.1
+          ],
+          "radius": 20.68
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -200.0
+      ]
+    },
+    "venus_solar_station_science": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "station_science",
+      "world_len": 280,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -92.83,
+            -107.3,
+            16.37
+          ],
+          "radius": 21.07
+        },
+        {
+          "pos": [
+            -45.08,
+            -107.3,
+            82.78
+          ],
+          "radius": 21.07
+        },
+        {
+          "pos": [
+            36.61,
+            -107.3,
+            86.86
+          ],
+          "radius": 21.07
+        },
+        {
+          "pos": [
+            90.73,
+            -107.3,
+            25.53
+          ],
+          "radius": 21.07
+        },
+        {
+          "pos": [
+            76.53,
+            -107.3,
+            -55.02
+          ],
+          "radius": 21.07
+        },
+        {
+          "pos": [
+            4.7,
+            -107.3,
+            -94.14
+          ],
+          "radius": 21.07
+        },
+        {
+          "pos": [
+            -70.67,
+            -107.3,
+            -62.37
+          ],
+          "radius": 21.07
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -140.0
+      ]
+    },
+    "venus_solar_turret": {
+      "faction": "Commons",
+      "fleet": "solarpunk",
+      "design": "turret",
+      "world_len": 12,
+      "grid": null,
+      "station": false,
+      "rings": [],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_bio_carrier": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "carrier",
+      "world_len": 150,
+      "grid": "venus_bio_carrier.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            31.89,
+            -15.98,
+            -6.19
+          ],
+          "radius": 5.58
+        },
+        {
+          "pos": [
+            31.89,
+            -15.98,
+            25.69
+          ],
+          "radius": 5.58
+        },
+        {
+          "pos": [
+            -31.89,
+            -15.98,
+            -6.19
+          ],
+          "radius": 5.58
+        },
+        {
+          "pos": [
+            -31.89,
+            -15.98,
+            25.69
+          ],
+          "radius": 5.58
+        },
+        {
+          "pos": [
+            0.0,
+            -19.31,
+            12.41
+          ],
+          "radius": 6.64
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -75.0
+      ]
+    },
+    "venus_bio_cruiser": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "cruiser",
+      "world_len": 110,
+      "grid": "venus_bio_cruiser.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -30.59,
+            -31.87
+          ],
+          "radius": 6.4
+        },
+        {
+          "pos": [
+            0.0,
+            -30.59,
+            -8.74
+          ],
+          "radius": 6.4
+        },
+        {
+          "pos": [
+            0.0,
+            -30.59,
+            14.39
+          ],
+          "radius": 6.4
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            0.0,
+            -6.32,
+            18.84
+          ],
+          "size": 2.22,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            8.9,
+            -6.41,
+            3.71
+          ],
+          "size": 1.87,
+          "facing": [
+            0.4226,
+            0.0,
+            0.9063
+          ]
+        },
+        {
+          "pos": [
+            8.9,
+            -7.05,
+            -37.21
+          ],
+          "size": 1.78,
+          "facing": [
+            0.4226,
+            0.0,
+            -0.9063
+          ]
+        },
+        {
+          "pos": [
+            -8.9,
+            -6.41,
+            3.71
+          ],
+          "size": 1.87,
+          "facing": [
+            -0.4226,
+            0.0,
+            0.9063
+          ]
+        },
+        {
+          "pos": [
+            -8.9,
+            -7.05,
+            -37.21
+          ],
+          "size": 1.78,
+          "facing": [
+            -0.4226,
+            0.0,
+            -0.9063
+          ]
+        },
+        {
+          "pos": [
+            0.0,
+            -6.46,
+            -45.21
+          ],
+          "size": 1.6,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -55.0
+      ]
+    },
+    "venus_bio_destroyer": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "destroyer",
+      "world_len": 75,
+      "grid": "venus_bio_destroyer.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -6.01,
+            -8.27
+          ],
+          "radius": 4.03
+        },
+        {
+          "pos": [
+            0.0,
+            -6.01,
+            13.25
+          ],
+          "radius": 4.03
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -37.5
+      ]
+    },
+    "venus_bio_frigate": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "frigate",
+      "world_len": 55,
+      "grid": "venus_bio_frigate.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -11.44,
+            -13.3
+          ],
+          "radius": 4.38
+        },
+        {
+          "pos": [
+            0.0,
+            -11.44,
+            1.55
+          ],
+          "radius": 4.38
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -27.5
+      ]
+    },
+    "venus_bio_cargo_barge": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "cargo_barge",
+      "world_len": 85,
+      "grid": "venus_bio_cargo_barge.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -19.58,
+            -20.26
+          ],
+          "radius": 5.63
+        },
+        {
+          "pos": [
+            0.0,
+            -19.58,
+            -0.39
+          ],
+          "radius": 5.63
+        },
+        {
+          "pos": [
+            0.0,
+            -19.58,
+            17.83
+          ],
+          "radius": 5.63
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -42.5
+      ]
+    },
+    "venus_bio_steam_tender": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "steam_tender",
+      "world_len": 70,
+      "grid": "venus_bio_steam_tender.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -11.64,
+            -9.35
+          ],
+          "radius": 4.46
+        },
+        {
+          "pos": [
+            0.0,
+            -11.64,
+            12.94
+          ],
+          "radius": 4.46
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -33.88
+      ]
+    },
+    "venus_bio_fighter": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "fighter",
+      "world_len": 7,
+      "grid": "venus_bio_fighter.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -0.97,
+            0.94
+          ],
+          "radius": 0.75
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -3.5
+      ]
+    },
+    "venus_bio_launch": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "launch",
+      "world_len": 12,
+      "grid": "venus_bio_launch.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            -0.05,
+            -3.87,
+            1.18
+          ],
+          "radius": 1.16
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    },
+    "venus_bio_tug": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "tug",
+      "world_len": 11,
+      "grid": "venus_bio_tug.grid",
+      "station": false,
+      "rings": [
+        {
+          "pos": [
+            0.0,
+            -2.0,
+            -0.73
+          ],
+          "radius": 1.19
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -5.5
+      ]
+    },
+    "venus_bio_station_command": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "station_command",
+      "world_len": 460,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -107.09,
+            -194.18,
+            61.88
+          ],
+          "radius": 29.7
+        },
+        {
+          "pos": [
+            0.08,
+            -194.18,
+            123.76
+          ],
+          "radius": 29.7
+        },
+        {
+          "pos": [
+            107.26,
+            -194.18,
+            61.88
+          ],
+          "radius": 29.7
+        },
+        {
+          "pos": [
+            107.26,
+            -194.18,
+            -61.88
+          ],
+          "radius": 29.7
+        },
+        {
+          "pos": [
+            0.08,
+            -194.18,
+            -123.76
+          ],
+          "radius": 29.7
+        },
+        {
+          "pos": [
+            -107.09,
+            -194.18,
+            -61.88
+          ],
+          "radius": 29.7
+        }
+      ],
+      "emitters": [],
+      "mounts": [
+        {
+          "pos": [
+            -160.8,
+            -141.21,
+            0.0
+          ],
+          "size": 9.9,
+          "facing": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            0.08,
+            -141.21,
+            160.89
+          ],
+          "size": 9.9,
+          "facing": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "pos": [
+            160.97,
+            -141.21,
+            0.0
+          ],
+          "size": 9.9,
+          "facing": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "pos": [
+            0.08,
+            -141.21,
+            -160.89
+          ],
+          "size": 9.9,
+          "facing": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        }
+      ],
+      "stern": [
+        0.0,
+        0.0,
+        -229.91
+      ]
+    },
+    "venus_bio_station_industrial": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "station_industrial",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -139.33,
+            -68.21,
+            22.4
+          ],
+          "radius": 25.44
+        },
+        {
+          "pos": [
+            -42.54,
+            -68.21,
+            92.72
+          ],
+          "radius": 25.44
+        },
+        {
+          "pos": [
+            54.24,
+            -68.21,
+            22.4
+          ],
+          "radius": 25.44
+        },
+        {
+          "pos": [
+            17.27,
+            -68.21,
+            -91.38
+          ],
+          "radius": 25.44
+        },
+        {
+          "pos": [
+            -102.36,
+            -68.21,
+            -91.38
+          ],
+          "radius": 25.44
+        }
+      ],
+      "emitters": [
+        {
+          "pos": [
+            5.46,
+            101.79,
+            51.73
+          ],
+          "size": 11.66
+        },
+        {
+          "pos": [
+            46.79,
+            63.89,
+            6.0
+          ],
+          "size": 9.16
+        },
+        {
+          "pos": [
+            -34.42,
+            73.45,
+            92.52
+          ],
+          "size": 8.33
+        },
+        {
+          "pos": [
+            62.46,
+            41.7,
+            62.01
+          ],
+          "size": 7.49
+        },
+        {
+          "pos": [
+            16.67,
+            47.09,
+            -29.58
+          ],
+          "size": 7.49
+        }
+      ],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -163.62
+      ]
+    },
+    "venus_bio_station_civil": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "station_civil",
+      "world_len": 400,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -81.71,
+            -108.29,
+            13.68
+          ],
+          "radius": 26.9
+        },
+        {
+          "pos": [
+            -4.25,
+            -108.29,
+            120.29
+          ],
+          "radius": 26.9
+        },
+        {
+          "pos": [
+            121.07,
+            -108.29,
+            79.57
+          ],
+          "radius": 26.9
+        },
+        {
+          "pos": [
+            121.07,
+            -108.29,
+            -52.21
+          ],
+          "radius": 26.9
+        },
+        {
+          "pos": [
+            -4.25,
+            -108.29,
+            -92.93
+          ],
+          "radius": 26.9
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -183.29
+      ]
+    },
+    "venus_bio_station_science": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "station_science",
+      "world_len": 280,
+      "grid": null,
+      "station": true,
+      "rings": [
+        {
+          "pos": [
+            -47.62,
+            -91.52,
+            53.2
+          ],
+          "radius": 20.95
+        },
+        {
+          "pos": [
+            47.62,
+            -91.52,
+            53.2
+          ],
+          "radius": 20.95
+        },
+        {
+          "pos": [
+            47.62,
+            -91.52,
+            -42.05
+          ],
+          "radius": 20.95
+        },
+        {
+          "pos": [
+            -47.62,
+            -91.52,
+            -42.05
+          ],
+          "radius": 20.95
+        }
+      ],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -140.0
+      ]
+    },
+    "venus_bio_turret": {
+      "faction": "Brood",
+      "fleet": "biopunk",
+      "design": "turret",
+      "world_len": 12,
+      "grid": null,
+      "station": false,
+      "rings": [],
+      "emitters": [],
+      "mounts": [],
+      "stern": [
+        0.0,
+        0.0,
+        -6.0
+      ]
+    }
+  },
+  "clouds": {
+    "venus_cloud_cumulus_small": {
+      "world_len": 300,
+      "resource": null,
+      "storm": false,
+      "radius": 120.0
+    },
+    "venus_cloud_cumulus_large": {
+      "world_len": 800,
+      "resource": null,
+      "storm": false,
+      "radius": 320.0
+    },
+    "venus_cloud_stratus_bank": {
+      "world_len": 2500,
+      "resource": null,
+      "storm": false,
+      "radius": 1000.0
+    },
+    "venus_cloud_cumulonimbus_tower": {
+      "world_len": 1200,
+      "resource": null,
+      "storm": false,
+      "radius": 480.0
+    },
+    "venus_cloud_storm_cell": {
+      "world_len": 1400,
+      "resource": null,
+      "storm": true,
+      "radius": 560.0
+    },
+    "venus_cloud_ice_crystal": {
+      "world_len": 600,
+      "resource": "coolant",
+      "storm": false,
+      "radius": 240.0
+    },
+    "venus_cloud_sulfur_bloom": {
+      "world_len": 650,
+      "resource": "fuel",
+      "storm": false,
+      "radius": 260.0
+    },
+    "venus_cloud_aether_vein": {
+      "world_len": 700,
+      "resource": "aether",
+      "storm": false,
+      "radius": 280.0
+    },
+    "venus_cloud_spore_drift": {
+      "world_len": 550,
+      "resource": "medicine",
+      "storm": false,
+      "radius": 220.0
+    },
+    "venus_cloud_ore_dust": {
+      "world_len": 650,
+      "resource": "materials",
+      "storm": false,
+      "radius": 260.0
+    },
+    "venus_cloud_wreck_haze": {
+      "world_len": 800,
+      "resource": "salvage",
+      "storm": false,
+      "radius": 320.0
+    }
+  },
+  "interiors": {
+    "Flotilla": [
+      "venus_steam_carrier.grid",
+      "venus_steam_cruiser.grid",
+      "venus_steam_destroyer.grid",
+      "venus_steam_frigate.grid",
+      "venus_steam_cargo_barge.grid",
+      "venus_steam_steam_tender.grid",
+      "venus_steam_fighter.grid",
+      "venus_steam_launch.grid",
+      "venus_steam_tug.grid"
+    ],
+    "Concord": [
+      "venus_deco_carrier.grid",
+      "venus_deco_cruiser.grid",
+      "venus_deco_destroyer.grid",
+      "venus_deco_frigate.grid",
+      "venus_deco_cargo_barge.grid",
+      "venus_deco_steam_tender.grid",
+      "venus_deco_fighter.grid",
+      "venus_deco_launch.grid",
+      "venus_deco_tug.grid"
+    ],
+    "Directorate": [
+      "venus_atom_carrier.grid",
+      "venus_atom_cruiser.grid",
+      "venus_atom_destroyer.grid",
+      "venus_atom_frigate.grid",
+      "venus_atom_cargo_barge.grid",
+      "venus_atom_steam_tender.grid",
+      "venus_atom_fighter.grid",
+      "venus_atom_launch.grid",
+      "venus_atom_tug.grid"
+    ],
+    "Syndicate": [
+      "venus_diesel_carrier.grid",
+      "venus_diesel_cruiser.grid",
+      "venus_diesel_destroyer.grid",
+      "venus_diesel_frigate.grid",
+      "venus_diesel_cargo_barge.grid",
+      "venus_diesel_steam_tender.grid",
+      "venus_diesel_fighter.grid",
+      "venus_diesel_launch.grid",
+      "venus_diesel_tug.grid"
+    ],
+    "Commons": [
+      "venus_solar_carrier.grid",
+      "venus_solar_cruiser.grid",
+      "venus_solar_destroyer.grid",
+      "venus_solar_frigate.grid",
+      "venus_solar_cargo_barge.grid",
+      "venus_solar_steam_tender.grid",
+      "venus_solar_fighter.grid",
+      "venus_solar_launch.grid",
+      "venus_solar_tug.grid"
+    ],
+    "Brood": [
+      "venus_bio_carrier.grid",
+      "venus_bio_cruiser.grid",
+      "venus_bio_destroyer.grid",
+      "venus_bio_frigate.grid",
+      "venus_bio_cargo_barge.grid",
+      "venus_bio_steam_tender.grid",
+      "venus_bio_fighter.grid",
+      "venus_bio_launch.grid",
+      "venus_bio_tug.grid"
+    ]
+  },
+  "fleets": {
+    "Flotilla": "venus_steam_fleets.json",
+    "Concord": "venus_deco_fleets.json",
+    "Directorate": "venus_atom_fleets.json",
+    "Syndicate": "venus_diesel_fleets.json",
+    "Commons": "venus_solar_fleets.json",
+    "Brood": "venus_bio_fleets.json"
+  },
+  "hull_count": 95
+}

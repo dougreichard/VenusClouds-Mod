@@ -1,0 +1,63 @@
+// The six factions of the Venus cloud deck as diplomacy SIDES.
+//
+// Declared from //shared/signal/create_sides in __init__.mast, the route LM declares its own
+// sides from, so they exist before player ships and before any map runs.
+//
+// A side is not the faction name on a hull. shipData `side`/`origin` says what a ship IS
+// (how a prefab finds "a Syndicate cruiser"); THIS file says who shoots whom. They share
+// names because that reads better.
+//
+// Relations are declared from BOTH ends on purpose: the engine's table is directional, and
+// LM's own sides.amd carries the same duplication with a warning not to tidy it up.
+//
+// THE SHAPE OF THE WAR: the Iron Syndicate raids everyone who builds; the Brood is a
+// hunger, not a nation, and everyone fights it; the Flotilla trades with all but the Brood.
+// A mission that wants a different war flips sides at runtime with side_set_relations.
+
+# [Salvage Flotilla](flotilla)
+---
+Color: #DA4
+Enemies: brood
+---
+Riverboat salvagers on wrecked starship hulls. They trade with anyone who will moor.
+
+# [Aurelian Concord](concord)
+---
+Color: #EEC
+Enemies: syndicate, brood
+---
+A luxury zeppelin navy rebuilt from chrome ocean-liner starships.
+
+# [Atomic Directorate](directorate)
+---
+Color: #E44
+Enemies: syndicate, brood
+---
+Finned rocket ships of a nation that tamed the atom; every lift ring orbits a reactor.
+
+# [Iron Syndicate](syndicate)
+---
+Color: #8A4
+Enemies: concord, directorate, commons, brood
+---
+Armored warships of a militarist world. They take what the others build.
+
+# [Sunward Commons](commons)
+---
+Color: #7C5
+Enemies: syndicate, brood
+---
+Garden-grown eco-starships on solar-sail wings. They would rather grow than fight.
+
+# [Verdant Brood](brood)
+---
+Color: #A4E
+Enemies: flotilla, concord, directorate, syndicate, commons
+---
+Living bio-starships regrown into flying creatures. A hunger, not a nation.
+
+# [Venus](venus)
+---
+Color: #CB8
+---
+The cloud deck itself: weather, resource clouds and wrecks. Nobody's side.

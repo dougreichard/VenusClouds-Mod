@@ -11,4 +11,8 @@
 *.json   text eol=lf
 *.grid   text eol=lf
 *.md     text eol=lf
+# Engine-read media: the engine opens these itself, and CRLF engine-read files have failed
+# far away from the cause. The meshes and their material files stay LF too.
+*.obj    text eol=lf
+*.mtl    text eol=lf
 *.png    binary

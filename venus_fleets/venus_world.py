@@ -1,0 +1,292 @@
+# Above the Venusian Clouds - the world: the cloud sea, cover, storms, harvest, salvage,
+# and lift that bleeds away until a ship sinks.
+#
+# State lives on the OBJECTS (roles and inventory), never in module-level containers: a
+# module container outlives a mission in the reused dev interpreter and has to be declared
+# to the reset ledger, while an object's inventory dies with the object.
+#
+# One server ticker (__init__.mast) calls venus_world_tick(dt) every couple of seconds -
+# proximity over a few dozen clouds and ships, not a per-tick scan.
+
+import math
+import random
+
+VENUS_CLOUD_ROLE = "venus_cloud"
+VENUS_IN_CLOUD = "venus_in_cloud"
+VENUS_HARVEST_RATE = 2.0          # units per second inside a resource cloud
+VENUS_CLOUD_STOCK = (150, 400)    # units a resource cloud starts with
+VENUS_SINK_RATE = 60.0            # world units per second while above the ceiling lift allows
+VENUS_STORM_EVERY = 6.0           # seconds between storm strikes on a ship inside a cell
+VENUS_NPC_LIFT_PER_HULL = 0.12    # lift an NPC loses per hull point of damage
+
+
+# --------------------------------------------------------------------------- per hull
+VENUS_TURRET_HOSTS = ("carrier", "cruiser", "station_command", "station_industrial", "station_civil",
+                      "station_science")
+
+
+def venus_on_spawn(obj_id):
+    """A Venus hull just spawned: tag it, fill its lift, light its smoke and (carriers,
+    cruisers, stations) weld its turrets on. Turrets themselves only get the tag."""
+    from sbs_utils.procedural.query import to_object
+    from sbs_utils.procedural.roles import add_role, has_role
+    obj = to_object(obj_id)
+    info = venus_hull_info(obj)
+    if obj is None or info is None or has_role(obj.id, "venus_hull"):
+        return 0
+    add_role(obj.id, "venus_hull")
+    add_role(obj.id, "venus_" + info["faction"].lower())
+    if info["design"] == "turret":
+        return 0
+    venus_lift_set(obj, 1.0)
+    try:
+        venus_particles_attach(obj)
+    except Exception:
+        pass
+    if info["design"] in VENUS_TURRET_HOSTS:
+        return len(venus_turrets_attach(obj))
+    return 0
+
+
+# --------------------------------------------------------------------------- spawning
+def venus_cloud_spawn(key, x, y, z, cover=True):
+    """Place one cloud (a venus_cloud_* hull) as passive terrain. Resource clouds get a
+    stock to harvest. cover=True puts an engine nebula inside it - the engine's own
+    sensor cover, which is what makes hiding in a cloud real."""
+    from sbs_utils.procedural.spawn import terrain_spawn
+    from sbs_utils.procedural.roles import add_role
+    from sbs_utils.procedural.inventory import set_inventory_value
+    from sbs_utils.procedural.query import to_id
+    info = (venus_manifest().get("clouds") or {}).get(key)
+    if info is None:
+        return None
+    obj = terrain_spawn(x, y, z, "", "#,venus_cloud", key, "behav_asteroid")
+    cid = to_id(obj)
+    if cid is None:
+        return None
+    add_role(cid, VENUS_CLOUD_ROLE)
+    set_inventory_value(cid, "venus_radius", info["radius"])
+    if info.get("resource"):
+        add_role(cid, "venus_resource")
+        set_inventory_value(cid, "venus_resource", info["resource"])
+        stock = random.uniform(*VENUS_CLOUD_STOCK)
+        set_inventory_value(cid, "venus_stock", stock)
+        set_inventory_value(cid, "venus_stock_full", stock)
+    if info.get("storm"):
+        add_role(cid, "venus_storm")
+    if cover:
+        try:
+            from sbs_utils.procedural.terrain import terrain_spawn_nebula_sphere
+            nebs = terrain_spawn_nebula_sphere(x, y, z, radius=info["radius"] * 0.8, density_scale=0.25,
+                                               marker=False) or []
+            set_inventory_value(cid, "venus_nebulae", [to_id(n) for n in nebs])
+        except Exception:
+            pass
+    return cid
+
+
+def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, storms=2, wrecks=3,
+                      floor=36, seed=None):
+    """Dress a map: a cloud-sea floor at the deck band, scattered lane clouds, resource
+    clouds, storm cells and wrecks. Returns a short status string."""
+    rng = random.Random(seed)
+    clouds = list((venus_manifest().get("clouds") or {}).keys())
+    plain = [k for k in clouds if not (venus_manifest()["clouds"][k].get("resource")
+                                       or venus_manifest()["clouds"][k].get("storm"))]
+    res = [k for k in clouds if venus_manifest()["clouds"][k].get("resource") and "wreck" not in k]
+    storm = [k for k in clouds if venus_manifest()["clouds"][k].get("storm")]
+    wreck = [k for k in clouds if "wreck" in k]
+    floor_y = venus_floor_y()      # venus_altitude.py
+
+    def at(r_min, r_max):
+        a = rng.uniform(0, 2 * math.pi)
+        d = rng.uniform(r_min, r_max)
+        return cx + math.cos(a) * d, cz + math.sin(a) * d
+
+    n = 0
+    for i in range(floor):                         # the sea you can see down there
+        x, z = at(0, radius * 1.2)
+        n += venus_cloud_spawn("venus_cloud_stratus_bank", x, floor_y + rng.uniform(-400, 400), z, cover=False) is not None
+    for i in range(lanes):
+        x, z = at(radius * 0.1, radius)
+        n += venus_cloud_spawn(rng.choice(plain), x, rng.uniform(-2500, 2500), z) is not None
+    for i in range(resources):
+        x, z = at(radius * 0.2, radius)
+        n += venus_cloud_spawn(rng.choice(res), x, rng.uniform(-3500, 2000), z) is not None
+    for i in range(storms):
+        x, z = at(radius * 0.3, radius)
+        n += venus_cloud_spawn(rng.choice(storm), x, rng.uniform(-1500, 1500), z) is not None
+    for i in range(wrecks):
+        x, z = at(radius * 0.3, radius)
+        n += venus_cloud_spawn(rng.choice(wreck), x, rng.uniform(-5000, -2000), z) is not None
+    return "venus world: " + str(n) + " clouds"
+
+
+# --------------------------------------------------------------------------- the tick
+def _venus_dist(a, b):
+    return math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2)
+
+
+def venus_world_tick(dt=2.0):
+    """Cover, storms, harvest and salvage for every ship near every cloud."""
+    from sbs_utils.procedural.roles import role, add_role, remove_role, has_role
+    from sbs_utils.procedural.query import to_object_list, to_object
+    from sbs_utils.procedural.inventory import get_inventory_value, set_inventory_value
+    clouds = [c for c in to_object_list(role(VENUS_CLOUD_ROLE)) if c is not None]
+    ships = [s for s in to_object_list(role("ship") | role("__player__")) if s is not None]
+    for s in ships:
+        inside = False
+        spos = s.pos
+        for c in clouds:
+            r = get_inventory_value(c.id, "venus_radius", 0) or 0
+            if r <= 0 or _venus_dist(spos, c.pos) > r:
+                continue
+            inside = True
+            if has_role(c.id, "venus_storm"):
+                _venus_storm(s, dt)
+            if has_role(c.id, "venus_resource") and has_role(s.id, "__player__"):
+                _venus_harvest(s, c, dt)
+        if inside and not has_role(s.id, VENUS_IN_CLOUD):
+            add_role(s.id, VENUS_IN_CLOUD)
+        elif not inside and has_role(s.id, VENUS_IN_CLOUD):
+            remove_role(s.id, VENUS_IN_CLOUD)
+
+
+def _venus_storm(ship, dt):
+    from sbs_utils.procedural.inventory import get_inventory_value, set_inventory_value
+    from sbs_utils.procedural.roles import has_role
+    t = (get_inventory_value(ship.id, "venus_storm_t", 0.0) or 0.0) + dt
+    if t < VENUS_STORM_EVERY:
+        set_inventory_value(ship.id, "venus_storm_t", t)
+        return
+    set_inventory_value(ship.id, "venus_storm_t", 0.0)
+    try:
+        from sbs_utils.procedural.particles import particle_burst
+        particle_burst(ship, None, align=True, shape="hull", color="#bdf,white", lifespan=6,
+                       image_cell=(0, 3), size=3, speed=6, count=30)
+    except Exception:
+        pass
+    if has_role(ship.id, "__player__"):
+        try:
+            from sbs_utils.procedural.internal_damage import grid_damage_system
+            grid_damage_system(ship.id, None)
+        except Exception:
+            pass
+    else:
+        venus_lift_bleed(ship, 0.05)
+
+
+def _venus_harvest(ship, cloud, dt):
+    """Fill the ship's hold from a resource cloud; the cloud shrinks and finally goes.
+    The wreck gives salvage and restores the ship's lift - a replacement ring."""
+    from sbs_utils.procedural.inventory import get_inventory_value, set_inventory_value
+    from sbs_utils.procedural.space_objects import delete_object
+    res = get_inventory_value(cloud.id, "venus_resource", None)
+    stock = get_inventory_value(cloud.id, "venus_stock", 0.0) or 0.0
+    if not res or stock <= 0:
+        return
+    take = min(stock, VENUS_HARVEST_RATE * dt)
+    stock -= take
+    set_inventory_value(cloud.id, "venus_stock", stock)
+    key = "venus_cargo_" + res
+    set_inventory_value(ship.id, key, (get_inventory_value(ship.id, key, 0.0) or 0.0) + take)
+    if res == "salvage" and venus_lift_get(ship) < 1.0:
+        venus_lift_set(ship, min(1.0, venus_lift_get(ship) + take / 60.0))
+    full = get_inventory_value(cloud.id, "venus_stock_full", stock) or 1.0
+    try:
+        cloud.data_set.set("local_scale_coeff", max(0.35, stock / full), 0)
+    except Exception:
+        pass
+    if stock <= 0:
+        for nid in get_inventory_value(cloud.id, "venus_nebulae", []) or []:
+            try:
+                delete_object(nid)
+            except Exception:
+                pass
+        delete_object(cloud.id)
+
+
+def venus_cargo(ship):
+    """A ship's harvested resources, as a dict (for a console or a trade screen)."""
+    from sbs_utils.procedural.inventory import get_inventory_value
+    out = {}
+    for res in ("coolant", "fuel", "aether", "medicine", "materials", "salvage"):
+        v = get_inventory_value(ship if isinstance(ship, int) else ship.id, "venus_cargo_" + res, 0.0) or 0.0
+        if v:
+            out[res] = int(v)
+    return out
+
+
+# --------------------------------------------------------------------------- lift
+def venus_lift_from_grid(ship_id):
+    """A player ship's lift: the share of its lift-ring rooms that are not damaged.
+    None when the ship has no lift rooms (no interior loaded)."""
+    from sbs_utils.procedural.grid import grid_objects
+    from sbs_utils.procedural.roles import role
+    rooms = grid_objects(ship_id) & role("lift")
+    if not rooms:
+        return None
+    broken = rooms & role("__damaged__")
+    return 1.0 - len(broken) / float(len(rooms))
+
+
+def venus_lift_on_damage(ship, hull_lost):
+    """Hull damage costs lift. Players: a hit may land in a lift room (the grid decides);
+    this adds a chance to hit one outright. NPCs have no interior: lift bleeds directly."""
+    from sbs_utils.procedural.roles import has_role
+    if ship is None or hull_lost <= 0:
+        return
+    if has_role(ship.id, "__player__"):
+        if random.random() < min(0.6, 0.25 * hull_lost):
+            try:
+                from sbs_utils.procedural.internal_damage import grid_damage_system
+                grid_damage_system(ship.id, "lift")
+            except Exception:
+                pass
+    else:
+        venus_lift_bleed(ship, VENUS_NPC_LIFT_PER_HULL * hull_lost)
+
+
+def venus_lift_tick(dt=2.0):
+    """Every Venus hull: update lift, squeeze it down to the altitude its lift can hold,
+    apply deck pressure, smolder when crippled, and dress each crew's sky for its band."""
+    from sbs_utils.procedural.roles import role, has_role
+    from sbs_utils.procedural.query import to_object_list
+    from sbs_utils.procedural.inventory import get_inventory_value, set_inventory_value
+    from sbs_utils.procedural.space_objects import set_pos
+    # A crew seated by a map's Crew: block is RE-HULLED after it spawns, so the //spawn
+    # route saw the stock hull (engine-measured: a Flotilla cruiser with no turrets, no
+    # smoke and untracked lift). Adopt any player now flying a Venus hull.
+    for p in to_object_list(role("__player__") - role("venus_hull")):
+        if p is not None and venus_hull_info(p) is not None:
+            venus_on_spawn(p.id)
+    for s in to_object_list(role("venus_hull")):
+        if s is None:
+            continue
+        if has_role(s.id, "__player__"):
+            g = venus_lift_from_grid(s.id)
+            if g is not None:
+                venus_lift_set(s, g)
+        lift = venus_lift_get(s)
+        p = s.pos
+        ceiling = venus_ceiling_for_lift(lift)
+        if p.y > ceiling:
+            set_pos(s, p.x, max(ceiling, p.y - VENUS_SINK_RATE * dt), p.z)
+        hazard = venus_hazard(p.y)
+        if hazard > 0.4:
+            venus_lift_on_damage(s, hazard * dt * 0.5)
+        if abs(get_inventory_value(s.id, "venus_lift_shown", 1.0) - lift) > 0.2:
+            set_inventory_value(s.id, "venus_lift_shown", lift)
+            try:
+                venus_particles_damaged(s, lift)
+            except Exception:
+                pass
+        if has_role(s.id, "__player__"):
+            band = venus_band(p.y)
+            if get_inventory_value(s.id, "venus_band", None) != band:
+                set_inventory_value(s.id, "venus_band", band)
+                try:
+                    from sbs_utils.procedural.media import skybox_schedule
+                    skybox_schedule(venus_band_sky(band), s.id)
+                except Exception:
+                    pass
