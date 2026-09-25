@@ -58,7 +58,42 @@ def venus_turrets_attach(host):
     for mid in ids:
         turret_make(mid, range=VENUS_TURRET_RANGE, targets=VENUS_TURRET_TARGETS)
         add_role(mid, VENUS_TURRET_ROLE)
+    obj.set_inventory_value("venus_turret_art", obj.art_id)
     return ids
+
+
+def venus_turrets_sync(host):
+    """Keep a host's turrets matching the host. Returns the number of turrets changed.
+
+    A crew is RE-HULLED and RE-SIDED after its turrets are welded: a map's Crew: block seats
+    one hull, then the mission seats the faction's cruiser and sets its side. The turrets
+    kept the first side - hostile to their own ship, so they shot it (user report, Brood) -
+    and the first hull's mount points. So: a new hull re-welds from scratch; a new side
+    re-sides every turret.
+    """
+    from sbs_utils.procedural.query import to_object
+    from sbs_utils.procedural.mount import mount_list, mount_detach_all
+    obj = to_object(host)
+    if obj is None:
+        return 0
+    welded_for = obj.get_inventory_value("venus_turret_art", None)
+    if welded_for is None:
+        return 0
+    if welded_for != obj.art_id:
+        mount_detach_all(obj, delete=True)
+        obj.set_inventory_value("venus_turret_art", None)
+        info = venus_hull_info(obj)
+        if info is not None and info["design"] in VENUS_TURRET_HOSTS:
+            return len(venus_turrets_attach(obj))
+        return 0
+    n = 0
+    side = obj.side
+    for mid in mount_list(obj) or []:
+        t = to_object(mid)
+        if t is not None and t.side != side:
+            t.side = side
+            n += 1
+    return n
 
 
 def _venus_scale(obj_id, coeff):

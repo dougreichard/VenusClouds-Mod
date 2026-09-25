@@ -391,15 +391,26 @@ def venus_lift_tick(dt=2.0):
     for p in to_object_list(role("__player__") - role("venus_hull")):
         if p is not None and venus_hull_info(p) is not None:
             venus_on_spawn(p.id)
-    for s in to_object_list(role("venus_hull")):
-        if s is None:
+    from sbs_utils.procedural.query import object_exists
+    # turrets are venus_hull too, but have no lift - and a re-weld below deletes them
+    # mid-pass, so every hull is re-checked before it is read
+    for s in to_object_list(role("venus_hull") - role(VENUS_TURRET_ROLE)):
+        if s is None or not object_exists(s.id):
             continue
+        # a re-hulled / re-sided crew: turrets follow the ship, smoke follows the new art
+        if venus_turrets_sync(s) and has_role(s.id, "__player__"):
+            try:
+                venus_particles_attach(s)
+            except Exception:
+                pass
         if has_role(s.id, "__player__"):
             g = venus_lift_from_grid(s.id)
             if g is not None:
                 venus_lift_set(s, g)
         lift = venus_lift_get(s)
         p = s.pos
+        if p is None:
+            continue
         ceiling = venus_ceiling_for_lift(lift)
         if p.y > ceiling:
             set_pos(s, p.x, max(ceiling, p.y - VENUS_SINK_RATE * dt), p.z)

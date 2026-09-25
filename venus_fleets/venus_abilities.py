@@ -148,7 +148,7 @@ def venus_abilities_tick(dt=2.0):
     from sbs_utils.procedural.roles import role
     from sbs_utils.procedural.query import to_object_list
     now = _venus_now()
-    for s in to_object_list(role("venus_hull")):
+    for s in to_object_list(role("venus_hull") - role(VENUS_TURRET_ROLE)):
         if s is None:
             continue
         until = _venus_inv(s, "venus_ability_until", 0.0) or 0.0
@@ -244,7 +244,7 @@ def venus_wind_tick(dt=2.0):
     if not lanes:
         return 0
     n = 0
-    for s in to_object_list(role("venus_hull")):
+    for s in to_object_list(role("venus_hull") - role(VENUS_TURRET_ROLE)):
         if s is None:
             continue
         mult = 1.0
