@@ -31,8 +31,8 @@ VENUS_RESOURCE_SIZE = (0.8, 1.5)  # resource clouds (their stock does not scale 
 VENUS_CLOUD_DRIFT = (0.00003, 0.00025)
 # The engine nebula inside a cloud (its sensor cover). The library caps a nebula at 1500
 # across (terrain.NEB_MAX_SIZE); a cloud's own nebula is written past that cap.
-VENUS_NEBULA_SPAN = 2.6           # nebula diameter as a multiple of the cloud's radius
-VENUS_NEBULA_MAX = 5000.0
+VENUS_NEBULA_SPAN = 4.5           # cover nebula diameter as a multiple of the cloud's radius
+VENUS_NEBULA_MAX = 8000.0
 # Units a hold carries, by role. Without a cap a crew parked in one cloud until it was gone
 # (a balance session hauled 200 a trip only because the autopilot chose to turn back).
 # The cap is what makes the logistics hulls worth flying and the trip home the game.
@@ -146,13 +146,18 @@ def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
             obj.engine_object.blink_state = random.randint(*VENUS_PULSE)
     except Exception:
         pass
-    if cover:
-        # ONE engine nebula, cloud-sized, at the cloud's own position. Engine-measured: the
-        # sphere-cluster helper spawned none inside a 600-unit cloud (inside_nebula_count
-        # stayed 0), and terrain_nebula_spawn forces y onto the 0 plane.
-        nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * VENUS_NEBULA_SPAN), 0.6)
-        if nid is not None:
-            set_inventory_value(cid, "venus_nebulae", [nid])
+    # ONE engine nebula inside every cloud, tinted to it: a soft haze that blurs the mesh's
+    # hard silhouette - and, where the cloud is COVER, the engine's own sensor cover. A
+    # cover cloud's nebula reaches further (VENUS_NEBULA_SPAN), so hiding works around it
+    # as well as inside. Engine-measured: the sphere-cluster helper spawned none inside a
+    # 600-unit cloud, and terrain_nebula_spawn forces y onto the 0 plane - so it is placed
+    # here directly.
+    kind = "storm" if info.get("storm") else info.get("resource")
+    span = VENUS_NEBULA_SPAN if cover else VENUS_HALO_SPAN
+    nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * span), 1.0 if kind == "storm" else 0.7,
+                       venus_cloud_color(kind))
+    if nid is not None:
+        set_inventory_value(cid, "venus_nebulae", [nid])
     return cid
 
 
@@ -170,14 +175,32 @@ def venus_cloud_scale(obj, scale):
         pass
 
 
-def venus_cloud_color():
-    """The cream of Venus cloud, as an engine nebula color (the library's white, warmed
-    and made to scatter more). A fresh dict per call: the shader's swirl, warp and
-    anisotropy are drawn per nebula so no two bank the same way."""
+# The haze inside each mesh cloud, tinted by what the cloud IS, as emission (r, g, b) and
+# an absorption scale. The engine ignores a mesh's diffuse ALPHA (measured 2026-09-25:
+# noise alpha on the cloud textures changed nothing), so a soft edge has to come from a
+# nebula around the mesh instead.
+VENUS_CLOUD_TINTS = {
+    None:        ((1.35, 1.22, 0.98), 1.0),   # plain cloud: cream
+    "coolant":   ((0.95, 1.2, 1.5), 1.0),     # ice
+    "fuel":      ((1.5, 1.32, 0.45), 1.0),    # sulfur
+    "materials": ((1.05, 0.8, 0.55), 1.3),    # ore dust
+    "medicine":  ((0.75, 1.4, 0.7), 1.0),     # spores
+    "aether":    ((1.15, 0.75, 1.55), 1.0),   # aether
+    "salvage":   ((0.95, 0.92, 0.88), 1.2),   # wreck haze
+    "storm":     ((0.38, 0.38, 0.48), 2.2),   # storm cell: dark and thick
+}
+VENUS_HALO_SPAN = 4.0              # halo diameter as a multiple of the cloud's radius (user: bigger)
+
+
+def venus_cloud_color(kind=None):
+    """A Venus cloud as an engine nebula color: the library's white, warmed and made to
+    scatter more, tinted for `kind` (a resource, "storm", or None for plain cloud). A fresh
+    dict per call: swirl, warp and anisotropy are drawn per nebula so no two bank alike."""
+    (er, eg, eb), absorb = VENUS_CLOUD_TINTS.get(kind, VENUS_CLOUD_TINTS[None])
     return {
-        "display_text": "cloud",
-        "absorption_red": 0.22, "absorption_green": 0.26, "absorption_blue": 0.36,
-        "emission_red": 1.35, "emission_green": 1.22, "emission_blue": 0.98,
+        "display_text": "cloud" if kind is None else str(kind),
+        "absorption_red": 0.22 * absorb, "absorption_green": 0.26 * absorb, "absorption_blue": 0.36 * absorb,
+        "emission_red": er, "emission_green": eg, "emission_blue": eb,
         "scattering_red": 0.8, "scattering_green": 0.76, "scattering_blue": 0.68,
         "anisotropy": random.uniform(-0.2, 0.1),
         "base_frequency": 1.8, "base_amplitude": 1.1,
@@ -249,12 +272,12 @@ def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, st
     for i in range(base):                          # the cloud sea itself
         x, z = at(0, radius * 1.15)
         y = floor_y + rng.uniform(-400, 1200)
-        nebs += venus_nebula(x, y, z, rng.uniform(4000, VENUS_NEBULA_MAX), dens(y),
+        nebs += venus_nebula(x, y, z, rng.uniform(4000, 5000), dens(y),
                              venus_cloud_color()) is not None
     for i in range(base // 2):                     # and solid beneath it
         x, z = at(0, radius * 1.15)
         y = floor_y - rng.uniform(1200, 2500)
-        nebs += venus_nebula(x, y, z, VENUS_NEBULA_MAX, dens(y), venus_cloud_color()) is not None
+        nebs += venus_nebula(x, y, z, 5000.0, dens(y), venus_cloud_color()) is not None
     for i in range(mid):                           # patchier, thinner cloud above the sea
         x, z = at(0, radius)
         y = rng.uniform(floor_y + 1500, top_y)
