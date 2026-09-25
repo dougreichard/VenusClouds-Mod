@@ -405,11 +405,11 @@ def venus_murk_color(depth=0.0):
     glow = 1.0 - 0.6 * t
     return {
         "display_text": "murk",
-        # olive, not gold: red ~ green, blue about half, and DIM - the first cut (0.62/0.56/
-        # 0.24, blue absorbed hard) stacked into saturated gold
-        "absorption_red": 0.5 * (1 + t), "absorption_green": 0.5 * (1 + t), "absorption_blue": 0.7 * (1 + t),
-        "emission_red": 0.34 * glow, "emission_green": 0.33 * glow, "emission_blue": 0.17 * glow,
-        "scattering_red": 0.32, "scattering_green": 0.31, "scattering_blue": 0.2,
+        # amber-brown, matched to the skyboxes (r:g:b about 1 : 0.68 : 0.33); the olive cut
+        # read too green (user). DIM: the first cut (0.62/0.56/0.24) stacked into gold.
+        "absorption_red": 0.45 * (1 + t), "absorption_green": 0.58 * (1 + t), "absorption_blue": 0.85 * (1 + t),
+        "emission_red": 0.40 * glow, "emission_green": 0.27 * glow, "emission_blue": 0.13 * glow,
+        "scattering_red": 0.36, "scattering_green": 0.25, "scattering_blue": 0.13,
         "anisotropy": random.uniform(-0.1, 0.25),
         "base_frequency": 1.2, "base_amplitude": 1.3,
         "detail_frequency": 1.3055, "detail_amplitude": 1.4, "detail_lacunarity": 2.43,
