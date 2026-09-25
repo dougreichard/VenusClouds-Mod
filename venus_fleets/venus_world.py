@@ -75,11 +75,15 @@ def venus_cloud_spawn(key, x, y, z, cover=True):
     if info.get("storm"):
         add_role(cid, "venus_storm")
     if cover:
+        # ONE engine nebula, cloud-sized, at the cloud's own position. Engine-measured: the
+        # sphere-cluster helper spawned none inside a 600-unit cloud (inside_nebula_count
+        # stayed 0), and terrain_nebula_spawn forces y onto the 0 plane.
         try:
-            from sbs_utils.procedural.terrain import terrain_spawn_nebula_sphere
-            nebs = terrain_spawn_nebula_sphere(x, y, z, radius=info["radius"] * 0.8, density_scale=0.25,
-                                               marker=False) or []
-            set_inventory_value(cid, "venus_nebulae", [to_id(n) for n in nebs])
+            from sbs_utils.procedural.terrain import terrain_setup_nebula
+            neb = terrain_spawn(x, y, z, None, "#, nebula", "nebula", "behav_nebula")
+            neb.blob.set("unselectable", 1)
+            terrain_setup_nebula(neb, min(1500.0, info["radius"] * 2.0), 0.6, "yellow")
+            set_inventory_value(cid, "venus_nebulae", [to_id(neb)])
         except Exception:
             pass
     return cid
@@ -146,6 +150,14 @@ def venus_world_tick(dt=2.0):
                 _venus_storm(s, dt)
             if has_role(c.id, "venus_resource") and has_role(s.id, "__player__"):
                 _venus_harvest(s, c, dt)
+        # The engine's own answer too: every cloud carries nebulae, and the blob counts the
+        # nebulae a ship is inside (object_data_documentation.txt: inside_nebula_count).
+        if not inside:
+            try:
+                from sbs_utils.procedural.query import get_data_set_value
+                inside = (get_data_set_value(s.id, "inside_nebula_count", default=0) or 0) > 0
+            except Exception:
+                pass
         if inside and not has_role(s.id, VENUS_IN_CLOUD):
             add_role(s.id, VENUS_IN_CLOUD)
         elif not inside and has_role(s.id, VENUS_IN_CLOUD):
