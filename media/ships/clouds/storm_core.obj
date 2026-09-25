@@ -1,0 +1,17 @@
+# storm_core - the storm cell's own art: a tiny SOLID tetrahedron. A storm draws nothing of
+# its own (nebula body, Typhon-beam lightning), but its object needs art the engine can bake:
+# a flat single triangle (bolt_mote) hung the engine building its derived art - it has no
+# volume. This one is a few units across on every axis.
+mtllib storm_core.mtl
+v 0 2 0
+v -2 -1 -1.2
+v 2 -1 -1.2
+v 0 -1 2.3
+vt 0 0
+vt 1 0
+vt 0 1
+usemtl storm_core
+f 1/1 3/2 2/3
+f 1/1 4/2 3/3
+f 1/1 2/2 4/3
+f 2/1 3/2 4/3

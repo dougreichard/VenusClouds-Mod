@@ -338,13 +338,19 @@ def main():
     for cloud, cc in bal["clouds"].items():
         src = os.path.join(args.art, "terrain", "out", cloud, "cosmos")
         obj = os.path.join(src, f"{cloud}.obj")
-        if not args.no_copy:
+        # A storm cell draws nothing of its own: its body is a nebula and its lightning is
+        # Typhon beam fire (venus_storm_bolts). Its object still exists - the storm role,
+        # the strikes, the nebula hang off it - so it wears a tiny SOLID mesh (storm_core).
+        # Not the flat bolt_mote: the engine hung building derived art for a shape with no
+        # volume (engine, 2026-09-25).
+        art = "storm_core" if cc["storm"] else cloud
+        if not args.no_copy and not cc["storm"]:
             copy_art(src, os.path.join(media, "ships", "clouds"), cloud)
         # The OBJ is exported at its recipe's TARGET_LEN, so that - not the measured extent -
         # is its span. A cloud exported without its body (SKY_NO_BODY: the puff is a nebula in
         # game) measures only its crystals or bolts, and would be blown up to fill the whole
         # cloud's world_len.
-        span_xz = design_target_len(args.art, cloud)
+        span_xz = 1.0 if cc["storm"] else design_target_len(args.art, cloud)
         if span_xz is None:
             lo, hi = obj_extent(obj)
             span_xz = max(hi[0] - lo[0], hi[2] - lo[2])
@@ -353,7 +359,8 @@ def main():
             (",storm" if cc["storm"] else "")
         ships.append({
             "key": key, "name": cloud.replace("_", " ").title(), "origin": "Venus", "side": "Venus",
-            "artfileroot": f"{pack}/ships/clouds/{cloud}", "meshscale": round(cc["world_len"] / span_xz, 6),
+            "artfileroot": f"{pack}/ships/clouds/{art}",
+            "meshscale": 1.0 if cc["storm"] else round(cc["world_len"] / span_xz, 6),
             "radarscale": 1.0, "exclusionradius": 0.0, "meshrotate": 0,
             "long_desc": cloud.replace("_", " ").title(), "tubecount": 0, "torpedostart": [],
             "internalmapscale": 1.0, "internalmapw": 4, "internalmaph": 4, "internalsymmetry": 1,

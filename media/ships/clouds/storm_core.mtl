@@ -1,0 +1,3 @@
+newmtl storm_core
+Kd 0 0 0
+map_Kd storm_core_diffuse.png

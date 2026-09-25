@@ -20,7 +20,6 @@ VENUS_STORM_EVERY = 6.0           # seconds between storm strikes on a ship insi
 # blink_state: positive = pulse delay, negative = blink delay; bigger is SLOWER. The unit
 # is undocumented - -3 / 6 read far too fast in the engine (user, 2026-09-25). Each cloud
 # picks from a range so a sky full of them does not flash in step.
-VENUS_STORM_BLINK = (18, 30)     # storm cells: lightning blink delay range
 VENUS_PULSE = (40, 70)           # aether and spore clouds: slow pulse delay range
 VENUS_PULSE_RESOURCES = ("aether", "medicine")
 VENUS_NPC_LIFT_PER_HULL = 0.12
@@ -139,9 +138,8 @@ def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
     # negative = blink delay). A storm cell's lightning flickers; the living and the
     # exotic resource clouds breathe.
     try:
-        if info.get("storm"):
-            obj.engine_object.blink_state = -random.randint(*VENUS_STORM_BLINK)
-        elif info.get("resource") in VENUS_PULSE_RESOURCES:
+        # (a storm cell no longer blinks: its lightning is Typhon beam fire now)
+        if info.get("resource") in VENUS_PULSE_RESOURCES:
             obj.engine_object.blink_state = random.randint(*VENUS_PULSE)
     except Exception:
         pass
