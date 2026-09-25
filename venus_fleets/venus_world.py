@@ -31,8 +31,8 @@ VENUS_RESOURCE_SIZE = (0.8, 1.5)  # resource clouds (their stock does not scale 
 VENUS_CLOUD_DRIFT = (0.00003, 0.00025)
 # The engine nebula inside a cloud (its sensor cover). The library caps a nebula at 1500
 # across (terrain.NEB_MAX_SIZE); a cloud's own nebula is written past that cap.
-VENUS_NEBULA_SPAN = 4.5           # cover nebula diameter as a multiple of the cloud's radius
-VENUS_NEBULA_MAX = 8000.0
+VENUS_NEBULA_SPAN = 6.0           # cover nebula diameter as a multiple of the cloud's radius
+VENUS_NEBULA_MAX = 10000.0
 # Units a hold carries, by role. Without a cap a crew parked in one cloud until it was gone
 # (a balance session hauled 200 a trip only because the autopilot chose to turn back).
 # The cap is what makes the logistics hulls worth flying and the trip home the game.
@@ -154,7 +154,8 @@ def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
     # here directly.
     kind = "storm" if info.get("storm") else info.get("resource")
     span = VENUS_NEBULA_SPAN if cover else VENUS_HALO_SPAN
-    nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * span), 1.0 if kind == "storm" else 0.7,
+    nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * span),
+                       VENUS_STORM_DENSITY if kind == "storm" else VENUS_HALO_DENSITY,
                        venus_cloud_color(kind))
     if nid is not None:
         set_inventory_value(cid, "venus_nebulae", [nid])
@@ -189,7 +190,9 @@ VENUS_CLOUD_TINTS = {
     "salvage":   ((0.95, 0.92, 0.88), 1.2),   # wreck haze
     "storm":     ((0.38, 0.38, 0.48), 2.2),   # storm cell: dark and thick
 }
-VENUS_HALO_SPAN = 4.0              # halo diameter as a multiple of the cloud's radius (user: bigger)
+VENUS_HALO_SPAN = 5.0              # halo diameter as a multiple of the cloud's radius
+VENUS_HALO_DENSITY = 0.55          # 0.35 did not show at all, 0.7 was a wall at 4x (user, 2026-09-25)
+VENUS_STORM_DENSITY = 0.9
 
 
 def venus_cloud_color(kind=None):
