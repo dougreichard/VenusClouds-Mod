@@ -38,9 +38,9 @@ industrial, civil, science). Keys are `venus_<tag>_<role>`, with the tags `steam
   Damage to them bleeds lift, and a ship that cannot hold its altitude **sinks** toward the
   crushing deck. Damage control on the ring rooms restores lift, and so does a refit at a
   market station.
-- **Cloud cover.** Each cloud carries an engine nebula. A ship inside one
-  (`inside_nebula_count`) is tagged `venus_in_cloud`, and turrets and missile volleys will
-  not shoot at it.
+- **Cloud cover.** A ship inside a cloud, or inside the nebulae of the cloud base, is
+  tagged `venus_in_cloud`, and turrets and missile volleys will not shoot at it. Every
+  cloud also sits in a large tinted nebula halo; the halo is scenery, not cover.
 - **Storms.** Storm cells strike ships inside them every few seconds, draining lift and
   hull. Their lightning flickers (`blink_state`).
 - **Harvest and salvage.** A ship sitting in a resource cloud fills its hold: ice gives

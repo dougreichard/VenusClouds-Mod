@@ -31,7 +31,6 @@ VENUS_RESOURCE_SIZE = (0.8, 1.5)  # resource clouds (their stock does not scale 
 VENUS_CLOUD_DRIFT = (0.00003, 0.00025)
 # The engine nebula inside a cloud (its sensor cover). The library caps a nebula at 1500
 # across (terrain.NEB_MAX_SIZE); a cloud's own nebula is written past that cap.
-VENUS_NEBULA_SPAN = 6.0           # cover nebula diameter as a multiple of the cloud's radius
 VENUS_NEBULA_MAX = 10000.0
 # Units a hold carries, by role. Without a cap a crew parked in one cloud until it was gone
 # (a balance session hauled 200 a trip only because the autopilot chose to turn back).
@@ -147,19 +146,33 @@ def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
     except Exception:
         pass
     # ONE engine nebula inside every cloud, tinted to it: a soft haze that blurs the mesh's
-    # hard silhouette - and, where the cloud is COVER, the engine's own sensor cover. A
-    # cover cloud's nebula reaches further (VENUS_NEBULA_SPAN), so hiding works around it
-    # as well as inside. Engine-measured: the sphere-cluster helper spawned none inside a
+    # hard silhouette. Engine-measured: the sphere-cluster helper spawned none inside a
     # 600-unit cloud, and terrain_nebula_spawn forces y onto the 0 plane - so it is placed
     # here directly.
     kind = "storm" if info.get("storm") else info.get("resource")
-    span = VENUS_NEBULA_SPAN if cover else VENUS_HALO_SPAN
-    nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * span),
+    # The halo is scenery for every cloud now: hiding is the cloud itself (the proximity
+    # check in venus_world_tick) or the cloud base (venus_cover nebulae).
+    nid = venus_nebula(x, y, z, min(VENUS_NEBULA_MAX, radius * VENUS_HALO_SPAN),
                        VENUS_STORM_DENSITY if kind == "storm" else VENUS_HALO_DENSITY,
                        venus_cloud_color(kind))
     if nid is not None:
         set_inventory_value(cid, "venus_nebulae", [nid])
     return cid
+
+
+def venus_in_cover_nebula(ship):
+    """True when the engine says this ship is inside a nebula tagged venus_cover."""
+    from sbs_utils.procedural.roles import has_role
+    try:
+        ds = ship.data_set
+        n = int(ds.get("inside_nebula_count", 0) or 0)
+        for i in range(n):
+            nid = ds.get("inside_nebula_id", i)
+            if nid and has_role(nid, VENUS_COVER_ROLE):
+                return True
+    except Exception:
+        pass
+    return False
 
 
 def venus_cloud_scale(obj, scale):
@@ -190,6 +203,7 @@ VENUS_CLOUD_TINTS = {
     "salvage":   ((0.95, 0.92, 0.88), 1.2),   # wreck haze
     "storm":     ((0.38, 0.38, 0.48), 2.2),   # storm cell: dark and thick
 }
+VENUS_COVER_ROLE = "venus_cover"  # nebulae that hide a ship (the cloud base); halos do not
 VENUS_HALO_SPAN = 5.0              # halo diameter as a multiple of the cloud's radius
 VENUS_HALO_DENSITY = 0.55          # 0.35 did not show at all, 0.7 was a wall at 4x (user, 2026-09-25)
 VENUS_STORM_DENSITY = 0.9
@@ -212,8 +226,9 @@ def venus_cloud_color(kind=None):
     }
 
 
-def venus_nebula(x, y, z, diameter, density=0.6, color="yellow"):
-    """An engine nebula of any size (the library setup caps it at 1500). Returns its id."""
+def venus_nebula(x, y, z, diameter, density=0.6, color="yellow", cover=False):
+    """An engine nebula of any size (the library setup caps it at 1500). cover=True tags it
+    venus_cover, so a ship inside it counts as hidden. Returns its id."""
     from sbs_utils.procedural.spawn import terrain_spawn
     from sbs_utils.procedural.query import to_id
     try:
@@ -223,6 +238,9 @@ def venus_nebula(x, y, z, diameter, density=0.6, color="yellow"):
         terrain_setup_nebula(neb, diameter, density, color)
         for k in ("size", "display_size", "effect_size"):
             neb.blob.set(k, float(diameter))
+        if cover:
+            from sbs_utils.procedural.roles import add_role
+            add_role(to_id(neb), VENUS_COVER_ROLE)
         return to_id(neb)
     except Exception:
         return None
@@ -266,7 +284,7 @@ def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, st
     # floor, near-opaque at the base and solid below it (user, engine view 2026-09-25:
     # "the lower clouds should be the more dense ones"). The library maps the coefficient
     # to the shader's density as 7.24x, clamped 1.95..20 - so ~2.8 is fully opaque.
-    top_y, deep_y = -1500.0, floor_y - 2500.0
+    top_y, deep_y = -2000.0, floor_y - 2500.0
 
     def dens(y):
         t = max(0.0, min(1.0, (top_y - y) / (top_y - deep_y)))
@@ -276,16 +294,19 @@ def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, st
         x, z = at(0, radius * 1.15)
         y = floor_y + rng.uniform(-400, 1200)
         nebs += venus_nebula(x, y, z, rng.uniform(4000, 5000), dens(y),
-                             venus_cloud_color()) is not None
+                             venus_cloud_color(), cover=True) is not None
     for i in range(base // 2):                     # and solid beneath it
         x, z = at(0, radius * 1.15)
         y = floor_y - rng.uniform(1200, 2500)
-        nebs += venus_nebula(x, y, z, 5000.0, dens(y), venus_cloud_color()) is not None
+        nebs += venus_nebula(x, y, z, 5000.0, dens(y), venus_cloud_color(), cover=True) is not None
     for i in range(mid):                           # patchier, thinner cloud above the sea
         x, z = at(0, radius)
         y = rng.uniform(floor_y + 1500, top_y)
-        nebs += venus_nebula(x, y, z, rng.uniform(2500, 4500), dens(y),
-                             venus_cloud_color()) is not None
+        # its TOP must stay under the lanes: a 4500-wide nebula at -1500 reached +750, so a
+        # crew at the Haven (y 0) was inside cover from the first second (measured)
+        d = min(rng.uniform(2500, 4500), 2.0 * (top_y + 500.0 - y))
+        if d >= 1200:
+            nebs += venus_nebula(x, y, z, d, dens(y), venus_cloud_color(), cover=True) is not None
     for i in range(lanes):
         x, z = at(radius * 0.1, radius)
         n += venus_cloud_spawn(rng.choice(plain), x, rng.uniform(-2500, 2500), z) is not None
@@ -325,14 +346,12 @@ def venus_world_tick(dt=2.0):
                 _venus_storm(s, dt)
             if has_role(c.id, "venus_resource") and has_role(s.id, "__player__"):
                 _venus_harvest(s, c, dt)
-        # The engine's own answer too: every cloud carries nebulae, and the blob counts the
-        # nebulae a ship is inside (object_data_documentation.txt: inside_nebula_count).
+        # The engine's own answer too: the blob lists the nebulae a ship is inside
+        # (inside_nebula_count / inside_nebula_id). Only COVER nebulae count - the cloud
+        # base. A cloud's halo is scenery: halos are several times the cloud's size, and
+        # counting them hid a crew parked at its own Haven inside 5 of them (measured).
         if not inside:
-            try:
-                from sbs_utils.procedural.query import get_data_set_value
-                inside = (get_data_set_value(s.id, "inside_nebula_count", default=0) or 0) > 0
-            except Exception:
-                pass
+            inside = venus_in_cover_nebula(s)
         if not inside:
             inside = venus_ability_hides(s)          # the Flotilla's steam screen
         if inside and not has_role(s.id, VENUS_IN_CLOUD):
