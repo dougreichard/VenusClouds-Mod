@@ -1,6 +1,6 @@
 # Above the Venusian Clouds - faction doctrines and wind lanes.
 #
-# Each faction has ONE ability, used from the VENUS console tab (venus_console.mast) or by
+# Each faction has ONE ability, used from the Airship ePADD app (venus_console.mast) or by
 # script (venus_ability_use). Wind lanes are fast lanes through the cloud sea: a ship
 # flying WITH the wind goes faster.
 #
@@ -99,10 +99,14 @@ def venus_ability_hides(ship):
 
 
 def _venus_burst(ship, color, smoke):
+    # image_cell is REQUIRED in practice: a burst without one crashed the CLIENT in
+    # Render3DObject::EmitAt (null deref, engine-measured 2026-09-25, Boiler Vent). Every
+    # library preset carries one; this burst did not.
     try:
         from sbs_utils.procedural.particles import particle_burst
         particle_burst(ship.id, shape="hull", align=True, color=color, lifespan=40,
-                       size=4.0, speed=0.6, count=40, smoke=smoke)
+                       image_cell=(4 if smoke else (0, 3)), size=4.0, speed=0.6, count=40,
+                       smoke=smoke)
     except Exception:
         pass
 
@@ -342,3 +346,37 @@ def venus_console_style(ship, part):
         info = venus_ability_info(s)
         t, c, f = (info[1] if info else ""), "#aaa", "gui-2"
     return "$text:" + venus_console_clean(t) + ";color:" + c + ";font:" + f + ";"
+
+
+def venus_console_title(ship):
+    """'<Fleet> <design>' for the Airship app's title bar."""
+    from sbs_utils.procedural.query import to_object
+    s = to_object(ship)
+    hull = venus_hull_info(s) if s is not None else None
+    if hull is None:
+        return ""
+    fac = venus_faction_info(hull.get("faction", "")) or {}
+    return (fac.get("name") or "Venus") + " " + str(hull.get("design", "")).replace("_", " ")
+
+
+def venus_epadd_badge():
+    """The Airship tile's badge: lift, and the doctrine when it is ready or running. Empty
+    on a hull that is not Venus (the route hides that tile anyway)."""
+    from sbs_utils.helpers import FrameContext
+    try:
+        import sbs
+        ship = sbs.get_ship_of_client(FrameContext.client_id)
+    except Exception:
+        return ""
+    from sbs_utils.procedural.query import to_object
+    s = to_object(ship)
+    if s is None or venus_hull_info(s) is None:
+        return ""
+    out = "lift " + str(int(venus_lift_get(s) * 100)) + "%"
+    info = venus_ability_info(s)
+    if info is not None:
+        if info[3] > 0:
+            out += " - active"
+        elif info[2] <= 0:
+            out += " - ready"
+    return out

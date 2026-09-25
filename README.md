@@ -51,6 +51,9 @@ industrial, civil, science). Keys are `venus_<tag>_<role>`, with the tags `steam
   welded at the mount points the art recorded.
 - **Missiles only.** Ships carry no beams. NPC hulls fire missile volleys, and carriers and
   stations also launch drones.
+- **The Airship app.** An ePADD app on every ship console of a Venus hull: lift, hold,
+  and the faction doctrine (Boiler Vent, Gas Trim, Reactor Overcharge, Flak Curtain, Sail
+  Sprint, Regrowth). Its tile badge shows lift and whether the doctrine is ready.
 - **Smoke and shimmer.** Stacks trail their faction's smoke, each lift ring glows beneath
   the hull, and a ship below half lift smolders.
 

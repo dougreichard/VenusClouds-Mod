@@ -1,20 +1,25 @@
-# The VENUS console tab: the ship's lift, its hold, and its faction's doctrine.
+# The AIRSHIP ePADD app: the ship's lift, its hold, and its faction's doctrine.
 #
-# A //gui/tab route, so LegendaryMissions' consoles list it beside Helm, Weapons and the
-# rest (LM builds the tab strip from every //gui/tab route and gates each on
-# <NAME>_TAB_ENABLED). Without LM the route is simply never reached.
+# An ePADD app (a //gui/app route + gui_app_register), not a console tab. A tab only shows
+# when a mission turns ALLOW_CONSOLE_TABS on, which neither Venus mission did - so the
+# first version of this screen existed and nobody could reach it. The PADD is on every
+# ship console already, and the tile's badge (lift, doctrine ready) is read WITHOUT
+# opening anything. The route's condition hides the tile on a hull that is not Venus.
 #
-# The panel builds once and then UPDATES its widgets on a revision change - it never
+# The screen builds once and then UPDATES its widgets on a revision change - it never
 # repaints itself, so a cooldown counting down does not rebuild the screen every second.
 
-default shared VENUS_TAB_ENABLED = True
+default CONSOLE_SELECT = ""   # exists without LegendaryMissions' consoles too
+
+gui_app_register("venus", title="Airship", icon="epadd.status", group="Ship", sort=4,
+                 description="Lift, hold and doctrine", status=venus_epadd_badge)
 
 
 == venus_console_show ==
+    gui_tab_back(CONSOLE_SELECT)
     vc_ship = sbs.get_ship_of_client(client_id)
-    gui_section(style="area:4,12,96,94;")
-    gui_row("row-height:2.4em;")
-    vc_head = gui_text(venus_console_style(vc_ship, "head"))
+    gui_app_chrome("Airship", venus_console_clean(venus_console_title(vc_ship)))
+    gui_section(style="area:4,109px,96,96;")
     gui_row("row-height:2em;")
     vc_lift = gui_text(venus_console_style(vc_ship, "lift"))
     gui_row("row-height:2em;")
@@ -40,5 +45,5 @@ default shared VENUS_TAB_ENABLED = True
 
 
 # At the END of the file: labels fall through, so a route goes after every label.
-//gui/tab/venus
+//gui/app/venus if venus_hull_info(sbs.get_ship_of_client(client_id)) is not None
     jump venus_console_show
