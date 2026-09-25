@@ -17,7 +17,16 @@ VENUS_HARVEST_RATE = 2.0          # units per second inside a resource cloud
 VENUS_CLOUD_STOCK = (150, 400)    # units a resource cloud starts with
 VENUS_SINK_RATE = 60.0            # world units per second while above the ceiling lift allows
 VENUS_STORM_EVERY = 6.0           # seconds between storm strikes on a ship inside a cell
-VENUS_NPC_LIFT_PER_HULL = 0.12    # lift an NPC loses per hull point of damage
+VENUS_STORM_BLINK = -3           # blink_state for storm cells: lightning flicker
+VENUS_PULSE = 6                  # blink_state pulse for aether and spore clouds
+VENUS_PULSE_RESOURCES = ("aether", "medicine")
+VENUS_NPC_LIFT_PER_HULL = 0.12
+# Units a hold carries, by role. Without a cap a crew parked in one cloud until it was gone
+# (a balance session hauled 200 a trip only because the autopilot chose to turn back).
+# The cap is what makes the logistics hulls worth flying and the trip home the game.
+VENUS_HOLD = {"cargo_barge": 800, "steam_tender": 500, "carrier": 400, "cruiser": 250,
+              "destroyer": 150, "frigate": 120, "tug": 100, "launch": 60, "fighter": 20}
+VENUS_HOLD_DEFAULT = 150    # lift an NPC loses per hull point of damage
 
 
 # --------------------------------------------------------------------------- per hull
@@ -43,9 +52,39 @@ def venus_on_spawn(obj_id):
         venus_particles_attach(obj)
     except Exception:
         pass
+    venus_hangar_stock(obj, info)
     if info["design"] in VENUS_TURRET_HOSTS:
         return len(venus_turrets_attach(obj))
     return 0
+
+
+# Craft a Venus hull carries for LM's hangar console: (role in this fleet, hangar type, count).
+VENUS_HANGAR = {
+    "carrier": (("fighter", "fighter", 4), ("launch", "shuttle", 1)),
+    "station_command": (("fighter", "fighter", 2), ("launch", "shuttle", 1)),
+    "station_civil": (("launch", "shuttle", 1),),
+}
+
+
+def venus_hangar_stock(obj, info=None):
+    """Stock a carrier or station's hangar with its OWN fleet's fighters and launches.
+    Only when LegendaryMissions' hangar is loaded (looked up at call time, so the mod
+    works without it). Returns the number of craft spawned."""
+    from sbs_utils.mast.mast_globals import MastGlobals
+    spawn = MastGlobals.globals.get("hangar_craft_spawn")
+    info = info or venus_hull_info(obj)
+    if spawn is None or info is None or info["design"] not in VENUS_HANGAR:
+        return 0
+    tag = (venus_faction_info(info["faction"]) or {}).get("tag", "steam")
+    n = 0
+    for design, kind, count in VENUS_HANGAR[info["design"]]:
+        for i in range(count):
+            try:
+                if spawn(obj.id, {"key": "venus_" + tag + "_" + design, "type": kind}) is not None:
+                    n += 1
+            except Exception:
+                pass
+    return n
 
 
 # --------------------------------------------------------------------------- spawning
@@ -74,6 +113,16 @@ def venus_cloud_spawn(key, x, y, z, cover=True):
         set_inventory_value(cid, "venus_stock_full", stock)
     if info.get("storm"):
         add_role(cid, "venus_storm")
+    # The glow is the emissive map; blink_state animates it (positive = pulse delay,
+    # negative = blink delay). A storm cell's lightning flickers; the living and the
+    # exotic resource clouds breathe.
+    try:
+        if info.get("storm"):
+            obj.engine_object.blink_state = VENUS_STORM_BLINK
+        elif info.get("resource") in VENUS_PULSE_RESOURCES:
+            obj.engine_object.blink_state = VENUS_PULSE
+    except Exception:
+        pass
     if cover:
         # ONE engine nebula, cloud-sized, at the cloud's own position. Engine-measured: the
         # sphere-cluster helper spawned none inside a 600-unit cloud (inside_nebula_count
@@ -158,6 +207,8 @@ def venus_world_tick(dt=2.0):
                 inside = (get_data_set_value(s.id, "inside_nebula_count", default=0) or 0) > 0
             except Exception:
                 pass
+        if not inside:
+            inside = venus_ability_hides(s)          # the Flotilla's steam screen
         if inside and not has_role(s.id, VENUS_IN_CLOUD):
             add_role(s.id, VENUS_IN_CLOUD)
         elif not inside and has_role(s.id, VENUS_IN_CLOUD):
@@ -197,13 +248,16 @@ def _venus_harvest(ship, cloud, dt):
     stock = get_inventory_value(cloud.id, "venus_stock", 0.0) or 0.0
     if not res or stock <= 0:
         return
-    take = min(stock, VENUS_HARVEST_RATE * dt)
+    room = venus_hold_capacity(ship) - sum(venus_cargo(ship).values())
+    take = min(stock, VENUS_HARVEST_RATE * dt, max(0.0, room))
+    if take <= 0:
+        return
     stock -= take
     set_inventory_value(cloud.id, "venus_stock", stock)
     key = "venus_cargo_" + res
     set_inventory_value(ship.id, key, (get_inventory_value(ship.id, key, 0.0) or 0.0) + take)
     if res == "salvage" and venus_lift_get(ship) < 1.0:
-        venus_lift_set(ship, min(1.0, venus_lift_get(ship) + take / 60.0))
+        venus_lift_restore(ship, take / 60.0)
     full = get_inventory_value(cloud.id, "venus_stock_full", stock) or 1.0
     try:
         cloud.data_set.set("local_scale_coeff", max(0.35, stock / full), 0)
@@ -216,6 +270,17 @@ def _venus_harvest(ship, cloud, dt):
             except Exception:
                 pass
         delete_object(cloud.id)
+
+
+def venus_hold_capacity(ship):
+    """How many units this hull's hold carries (VENUS_HOLD by role)."""
+    info = venus_hull_info(ship)
+    from sbs_utils.procedural.inventory import get_inventory_value
+    from sbs_utils.procedural.query import to_id
+    bonus = get_inventory_value(to_id(ship), "venus_hold_bonus", 0) or 0
+    if info is None:
+        return VENUS_HOLD_DEFAULT + bonus
+    return VENUS_HOLD.get(info.get("design"), VENUS_HOLD_DEFAULT) + bonus
 
 
 def venus_cargo(ship):
@@ -240,6 +305,60 @@ def venus_lift_from_grid(ship_id):
         return None
     broken = rooms & role("__damaged__")
     return 1.0 - len(broken) / float(len(rooms))
+
+
+def venus_lift_refit(ship):
+    """A full refit: every lift-ring room repaired, lift back to full. What a yard, a wreck's
+    salvage or a trade gives. Setting lift alone is NOT a refit on a player - venus_lift_tick
+    re-reads lift from the damaged ring rooms every tick, so it would fall straight back."""
+    from sbs_utils.procedural.query import to_object
+    from sbs_utils.procedural.roles import has_role, role
+    ship = to_object(ship)
+    if ship is None:
+        return 0
+    n = 0
+    if has_role(ship.id, "__player__"):
+        try:
+            from sbs_utils.procedural.grid import grid_objects
+            from sbs_utils.procedural.internal_damage import grid_repair_grid_objects
+            broken = grid_objects(ship.id) & role("lift") & role("__damaged__")
+            n = len(broken)
+            if broken:
+                grid_repair_grid_objects(ship.id, broken)
+        except Exception:
+            pass
+    venus_lift_set(ship, 1.0)
+    return n
+
+
+def venus_lift_restore(ship, amount):
+    """Give back `amount` (0..1) of lift. An NPC's lift is a number; a player's is its ring
+    ROOMS, so the fraction accumulates and whole rooms are repaired as it adds up."""
+    from sbs_utils.procedural.query import to_object
+    from sbs_utils.procedural.roles import has_role, role
+    from sbs_utils.procedural.inventory import get_inventory_value, set_inventory_value
+    ship = to_object(ship)
+    if ship is None or amount <= 0:
+        return 0
+    if not has_role(ship.id, "__player__"):
+        venus_lift_set(ship, min(1.0, venus_lift_get(ship) + amount))
+        return 0
+    try:
+        from sbs_utils.procedural.grid import grid_objects
+        from sbs_utils.procedural.internal_damage import grid_repair_grid_objects
+        rooms = grid_objects(ship.id) & role("lift")
+        broken = sorted(rooms & role("__damaged__"))
+    except Exception:
+        return 0
+    if not rooms or not broken:
+        set_inventory_value(ship.id, "venus_lift_owed", 0.0)
+        return 0
+    owed = (get_inventory_value(ship.id, "venus_lift_owed", 0.0) or 0.0) + amount * len(rooms)
+    fix = min(len(broken), int(owed))
+    if fix:
+        grid_repair_grid_objects(ship.id, set(broken[:fix]))
+    set_inventory_value(ship.id, "venus_lift_owed", owed - fix)
+    return fix
 
 
 def venus_lift_on_damage(ship, hull_lost):

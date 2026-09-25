@@ -58,7 +58,7 @@ def copy_art(src_dir, dst_dir, root):
     bakes them from the .obj on first draw, so shipping ours would only go stale."""
     os.makedirs(dst_dir, exist_ok=True)
     for f in sorted(os.listdir(src_dir)):
-        if f.endswith(DERIVED) or f in (f"{root}1024.png", f"{root}256.png") or f.endswith("_export.blend") \
+        if f.endswith(DERIVED) or f in (f"{root}1024.png", f"{root}256.png") or ".blend" in f \
                 or f.startswith("verify_") or f.endswith("_points.json"):
             continue
         shutil.copyfile(os.path.join(src_dir, f), os.path.join(dst_dir, f))

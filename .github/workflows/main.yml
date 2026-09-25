@@ -1,0 +1,117 @@
+name: Create Archive
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  # Single source of truth: the addon (mastlib) list is read straight from
+  # __lib__.json, so adding an addon there automatically ships it - the matrix can
+  # never drift out of sync with the packaged libs again.
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@master
+      - name: Build addon matrix from __lib__.json
+        id: set
+        run: echo "matrix=$(jq -c '.mastlib' __lib__.json)" >> "$GITHUB_OUTPUT"
+
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+
+    strategy:
+      matrix:
+        item: ${{ fromJson(needs.setup.outputs.matrix) }}
+
+    env:
+      # Name it exactly what `sbs lib` writes into __lib__ and what a mission's
+      # story.json refers to: {owner}.{repo}.{addon}.{tag}.mastlib. Publishing the bare
+      # addon name meant no consumer could resolve it - every fetch 404'd and fell back
+      # to whatever happened to be on disk, so releases only ever worked on a machine
+      # that had already run `sbs lib` locally.
+      ASSET: ${{ github.repository_owner }}.${{ github.event.repository.name }}.${{ matrix.item }}.${{ github.ref_name }}.mastlib
+
+    steps:
+      - uses: actions/checkout@master
+
+      # FLAT, and that is load-bearing: MAST opens the .mastlib and reads `__init__.mast`
+      # at the ZIP ROOT (Mast.import_content -> content_from_lib_or_file, which calls
+      # ZipFile(lib).open("__init__.mast")). The old `zip-release` step passed
+      # `path: <addon>`, which nests the folder, so the archive held
+      # `<addon>/__init__.mast`, that open() raised, and the addon silently never
+      # loaded - the mission compiled to ZERO labels and still reported PASS.
+      # `sbs lib` builds these flat (file_help.zipdir, skipping __pycache__); this has
+      # to match it, because both feed the same __lib__ folder.
+      - name: Archive addon (flat, matching `sbs lib`)
+        env:
+          SRC: ${{ matrix.item }}
+        run: python .github/zip_flat.py "$SRC" "$ASSET"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: '${{ matrix.item }}'
+          path: ${{ env.ASSET }}
+          retention-days: 1
+
+  build_media:
+    runs-on: ubuntu-latest
+    # github.ref_name IS the tag on a tag push - no step needed. The old
+    # `echo "{VERSION}={...}" >> $GITHUB_OUTPUT` line was not valid output syntax
+    # (it writes a literal, setting nothing), so the version came out EMPTY and the
+    # asset was named "media..zip". GitHub normalises that to the existing
+    # "media.zip", so the upload collided with it and 422'd - after most of the
+    # mastlibs had already been replaced, leaving the release half-updated.
+    env:
+      # Same repo-namespaced name a mission's story.json `shared_media` refers to.
+      ASSET: ${{ github.repository_owner }}.${{ github.event.repository.name }}.media.${{ github.ref_name }}.zip
+    steps:
+      - uses: actions/checkout@master
+      # Flat for the same reason as the mastlibs: expand_resources unpacks this straight
+      # into the mission's media folder, so a nested archive would land as media/media/.
+      - name: Archive media zip (flat, matching `sbs lib`)
+        run: python .github/zip_flat.py media "$ASSET"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: media
+          path: ${{ env.ASSET }}
+          retention-days: 1
+
+  build_release:
+    runs-on: ubuntu-latest
+    needs:
+      - build_media
+      - build
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts # Download all artifacts to this directory
+      #- name: Display structure of downloaded files
+      #  run: ls -R artifacts
+
+      # `sbs release -u` re-points the rolling v1.4.0 tag by DELETING it and pushing it
+      # again, and GitHub demotes a published Release whose tag disappears to a DRAFT.
+      # svenstaro/upload-release-action looked the release up with getReleaseByTag, which
+      # the API answers for published releases only - so it 404'd on that draft and
+      # created a brand new Release every single time, orphaning the previous one. That
+      # is where 92 stale drafts came from, each carrying a full set of 38 assets.
+      # ncipollo finds the draft by tag, and `draft: false` re-publishes THAT release
+      # instead of making another. Same action and settings sbs_utils releases with.
+      - name: Upload binaries to release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "artifacts/*/*"
+          tag: ${{ github.ref_name }}
+          allowUpdates: true
+          replacesArtifacts: true
+          draft: false
+          makeLatest: true
+          omitBodyDuringUpdate: true
+          omitNameDuringUpdate: true

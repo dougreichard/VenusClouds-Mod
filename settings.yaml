@@ -1,0 +1,9 @@
+# Settings for running THIS MOD AS ITS OWN MISSION - the ship viewer and the pre-session
+# paxmesh bake:
+#
+#   Artemis3-x64-release.exe autostartserver defaultmission=VenusClouds-Mod map=venus_ships bake=venus
+#
+# No effect when the mod is loaded as an ADDON - a consuming mission reads its own settings.
+# Without EXTRA_SHIP_DATA the mod declares no hulls, the viewer has nothing to show, and
+# nothing bakes.
+EXTRA_SHIP_DATA: true

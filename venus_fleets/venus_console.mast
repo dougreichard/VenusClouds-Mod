@@ -1,0 +1,44 @@
+# The VENUS console tab: the ship's lift, its hold, and its faction's doctrine.
+#
+# A //gui/tab route, so LegendaryMissions' consoles list it beside Helm, Weapons and the
+# rest (LM builds the tab strip from every //gui/tab route and gates each on
+# <NAME>_TAB_ENABLED). Without LM the route is simply never reached.
+#
+# The panel builds once and then UPDATES its widgets on a revision change - it never
+# repaints itself, so a cooldown counting down does not rebuild the screen every second.
+
+default shared VENUS_TAB_ENABLED = True
+
+
+== venus_console_show ==
+    vc_ship = sbs.get_ship_of_client(client_id)
+    gui_section(style="area:4,12,96,94;")
+    gui_row("row-height:2.4em;")
+    vc_head = gui_text(venus_console_style(vc_ship, "head"))
+    gui_row("row-height:2em;")
+    vc_lift = gui_text(venus_console_style(vc_ship, "lift"))
+    gui_row("row-height:2em;")
+    vc_hold = gui_text(venus_console_style(vc_ship, "hold"))
+    gui_row("row-height:1em;")
+    gui_blank()
+    gui_row("row-height:2.4em;")
+    vc_name = gui_text(venus_console_style(vc_ship, "ability"))
+    gui_row("row-height:2em;")
+    vc_desc = gui_text(venus_console_style(vc_ship, "desc"))
+    gui_row("row-height:3em;")
+    vc_use = gui_button("$text:USE DOCTRINE;")
+    gui_row("row-height:2em;")
+    vc_said = gui_text("$text: ;color:#8f8;")
+    on gui_message(vc_use):
+        vc_said.update("$text:" + venus_console_clean(venus_ability_use(vc_ship)) + ";color:#8f8;")
+    on change venus_console_revision(vc_ship):
+        vc_lift.update(venus_console_style(vc_ship, "lift"))
+        vc_hold.update(venus_console_style(vc_ship, "hold"))
+        vc_name.update(venus_console_style(vc_ship, "ability"))
+    await gui()
+    ->END
+
+
+# At the END of the file: labels fall through, so a route goes after every label.
+//gui/tab/venus
+    jump venus_console_show

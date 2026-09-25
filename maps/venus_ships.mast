@@ -1,0 +1,161 @@
+#
+#  Venus ship browser - every hull the add-on declares, with its stats and its model.
+#
+#  The verify mission proves the DATA merged; this is the only thing that shows the ART
+#  renders. Structure follows modding_tools/grid_editor/pane_pick_ship.mast, which is this
+#  panel already: a faction-grouped listbox on one side, a live gui_ship plus a detail
+#  block on the other, and a selection that swaps the model IN PLACE rather than rebuilding.
+#
+#  gui_ship is the same engine widget (send_gui_3dship) the ship-select roster uses, so the
+#  hull that appears here is the hull a player would see. It renders in the browser mock
+#  too - as a textured, slowly spinning mesh - because the installed media pack writes
+#  artfileroot as a full graphics-relative path the mock can resolve.
+#
+
+=== venus_ships_page
+    default shared VENUSVIEW_SHIP = None
+    default shared VENUSVIEW_HINT = None
+    # Bake-walk state. VENUSVIEW_BAKE_LIST is None when idle, which is also what the buttons
+    # below switch on, so there is one source of truth for "am I baking".
+    default shared VENUSVIEW_BAKE_LIST = None
+    default shared VENUSVIEW_BAKE_AT = 0
+    default shared VENUSVIEW_BAKE_SECONDS = 1.5
+    # The two widgets the walker writes to, declared HERE and not only where they are built.
+    # `bake=` schedules the walker at map entry, before the first repaint has created them,
+    # and reading a shared that was never assigned is a NameError - which STOPS the command
+    # and ends the task. MEASURED in the engine: `name 'VENUSVIEW_SHIP_WIDGET' is not defined`
+    # in mast.runtime.log, walk dead, zero hulls baked. The mock never showed it, because a
+    # click can only happen after a repaint has already built them.
+    default shared VENUSVIEW_SHIP_WIDGET = None
+    default shared VENUSVIEW_STATUS_WIDGET = None
+
+    ship_rows = venusview_ship_rows()
+    if VENUSVIEW_SHIP is None:
+        VENUSVIEW_SHIP = venusview_first_ship(ship_rows)
+
+    # `bake=venus` / `bake=all` starts the walk with no click, so the whole pre-session bake
+    # is one command line. The engine hands any unrecognized key=value straight to script,
+    # which is what makes a launch argument cheaper than automating a button:
+    #
+    #   Artemis3-x64-release.exe autostartserver defaultmission=VenusClouds-Mod     #                            map=venus_ships bake=venus
+    venusview_bake_arg = command_line_get("bake")
+    if venusview_bake_arg is not None and VENUSVIEW_BAKE_LIST is None:
+        VENUSVIEW_BAKE_LIST = venusview_bake_keys(venusview_bake_arg)
+        VENUSVIEW_BAKE_AT = 0
+        task_schedule(venusview_bake_run)
+
+---repaint
+    # ---- header ----------------------------------------------------------
+    gui_section(style="area:2,2,98,9;")
+    gui_row("row-height:1fr;")
+    # Held in a shared, and reassigned on every repaint, so the bake walker always writes
+    # to the widget that is currently on screen.
+    shared VENUSVIEW_STATUS_WIDGET = gui_text(venusview_status_style(VENUSVIEW_BAKE_LIST, VENUSVIEW_BAKE_AT, VENUSVIEW_SHIP))
+
+    # ---- hull picker -----------------------------------------------------
+    gui_section(style="area:2,10,32,95;")
+    # collapsible groups the hulls under their six fleets. reveal AND hint for the
+    # same reason the face gallery needs them: this page repaints on selection, and a
+    # repaint restarts the view at the top, so without them the clicked row slides out
+    # from under the pointer.
+    ship_lb = gui_list_box(ship_rows, "row-height:1.6em;",
+                           item_template=venusview_ship_row,
+                           title_template=venusview_ship_title,
+                           select=True, collapsible=True,
+                           reveal=True, hint=VENUSVIEW_HINT)
+    on change ship_lb.value:
+        # A faction header is selectable too and carries no hull key. venusview_row_key
+        # returns None for one, so the panel keeps showing the current hull rather than
+        # blanking. The check is a helper and not inline MAST because `hasattr` is not in
+        # MAST's eval-globals whitelist - it raises NameError, and only when a row is
+        # actually clicked.
+        picked = venusview_row_key(ship_lb.get_value())
+        # `picked != VENUSVIEW_SHIP` is what stops a REPAINT LOOP, and it is not defensive
+        # padding. Repainting rebuilds this listbox, the rebuilt one reports its value as
+        # changed, and that fires this handler again - measured, one row click turned into
+        # ~10,000 rebuilds a second until the guard went in. Only a genuinely different
+        # hull is worth a repaint.
+        if picked is not None and picked != VENUSVIEW_SHIP:
+            VENUSVIEW_SHIP = picked
+            VENUSVIEW_HINT = ship_lb.get_selection_hint()
+            jump repaint
+
+    # ---- the hull --------------------------------------------------------
+    gui_section(style="area:33,10,98,68;")
+    gui_row("row-height:1fr;")
+    # col-width: square is REQUIRED. gui_face and gui_icon are square already; gui_ship and
+    # the image widgets are not, so beside anything else they flex and take half the row.
+    shared VENUSVIEW_SHIP_WIDGET = gui_ship(VENUSVIEW_SHIP, style="col-width: square;")
+
+    # ---- its stats -------------------------------------------------------
+    gui_section(style="area:33,69,98,89;")
+    gui_row("row-height:1fr;")
+    gui_text_area(venusview_ship_detail(VENUSVIEW_SHIP))
+
+    gui_section(style="area:33,90,98,97;")
+    gui_row("row-height:1fr;")
+    gui_button("maps", on_press="venusview_picker")
+    # Inline `on gui_message` handlers rather than on_press labels on purpose: an inline
+    # handler runs ON the GUI task, so its `jump repaint` moves the page the operator is
+    # looking at. The listbox above already relies on exactly that.
+    if VENUSVIEW_BAKE_LIST is None:
+        bake_venus = gui_button("bake Venus art")
+        on gui_message(bake_venus):
+            VENUSVIEW_BAKE_LIST = venusview_bake_keys("venus")
+            VENUSVIEW_BAKE_AT = 0
+            # task_schedule, NOT sub_task_schedule: a repaint ends the tasks hosted on the
+            # GUI task, and this handler asks for one on the next line.
+            task_schedule(venusview_bake_run)
+            # The one repaint of the whole walk. It swaps these buttons for "stop baking",
+            # which also stops a second walker being started on top of this one.
+            jump repaint
+        bake_all = gui_button("bake every hull")
+        on gui_message(bake_all):
+            VENUSVIEW_BAKE_LIST = venusview_bake_keys("all")
+            VENUSVIEW_BAKE_AT = 0
+            task_schedule(venusview_bake_run)
+            jump repaint
+    else:
+        bake_stop = gui_button("stop baking")
+        on gui_message(bake_stop):
+            VENUSVIEW_BAKE_LIST = None
+            VENUSVIEW_BAKE_AT = 0
+            jump repaint
+
+    await gui()
+    # Explicit, because a top-level label follows. Labels fall through, so the adjacency of
+    # two labels is an interface even when nothing in the file says so.
+    ->END
+
+
+#  Walk every distinct piece of hull art once so the engine bakes its .paxmesh now, rather
+#  than mid-session in front of guests. See the Bake walk note in venus_ship_info.py for why
+#  this exists and why it does nothing under the browser mock.
+#
+#  ONE walker task drives the whole list. Scheduling a stepper from the repaint instead
+#  would spawn a second one every time the operator clicked a row mid-walk.
+=== venusview_bake_run
+---step
+    ->END if VENUSVIEW_BAKE_LIST is None
+    next_key = venusview_bake_at(VENUSVIEW_BAKE_LIST, VENUSVIEW_BAKE_AT)
+    if next_key is None:
+        VENUSVIEW_BAKE_LIST = None
+        VENUSVIEW_BAKE_AT = 0
+        gui_task_jump("repaint")
+        ->END
+    VENUSVIEW_SHIP = next_key
+    # Swap the model in place. NOT a repaint - see venusview_bake_show for what a repainting
+    # walker does to itself.
+    # Returns False until the page has actually built its widgets - which matters when the
+    # walk is started by `bake=` at map entry, before the first repaint has run. Advancing
+    # anyway would silently skip hull 1, the one case nobody would notice.
+    venusview_shown = venusview_bake_show(VENUSVIEW_SHIP_WIDGET, VENUSVIEW_STATUS_WIDGET, VENUSVIEW_BAKE_LIST, VENUSVIEW_BAKE_AT, next_key)
+    # delay_app (REAL seconds), NOT delay_sim. MEASURED: with delay_sim the walker printed
+    # its first hull and never came back - this is a viewer, it runs with the sim paused,
+    # and a paused sim never advances sim time, so the delay simply never resolves. Wall
+    # clock is the right clock for this anyway: baking is disk work, not game time.
+    await delay_app(VENUSVIEW_BAKE_SECONDS)
+    if venusview_shown:
+        VENUSVIEW_BAKE_AT = VENUSVIEW_BAKE_AT + 1
+    jump step
+

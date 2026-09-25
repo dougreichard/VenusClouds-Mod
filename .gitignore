@@ -34,3 +34,6 @@ _propfarm/
 
 # Kitbash job files (written and removed per build; only stragglers from a failed run)
 media/ships/_*_job.json
+
+# Blender backups (never engine-read)
+*.blend1
