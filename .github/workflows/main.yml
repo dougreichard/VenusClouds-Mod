@@ -3,6 +3,10 @@ on:
   push:
     tags:
       - "*"
+# The job token is read-only by default on this repo; creating/updating the release needs
+# write (first run failed: 403 Resource not accessible by integration).
+permissions:
+  contents: write
 jobs:
   # Single source of truth: the addon (mastlib) list is read straight from
   # __lib__.json, so adding an addon there automatically ships it - the matrix can
