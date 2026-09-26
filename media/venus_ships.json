@@ -40,15 +40,29 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              127.67,
+              -5.8,
+              464.886
             ],
-            "color": "white",
+            "color": "#4df",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -127.67,
+              -5.8,
+              464.886
+            ],
+            "color": "#4df",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -100,15 +114,57 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              0.0,
+              -34.719,
+              202.477
             ],
-            "color": "white",
+            "color": "#4df",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -7.63,
+              142.656
+            ],
+            "color": "#4df",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -7.63,
+              -169.994
+            ],
+            "color": "#4df",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              16.073,
+              -94.371
+            ],
+            "color": "#4df",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -511,15 +567,57 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              -620.144,
+              -107.67,
+              0.0
             ],
-            "color": "white",
+            "color": "#4df",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -0.0,
+              -107.67,
+              620.144
+            ],
+            "color": "#4df",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              620.144,
+              -107.67,
+              0.0
+            ],
+            "color": "#4df",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -107.67,
+              -620.144
+            ],
+            "color": "#4df",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -561,14 +659,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4df",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -610,14 +708,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4df",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -658,14 +756,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4df",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -761,14 +859,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4ec",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -820,15 +918,85 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              0.0,
+              -93.363,
+              183.998
             ],
-            "color": "white",
+            "color": "#4ec",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -93.363,
+              -206.734
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -66.501,
+              108.294
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -66.501,
+              -128.588
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -143.792,
+              110.736
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -143.792,
+              -84.63
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -1231,15 +1399,57 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              -406.759,
+              -183.277,
+              0.0
             ],
-            "color": "white",
+            "color": "#4ec",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -0.0,
+              -183.277,
+              406.759
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              406.759,
+              -183.277,
+              0.0
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -0.0,
+              -183.277,
+              -406.759
+            ],
+            "color": "#4ec",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -1281,14 +1491,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4ec",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -1330,14 +1540,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4ec",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -1378,14 +1588,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4ec",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -1480,15 +1690,29 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              271.222,
+              -22.091,
+              151.303
             ],
-            "color": "white",
+            "color": "#4fc",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -271.222,
+              -22.091,
+              151.303
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -1540,15 +1764,71 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              0.0,
+              -14.177,
+              250.563
             ],
-            "color": "white",
+            "color": "#4fc",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              27.247,
+              194.149
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -5.161,
+              -175.544
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              45.611,
+              -24.366,
+              -7.502
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -45.611,
+              -24.366,
+              -7.502
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -1951,15 +2231,57 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              -563.737,
+              -330.433,
+              0.0
             ],
-            "color": "white",
+            "color": "#4fc",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -0.0,
+              -330.433,
+              563.737
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              563.737,
+              -330.433,
+              0.0
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -0.0,
+              -330.433,
+              -563.737
+            ],
+            "color": "#4fc",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2001,14 +2323,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4fc",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2050,14 +2372,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4fc",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2098,14 +2420,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#4fc",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2200,15 +2522,85 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              103.43,
+              1.518,
+              450.829
             ],
-            "color": "white",
+            "color": "#f82",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -121.682,
+              1.518,
+              475.165
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -139.934,
+              1.518,
+              -376.609
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              139.934,
+              1.518,
+              -473.955
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -124.116,
+              1.518,
+              -181.918
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -124.116,
+              1.518,
+              280.474
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2260,15 +2652,85 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              0.0,
+              -49.794,
+              248.523
             ],
-            "color": "white",
+            "color": "#f82",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -28.82,
+              180.942
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -49.794,
+              -211.732
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -28.82,
+              -149.976
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              61.756,
+              -49.794,
+              79.569
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              61.756,
+              -49.794,
+              -36.952
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2671,15 +3133,85 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              169.005,
+              375.964,
+              -169.005
             ],
-            "color": "white",
+            "color": "#f82",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              169.005,
+              375.964,
+              169.005
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -169.005,
+              375.964,
+              -169.005
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -169.005,
+              375.964,
+              169.005
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -240.164,
+              181.386,
+              -88.95
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -240.164,
+              181.386,
+              0.0
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2721,14 +3253,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#f82",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2769,15 +3301,43 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              -375.871,
+              -183.746,
+              289.258
             ],
-            "color": "white",
+            "color": "#f82",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              599.413,
+              -183.746,
+              289.258
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              289.258,
+              -183.746,
+              -375.871
+            ],
+            "color": "#f82",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2818,14 +3378,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#f82",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2920,15 +3480,57 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              156.435,
+              -36.038,
+              383.553
             ],
-            "color": "white",
+            "color": "#fc6",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -156.435,
+              -36.038,
+              233.376
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              156.435,
+              -36.038,
+              -442.423
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -162.692,
+              -36.038,
+              -467.452
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -2980,15 +3582,85 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              0.0,
+              -28.429,
+              223.507
             ],
-            "color": "white",
+            "color": "#fc6",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -1.898,
+              136.991
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              48.449,
+              -1.898,
+              -7.203
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -48.449,
+              -1.898,
+              -7.203
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -1.898,
+              -255.216
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -28.429,
+              -318.661
+            ],
+            "color": "#fc6",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -3392,14 +4064,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#fc6",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -3441,14 +4113,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#fc6",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -3490,14 +4162,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#fc6",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -3538,14 +4210,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#fc6",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -3641,14 +4313,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#3fb",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -3700,15 +4372,85 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              0.0,
+              -45.957,
+              136.984
             ],
-            "color": "white",
+            "color": "#3fb",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              64.697,
+              -46.62,
+              26.999
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              64.697,
+              -51.293,
+              -270.606
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -64.697,
+              -46.62,
+              26.999
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              -64.697,
+              -51.293,
+              -270.606
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.0,
+              -46.977,
+              -328.833
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -4111,15 +4853,57 @@
         "beam Primary Beams": [
           {
             "position": [
-              0,
-              0,
-              0
+              -524.352,
+              -460.463,
+              0.0
             ],
-            "color": "white",
+            "color": "#3fb",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.277,
+              -460.463,
+              524.63
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              524.907,
+              -460.463,
+              0.0
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
+            "arcwidth": 360,
+            "barrel_angle": 0
+          },
+          {
+            "position": [
+              0.277,
+              -460.463,
+              -524.63
+            ],
+            "color": "#3fb",
+            "arccolor": "#090",
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -4161,14 +4945,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#3fb",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -4210,14 +4994,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#3fb",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }
@@ -4258,14 +5042,14 @@
           {
             "position": [
               0,
-              0,
+              0.5,
               0
             ],
-            "color": "white",
+            "color": "#3fb",
             "arccolor": "#090",
-            "cycle_time": 60,
-            "damage_coeff": 0,
-            "range": 0,
+            "cycle_time": 3,
+            "damage_coeff": 0.4,
+            "range": 1200,
             "arcwidth": 360,
             "barrel_angle": 0
           }

@@ -7,15 +7,14 @@ legend:
   L: lift-ring
   M: maneuver
   T: torp-tube
-  W: warp
   a: aft-shield
   d: fwd-shield
   i: impulse
 ---
-   T   
-..dE...
-...L...
-  ...  
-  .M.  
-  Wi   
-   a   
+   E   
+   d   
+.TMLa..
+   i   
+   i   
+       
+       

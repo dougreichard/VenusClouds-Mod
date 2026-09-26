@@ -147,8 +147,28 @@ LEGEND = {"E": "sensors", "d": "fwd-shield", "a": "aft-shield", "T": "torp-tube"
           "i": "impulse", "M": "maneuver", "W": "warp", "L": "lift-ring", "h": "shuttle-bay"}
 
 
+_ENGINE_MAPS = None
+
+
 def make_grid(key, role, cfg, sprite, span, rings):
+    """The hull's floor plan. With a captured ENGINE hull map (engine_hull_maps.json, from
+    Venus_TestRange's venus_hullmap probe) the plan is laid on that map - the only cells a
+    damcon can walk. The sprite-derived path below is the fallback for a hull not yet
+    captured, and it is NOT reliable: in v0.2.0 it stranded a system in 53 of 54 plans.
+    Re-run the probe after changing a hull's art or internalmapw/h."""
+    global _ENGINE_MAPS
     w, h = cfg["grid"]
+    if _ENGINE_MAPS is None:
+        from check_interiors import load_maps
+        _ENGINE_MAPS = load_maps() if os.path.exists(os.path.join(HERE, "engine_hull_maps.json")) else {}
+    captured = _ENGINE_MAPS.get(key)
+    if captured is not None and (captured["w"], captured["h"]) == (w, h):
+        from interior_rooms import plan_rooms
+        _cells, to_cell = silhouette(sprite, span, w, h)
+        anchors = [tuple(reversed(to_cell(x, z))) for x, y, z, R in rings]
+        return plan_rooms(key, role, cfg, captured, anchors), (w, h)
+    print(f"WARNING {key}: no captured engine hull map for {w}x{h}; falling back to the sprite "
+          f"silhouette, which the engine does not follow. Run Venus_TestRange map venus_hullmap.")
     cells, to_cell = silhouette(sprite, span, w, h)
     cells = keep_largest(close_gaps(cells))
     hull = [(r, c) for r in range(h) for c in range(w) if cells[r][c]]
@@ -229,6 +249,31 @@ def flak_beam(color):
                                     "damage_coeff": 0.4, "range": 1200, "arcwidth": 360, "barrel_angle": 0}]}
 
 
+# The designs whose guns are part of the hull again (2026-09-26). They used to be welded
+# separate turret objects; the engine's 2D views gave every welded turret its own readout, and
+# nothing removed it from the ship's own helm - so the guns went back on the geometry and the
+# hull fires the point-defense beams itself, one port per gun, from where the gun stands.
+GUN_HOSTS = {"carrier", "cruiser", "station_command", "station_industrial", "station_civil", "station_science"}
+GUN_BEAMS_MAX = 6
+
+
+def gun_beams(mounts, color):
+    """One point-defense beam per recorded gun, at the gun (mesh units, like stock ports)."""
+    ports = []
+    for m in mounts[:GUN_BEAMS_MAX]:
+        ports.append({"position": [round(c, 3) for c in m["pos"]], "color": color, "arccolor": "#090",
+                      "cycle_time": 3, "damage_coeff": 0.4, "range": 1200, "arcwidth": 360, "barrel_angle": 0})
+    return {"beam Primary Beams": ports} if ports else None
+
+
+def hull_ports(design, pts, color):
+    if design == "turret":
+        return flak_beam(color)
+    if design in GUN_HOSTS:
+        return gun_beams(pts.get("mounts") or [], color) or flak_beam(color)
+    return zero_beam()
+
+
 def hexcolor(rgb):
     return "#" + "".join(f"{max(0, min(15, round(c * 15))):x}" for c in rgb)
 
@@ -294,7 +339,7 @@ def main():
                 "roles": rc["roles"],
                 "shields": [round(s * fc["shield"]) for s in rc["shields"]],
                 "hullpoints": max(1, round(rc["hull"] * fc["hull"])),
-                "hull_port_sets": flak_beam(hexcolor(fc["lift_color"])) if design == "turret" else zero_beam(),
+                "hull_port_sets": hull_ports(design, pts, hexcolor(fc["lift_color"])),
             }
             if rc["drone_timer"]:
                 entry["drone_launch_timer"] = rc["drone_timer"]

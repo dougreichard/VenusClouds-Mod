@@ -1,21 +1,26 @@
 ship: venus_solar_tug
 layout: default
 size: 6x8
-damcons: 1
+damcons: 2
 legend:
+  C: computer
   E: sensors
+  K: workshop
   L: lift-ring
   M: maneuver
   W: warp
   a: aft-shield
   d: fwd-shield
   i: impulse
+  k: sick-bay
+  s: crew-mess
+  u: crew-quarters
 ---
- .Ed. 
-......
-......
-......
-...L..
-......
-..WM..
-  ai  
+  EE  
+ .dd. 
+ .C.. 
+ KuL. 
+ skLu 
+ MWM. 
+ iiiW 
+  aa  

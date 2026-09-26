@@ -6,15 +6,14 @@ legend:
   E: sensors
   L: lift-ring
   T: torp-tube
-  W: warp
   a: aft-shield
   d: fwd-shield
   i: impulse
 ---
        
-   T   
-  dE.  
-...L...
-   W   
+       
+   E   
+.TdLa..
    i   
-   a   
+   i   
+       

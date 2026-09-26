@@ -1,7 +1,7 @@
 ship: venus_solar_cruiser
 layout: default
 size: 14x24
-damcons: 3
+damcons: 2
 legend:
   C: computer
   E: sensors
@@ -18,26 +18,26 @@ legend:
   u: crew-quarters
 ---
               
-      TT      
+              
       TT      
       EE      
       dd      
-     .C..     
-     ..L.     
-     ..L.     
+      C.      
+      .L      
+      .L      
+      ..      
      ....     
-     ....     
-   .......    
-  .....L....  
- .KuuskLuuK.. 
-..............
-..............
-..   ....   ..
-     ..L.     
-     ..L.     
-     ....     
-     ....     
-      M.      
+    ......    
+   ....L...   
+  .KuskLuu..  
+ .... .. .... 
+...   ..   ...
+.     ..     .
+      .L      
+      ML      
       WM      
+      iW      
       ii      
       aa      
+              
+              

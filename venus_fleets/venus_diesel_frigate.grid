@@ -1,11 +1,9 @@
 ship: venus_diesel_frigate
 layout: default
 size: 8x14
-damcons: 2
+damcons: 1
 legend:
-  C: computer
   E: sensors
-  K: workshop
   L: lift-ring
   M: maneuver
   T: torp-tube
@@ -13,21 +11,18 @@ legend:
   a: aft-shield
   d: fwd-shield
   i: impulse
-  k: sick-bay
-  s: crew-mess
-  u: crew-quarters
 ---
-   T    
-   TE   
-  dEd   
-  .LC.  
-  .L..  
-  ....  
-  Kks.  
-...uu...
-........
-...L... 
-  .L..  
-  ....  
-  MiWM  
-  iaa   
+        
+   Ed   
+   T.   
+   ..   
+   L.   
+   ..   
+   ..   
+   ..   
+   ..   
+   ..   
+   La   
+   WM   
+   ii   
+        

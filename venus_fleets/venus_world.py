@@ -98,6 +98,55 @@ def venus_hangar_stock(obj, info=None):
 
 
 # --------------------------------------------------------------------------- spawning
+# What each resource cloud looks like on the 2D radar: a glyph from the engine's
+# grid-icon-sheet (index) and a color matching the cloud's own haze.
+#
+# ENGINE-MEASURED (Venus_TestRange map venus_icons, 2026-09-26): an asteroid ignores
+# icon_index / icon_color / icon_scale - it always draws the stock asteroid dot. A
+# behav_selection object honors all three. So each resource cloud gets a marker of its
+# own carrying the icon, and the cloud's dot is made transparent (radar_color_override).
+VENUS_RESOURCE_ICONS = {
+    "coolant": (12, "#7fe8ff", "Ice"),        # gem
+    "fuel": (45, "#ffd23c", "Sulfur"),        # flame
+    "aether": (39, "#c58cff", "Aether"),      # lightning
+    "medicine": (64, "#7cff6b", "Spores"),    # specimen
+    "materials": (51, "#ff9a4a", "Ore"),      # asteroid
+    "salvage": (28, "#c8c8c8", "Wreck"),      # gears
+}
+VENUS_RESOURCE_ICON_SCALE = 1.5
+VENUS_RESOURCE_ICON_ROLE = "venus_resource_icon"
+
+
+def _venus_resource_icon(cloud, resource, x, y, z):
+    """Give a resource cloud its radar icon: a selectable marker on the cloud, and the
+    cloud's own asteroid dot hidden. The marker's id is kept on the cloud so the harvest
+    can remove it with the cloud."""
+    from sbs_utils.procedural.spawn import terrain_spawn
+    from sbs_utils.procedural.inventory import set_inventory_value
+    from sbs_utils.procedural.query import to_id
+    look = VENUS_RESOURCE_ICONS.get(resource)
+    if look is None:
+        return None
+    glyph, color, label = look
+    try:
+        cloud.data_set.set("radar_color_override", "#00000000", 0)
+        marker = terrain_spawn(x, y, z, label, f"#,map,marker,{VENUS_RESOURCE_ICON_ROLE}",
+                               "generic-sphere", "behav_selection")
+        blob = marker.data_set
+        blob.set("elite_main_scn_invis", 1, 0)      # a radar icon, never a sphere in the sky
+        blob.set("icon_index", glyph, 0)
+        blob.set("icon_color", color, 0)
+        blob.set("icon_scale", VENUS_RESOURCE_ICON_SCALE, 0)
+        blob.set("radar_color_override", color, 0)
+    except Exception as e:
+        from sbs_utils.procedural.execution import log
+        log(f"venus resource icon not placed ({resource}): {type(e).__name__}: {e}", "venus", "warning")
+        return None
+    marker_id = to_id(marker)
+    set_inventory_value(to_id(cloud), "venus_icon_marker", marker_id)
+    return marker_id
+
+
 def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
     """Place one cloud (a venus_cloud_* hull) as passive terrain. Resource clouds get a
     stock to harvest. cover=True puts an engine nebula inside it - the engine's own
@@ -132,6 +181,7 @@ def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
         stock = random.uniform(*VENUS_CLOUD_STOCK)
         set_inventory_value(cid, "venus_stock", stock)
         set_inventory_value(cid, "venus_stock_full", stock)
+        _venus_resource_icon(obj, info["resource"], x, y, z)
     if info.get("storm"):
         add_role(cid, "venus_storm")
     # The glow is the emissive map; blink_state animates it (positive = pulse delay,
@@ -156,6 +206,20 @@ def venus_cloud_spawn(key, x, y, z, cover=True, scale=None):
     if nid is not None:
         set_inventory_value(cid, "venus_nebulae", [nid])
     return cid
+
+
+def _venus_nebulae_inside(ship):
+    """The ids of every engine nebula this ship is inside (the engine's own answer)."""
+    out = set()
+    try:
+        ds = ship.data_set
+        for i in range(int(ds.get("inside_nebula_count", 0) or 0)):
+            nid = ds.get("inside_nebula_id", i)
+            if nid:
+                out.add(nid)
+    except Exception:
+        pass
+    return out
 
 
 def venus_in_cover_nebula(ship):
@@ -372,6 +436,10 @@ VENUS_CLOUD_TINTS = {
 }
 VENUS_COVER_ROLE = "venus_cover"  # nebulae that hide a ship (the cloud base); halos do not
 VENUS_MURK_TOP = -600.0            # the top of the cloud base: ships ride just above it
+# Resource clouds AND wrecks sit where crews fly: no more than 600 above or below the start
+# altitude (y=0). Up to 2500 above put some a 2.5 km climb away, and wrecks were 2-5 km
+# down (user, 2026-09-26).
+VENUS_RESOURCE_Y = (-600.0, 600.0)
 VENUS_BODY_SPAN = 2.8              # a cloud's nebula body, as a multiple of its radius
 VENUS_BODY_DENSITY = 0.8
 VENUS_HALO_SPAN = 5.0              # halo diameter as a multiple of the cloud's radius
@@ -506,13 +574,13 @@ def venus_world_spawn(cx=0.0, cz=0.0, radius=40000.0, lanes=24, resources=10, st
                               rng.uniform(1500, 4500)) is not None
     for i in range(resources):
         x, z = at(radius * 0.2, radius)
-        n += venus_cloud_spawn(rng.choice(res), x, rng.uniform(VENUS_MURK_TOP + 500, 2500), z) is not None
+        n += venus_cloud_spawn(rng.choice(res), x, rng.uniform(*VENUS_RESOURCE_Y), z) is not None
     for i in range(storms):
         x, z = at(radius * 0.3, radius)
         n += venus_cloud_spawn(rng.choice(storm), x, rng.uniform(VENUS_MURK_TOP + 800, 2000), z) is not None
     for i in range(wrecks):
         x, z = at(radius * 0.3, radius)
-        n += venus_cloud_spawn(rng.choice(wreck), x, rng.uniform(-5000, -2000), z) is not None
+        n += venus_cloud_spawn(rng.choice(wreck), x, rng.uniform(*VENUS_RESOURCE_Y), z) is not None
     return "venus world: " + str(n) + " clouds, " + str(nebs) + " base nebulae"
 
 
@@ -531,15 +599,24 @@ def venus_world_tick(dt=2.0):
     for s in ships:
         inside = False
         spos = s.pos
+        is_player = has_role(s.id, "__player__")
+        in_nebulae = _venus_nebulae_inside(s) if is_player else set()
         for c in clouds:
             r = get_inventory_value(c.id, "venus_radius", 0) or 0
-            if r <= 0 or _venus_dist(spos, c.pos) > r:
-                continue
-            inside = True
-            if has_role(c.id, "venus_storm"):
-                _venus_storm(s, dt)
-            if has_role(c.id, "venus_resource") and has_role(s.id, "__player__"):
-                _venus_harvest(s, c, dt)
+            if r > 0 and _venus_dist(spos, c.pos) <= r:
+                inside = True
+                if has_role(c.id, "venus_storm"):
+                    _venus_storm(s, dt)
+                if is_player and has_role(c.id, "venus_resource"):
+                    _venus_harvest(s, c, dt)
+            elif is_player and in_nebulae and has_role(c.id, "venus_resource"):
+                # The haze a crew SEES is the cloud's engine nebula, ~1.4x the radius above,
+                # so a ship parked in the middle of the visible cloud harvested nothing
+                # (user, 2026-09-26). Inside this cloud's own nebula counts as inside it.
+                nebs = get_inventory_value(c.id, "venus_nebulae", []) or []
+                if any(n in in_nebulae for n in nebs):
+                    inside = True
+                    _venus_harvest(s, c, dt)
         # The engine's own answer too: the blob lists the nebulae a ship is inside
         # (inside_nebula_count / inside_nebula_id). Only COVER nebulae count - the cloud
         # base. A cloud's halo is scenery: halos are several times the cloud's size, and
@@ -608,6 +685,9 @@ def _venus_harvest(ship, cloud, dt):
                 delete_object(nid)
             except Exception:
                 pass
+        marker = get_inventory_value(cloud.id, "venus_icon_marker", None)
+        if marker is not None:
+            delete_object(marker)
         delete_object(cloud.id)
 
 

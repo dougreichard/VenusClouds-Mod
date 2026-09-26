@@ -9,6 +9,13 @@
 # (venus_turrets_tick, from __init__.mast) drives every Venus turret instead of a brain per
 # turret - brains tick far slower in the engine than documented.
 
+# OFF since 2026-09-26: the guns are back on the hull geometry and the hull fires its own
+# point-defense beams (build_mod.py GUN_HOSTS). Welded turrets looked right in 3D, but the
+# engine's 2D views gave each one its own readout, and nothing removed those from the ship's
+# own helm (elite_low_vis hid them only from OTHER ships). Turning this back on also needs
+# art built with SKY_SEPARATE_TURRETS=1, so the guns are not drawn twice.
+VENUS_SEPARATE_TURRETS = False
+
 VENUS_TURRET_ROLE = "venus_turret"
 VENUS_TURRET_MAX = 6                  # per host
 VENUS_TURRET_RANGE = 1400.0
@@ -34,7 +41,9 @@ def venus_turrets_attach(host):
     from sbs_utils.procedural.query import to_object, to_id
     from sbs_utils.procedural.mount import mount_spawn, mount_ring
     from sbs_utils.procedural.turret import turret_make
-    from sbs_utils.procedural.roles import add_role
+    from sbs_utils.procedural.roles import add_role, has_role
+    if not VENUS_SEPARATE_TURRETS:
+        return []
     obj = to_object(host)
     info = venus_hull_info(obj)
     if obj is None or info is None:
@@ -58,6 +67,7 @@ def venus_turrets_attach(host):
     for mid in ids:
         turret_make(mid, range=VENUS_TURRET_RANGE, targets=VENUS_TURRET_TARGETS)
         add_role(mid, VENUS_TURRET_ROLE)
+        _venus_turret_hide_2d(mid, own_ship=has_role(obj.id, "__player__"))
     obj.set_inventory_value("venus_turret_art", obj.art_id)
     return ids
 
@@ -94,6 +104,44 @@ def venus_turrets_sync(host):
             t.side = side
             n += 1
     return n
+
+
+# elite_low_vis_distance: 1 hides turrets on OTHER ships (user, engine). It did not hide a
+# player ship's own turrets from its own helm, so those get an experimental negative value.
+VENUS_TURRET_LOW_VIS = 1
+VENUS_TURRET_LOW_VIS_OWN = -1000
+
+
+def _venus_turret_hide_2d(obj_id, own_ship=False):
+    """Keep a welded turret off the 2D views - dot, icon and label.
+
+    In 3D the weld holds (0.0u error, engine), but the 2D views draw each turret as its own
+    contact and trail it behind a moving host, and four to six extra icons and
+    bearing/range labels per ship made the radar unreadable (user, 2026-09-26).
+
+    STATUS (user, helm 2D view): a transparent radar color, a tiny icon and no name tag
+    remove the ICON only - each turret's shield arcs and bearing/range readout are still
+    drawn. elite_low_vis with distance 1 DOES hide the turrets on OTHER ships (user, engine);
+    distance 0 did not. It does NOT hide the turrets mounted on the viewer's OWN ship - those
+    readouts remain on its helm. Not solved for the own ship yet.
+    """
+    from sbs_utils.procedural.query import to_object
+    try:
+        ds = to_object(obj_id).data_set
+        ds.set("radar_color_override", "#00000000", 0)
+        ds.set("icon_scale", 0.01, 0)
+        ds.set("name_tag", "", 0)
+        # The three above hide the icon, but the weapons 2D view still drew each turret's
+        # shield arcs and bearing/range readout (user screenshot, 2026-09-26).
+        # elite_low_vis: "the npc ship cannot be seen beyond elite_low_vis_distance on the
+        # 2d radar". 1 hides them from OTHER ships' views; 0 did not (user, engine). Your own
+        # ship's turrets still show on your helm. (elite_main_scn_invis would also hide it in 3D.)
+        ds.set("elite_low_vis", 1, 0)
+        # TEST (2026-09-26): -1000 on a player ship's own turrets. If low vis measures from
+        # the viewer's hull edge, a turret inside the hull is never 'beyond' 1.
+        ds.set("elite_low_vis_distance", VENUS_TURRET_LOW_VIS_OWN if own_ship else VENUS_TURRET_LOW_VIS, 0)
+    except Exception:
+        pass
 
 
 def _venus_scale(obj_id, coeff):
