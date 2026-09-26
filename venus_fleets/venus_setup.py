@@ -82,6 +82,27 @@ def venus_register_rooms():
     grid_room_register(VENUS_LIFT_ROOM, "system,lift")
 
 
+VENUS_MUSIC_BANK = "Venus_Clouds"
+
+
+def venus_set_default_music():
+    """Make the Venus bank the default soundtrack, without overriding anyone.
+
+    `settings_set_mod_default` is the mod tier: it beats the library built-in
+    (`MUSIC_SELECT: "random"`) but loses to the mission's settings.yaml, a profile,
+    COSMOS_SETTINGS, or `var.MUSIC_SELECT=` on the command line - the same stance
+    Cosmos-TNG-Mod's tng_set_default_music takes.
+
+    Returns:
+        str: one line for the log, saying whether it applied and what is playing instead.
+    """
+    from sbs_utils.procedural.settings import settings_set_mod_default, settings_get_defaults
+    if settings_set_mod_default("MUSIC_SELECT", VENUS_MUSIC_BANK):
+        return VENUS_MUSIC_BANK
+    return (f"{settings_get_defaults().get('MUSIC_SELECT')} "
+            f"(the mission asked for it; {VENUS_MUSIC_BANK} is still selectable)")
+
+
 def venus_safe_status(text):
     """A status string MAST can assign: no braces (MAST f-string-formats assigned strings)."""
     text = str(text).replace("{", "(").replace("}", ")")

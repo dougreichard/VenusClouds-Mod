@@ -16,3 +16,4 @@
 *.obj    text eol=lf
 *.mtl    text eol=lf
 *.png    binary
+*.ogg    binary

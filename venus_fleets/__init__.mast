@@ -28,6 +28,8 @@ import venus_console.mast
 venus_registered = venus_register_races()
 venus_register_rooms()
 set_shared_variable("VENUS_MOD_VERSION", venus_manifest().get("version"))
+# The Venus_Clouds soundtrack as the mod default (venus_skies.mast declares the bank).
+venus_music_applied = venus_set_default_music()
 
 
 # ---- Hulls -----------------------------------------------------------
