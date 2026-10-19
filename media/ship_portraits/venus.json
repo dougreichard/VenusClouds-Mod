@@ -684,10 +684,582 @@
  "pages": [
   {
    "file": "venus_0",
-   "rows": 6
+   "rows": 12
   }
  ],
  "preset": "three-quarter/1",
  "renderer": "browser-three/1",
- "set": "venus"
+ "set": "venus",
+ "silhouettes": {
+  "venus_atom_cargo_barge": {
+   "col": 0,
+   "page": 0,
+   "row": 6,
+   "sig": "a55baab1b04c70f8c4ec4234aea5daa2c27fd7b0"
+  },
+  "venus_atom_carrier": {
+   "col": 1,
+   "page": 0,
+   "row": 6,
+   "sig": "a0c2ebaa6ac240c9d36c64b97336226d2a06bbe5"
+  },
+  "venus_atom_cruiser": {
+   "col": 2,
+   "page": 0,
+   "row": 6,
+   "sig": "ecd8e2eb355f316226d6f2bd8fe8d560ab943865"
+  },
+  "venus_atom_destroyer": {
+   "col": 3,
+   "page": 0,
+   "row": 6,
+   "sig": "df886b20facc7c6f867f5f5fd1fdecf049da6207"
+  },
+  "venus_atom_fighter": {
+   "col": 4,
+   "page": 0,
+   "row": 6,
+   "sig": "5e3e214486f7a792960224e2dc486c496a6682c8"
+  },
+  "venus_atom_frigate": {
+   "col": 5,
+   "page": 0,
+   "row": 6,
+   "sig": "54ab1f50c78e26324ddfeae22781fd963659d1a1"
+  },
+  "venus_atom_launch": {
+   "col": 6,
+   "page": 0,
+   "row": 6,
+   "sig": "aa437feb7179fa5037acac56d137240a40220587"
+  },
+  "venus_atom_station_civil": {
+   "col": 7,
+   "page": 0,
+   "row": 6,
+   "sig": "8f1801f9da01fb6c7e420ffb66777dcd5d743c25"
+  },
+  "venus_atom_station_command": {
+   "col": 8,
+   "page": 0,
+   "row": 6,
+   "sig": "8db384a65acd052832383caaaaebf2d4ece0473b"
+  },
+  "venus_atom_station_industrial": {
+   "col": 9,
+   "page": 0,
+   "row": 6,
+   "sig": "62ed0b39c71aa534ca14976e0af74cfd1dbbdcd4"
+  },
+  "venus_atom_station_science": {
+   "col": 10,
+   "page": 0,
+   "row": 6,
+   "sig": "720d77feff1c64d93fa4c474a40f098f86e9d9aa"
+  },
+  "venus_atom_steam_tender": {
+   "col": 11,
+   "page": 0,
+   "row": 6,
+   "sig": "98c81515c610128c18bfdf25b06a4e84b57bd78e"
+  },
+  "venus_atom_tug": {
+   "col": 12,
+   "page": 0,
+   "row": 6,
+   "sig": "44fc97843680a6eb69f6f08fc53a736c130c5602"
+  },
+  "venus_atom_turret": {
+   "col": 13,
+   "page": 0,
+   "row": 6,
+   "sig": "fa54ba6e0f363928f2116f45dbf801b20d6e8c58"
+  },
+  "venus_bio_cargo_barge": {
+   "col": 14,
+   "page": 0,
+   "row": 6,
+   "sig": "6fa2bd0ba256a8e1250b9cfa9912c5a2517a1262"
+  },
+  "venus_bio_carrier": {
+   "col": 15,
+   "page": 0,
+   "row": 6,
+   "sig": "e56e87742971a0feb9faa4cde45ea0dd63aa8033"
+  },
+  "venus_bio_cruiser": {
+   "col": 0,
+   "page": 0,
+   "row": 7,
+   "sig": "a24e812f64bf77806551f76e96e85fd9125fffdf"
+  },
+  "venus_bio_destroyer": {
+   "col": 1,
+   "page": 0,
+   "row": 7,
+   "sig": "323bb34ac6c482178826e0a4e5ce3f45a0aad5e3"
+  },
+  "venus_bio_fighter": {
+   "col": 2,
+   "page": 0,
+   "row": 7,
+   "sig": "803dcd72e97e4e3f2e2749c58771b651261d9de4"
+  },
+  "venus_bio_frigate": {
+   "col": 3,
+   "page": 0,
+   "row": 7,
+   "sig": "d7db7a0418e66ce9dbf41c792b96f351952d516c"
+  },
+  "venus_bio_launch": {
+   "col": 4,
+   "page": 0,
+   "row": 7,
+   "sig": "a5a607978ea79511cd3c4052000550fc495b9732"
+  },
+  "venus_bio_station_civil": {
+   "col": 5,
+   "page": 0,
+   "row": 7,
+   "sig": "7451d0b5fc62619ebe5636b371bb2600771d2500"
+  },
+  "venus_bio_station_command": {
+   "col": 6,
+   "page": 0,
+   "row": 7,
+   "sig": "7e0cd1c03158bcbee36487077811b5f6caf28bbe"
+  },
+  "venus_bio_station_industrial": {
+   "col": 7,
+   "page": 0,
+   "row": 7,
+   "sig": "b603de307ffe76d8bb579230f49c02931eeee2d6"
+  },
+  "venus_bio_station_science": {
+   "col": 8,
+   "page": 0,
+   "row": 7,
+   "sig": "a43f58be2749cb836f2944a04455faef2447ca78"
+  },
+  "venus_bio_steam_tender": {
+   "col": 9,
+   "page": 0,
+   "row": 7,
+   "sig": "e83d8d41f8488713707e61079fbf0cbbf17243b1"
+  },
+  "venus_bio_tug": {
+   "col": 10,
+   "page": 0,
+   "row": 7,
+   "sig": "a0cd7001fe525a0f35698b2577a0efccff382e5a"
+  },
+  "venus_bio_turret": {
+   "col": 11,
+   "page": 0,
+   "row": 7,
+   "sig": "97ccfc4a3857cc4cb874c34bd7e8c3b36d4735b9"
+  },
+  "venus_cloud_aether_vein": {
+   "col": 12,
+   "page": 0,
+   "row": 7,
+   "sig": "700090978f9515f79730d51d46514019191f4800"
+  },
+  "venus_cloud_cumulonimbus_tower": {
+   "col": 13,
+   "page": 0,
+   "row": 7,
+   "sig": "b85d88fab3091284a8e0994c76e31be5636c78af"
+  },
+  "venus_cloud_cumulus_large": {
+   "col": 14,
+   "page": 0,
+   "row": 7,
+   "sig": "8007a39f031e1fff0d3082bdfe9924c109a1d9c7"
+  },
+  "venus_cloud_cumulus_small": {
+   "col": 15,
+   "page": 0,
+   "row": 7,
+   "sig": "cadf194db23d3af284502974b30c3a52596aaa06"
+  },
+  "venus_cloud_ice_crystal": {
+   "col": 0,
+   "page": 0,
+   "row": 8,
+   "sig": "e34041d7d56fab470e04e51986b4ab6dd04d77c1"
+  },
+  "venus_cloud_ore_dust": {
+   "col": 1,
+   "page": 0,
+   "row": 8,
+   "sig": "1cb5a4c5bbf17ef371214bd1064b8439a8680560"
+  },
+  "venus_cloud_spore_drift": {
+   "col": 2,
+   "page": 0,
+   "row": 8,
+   "sig": "4b38f31dffb6148771095456d4cb94fd1e8197fc"
+  },
+  "venus_cloud_storm_cell": {
+   "col": 3,
+   "page": 0,
+   "row": 8,
+   "sig": "ed494a7a476c73147896562af85df3cfe48c3958"
+  },
+  "venus_cloud_stratus_bank": {
+   "col": 4,
+   "page": 0,
+   "row": 8,
+   "sig": "db9c45a48d912a8b4ed9ffe0c329d6ea5ca1948e"
+  },
+  "venus_cloud_sulfur_bloom": {
+   "col": 5,
+   "page": 0,
+   "row": 8,
+   "sig": "ce94d1453abe7731b96c79b426a3eeaad8a1ca0a"
+  },
+  "venus_cloud_wreck_haze": {
+   "col": 6,
+   "page": 0,
+   "row": 8,
+   "sig": "14ce25ff1a0f6b66aebacc14e83da1d1781533b9"
+  },
+  "venus_deco_cargo_barge": {
+   "col": 7,
+   "page": 0,
+   "row": 8,
+   "sig": "f59f73737a068a229f3cc3bb8022accd63388267"
+  },
+  "venus_deco_carrier": {
+   "col": 8,
+   "page": 0,
+   "row": 8,
+   "sig": "ab647c6daa95b357d5d642900443f55d20cab1bc"
+  },
+  "venus_deco_cruiser": {
+   "col": 9,
+   "page": 0,
+   "row": 8,
+   "sig": "d0d48f9edb522f22449a60bd887cd8d98c1cb3fb"
+  },
+  "venus_deco_destroyer": {
+   "col": 10,
+   "page": 0,
+   "row": 8,
+   "sig": "6193bcc4d9c284ee10a0ae071a769eaf7efd32ea"
+  },
+  "venus_deco_fighter": {
+   "col": 11,
+   "page": 0,
+   "row": 8,
+   "sig": "1c7a5ff112740b6c1826604cbef413dd83db3abd"
+  },
+  "venus_deco_frigate": {
+   "col": 12,
+   "page": 0,
+   "row": 8,
+   "sig": "06317f396b949ca7f56bf76cd5c066429b48a78d"
+  },
+  "venus_deco_launch": {
+   "col": 13,
+   "page": 0,
+   "row": 8,
+   "sig": "c6361c4c0a8785ad7cb00124fa5c77442c711391"
+  },
+  "venus_deco_station_civil": {
+   "col": 14,
+   "page": 0,
+   "row": 8,
+   "sig": "47936ad712cdc9df10ecbdbffdc2cd141c9dc60b"
+  },
+  "venus_deco_station_command": {
+   "col": 15,
+   "page": 0,
+   "row": 8,
+   "sig": "1194e36df524f696c91d62dd287fca4a153a06ea"
+  },
+  "venus_deco_station_industrial": {
+   "col": 0,
+   "page": 0,
+   "row": 9,
+   "sig": "98294916090feaa7a668bb3971d0bad156797c04"
+  },
+  "venus_deco_station_science": {
+   "col": 1,
+   "page": 0,
+   "row": 9,
+   "sig": "754612e1aad9b4ce04dd37dadb52928359669612"
+  },
+  "venus_deco_steam_tender": {
+   "col": 2,
+   "page": 0,
+   "row": 9,
+   "sig": "9a7e8ea5ae08d8938fad402e3880d5c9e1cdda81"
+  },
+  "venus_deco_tug": {
+   "col": 3,
+   "page": 0,
+   "row": 9,
+   "sig": "d9ddb6b500e3d155d16f1811e28ed0dd42489d66"
+  },
+  "venus_deco_turret": {
+   "col": 4,
+   "page": 0,
+   "row": 9,
+   "sig": "81073d35d788e056d011d071c9fea10fbdbac5d2"
+  },
+  "venus_diesel_cargo_barge": {
+   "col": 5,
+   "page": 0,
+   "row": 9,
+   "sig": "13dcc18627fb4a9ed839c8a8c1b7c135fc5e7b27"
+  },
+  "venus_diesel_carrier": {
+   "col": 6,
+   "page": 0,
+   "row": 9,
+   "sig": "66d8bff5136acbe4d86c65b2d1095f6118f2993b"
+  },
+  "venus_diesel_cruiser": {
+   "col": 7,
+   "page": 0,
+   "row": 9,
+   "sig": "cd365ef953a1f0fddd2f8f449a14f8a940b7a795"
+  },
+  "venus_diesel_destroyer": {
+   "col": 8,
+   "page": 0,
+   "row": 9,
+   "sig": "45a99dfc812948b49ec93b82068c3403112a8fca"
+  },
+  "venus_diesel_fighter": {
+   "col": 9,
+   "page": 0,
+   "row": 9,
+   "sig": "465143d3899132861d563f06ba060cd21b8b02ec"
+  },
+  "venus_diesel_frigate": {
+   "col": 10,
+   "page": 0,
+   "row": 9,
+   "sig": "e7242c284657826e0096e07c8987c6ba7b4f410e"
+  },
+  "venus_diesel_launch": {
+   "col": 11,
+   "page": 0,
+   "row": 9,
+   "sig": "3efe32cf084c934fa517fdc62fc97eea4ab72b54"
+  },
+  "venus_diesel_station_civil": {
+   "col": 12,
+   "page": 0,
+   "row": 9,
+   "sig": "d4d68a5fce1664ed6a21f0b08f0eaf6ddfc3f5d4"
+  },
+  "venus_diesel_station_command": {
+   "col": 13,
+   "page": 0,
+   "row": 9,
+   "sig": "a3ff8e693ea97ca7e7d26c3d53bbbb10ba6747f7"
+  },
+  "venus_diesel_station_industrial": {
+   "col": 14,
+   "page": 0,
+   "row": 9,
+   "sig": "58beb1e01b8775eb1dd31c2c7b18633ddac31f94"
+  },
+  "venus_diesel_station_science": {
+   "col": 15,
+   "page": 0,
+   "row": 9,
+   "sig": "0acf92f530edf1716c4fd99af22b8a666f55da90"
+  },
+  "venus_diesel_steam_tender": {
+   "col": 0,
+   "page": 0,
+   "row": 10,
+   "sig": "3e374cd73894f5866290d4758eae506a145e3e68"
+  },
+  "venus_diesel_tug": {
+   "col": 1,
+   "page": 0,
+   "row": 10,
+   "sig": "3440e6d77a7628b2b1275413838ceb6519c15ab1"
+  },
+  "venus_diesel_turret": {
+   "col": 2,
+   "page": 0,
+   "row": 10,
+   "sig": "afde29cd54d7252995469ee4979c650a2df18153"
+  },
+  "venus_solar_cargo_barge": {
+   "col": 3,
+   "page": 0,
+   "row": 10,
+   "sig": "e4287d3412e66a308c850c43ea6a0c3d806842e6"
+  },
+  "venus_solar_carrier": {
+   "col": 4,
+   "page": 0,
+   "row": 10,
+   "sig": "1df224c8f0a2f1922821ac3d41eb747b1d00c088"
+  },
+  "venus_solar_cruiser": {
+   "col": 5,
+   "page": 0,
+   "row": 10,
+   "sig": "8ef7947bf8aab775c43f2837d58e9e40b94c3c71"
+  },
+  "venus_solar_destroyer": {
+   "col": 6,
+   "page": 0,
+   "row": 10,
+   "sig": "fa71d7658bd7ef53282670833f2b539cc1eca4fc"
+  },
+  "venus_solar_fighter": {
+   "col": 7,
+   "page": 0,
+   "row": 10,
+   "sig": "aafab36a109b58d01439f17e6112f37ef8819167"
+  },
+  "venus_solar_frigate": {
+   "col": 8,
+   "page": 0,
+   "row": 10,
+   "sig": "45999e021a4f120748b7843e34151f0a482e563c"
+  },
+  "venus_solar_launch": {
+   "col": 9,
+   "page": 0,
+   "row": 10,
+   "sig": "660f2167f407ca4b4af6b0ff4514c48a7887c54c"
+  },
+  "venus_solar_station_civil": {
+   "col": 10,
+   "page": 0,
+   "row": 10,
+   "sig": "2c5e25d6a5723927576eccc32b79d38583278a41"
+  },
+  "venus_solar_station_command": {
+   "col": 11,
+   "page": 0,
+   "row": 10,
+   "sig": "246d76fb3f960b96b26d728a59d0ebd1792026f5"
+  },
+  "venus_solar_station_industrial": {
+   "col": 12,
+   "page": 0,
+   "row": 10,
+   "sig": "159b909e0813c6215988eb2d77992daccd7f5a02"
+  },
+  "venus_solar_station_science": {
+   "col": 13,
+   "page": 0,
+   "row": 10,
+   "sig": "61bfcd6235fd6a85e929240bee1afc00d9b8fef1"
+  },
+  "venus_solar_steam_tender": {
+   "col": 14,
+   "page": 0,
+   "row": 10,
+   "sig": "1b22f8c99ce6d1095217b1710bcffc1f1d7fe051"
+  },
+  "venus_solar_tug": {
+   "col": 15,
+   "page": 0,
+   "row": 10,
+   "sig": "3c2de766e9b355fef38e838e68c32a2798223fcd"
+  },
+  "venus_solar_turret": {
+   "col": 0,
+   "page": 0,
+   "row": 11,
+   "sig": "1a331ee718bb084cd12fe40b367e93d8f859e31c"
+  },
+  "venus_steam_cargo_barge": {
+   "col": 1,
+   "page": 0,
+   "row": 11,
+   "sig": "8a1c16af31b1b06ab0858a671b52c5f897de64d8"
+  },
+  "venus_steam_carrier": {
+   "col": 2,
+   "page": 0,
+   "row": 11,
+   "sig": "5d3a3cd2a7c76a939b2b712365735b4d271e7e23"
+  },
+  "venus_steam_cruiser": {
+   "col": 3,
+   "page": 0,
+   "row": 11,
+   "sig": "72f5f17d7b4a76ee10f52679df6129484396cade"
+  },
+  "venus_steam_destroyer": {
+   "col": 4,
+   "page": 0,
+   "row": 11,
+   "sig": "99c4bf7c5b4c30d311953bb5ce4461baa60607b2"
+  },
+  "venus_steam_fighter": {
+   "col": 5,
+   "page": 0,
+   "row": 11,
+   "sig": "a0497d1b67a56513e0f507a1032603602de00f02"
+  },
+  "venus_steam_frigate": {
+   "col": 6,
+   "page": 0,
+   "row": 11,
+   "sig": "7d55234630679b6ac04711332897be13cbb2f819"
+  },
+  "venus_steam_launch": {
+   "col": 7,
+   "page": 0,
+   "row": 11,
+   "sig": "13e6ba77992aac2cc2563cd218372c101766b0a8"
+  },
+  "venus_steam_station_civil": {
+   "col": 8,
+   "page": 0,
+   "row": 11,
+   "sig": "681b5eb6c61df96e7c58b87533b507658ece50b3"
+  },
+  "venus_steam_station_command": {
+   "col": 9,
+   "page": 0,
+   "row": 11,
+   "sig": "8bfa26713fc113f9fea049af26ded6d7d2d4ce0a"
+  },
+  "venus_steam_station_industrial": {
+   "col": 10,
+   "page": 0,
+   "row": 11,
+   "sig": "2b0867cf8f8afd90ecffc8f7189a84c75c9df872"
+  },
+  "venus_steam_station_science": {
+   "col": 11,
+   "page": 0,
+   "row": 11,
+   "sig": "6ec2d1c582ef596f50073334a476b05cf1e3b546"
+  },
+  "venus_steam_steam_tender": {
+   "col": 12,
+   "page": 0,
+   "row": 11,
+   "sig": "504daa4464c1fd9bb25041a4d24e94dac6a7aac8"
+  },
+  "venus_steam_tug": {
+   "col": 13,
+   "page": 0,
+   "row": 11,
+   "sig": "1a5981bd4aaf1b3b07aa1c9a976be17bc5d291c5"
+  },
+  "venus_steam_turret": {
+   "col": 14,
+   "page": 0,
+   "row": 11,
+   "sig": "9f2ce645b29c567e2eeac42f70a95b4c98f0f41e"
+  }
+ }
 }
