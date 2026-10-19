@@ -1,0 +1,693 @@
+{
+ "alias": "shp_venus",
+ "cell": [
+  256,
+  256
+ ],
+ "cells": {
+  "venus_atom_cargo_barge": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/cargo_barge",
+   "col": 1,
+   "page": 0,
+   "row": 0,
+   "sig": "6453f4a4c9b6d4104b4b121a94b4bf06fb33e8db"
+  },
+  "venus_atom_carrier": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/carrier",
+   "col": 2,
+   "page": 0,
+   "row": 0,
+   "sig": "5ae518190606db51d38cb527c9f9de65d42a4727"
+  },
+  "venus_atom_cruiser": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/cruiser",
+   "col": 3,
+   "page": 0,
+   "row": 0,
+   "sig": "b000cff48b58df94cae79241fa4c3b31df1347c4"
+  },
+  "venus_atom_destroyer": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/destroyer",
+   "col": 4,
+   "page": 0,
+   "row": 0,
+   "sig": "e781e77b5ed35d53876d1502975888b65b027777"
+  },
+  "venus_atom_fighter": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/fighter",
+   "col": 5,
+   "page": 0,
+   "row": 0,
+   "sig": "3e204f1c03173b19e88833a696698dd98964a06a"
+  },
+  "venus_atom_frigate": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/frigate",
+   "col": 6,
+   "page": 0,
+   "row": 0,
+   "sig": "0667098fc21f707a115928794a4b611e3a06c409"
+  },
+  "venus_atom_launch": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/launch",
+   "col": 7,
+   "page": 0,
+   "row": 0,
+   "sig": "7b98ae26361c0faf5c1413aa53e2f9030a62ed61"
+  },
+  "venus_atom_station_civil": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/station_civil",
+   "col": 8,
+   "page": 0,
+   "row": 0,
+   "sig": "d2627ff265e4acf4c514d9d256900eff43488466"
+  },
+  "venus_atom_station_command": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/station_command",
+   "col": 9,
+   "page": 0,
+   "row": 0,
+   "sig": "ad62a111940aaf6b491e5adf33eb45f4ba2ab1ca"
+  },
+  "venus_atom_station_industrial": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/station_industrial",
+   "col": 10,
+   "page": 0,
+   "row": 0,
+   "sig": "33900008a8d5bf8a4fe16ccbbdedecc73bed7fc3"
+  },
+  "venus_atom_station_science": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/station_science",
+   "col": 11,
+   "page": 0,
+   "row": 0,
+   "sig": "5b862f007ab6e4b3dd813d2292d6c21229d2a82f"
+  },
+  "venus_atom_steam_tender": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/steam_tender",
+   "col": 12,
+   "page": 0,
+   "row": 0,
+   "sig": "c81262bc5711e597d6de253d0321a97aae261223"
+  },
+  "venus_atom_tug": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/tug",
+   "col": 13,
+   "page": 0,
+   "row": 0,
+   "sig": "7567b8544b801e314d9989a68153cbead13c24dc"
+  },
+  "venus_atom_turret": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/atompunk/turret",
+   "col": 14,
+   "page": 0,
+   "row": 0,
+   "sig": "d50a751bc05943b28c44102f82d5b503ab07c9df"
+  },
+  "venus_bio_cargo_barge": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/cargo_barge",
+   "col": 15,
+   "page": 0,
+   "row": 0,
+   "sig": "887cdd748dac2f689b424ca01f3b9248c5508416"
+  },
+  "venus_bio_carrier": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/carrier",
+   "col": 0,
+   "page": 0,
+   "row": 1,
+   "sig": "ba71fab650271181ecb5e9ab44ea51351dd883ea"
+  },
+  "venus_bio_cruiser": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/cruiser",
+   "col": 1,
+   "page": 0,
+   "row": 1,
+   "sig": "b9a9c37d5cc67acffbdd685e292d6dff94b65b40"
+  },
+  "venus_bio_destroyer": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/destroyer",
+   "col": 2,
+   "page": 0,
+   "row": 1,
+   "sig": "5b4fd171fab245d98ce7867a912e6c36bca263e4"
+  },
+  "venus_bio_fighter": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/fighter",
+   "col": 3,
+   "page": 0,
+   "row": 1,
+   "sig": "e48664b8d12734ea3723e25a347b31c3f92e37a6"
+  },
+  "venus_bio_frigate": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/frigate",
+   "col": 4,
+   "page": 0,
+   "row": 1,
+   "sig": "e2f083ee1a9cd13399947cdb25b4d5c6ddfd79f4"
+  },
+  "venus_bio_launch": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/launch",
+   "col": 5,
+   "page": 0,
+   "row": 1,
+   "sig": "f5dc5abafff870399fb0c99bf0d7e26ca342d2ba"
+  },
+  "venus_bio_station_civil": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/station_civil",
+   "col": 6,
+   "page": 0,
+   "row": 1,
+   "sig": "f6c22b9abed07b598257733c5b1ebbe4d8768a65"
+  },
+  "venus_bio_station_command": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/station_command",
+   "col": 7,
+   "page": 0,
+   "row": 1,
+   "sig": "369d8b8ad438554f47d4b30c7a890e77533634d2"
+  },
+  "venus_bio_station_industrial": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/station_industrial",
+   "col": 8,
+   "page": 0,
+   "row": 1,
+   "sig": "3d4f29a804ecdcd5a475a3b8a49d7257b8eb42e0"
+  },
+  "venus_bio_station_science": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/station_science",
+   "col": 9,
+   "page": 0,
+   "row": 1,
+   "sig": "cb24278a72d202eae7ce8438c1a26e4951464d97"
+  },
+  "venus_bio_steam_tender": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/steam_tender",
+   "col": 10,
+   "page": 0,
+   "row": 1,
+   "sig": "eb10df2d6fb2bf63af5baa20468d6ed0650ef58b"
+  },
+  "venus_bio_tug": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/tug",
+   "col": 11,
+   "page": 0,
+   "row": 1,
+   "sig": "e4eab014d1a9ef22628e6c9622e9b00a780ec3da"
+  },
+  "venus_bio_turret": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/biopunk/turret",
+   "col": 12,
+   "page": 0,
+   "row": 1,
+   "sig": "3830caccc98b5d9a0621b307e2e014a05ebcfa0e"
+  },
+  "venus_cloud_aether_vein": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/aether_vein",
+   "col": 13,
+   "page": 0,
+   "row": 1,
+   "sig": "99e591069dac4cd6fb4a907e77aadd7978801cc2"
+  },
+  "venus_cloud_cumulonimbus_tower": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/cumulonimbus_tower",
+   "col": 14,
+   "page": 0,
+   "row": 1,
+   "sig": "53a0d246054753aac0d2bcb67de6ec235201cff5"
+  },
+  "venus_cloud_cumulus_large": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/cumulus_large",
+   "col": 15,
+   "page": 0,
+   "row": 1,
+   "sig": "16ec4ca0994f412a8d91fed8566e94c5e82c12c5"
+  },
+  "venus_cloud_cumulus_small": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/cumulus_small",
+   "col": 0,
+   "page": 0,
+   "row": 2,
+   "sig": "37fd1b22eef67a359321a19bde6f9dcf5fca0196"
+  },
+  "venus_cloud_ice_crystal": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/ice_crystal",
+   "col": 1,
+   "page": 0,
+   "row": 2,
+   "sig": "f9bc1d0de6f067134265340cc3aa99e3a8bc20f8"
+  },
+  "venus_cloud_ore_dust": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/ore_dust",
+   "col": 2,
+   "page": 0,
+   "row": 2,
+   "sig": "3b4f54ce32e8bc4ee417cbfaa4915a55f2a090e5"
+  },
+  "venus_cloud_spore_drift": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/spore_drift",
+   "col": 3,
+   "page": 0,
+   "row": 2,
+   "sig": "adf1ae4d4eb196426a0ef7550219c78310f56896"
+  },
+  "venus_cloud_storm_cell": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/storm_core",
+   "col": 4,
+   "page": 0,
+   "row": 2,
+   "sig": "0df280a6351a1d2303ec6a4c681468b7e733b972"
+  },
+  "venus_cloud_stratus_bank": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/stratus_bank",
+   "col": 5,
+   "page": 0,
+   "row": 2,
+   "sig": "c1dbd629332b52a75ec6b164c09ad2e09a7193f1"
+  },
+  "venus_cloud_sulfur_bloom": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/sulfur_bloom",
+   "col": 6,
+   "page": 0,
+   "row": 2,
+   "sig": "8003fdacb5a9eb2f5b4f20891108ce461d0c3257"
+  },
+  "venus_cloud_wreck_haze": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/clouds/wreck_haze",
+   "col": 7,
+   "page": 0,
+   "row": 2,
+   "sig": "6c76a48fafbd15175c423b062529c50128df4336"
+  },
+  "venus_deco_cargo_barge": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/cargo_barge",
+   "col": 8,
+   "page": 0,
+   "row": 2,
+   "sig": "a077e3296205023d2b8b2b99895b92edf9dba8b5"
+  },
+  "venus_deco_carrier": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/carrier",
+   "col": 9,
+   "page": 0,
+   "row": 2,
+   "sig": "9d65bab8e50bdc5e0d767b34b8ff9ab9e3c103a1"
+  },
+  "venus_deco_cruiser": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/cruiser",
+   "col": 10,
+   "page": 0,
+   "row": 2,
+   "sig": "273ea7501660a87af6c76f12e599fbea4da7779f"
+  },
+  "venus_deco_destroyer": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/destroyer",
+   "col": 11,
+   "page": 0,
+   "row": 2,
+   "sig": "3f228123cc45ca8460b32bcce5d9108818b74809"
+  },
+  "venus_deco_fighter": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/fighter",
+   "col": 12,
+   "page": 0,
+   "row": 2,
+   "sig": "28181750aa05806931476fa9965ac5e495261f4e"
+  },
+  "venus_deco_frigate": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/frigate",
+   "col": 13,
+   "page": 0,
+   "row": 2,
+   "sig": "604458d87fbee3b1ea1c0e7d31f0e188c4310612"
+  },
+  "venus_deco_launch": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/launch",
+   "col": 14,
+   "page": 0,
+   "row": 2,
+   "sig": "3217956d48eef71e0bd4f414b4ee8c5e3cf1d9e9"
+  },
+  "venus_deco_station_civil": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/station_civil",
+   "col": 15,
+   "page": 0,
+   "row": 2,
+   "sig": "13d3f37780d65cdeb5cd1bdbba3600882d86b8ea"
+  },
+  "venus_deco_station_command": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/station_command",
+   "col": 0,
+   "page": 0,
+   "row": 3,
+   "sig": "c3ceabb4c7dbcf844c1b1909178e53bade313d33"
+  },
+  "venus_deco_station_industrial": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/station_industrial",
+   "col": 1,
+   "page": 0,
+   "row": 3,
+   "sig": "0bb440995309a70a8cd5ad61728cae83917c14d6"
+  },
+  "venus_deco_station_science": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/station_science",
+   "col": 2,
+   "page": 0,
+   "row": 3,
+   "sig": "53dd8880e45ea21b29db3c698e8ef7f61ba0c00e"
+  },
+  "venus_deco_steam_tender": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/steam_tender",
+   "col": 3,
+   "page": 0,
+   "row": 3,
+   "sig": "6fd48fe95628a68ca85c0f613cdc12226eca27b3"
+  },
+  "venus_deco_tug": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/tug",
+   "col": 4,
+   "page": 0,
+   "row": 3,
+   "sig": "9e2b9cbe39f93630612934cc0041e2919aeba32b"
+  },
+  "venus_deco_turret": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/decopunk/turret",
+   "col": 5,
+   "page": 0,
+   "row": 3,
+   "sig": "0343c18d24acd0ff79f8607dbf7b508ad2b5aae7"
+  },
+  "venus_diesel_cargo_barge": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/cargo_barge",
+   "col": 6,
+   "page": 0,
+   "row": 3,
+   "sig": "070b2ad9949bc1dec9d13846e596e4f8a9f8aa5f"
+  },
+  "venus_diesel_carrier": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/carrier",
+   "col": 7,
+   "page": 0,
+   "row": 3,
+   "sig": "d11255a9f9a1916e8f3347d72bb527fbfc89bbe3"
+  },
+  "venus_diesel_cruiser": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/cruiser",
+   "col": 8,
+   "page": 0,
+   "row": 3,
+   "sig": "d74ceef18ad660ef6a033701db73b39670d4a657"
+  },
+  "venus_diesel_destroyer": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/destroyer",
+   "col": 9,
+   "page": 0,
+   "row": 3,
+   "sig": "41a83e45f81b4239563efe01a251b7cdc0dd3bb6"
+  },
+  "venus_diesel_fighter": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/fighter",
+   "col": 10,
+   "page": 0,
+   "row": 3,
+   "sig": "c79ef1287d8b116873b46bf374545f32fb5c44ad"
+  },
+  "venus_diesel_frigate": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/frigate",
+   "col": 11,
+   "page": 0,
+   "row": 3,
+   "sig": "ec1357c5c0f35400601cdf2b7ff90c1e51351ce7"
+  },
+  "venus_diesel_launch": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/launch",
+   "col": 12,
+   "page": 0,
+   "row": 3,
+   "sig": "fc9c7ecf80e889853d00043b8491775f54a4f197"
+  },
+  "venus_diesel_station_civil": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/station_civil",
+   "col": 13,
+   "page": 0,
+   "row": 3,
+   "sig": "8fac82d9bb5d6b8aff05c1319cc5ae647037bf51"
+  },
+  "venus_diesel_station_command": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/station_command",
+   "col": 14,
+   "page": 0,
+   "row": 3,
+   "sig": "78275eb8d8165c7be59492b64dc70d3c3507b79f"
+  },
+  "venus_diesel_station_industrial": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/station_industrial",
+   "col": 15,
+   "page": 0,
+   "row": 3,
+   "sig": "a3a27060c23790214a7a7668db6e8066b0b9c861"
+  },
+  "venus_diesel_station_science": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/station_science",
+   "col": 0,
+   "page": 0,
+   "row": 4,
+   "sig": "33a5058d8cbe276673b289b8580c8372ab49a725"
+  },
+  "venus_diesel_steam_tender": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/steam_tender",
+   "col": 1,
+   "page": 0,
+   "row": 4,
+   "sig": "af29557d0315dfc4309f50fbc221c306ee5a6b63"
+  },
+  "venus_diesel_tug": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/tug",
+   "col": 2,
+   "page": 0,
+   "row": 4,
+   "sig": "e8edb0a116e441090a660620451fac420f663321"
+  },
+  "venus_diesel_turret": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/dieselpunk/turret",
+   "col": 3,
+   "page": 0,
+   "row": 4,
+   "sig": "c7fcd3e5661004e8c9d72472097b0c8b371f7307"
+  },
+  "venus_solar_cargo_barge": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/cargo_barge",
+   "col": 4,
+   "page": 0,
+   "row": 4,
+   "sig": "42e0b9546179322735284cb5966aa939e9620ca1"
+  },
+  "venus_solar_carrier": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/carrier",
+   "col": 5,
+   "page": 0,
+   "row": 4,
+   "sig": "058520e359f6ab10bb5d3e5b9cd81c2256be1653"
+  },
+  "venus_solar_cruiser": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/cruiser",
+   "col": 6,
+   "page": 0,
+   "row": 4,
+   "sig": "d9ee50cb15d9091b8e95340c6e54cb222ebf238c"
+  },
+  "venus_solar_destroyer": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/destroyer",
+   "col": 7,
+   "page": 0,
+   "row": 4,
+   "sig": "65e60902590fce4e0697d4b115e6ddb99d7afbe6"
+  },
+  "venus_solar_fighter": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/fighter",
+   "col": 8,
+   "page": 0,
+   "row": 4,
+   "sig": "62b60a13191a70dd968b00a183231b4fdf0184b6"
+  },
+  "venus_solar_frigate": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/frigate",
+   "col": 9,
+   "page": 0,
+   "row": 4,
+   "sig": "ae0af35a8699b4a4efce7a59903716504ba2579b"
+  },
+  "venus_solar_launch": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/launch",
+   "col": 10,
+   "page": 0,
+   "row": 4,
+   "sig": "0f4e4a2c7c472ca1df86b4d41cd872e2f464df26"
+  },
+  "venus_solar_station_civil": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/station_civil",
+   "col": 11,
+   "page": 0,
+   "row": 4,
+   "sig": "ab917c58ad1b4ea0dbb9029da90ac2eacdb324c7"
+  },
+  "venus_solar_station_command": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/station_command",
+   "col": 12,
+   "page": 0,
+   "row": 4,
+   "sig": "6c7f37f8160e53a637bff5637b29d1cbba21a861"
+  },
+  "venus_solar_station_industrial": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/station_industrial",
+   "col": 13,
+   "page": 0,
+   "row": 4,
+   "sig": "9fc49c03663a7cccfbdf4986c333eb342d3fb655"
+  },
+  "venus_solar_station_science": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/station_science",
+   "col": 14,
+   "page": 0,
+   "row": 4,
+   "sig": "bf72b77d20dd661d74b862c7fe5e42268b1ba66a"
+  },
+  "venus_solar_steam_tender": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/steam_tender",
+   "col": 15,
+   "page": 0,
+   "row": 4,
+   "sig": "8e53ba11993c13ac07de9b0289a2f51c2fc6d3cf"
+  },
+  "venus_solar_tug": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/tug",
+   "col": 0,
+   "page": 0,
+   "row": 5,
+   "sig": "26942c527619b16af8a17286db85a93c4a66d478"
+  },
+  "venus_solar_turret": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/solarpunk/turret",
+   "col": 1,
+   "page": 0,
+   "row": 5,
+   "sig": "823b9adcac63f631e0df640644dc75399e76991e"
+  },
+  "venus_steam_cargo_barge": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/cargo_barge",
+   "col": 2,
+   "page": 0,
+   "row": 5,
+   "sig": "3f540ddfbdbf286c1fcc25fea4a74820fc7e94a2"
+  },
+  "venus_steam_carrier": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/carrier",
+   "col": 3,
+   "page": 0,
+   "row": 5,
+   "sig": "8686e36e74b0ab77f39a43499240b41e82f3871d"
+  },
+  "venus_steam_cruiser": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/cruiser",
+   "col": 4,
+   "page": 0,
+   "row": 5,
+   "sig": "a9cb332a4a14ff679f49ab253fa19694d2a09176"
+  },
+  "venus_steam_destroyer": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/destroyer",
+   "col": 5,
+   "page": 0,
+   "row": 5,
+   "sig": "b30051d6f62910b780773a0eff1e2c8fd1dfa14d"
+  },
+  "venus_steam_fighter": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/fighter",
+   "col": 6,
+   "page": 0,
+   "row": 5,
+   "sig": "471e207ad08ee46608e6cd08d064d2d46c018512"
+  },
+  "venus_steam_frigate": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/frigate",
+   "col": 7,
+   "page": 0,
+   "row": 5,
+   "sig": "5eef1d2683c1b56786d9876c3a1a6437a473e10b"
+  },
+  "venus_steam_launch": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/launch",
+   "col": 8,
+   "page": 0,
+   "row": 5,
+   "sig": "a2ce10e8bcb1d755239f2d178f4c3fa7b124f9db"
+  },
+  "venus_steam_station_civil": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/station_civil",
+   "col": 9,
+   "page": 0,
+   "row": 5,
+   "sig": "64dee580c29bfcbce9f3ff47dbbd506cc3b31d4f"
+  },
+  "venus_steam_station_command": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/station_command",
+   "col": 10,
+   "page": 0,
+   "row": 5,
+   "sig": "214bb238df600fc021092819530dadada48d7b09"
+  },
+  "venus_steam_station_industrial": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/station_industrial",
+   "col": 11,
+   "page": 0,
+   "row": 5,
+   "sig": "ed2162f289995dda980595ac38c2f0ece4a09265"
+  },
+  "venus_steam_station_science": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/station_science",
+   "col": 12,
+   "page": 0,
+   "row": 5,
+   "sig": "fdce6656f33506d4041339cc33e4c6d8f895a6d1"
+  },
+  "venus_steam_steam_tender": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/steam_tender",
+   "col": 13,
+   "page": 0,
+   "row": 5,
+   "sig": "e4f8bc42df4c5e6f0f8e0655835386f8ff9181ed"
+  },
+  "venus_steam_tug": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/tug",
+   "col": 14,
+   "page": 0,
+   "row": 5,
+   "sig": "efcb2474e58bef41fb71835e2d889d60480311be"
+  },
+  "venus_steam_turret": {
+   "art": "data/missions/__lib__/media/artemis-sbs.VenusClouds-Mod.media.v0.2.0/ships/steampunk/turret",
+   "col": 15,
+   "page": 0,
+   "row": 5,
+   "sig": "96dc4869c65abe19c7a059e7d47ccdefda793048"
+  }
+ },
+ "cols": 16,
+ "extras": {
+  "unknown": {
+   "col": 0,
+   "page": 0,
+   "row": 0,
+   "sig": "fc67f1192dc975ac35b3b4d7a403fb2d9b7f844f"
+  }
+ },
+ "format": 1,
+ "pages": [
+  {
+   "file": "venus_0",
+   "rows": 6
+  }
+ ],
+ "preset": "three-quarter/1",
+ "renderer": "browser-three/1",
+ "set": "venus"
+}

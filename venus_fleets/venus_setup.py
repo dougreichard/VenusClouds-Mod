@@ -116,8 +116,22 @@ def venus_declare_ships():
     way. Returns a status string, not a dict (see venus_safe_status)."""
     from sbs_utils.procedural.ship_data import add_extra, get_ship_data_for
     reached = add_extra("venus_ships", mod=VENUS_ADDON)
+    venus_load_portraits()
     have = get_ship_data_for(VENUS_PROBE_KEY) is not None
     return venus_safe_status("engine=" + str(reached) + " library=" + ("ok" if have else "MISSING"))
+
+
+def venus_load_portraits():
+    """Register the Venus ship PORTRAIT sheet (media/ship_portraits/venus, built by
+    `sbs art portraits VenusClouds-Mod --set venus`), so a Venus hull in a list or a card
+    draws as a picture rather than a live 3D ship. Returns the number of hulls
+    registered; 0 on a library without portraits (older than 2026-10-19)."""
+    try:
+        from sbs_utils.procedural.ship_portraits import ship_portrait_load
+    except ImportError:
+        return 0
+    # A LOGICAL path: the library finds the manifest in whichever pack carries it.
+    return ship_portrait_load("ship_portraits/venus")
 
 
 def venus_hull_count():
