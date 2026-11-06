@@ -1,6 +1,6 @@
 {
     "sbslib": [
-        "artemis-sbs.sbs_utils.v1.4.0.sbslib"
+        "artemis-sbs.sbs_utils.v1.5.0.sbslib"
     ],
     "mastlib": [
         "artemis-sbs.VenusClouds-Mod.venus_fleets.v0.2.0.mastlib"
